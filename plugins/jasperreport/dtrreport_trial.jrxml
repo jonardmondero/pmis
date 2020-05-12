@@ -4,6 +4,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="162"/>
 	<style name="style1" backcolor="#FFFFFF"/>
+	<subDataset name="Table Dataset 1" uuid="b6afb08b-2d98-434a-8204-4a2fdc8088a2"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["C:\\xampp\\htdocs\\pmis\\plugins\\jasperreport\\"]]></defaultValueExpression>
 	</parameter>
@@ -503,153 +504,13 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="14" splitType="Stretch">
+		<band height="95" splitType="Stretch">
 			<elementGroup>
 				<rectangle>
 					<reportElement x="337" y="0" width="116" height="13" forecolor="#CCCCCC" backcolor="#FFFF99" uuid="4c95de71-c3d2-47ed-a49e-05643097f373">
 						<printWhenExpression><![CDATA[$F{outAM} =="DAY"]]></printWhenExpression>
 					</reportElement>
 				</rectangle>
-				<rectangle>
-					<reportElement x="27" y="0" width="116" height="13" forecolor="#CCCCCC" backcolor="#FFFF99" uuid="935c7899-bbea-4179-9655-fdeaa5aa14af">
-						<printWhenExpression><![CDATA[$F{outAM} =="DAY"]]></printWhenExpression>
-					</reportElement>
-				</rectangle>
-				<rectangle>
-					<reportElement x="27" y="0" width="116" height="13" forecolor="#CCCCCC" backcolor="#99FF99" uuid="f97c82c3-bc19-4895-8116-877ffc2cbf1f">
-						<printWhenExpression><![CDATA[$F{outAM} =="HOLI"]]></printWhenExpression>
-					</reportElement>
-				</rectangle>
-				<textField>
-					<reportElement x="172" y="0" width="29" height="14" uuid="eb160045-5eb3-4049-9259-dea16375e0ef"/>
-					<box>
-						<pen lineWidth="0.75"/>
-						<topPen lineWidth="0.75"/>
-						<leftPen lineWidth="0.75"/>
-						<bottomPen lineWidth="0.75"/>
-						<rightPen lineWidth="0.75"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font size="9"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{otOut}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="85" y="0" width="29" height="14" uuid="da246db2-d06c-43c3-91bc-140f63fe53a0"/>
-					<box>
-						<pen lineWidth="0.75"/>
-						<topPen lineWidth="0.75"/>
-						<leftPen lineWidth="0.75"/>
-						<bottomPen lineWidth="0.75"/>
-						<rightPen lineWidth="0.75"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font size="9"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{inPM}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="0" y="0" width="27" height="14" uuid="faae4e64-ca90-4dce-920c-d13a8e521819"/>
-					<box>
-						<pen lineWidth="0.75"/>
-						<topPen lineWidth="0.75"/>
-						<leftPen lineWidth="0.75"/>
-						<bottomPen lineWidth="0.75"/>
-						<rightPen lineWidth="0.75"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font size="9"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{day}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="143" y="0" width="29" height="14" uuid="dd46721c-9f1e-493d-aac2-694a6f3f4c8a"/>
-					<box>
-						<pen lineWidth="0.75"/>
-						<topPen lineWidth="0.75"/>
-						<leftPen lineWidth="0.75"/>
-						<bottomPen lineWidth="0.75"/>
-						<rightPen lineWidth="0.75"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font size="9"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{otIn}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="27" y="0" width="29" height="14" uuid="42aee9b6-763f-485b-a013-4fd4711d185e"/>
-					<box>
-						<pen lineWidth="0.75"/>
-						<topPen lineWidth="0.75"/>
-						<leftPen lineWidth="0.75"/>
-						<bottomPen lineWidth="0.75"/>
-						<rightPen lineWidth="0.75"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font size="9" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{inAM}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="201" y="1" width="29" height="13" uuid="61bbae46-bb20-4e91-bc3b-3e881979196c">
-						<printWhenExpression><![CDATA[$F{late} != "00:00"]]></printWhenExpression>
-					</reportElement>
-					<box>
-						<pen lineWidth="0.0"/>
-						<topPen lineWidth="0.0"/>
-						<leftPen lineWidth="0.0"/>
-						<bottomPen lineWidth="0.0"/>
-						<rightPen lineWidth="0.0"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font size="9"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{late}]]></textFieldExpression>
-				</textField>
-				<textField pattern="HH.mm">
-					<reportElement x="229" y="0" width="29" height="14" uuid="13145ce2-9caa-4d17-a34a-0acc990aef91">
-						<printWhenExpression><![CDATA[$F{undertime} !="00:00"]]></printWhenExpression>
-					</reportElement>
-					<box>
-						<pen lineWidth="0.0"/>
-						<topPen lineWidth="0.0"/>
-						<leftPen lineWidth="0.0"/>
-						<bottomPen lineWidth="0.0"/>
-						<rightPen lineWidth="0.0"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font size="9"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{undertime}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="56" y="0" width="29" height="14" uuid="791af71e-6522-4619-b95e-01120a3c593b"/>
-					<box>
-						<pen lineWidth="0.75"/>
-						<topPen lineWidth="0.75"/>
-						<leftPen lineWidth="0.75"/>
-						<bottomPen lineWidth="0.75"/>
-						<rightPen lineWidth="0.75"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font size="9"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{outAM}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="114" y="0" width="29" height="14" uuid="8579f71e-aa81-423b-804e-5a5705251441"/>
-					<box>
-						<pen lineWidth="0.75"/>
-						<topPen lineWidth="0.75"/>
-						<leftPen lineWidth="0.75"/>
-						<bottomPen lineWidth="0.75"/>
-						<rightPen lineWidth="0.75"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font size="9"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{outPM}]]></textFieldExpression>
-				</textField>
 				<staticText>
 					<reportElement x="540" y="0" width="29" height="14" uuid="dc47bc43-f50b-45c6-95ef-73501c5a0ac7"/>
 					<box>
@@ -779,28 +640,6 @@
 					<textFieldExpression><![CDATA[$F{outAM}]]></textFieldExpression>
 				</textField>
 			</elementGroup>
-			<staticText>
-				<reportElement x="230" y="0" width="29" height="14" uuid="262adc5f-dde0-4fb8-8c30-b5092546c232"/>
-				<box>
-					<pen lineWidth="0.75"/>
-					<topPen lineWidth="0.75"/>
-					<leftPen lineWidth="0.75"/>
-					<bottomPen lineWidth="0.75"/>
-					<rightPen lineWidth="0.75"/>
-				</box>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="201" y="0" width="29" height="14" uuid="c1ecad43-2f7c-4eaf-a60f-f1cf07327ba5"/>
-				<box>
-					<pen lineWidth="0.75"/>
-					<topPen lineWidth="0.75"/>
-					<leftPen lineWidth="0.75"/>
-					<bottomPen lineWidth="0.75"/>
-					<rightPen lineWidth="0.75"/>
-				</box>
-				<text><![CDATA[]]></text>
-			</staticText>
 			<textField>
 				<reportElement x="310" y="0" width="27" height="14" uuid="9b18ffe0-4552-4d5e-8424-ea8d076c6f05"/>
 				<box>

@@ -177,7 +177,7 @@ $prep_emp->execute();
 	$(document).ready(function(){
       $('.select2').select2();
 	$('#tableemp').DataTable({
-		'   paging'    : true,
+		'  paging'    : true,
       'searching'   : true,
       'ordering'    : true,
       'info'        : true,
