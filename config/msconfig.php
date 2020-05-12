@@ -1,6 +1,6 @@
 <?php
 // Location to file
-$db = 'C:\xampp\htdocs\pmis\att2000.mdb';
+$db = 'C:\xampp\htdocs\att2000.mdb';
 if(!file_exists($db)){
  die('Error finding access database');
 }
