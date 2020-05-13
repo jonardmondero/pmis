@@ -30,6 +30,5 @@ $insert_stmt = "INSERT INTO workscheduledetail set
 			Day = '' AND inAM = '' AND outAM = '' AND inPM = ''  AND outPM = '' ";
 			$delete_prepare = $con->prepare($delete);
 			$delete_prepare->execute();
-			header('location : employees.php');
 }
 ?>

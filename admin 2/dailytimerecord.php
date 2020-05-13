@@ -467,6 +467,7 @@ $('#dtr tbody').on('keyup','.tr',function(){
 
 
      $('#empdate').html(col1);
+     $('#empdate').val(col1);
      $("#findlogs").load("loadlogs.php",{
       empno:empnum,
       date:col1},
@@ -538,7 +539,31 @@ $('#dtr tbody').on('keyup','.tr',function(){
      $('#printlink').attr("href","../plugins/jasperreport/dtrreport1st.php?"+secondhalf,'_parent');
   }
     })
-     
+    $('#findtable tbody').on( 'click', '.addlogs', function(){
+      event.preventDefault();
+      var currow=  $(this).closest('tr');
+      const state = currow.find('select').val();
+      const dte =  $('#empdate').val();
+      var datefr = $('#dtefrom').val();
+        var dateto = $('#dteto').val();
+        var empno = $('#hiddenempno').val();
+      // const state = $('#insert').val();
+     $.ajax({
+       url:'update_logs.php',
+       data:{empno:empno,date:dte,state:state},
+       type:"POST",
+       success:function(){
+         loadDtr(empno,datefr,dateto);
+         post_notify("You successfully inserted the logs", 'success');
+
+       },
+       error: function (xhr, b, c) {
+     console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+       }
+     })
+
+
+     })
     
      });
         

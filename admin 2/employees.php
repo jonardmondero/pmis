@@ -77,18 +77,9 @@ $prep_emp->execute();
 
                	</thead>
                	<tbody>
-               	<?php while($result = $prep_emp->fetch(PDO::FETCH_ASSOC)){?>
-               		<tr>
-               			<td><?php echo $result['employeeNo']?> </td>
-               			<td><?php echo $result['fullname']?> </td>
-               			<td><?php echo $result['departmentDescription']?> </td>
-               			<td><?php echo $result['biometricId']?> </td>
-               			<td><?php echo $result['employmentStatus']?> </td>
-               			<td><?php echo $result['workScheduleId']?> </td>
-               			<td><?php echo $result['supervisor']?> </td>
-               <td><button class = "btn btn-sm btn-primary add_worksched" data-id = "<?php echo $result['employeeNo'];?>" ><i class = "fa fa-edit"></i></button></td>
-               		</tr>
-               	<?php } ?>
+              
+               
+               
                	</tbody>
                </table>
                
@@ -176,15 +167,44 @@ $prep_emp->execute();
 <script>
 	$(document).ready(function(){
       $('.select2').select2();
-	$('#tableemp').DataTable({
-		'  paging'    : true,
-      'searching'   : true,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : true,
-    
-	});
+	// $('#tableemp').DataTable({
+	// 	'  paging'    : true,
+  //     'searching'   : true,
+  //     'ordering'    : true,
+  //     'info'        : true,
+  //     'autoWidth'   : true,
 
+    
+	// });
+    var dataTable = $('#tableemp').DataTable({
+          "page"     : true,
+          "stateSave" :true,
+					"processing": true,
+          "serverSide": true,
+          'scrollX'   : true,
+          'ajax'  :{
+            url :"search_employee.php", // json datasource
+						type: "post",  // method  , by default get
+						error: function(){  // error handling
+							$("#users-error").html("");
+							$("#users").append('<tbody class="users-error"><tr>< td colspan="3">No data found in the server</td></tr></tbody>');
+							$("#users_processing").css("display","none");
+            }
+          },
+          "columnDefs": 
+          
+          [{  "width": "90px",
+                "targets" : -1,
+                "data" : null,
+                "defaultContent": '<button class="btn btn-warning btn-sm btn-flat add_worksched" >  <i class="fa fa-calendar"></i></button> '
+          
+         
+              }]
+
+
+          
+
+    })
 	 function is_valid(element){
       // callback function
       // returns every value
@@ -286,7 +306,7 @@ if(bio == ''){
 
 
 })
-$('.add_worksched').click(function(event){
+$('#tableemp tbody').on( 'click', '.add_worksched', function(){
 
 event.preventDefault();
 var id = $(this).data('id');

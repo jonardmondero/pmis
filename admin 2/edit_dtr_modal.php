@@ -9,8 +9,10 @@
             </div>
             <div class="modal-body">
               <div class = "container-fluid">
-                <div class = "row">
-                 <label id = "empdate" name = "empdate"></label>
+                <div class = "row " >
+                <div class = "col-12 d-flex justify-content-center" >
+                 <label style ="margin:auto;font-size:30px" id = "empdate" name = "empdate"></label>
+                 </div>
                 </div>
                 <div class ="row">
                   <div class = "col-12">

@@ -32,9 +32,24 @@ if(isset($_POST['empno'])){
  		echo "failed";
  	}else{
  	$checktime = $timeresult['checktime'];
- 	$checktype = $timeresult['checktype'];
+	 $checktype = $timeresult['checktype'];
+	 $checkstate = '';
+	 if($checktype == 'O'){
+		$checkstate = 'Check In';
+	 }
+	 if($checktype == '0'){
+		$checkstate = 'Break Out';
+	 }
+	 if($checktype == '1'){
+		$checkstate = 'Break In';
+	 }
+	 if($checktype == 'i'){
+		$checkstate = 'Check Out';
+	 }
+	 
+	 
  	$options = array('Check In','Break Out','Break In','Check Out','Overtime In','Overtime Out');
- 	echo $checktime;
+ 	echo $checktime;	
  	echo "<tr>";
  	echo "<td>";
  	echo $date;
@@ -43,12 +58,12 @@ if(isset($_POST['empno'])){
  	echo $checktime;
  	echo "</td>";
  	echo "<td>";
- 	echo $checktype;
+ 	echo $checkstate;
  	echo "</td>";
  	echo "<td>";
  	echo '<select id = "insert">';
  	foreach ($options as $value){
- 		echo '<option>';
+ 		echo '<option val="<? echo $value ?>">';
  		echo $value;
  		echo '</option>';
  	};

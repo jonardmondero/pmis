@@ -229,13 +229,16 @@ var workid = $('#worksched-form').serializeArray();
             CheckOut:col5
           },
           dataType: 'json',
+          success:function(){
+           
+          },
           error: function (xhr, b, c) {
           console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
      }
         })
        })
 
-
+       window.location.reload();
  
     });
 
