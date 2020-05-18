@@ -3,7 +3,7 @@
     $host = "localhost";
     $db_name = "pmis";
     $username = "root";
-    $password = "";
+    $password = "1234";
 
     try{
 

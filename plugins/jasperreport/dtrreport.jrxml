@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dtrreport" language="javascript" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="18" bottomMargin="18" isFloatColumnFooter="true" uuid="d7d62b9c-130d-4b52-908e-9756dc3b0124">
-	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="162"/>
+	<property name="ireport.y" value="395"/>
 	<style name="style1" backcolor="#FFFFFF"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["C:\\xampp\\htdocs\\pmis\\plugins\\jasperreport\\"]]></defaultValueExpression>
@@ -47,6 +47,14 @@
 	<variable name="field1_1" class="java.lang.Integer" resetType="Column" calculation="Count">
 		<variableExpression><![CDATA[]]></variableExpression>
 	</variable>
+	<background>
+		<band height="632">
+			<image>
+				<reportElement x="0" y="0" width="300" height="632" uuid="d50524b4-96fe-47ca-930a-225c0ed6a10d"/>
+				<imageExpression><![CDATA["C:\\Users\\HRMO\\Desktop\\DTR.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</background>
 	<title>
 		<band height="31" splitType="Stretch">
 			<staticText>
