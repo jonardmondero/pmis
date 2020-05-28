@@ -11,7 +11,7 @@ $st_get_employee = "SELECT CONCAT(firstName,' ', SUBSTRING(middleName,1,1),'.','
    $result = $con->prepare($st_get_employee);
      $result->execute();
 // include('generate_department.php');
-$sel_dep = "SELECT * from department";
+$sel_dep = "SELECT * from department where status = 'Active'";
 $prep_dep = $con->prepare($sel_dep);
 $prep_dep->execute();
 $list_desc = '';
@@ -207,7 +207,7 @@ $list_depid='';
 <!-- <script src="../dist/js/pages/dashboard.js"></script> -->
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
-<script src="../adminlte2/bower_components/select2/dist/js/select2.full.min.js"></script>
+<script src="../plugins/select2/select2.js"></script>
   
 <!-- Bootstrap 4 -->
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

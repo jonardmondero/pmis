@@ -83,7 +83,7 @@ $otOut='';
                 <select class="form-control select2" style="margin-bottom:20px" name="department" id = "deptId" placeholder="Select" value="<?php echo $department; ?>">
                 <?php
              
-                     $get_user_sql = "SELECT * FROM department";
+                     $get_user_sql = "SELECT * FROM department WHERE status = 'Active'";
                      $user_data = $con->prepare($get_user_sql);  
                      $user_data->execute();
                         while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
