@@ -163,7 +163,7 @@ $prep_emp->execute();
 <!-- <script src="../dist/js/pages/dashboard.js"></script> -->
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
-<script src="../adminlte2/bower_components/select2/dist/js/select2.full.min.js"></script>
+<script src="../plugins/select2/select2.js"></script>
   
 <!-- Bootstrap 4 -->
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
