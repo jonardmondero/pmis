@@ -17,8 +17,23 @@ if(isset($_POST['employeeno'])) {
         }
 
         else {
-            $record = $result3['recordId'];
-            $date = $result3['Date'];
+            // $record = $result3['recordId'];
+            // $date = $result3['Date'];
+            // $finallate2 = '';
+            // $finalut2 = '';
+            // $finallate = $result3['latefinal'];
+            // if($finallate == '00:00'){
+            //     $finallate2 = '';
+            // }else{
+            //     $finallate2 = $finallate;
+            // }
+            // $finalut = $result3['undertimefinal'];
+
+            // if($finalut == '00:00'){
+            //     $finalut2 = '';
+            // }else{
+            //     $finalut2 = $finalut;
+            // }
             echo '<tr style="height:10px" class = "tr"> ';
             echo '<td>';
             echo $result3['Date'];
@@ -54,7 +69,7 @@ if(isset($_POST['employeeno'])) {
             echo"</td>";
 
             echo '<td contenteditable="true">';
-            echo $result3['latefinal'];
+            echo  $result3['latefinal'];
             echo"</td>";
 
             echo '<td contenteditable="true">';
