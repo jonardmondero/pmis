@@ -15,8 +15,16 @@ if(isset($_POST['employeeno'])) {
         if($result3==0) {
            
         }
-
-        else {
+            
+     
+       
+     
+    else {
+         
+        $lateStyle;
+        $undertimeStyle;
+        $result3['latefinal'] != '00:00' ? $lateStyle = 'style="color:red; "' : $lateStyle = 'style="color:black; "'; 
+        $result3['undertimefinal'] != '00:00' ? $undertimeStyle = 'style="color:red; "' : $undertimeStyle = 'style="color:black; "'; 
             // $record = $result3['recordId'];
             // $date = $result3['Date'];
             // $finallate2 = '';
@@ -34,7 +42,7 @@ if(isset($_POST['employeeno'])) {
             // }else{
             //     $finalut2 = $finalut;
             // }
-            echo '<tr style="height:10px" class = "tr"> ';
+            echo '<tr style="height:10px;font-family:Lucida Console;font-size:13px" class = "tr"> ';
             echo '<td>';
             echo $result3['Date'];
             echo"</td>";
@@ -68,11 +76,11 @@ if(isset($_POST['employeeno'])) {
             echo $result3['otOut'];
             echo"</td>";
 
-            echo '<td contenteditable="true">';
+            echo '<td '.$lateStyle.' contenteditable="true">';
             echo  $result3['latefinal'];
             echo"</td>";
 
-            echo '<td contenteditable="true">';
+            echo '<td '.$undertimeStyle.'contenteditable="true">';
             echo $result3['undertimefinal'];
             echo"</td>";
             

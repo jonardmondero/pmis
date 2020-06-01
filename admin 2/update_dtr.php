@@ -15,7 +15,9 @@ if(isset($_POST['empno'])){
 	$overtimeout =str_replace(' ', '', $_POST['overtimeout']);
 	$late = $_POST['late'];
 	$undertime = $_POST['undertime'];
-
+	$late == '' ? $late = '00:00:00' : $late = $_POST['late'];
+	$undertime == '' ? $undertime = '00:00:00' : $undertime = $_POST['undertime'];
+	
 $updatequery= "CALL spUpdateDtr(:empno,:date,:checkin,:breakout,:breakin,:checkout,:overtimein,:overtimeout,:late,:undertime)";
 	// $updatequery = "UPDATE dailytimerecord SET 
 	// 				inAM = :checkin,
