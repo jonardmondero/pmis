@@ -13,6 +13,8 @@ if(isset($_POST['submit'])){
 	$supervisor = $_POST['supervisor'];
 	$emptype = $_POST['estatus'];
 	$status = $_POST['status'];
+	$registered = date("Y/m/d");
+
 // $search_employee ="SELECT * from bioinfo WHERE employeeNo ='$employeenum'";
 
 // $sql =$con->query($search_employee);
@@ -26,7 +28,9 @@ if(isset($_POST['submit'])){
 					department = :dep,
 					employmentStatus = :empstatus,
 					supervisor =:supervisor,
-					status = :status";
+					status = :status,
+					date_entered = :date_created";
+					
 	$set_stmt = $con->prepare($insert_stmt);
 	$set_stmt->execute([
 		':empno' => $employeenum,
@@ -35,9 +39,10 @@ if(isset($_POST['submit'])){
 		':mname'=> $mname,
 		':bioid' =>	$bioid,
 		':dep' => $dep,
-		':empstatus' =>$emptype,
+		':empstatus' =>$emptype,	
 		'supervisor' =>$supervisor,
-		':status' =>$status
+		':status' =>$status,
+		':date_created'=>$registered
   
 	]);	
 

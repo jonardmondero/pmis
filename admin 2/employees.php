@@ -76,19 +76,7 @@ $prep_emp->execute();
 
 
                	</thead>
-               	<tbody>
-               	<?php while($result = $prep_emp->fetch(PDO::FETCH_ASSOC)){?>
-               		<tr>
-               			<td><?php echo $result['employeeNo']?> </td>
-               			<td><?php echo $result['fullname']?> </td>
-               			<td><?php echo $result['departmentDescription']?> </td>
-               			<td><?php echo $result['biometricId']?> </td>
-               			<td><?php echo $result['employmentStatus']?> </td>
-               			<td><?php echo $result['workScheduleId']?> </td>
-               			<td><?php echo $result['supervisor']?> </td>
-               <td><button class = "btn btn-sm btn-primary add_worksched" data-id = "<?php echo $result['employeeNo'];?>" ><i class = "fa fa-edit"></i></button></td>
-               		</tr>
-               	<?php } ?>
+               
                	</tbody>
                </table>
                
@@ -176,14 +164,14 @@ $prep_emp->execute();
 <script>
 	$(document).ready(function(){
       $('.select2').select2();
-	$('#tableemp').DataTable({
-		'  paging'    : true,
-      'searching'   : true,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : true,
+	// $('#tableemp').DataTable({
+	// 	'  paging'    : true,
+  //     'searching'   : true,
+  //     'ordering'    : true,
+  //     'info'        : true,
+  //     'autoWidth'   : true,
     
-	});
+	// });
 
 	 function is_valid(element){
       // callback function
@@ -218,7 +206,35 @@ function reset_form_input(form_id){
           this.reset();
       });
     }
+    var dataTable = $('#tableemp').DataTable( {
+         "page"      : true,
+          "stateSave" :true,
+					"processing": true,
+          "serverSide": true,
+          'scrollX'   : true,
+					"ajax":{
+						url :"javascript/search_employee.php", // json datasource
+						type: "post",  // method  , by default get
+						error: function (xhr, b, c) {
+                console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+       }
+            // error: function (xhr, b, c) {
+            //     console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+            // }
+					},
+          "columnDefs": 
+          
+          [
+            {    "width": "90px",
+                "targets" : -1,
+                "data" : null,
+                "defaultContent": '<button class="btn btn-success btn-sm btn-flat add_worksched">  <i class="fa fa-check"></i></button>  '
+          
+         
+              }],
 
+    }
+    );
 
 	
 	$('#empnum').keyup(function(){
@@ -286,14 +302,21 @@ if(bio == ''){
 
 
 })
-$('.add_worksched').click(function(event){
+$('.add_worksched').click(function(){
 
-event.preventDefault();
-var id = $(this).data('id');
+
+})  
+
+$('#tableemp tbody').on( 'click', '.add_worksched', function(){
+  event.preventDefault();
+  var currow=  $(this).closest('tr');
+  var col1 = currow.find('td:eq(0)').text();
+// var id = $(this).data('id');
 $('#addemployeesched').modal('show');
-$('#empno').val(id);
+$('#empno').val(col1);
 
-})
+        });
+       
 $('#sel_worksched').change(function(){
  var worksched = $('#sel_worksched').val();
   $('#work_body').load('get_workschedule.php',{workcode:worksched},
