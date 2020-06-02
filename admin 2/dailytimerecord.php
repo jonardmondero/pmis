@@ -236,12 +236,12 @@ if (type == 'success') {
 
 }
 $('#dtr tbody').on('keyup','.tr',function(){
+  //UPDATE THE DTR WHEN THE USER CHANGES THE DATA.
   event.preventDefault();
-     //  $('#edit-dtr').modal('show');
+   
        var id = $(this).data('id');
         var empno = $('#hiddenempno').val();
-     //  console.log(id);
-     //  getSelectedDtr(id);
+ 
      var currow=  $(this).closest('tr');
      var col1 = currow.find('td:eq(0)').text();
      var col3 = currow.find('td:eq(2)').text();
@@ -277,64 +277,83 @@ $('#dtr tbody').on('keyup','.tr',function(){
        }
 
      })
-
+    //  if(col9 != '00:00'){
+    //    $('#finallate').attr('style','color:red');
+    //  }else{
+    //   $('#finallate').attr('style','color:black');
+    //  }
+    // //  if(col9 >= '08:00'){
+    // //    $('#finallate').attr('style','color:green');
+    // //  }else{
+    // //   $('#finallate').attr('style','color:black');
+    // //  }
+    //  if(col10 != '00:00'){
+    //    $('#undertime').attr('style','color:red');
+    //  }else{
+    //   $('#undertime').attr('style','color:black');
+    //  }
+    //  if(col10 >= '08:00'){
+    //    $('#undertime').attr('style','color:green');
+    //  }else{
+    //   $('#undertime').attr('style','color:black');
+    //  }
 })
-  $(document).ready(function(){
-     $('#dtr tbody').on( 'click', '.editdtr', function(){
-     event.preventDefault();
-     //  $('#edit-dtr').modal('show');
-       var id = $(this).data('id');
-        var empno = $('#hiddenempno').val();
-     //  console.log(id);
-     //  getSelectedDtr(id);
-     var currow=  $(this).closest('tr');
-     var col1 = currow.find('td:eq(0)').text();
-     var col3 = currow.find('td:eq(2)').text();
-     var col4 = currow.find('td:eq(3)').text();
-     var col5 = currow.find('td:eq(4)').text();
-     var col6 = currow.find('td:eq(5)').text();
-     var col7 = currow.find('td:eq(6)').text();
-     var col8 = currow.find('td:eq(7)').text();
-     var col9 = currow.find('td:eq(8)').text();
-     var col10 = currow.find('td:eq(9)').text();
-     var datefr = $('#dtefrom').val();
-     var dateto = $('#dteto').val();
-      // console.log(col1,col2,col3);
-     $.ajax({
-      url:'update_dtr.php',
-      type:'POST',
-      data:{idpost:id,
-            empno:empno,
-            date:col1,
-            checkin:col3,
-            breakout:col4,
-            breakin:col5,
-            checkout:col6,
-            overtimein:col7,
-            overtimeout:col8,
-            late:col9,
-            undertime:col10
-      },
-      dataType:'json',
+  // $(document).ready(function(){
+  //    $('#dtr tbody').on( 'click', '.editdtr', function(){
+  //    event.preventDefault();
+  //    //  $('#edit-dtr').modal('show');
+  //      var id = $(this).data('id');
+  //       var empno = $('#hiddenempno').val();
+  //    //  console.log(id);
+  //    //  getSelectedDtr(id);
+  //    var currow=  $(this).closest('tr');
+  //    var col1 = currow.find('td:eq(0)').text();
+  //    var col3 = currow.find('td:eq(2)').text();
+  //    var col4 = currow.find('td:eq(3)').text();
+  //    var col5 = currow.find('td:eq(4)').text();
+  //    var col6 = currow.find('td:eq(5)').text();
+  //    var col7 = currow.find('td:eq(6)').text();
+  //    var col8 = currow.find('td:eq(7)').text();
+  //    var col9 = currow.find('td:eq(8)').text();
+  //    var col10 = currow.find('td:eq(9)').text();
+  //    var datefr = $('#dtefrom').val();
+  //    var dateto = $('#dteto').val();
+  //     // console.log(col1,col2,col3);
+  //    $.ajax({
+  //     url:'update_dtr.php',
+  //     type:'POST',
+  //     data:{idpost:id,
+  //           empno:empno,
+  //           date:col1,
+  //           checkin:col3,
+  //           breakout:col4,
+  //           breakin:col5,
+  //           checkout:col6,
+  //           overtimein:col7,
+  //           overtimeout:col8,
+  //           late:col9,
+  //           undertime:col10
+  //     },
+  //     dataType:'json',
      
-      error: function (xhr, b, c) {
-     console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
-       }
+  //     error: function (xhr, b, c) {
+  //    console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+  //      }
 
-     })
+  //    })
     
-    })
-     $('#dtr tr').on( 'change','.tr', function(){
-      // $('#editdtr').prop('enabled');
+  //   })
+  //    $('#dtr tr').on( 'change','.tr', function(){
+  //     // $('#editdtr').prop('enabled');
 
-        $(this).closest('tr').prop("disabled", false);
-      console.log("hello");
-     })
+  //       $(this).closest('tr').prop("disabled", false);
+  //     console.log("hello");
+  //    })
 
-     $('#dtrbody').change(function(){
-      console.log("i am jonard");
-     })
-   });
+  //    $('#dtrbody').change(function(){
+  //     console.log("i am jonard");
+  //    })
+  //  });
    // function onchange(){
    //   $('#editdtr').removeAttr('disabled','disabled');
    //   console.log("hello");

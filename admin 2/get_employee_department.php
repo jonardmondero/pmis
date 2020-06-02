@@ -10,7 +10,8 @@ while($result = $set_department->fetch(PDO::FETCH_ASSOC)){
 
 	$empno = $result['employeeNo'];
 	$fullname = $result['fullName'];
-	echo "<tr><td>".$empno."</td>";
+	echo '<tr style="font-family:Lucida Console;font-size:13px">';
+	echo '<td>'.$empno.'</td>';
 	echo "<td>".$fullname."</td></tr>";
 	// echo '<td><button class = btn btn-success btn-sm btn-flat id ="showdtr"  > <i class = "fa fa-edit"</button> </td> </tr>';
 

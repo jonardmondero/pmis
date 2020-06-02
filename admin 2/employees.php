@@ -62,23 +62,7 @@ $prep_emp->execute();
               <div class = "card-body">
                 <div class ="row">
               <form role="form" method="post" name="form" action="<?php htmlspecialchars("PHP_SELF");?>">
-               <table class = "table table-hover" id = "tableemp">
-               	<thead>
-               		<th>Employee No</th>
-               		<th>Full Name</th>
-               		<th>Department</th>
-               		<th>Biometric ID</th>
-               		<th>Employment Status</th>
-               		<th>Work Schedule ID</th>
-               		<th>Supervisor</th>
-               		<th>Options</th>
-               		
-
-
-               	</thead>
-               
-               	</tbody>
-               </table>
+             <?php include('elements/tbl_employee.php')?>
                
               </form>
             </div>
@@ -160,6 +144,7 @@ $prep_emp->execute();
 <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
 <script src="../plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
 <script src="../plugins/tagsinput/tagsinput.js"></script>
+<script src="javascript/searchemployee.js"></script>
 
 <script>
 	$(document).ready(function(){
@@ -172,7 +157,7 @@ $prep_emp->execute();
   //     'autoWidth'   : true,
     
 	// });
-
+  sel_worksched();
 	 function is_valid(element){
       // callback function
       // returns every value
@@ -206,35 +191,7 @@ function reset_form_input(form_id){
           this.reset();
       });
     }
-    var dataTable = $('#tableemp').DataTable( {
-         "page"      : true,
-          "stateSave" :true,
-					"processing": true,
-          "serverSide": true,
-          'scrollX'   : true,
-					"ajax":{
-						url :"javascript/search_employee.php", // json datasource
-						type: "post",  // method  , by default get
-						error: function (xhr, b, c) {
-                console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
-       }
-            // error: function (xhr, b, c) {
-            //     console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
-            // }
-					},
-          "columnDefs": 
-          
-          [
-            {    "width": "90px",
-                "targets" : -1,
-                "data" : null,
-                "defaultContent": '<button class="btn btn-success btn-sm btn-flat add_worksched">  <i class="fa fa-check"></i></button>  '
-          
-         
-              }],
-
-    }
-    );
+    
 
 	
 	$('#empnum').keyup(function(){
@@ -316,18 +273,20 @@ $('#addemployeesched').modal('show');
 $('#empno').val(col1);
 
         });
-       
-$('#sel_worksched').change(function(){
- var worksched = $('#sel_worksched').val();
+  function sel_worksched(){
+    var worksched = $('#sel_worksched').val();
   $('#work_body').load('get_workschedule.php',{workcode:worksched},
    function(response, status, xhr) {
   if (status == "error") {
       alert(msg + xhr.status + " " + xhr.statusText);
       console.log(msg + xhr.status + " " + xhr.statusText);
   }
-
-})
 });
+  }  
+$('#sel_worksched').change(function(){
+ sel_worksched();
+})
+
 
   });
 </script>
