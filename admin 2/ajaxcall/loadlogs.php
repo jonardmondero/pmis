@@ -7,14 +7,15 @@ if(isset($_POST['empno'])){
 	$biometric = '';
 	$date = '';
 	// $date = $_POST['date'];
-	$get_employee  = "Select b.biometricId,DATE_FORMAT(d.Date,'%c/%e/%Y') as Date from bioinfo b inner join dailytimerecord d on b.employeeNo = d.employeeNo where b.employeeNo =:empno and d.Date = :id";
+	$get_employee  = "Select b.biometricId,DATE_FORMAT(d.Date,'%c/%e/%Y') as dDate,d.Date from bioinfo b inner join dailytimerecord d on b.employeeNo = d.employeeNo where b.employeeNo =:empno and d.Date = :id";
 	$prepare_emp = $con->prepare($get_employee);
 	$prepare_emp->execute([':empno' => $_POST['empno'],
 							':id' => $_POST['date']]);
 	while($result = $prepare_emp->fetch(PDO::FETCH_ASSOC)){
 		$biometric = $result['biometricId'];
-		$date = $result['Date'];
-}
+		$date = $result['dDate'];
+		$dateunformatted = $result['Date'];
+}	
 	$format_current_date = date_create($date); 
 	 $date_format = 'HH:MM';
 	  // $date_format_2 = date_format($date,"n/j/Y");
@@ -37,7 +38,7 @@ if(isset($_POST['empno'])){
  	echo $checktime;
  	echo "<tr>";
  	echo "<td>";
- 	echo $date;
+ 	echo $dateunformatted;
  	echo "</td>";
  	echo "<td>";
  	echo $checktime;
@@ -54,7 +55,7 @@ if(isset($_POST['empno'])){
  	};
  	echo'</select>';
  	echo "</td>";
- 	echo '<td><button class = "btn btn-warning btn-sm btn-flat reflectlogs" data-id='.$recordId.' > <i class = "fa fa-save"</button> </td>';
+ 	echo '<td><button class = "btn btn-warning btn-sm btn-flat reflectlogs" data-id='.$date.' > <i class = "fa fa-save"</button> </td>';
  	echo "</tr>";
  }
 

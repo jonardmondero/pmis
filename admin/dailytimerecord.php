@@ -397,32 +397,9 @@ function showDtr(){
       $('#deleteuser_Modal').modal('toggle');
     })
 
-    //Function to get the values inside the table
+    
 
 
-// var table = document.getElementById("table")[0];
-// var tbody = table.getElementById("tbody")[0];
-// tbody.onclick = function (e) {
-//     e = e || window.event;
-//     var empno = [];
-//     var  fullname = [];
-//     var  department= [];
-//     var target = e.srcElement || e.target;
-//     while (target && target.nodeName !== "TR") {
-//         target = target.parentNode;
-//     }
-//     if (target) {
-//         var cells = target.getElementsByTagName("td");
-//         // for (var i = 2; i = cells.length; i) {
-//             empno.push(cells[0].innerHTML);
-//             fullname.push(cells[1].innerHTML);
-//             alert(empno);
-//         // }
-//     }
-   
-     
-              
-//              }
  
 </script>
 

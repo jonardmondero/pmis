@@ -45,8 +45,8 @@
                  </div>
                        <div class="row">
                         <div class = "col-12" style="overflow-y:auto;height: 500px;">
-                            <table id="dtr"  cellpadding="5" cellmargin ="5" class ="table-bordered table-hover">
-                                <thead style = "font-size:13px">
+                            <table id="dtr"  cellpadding="5" cellmargin ="5" class ="table-bordered table-hover header  ">
+                                <thead style ="font-size:13px;">
                                    
                                         <th>Date </th>
                                         <th>Edit</th>
