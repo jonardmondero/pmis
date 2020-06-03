@@ -1,6 +1,6 @@
 <?php
-include('../config/config.php');
-include ('../config/msconfig.php');
+include('../../config/config.php');
+include ('../../config/msconfig.php');
 if(isset($_POST['empno'])){
 	// echo $_POST['empno'];
 	 // echo $_POST['date'];
@@ -48,7 +48,7 @@ if(isset($_POST['empno'])){
  	echo "<td>";
  	echo '<select id = "insert">';
  	foreach ($options as $value){
- 		echo '<option>';
+ 		echo '<option val = <?php echo $options?>';
  		echo $value;
  		echo '</option>';
  	};

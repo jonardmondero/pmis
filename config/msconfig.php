@@ -1,6 +1,7 @@
 <?php
 // Location to file
-$db = 'C:\xampp\htdocs\att2000.mdb';
+// $db = 'C:\xampp\htdocs\att2000.mdb';
+$db = '//192.168.0.45\JAP Softwares\ATT2000(MAIN).mdb';
 if(!file_exists($db)){
  die('Error finding access database');
 }
