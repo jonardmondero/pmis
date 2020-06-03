@@ -1,5 +1,5 @@
 <?php
-include ('../config/config.php');
+include ('../../config/config.php');
 if(isset($_POST['empno'])){
 	// echo "<pre>";
 	// print_r("jonard");
@@ -40,7 +40,7 @@ $prepare_query->execute([
 	':checkout'	=>	$checkout,
 	':overtimein'	=>	$overtimein,
 	':overtimeout'	=>	$overtimeout,
-	':late'	=>	$late,
+	':late'	=>			$late,
 	':undertime'	=>$undertime
 ]);
 

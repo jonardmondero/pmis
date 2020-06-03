@@ -74,8 +74,8 @@ $prep_emp->execute();
            </div>
            </div>
     </section>
-    <?php include('add_employee_modal.php');?>
-    <?php include('add_worksched_modal.php');?>
+    <?php include('modal/add_employee_modal.php');?>
+    <?php include('modal/add_worksched_modal.php');?>
 
 
     <!-- /.content -->

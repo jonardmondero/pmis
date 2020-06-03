@@ -82,7 +82,7 @@ $otOut='';
     <!-- /.content -->
   </div>
   </div>
-  <?php include('edit_dtr_modal.php');
+  <?php include('modal/edit_dtr_modal.php');
       include ('print_modal.php');?>
   <!-- /.content-wrapper -->
   </section>
@@ -159,6 +159,7 @@ $otOut='';
    
   $(document).ready(function(){
      var deptId = $('#deptId').val();
+     
   $('#body').load("get_employee_department.php",{
     dept:deptId
 
@@ -260,7 +261,7 @@ $('#dtr tbody').on('keyup','.tr',function(){
      var dateto = $('#dteto').val();
       // console.log(col1,col2,col3);
      $.ajax({
-      url:'update_dtr.php',
+      url:'ajaxcall/update_dtr.php',
       type:'POST',
       data:{idpost:id,
             empno:empno,
