@@ -171,7 +171,7 @@ $otOut='';
  });
  });
     function loadDtr(empnum,datefr,dateto){
-          $("#dtrbody").load("frm_dtr.php",{
+          $("#dtrbody").load("ajaxcall/frm_dtr.php",{
            employeeno: empnum,
            dtfr: datefr,
            dtto: dateto

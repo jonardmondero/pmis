@@ -1,24 +1,24 @@
 $("#findtable tbody").on("click", ".reflectlogs", function () {
   event.preventDefault();
   var currow = $(this).closest("tr");
-  var insertstate = currow.find("td:eq(3)").text();
+  var insertstate = currow.find("select").val();
   var convert = "";
   if (insertstate == "Check In") {
     convert = "inAM";
   }
-  if (insertstate == "Break Out") {
+  else if (insertstate == "Break Out") {
     convert = "outAM";
   }
-  if (insertstate == "Break In") {
+  else if (insertstate == "Break In") {
     convert = "inPM";
   }
-  if (insertstate == "Check Out") {
+  else if (insertstate == "Check Out") {
     convert = "outPM";
   }
-  if (insertstate == "Overtime In") {
+  else if (insertstate == "Overtime In") {
     convert = "otIn";
   }
-  if (insertstate == "Overtime Out") {
+  else if (insertstate == "Overtime Out") {
     convert = "otOut";
   }
   //   insertstate == "Check In" ? convert = "inAM":
@@ -28,6 +28,8 @@ $("#findtable tbody").on("click", ".reflectlogs", function () {
   //   insertstate == "Overtime In" ? convert = "otIn" :
   //   insertstate == "Overtime Out" ? convert = "otOut" : null;
   console.log(convert);
+  console.log(insertstate);
+
 
   //   var row = table.insert(1);
   //   var cell1 = row.insertCell(0);
@@ -44,6 +46,7 @@ $("#findtable tbody").on("click", ".reflectlogs", function () {
     type: "POST",
     data: { id: date, empno: empnum, stateno: convert, time: col1 },
     dataType: "json",
+    success: post_notify('Record Inserted','success'),
     error: function (xhr, b, c) {
       console.log(
         "xhr=" +
@@ -54,6 +57,8 @@ $("#findtable tbody").on("click", ".reflectlogs", function () {
           c.responseText
       );
     },
+   
   });
   loadDtr(empnum, datefr, dateto);
+  
 });

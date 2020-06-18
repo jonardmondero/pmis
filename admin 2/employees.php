@@ -34,7 +34,7 @@ $prep_emp->execute();
          <!--  <div class="col-sm-6">
             <h1 class="m-0 text-dark">Employees</h1><br>
               
-          </div><!-- /.col --> 
+          </div>--> 
           <div class ="col-2">
             <button class = "btn btn-primary" id = "addemp" data-toggle="modal" data-target="#addemployee">Add Employee </button>
           </div>

@@ -1,4 +1,4 @@
-<?php include ('../config/config.php');
+<?php include ('../../config/config.php');
 
 if(isset($_POST['employeeno'])) {
     $empno=$_POST['employeeno'];
@@ -20,9 +20,10 @@ if(isset($_POST['employeeno'])) {
        
      
     else {
-         
+        $daystyle ;
         $lateStyle;
         $undertimeStyle;
+        $result3['Day'] =='Saturday' ||     $result3['Day'] =='Sunday' ?  $daystyle = 'style="color:red;"' :  $daystyle = 'style="color:black;"';
         $result3['latefinal'] != '00:00' ? $lateStyle = 'style="color:red; "' : $lateStyle = 'style="color:black; "'; 
         $result3['undertimefinal'] != '00:00' ? $undertimeStyle = 'style="color:red; "' : $undertimeStyle = 'style="color:black; "';
         $result3['latefinal'] >= '08:00' ? $lateStyle = 'style="color:green;font-weight:bold "' : null; 
@@ -50,7 +51,7 @@ if(isset($_POST['employeeno'])) {
             echo"</td>";
 
             // echo '<td><button class = "btn btn-success btn-sm btn-flat editdtr"  data-id='.$record.' > <i class = "fa fa-edit"</button> </td>';
-              echo '<td>';
+              echo '<td '.$daystyle.'>';
             echo $result3['Day'];
             echo"</td>";
 

@@ -45,11 +45,11 @@
                  </div>
                        <div class="row">
                         <div class = "col-12" style="overflow-y:auto;height: 500px;">
-                            <table id="dtr"  cellpadding="5" cellmargin ="5" class ="table-bordered table-hover header  ">
-                                <thead style ="font-size:13px;">
+                            <table id="dtr"  cellpadding="5" cellmargin ="5" class ="table-bordered table-hover header  "style ="position: relative;">
+                                <thead style ="font-size:13px;position:sticky;">
                                    
                                         <th>Date </th>
-                                        <th>Edit</th>
+                                        <th>Day</th>
                                         <th>Check In</th>
                                         <th>Break Out</th>
                                         <th>Break In</th>

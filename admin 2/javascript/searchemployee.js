@@ -1,3 +1,4 @@
+
 var dataTable = $("#tableemp").DataTable({
   page: true,
   stateSave: true,
@@ -23,11 +24,12 @@ var dataTable = $("#tableemp").DataTable({
   },
   columnDefs: [
     {
-      width: "90px",
+      width: "100px",
       targets: -1,
       data: null,
       defaultContent:
-        '<button class="btn btn-success btn-sm btn-flat add_worksched">  <i class="fa fa-check"></i></button>  ',
+        '<button class="btn btn-success btn-sm btn-flat add_worksched">  <i class="fa fa-check"></i></button> ',
     },
+    
   ],
 });
