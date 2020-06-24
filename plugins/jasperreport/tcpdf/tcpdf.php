@@ -234,7 +234,7 @@ class TCPDF {
 	 * Scale factor (number of points in user unit).
 	 * @protected
 	 */
-	public $k;
+	protected $k;
 
 	/**
 	 * Width of page format in points.
@@ -270,7 +270,7 @@ class TCPDF {
 	 * Current height of page in user unit.
 	 * @protected
 	 */
-	public $h;
+	protected $h;
 
 	/**
 	 * Left margin.
@@ -300,7 +300,7 @@ class TCPDF {
 	 * Top margin.
 	 * @protected
 	 */
-	public $tMargin;
+	protected $tMargin;
 
 	/**
 	 * Page break margin.
@@ -566,7 +566,7 @@ class TCPDF {
 	 * String alias for page number.
 	 * @protected
 	 */
-	protected $alias_num_page = '|!n';
+	protected $alias_num_page = '{:pnp:}';
 
 	/**
 	 * String alias for total number of pages in a single group.
@@ -7352,15 +7352,10 @@ class TCPDF {
 		$pc = 0; // previous character
 		// for each character
 		while ($i < $nb) {
-
 			if (($maxh > 0) AND ($this->y >= $maxy) ) {
-                            //start customize for phpjasperxml
-                            //$this->balancetext="(".$i ."|". $nb.'|'.strlen(substr($txt, ($i+101)))."-".strlen(substr($txt, ($i))).")".substr($txt, ($i));
-                            //$countnewline=substr_count(substr($txt, $i),"\n");
-
-                            //$this->balancetext = implode("\n", array_slice(explode("\n", $txt), $nl));
-                            $this->balancetext=$this->UniArrSubString($uchars,$i);//Ben change on 24 Nov 2015
-                            //end customize for phpjasperxml
+                              //start customize for phpjasperxml
+					$this->balancetext=substr($txt, $i);
+                              //end customize for phpjasperxml
 				break;
 			}
 			//Get the current character
@@ -7522,7 +7517,6 @@ class TCPDF {
 						// check the length of the next string
 						$strrest = $this->UniArrSubString($uchars, ($sep + $endspace));
 						$nextstr = preg_split('/'.$this->re_space['p'].'/'.$this->re_space['m'], $this->stringTrim($strrest));
-                                               // echo $nextstr[0];die;
 						if (isset($nextstr[0]) AND ($this->GetStringWidth($nextstr[0]) > $pw)) {
 							// truncate the word because do not fit on a full page width
 							$tmpstr = $this->UniArrSubString($uchars, $j, $i);
@@ -7639,9 +7633,7 @@ class TCPDF {
 			++$i;
 		} // end while i < nb
 		// print last substring (if any)
-                
 		if ($l > 0) {
-                    
 			switch ($align) {
 				case 'J':
 				case 'C': {
@@ -13639,7 +13631,7 @@ class TCPDF {
 	 * @param $s (string) string to output.
 	 * @protected
 	 */
-	public function _out($s) {
+	protected function _out($s) {
 		if ($this->state == 2) {
 			if ($this->inxobj) {
 				// we are inside an XObject template
@@ -20663,9 +20655,7 @@ class TCPDF {
 			'padding_left' => $this->cell_padding['L'],
 			'padding_top' => $this->cell_padding['T'],
 			'padding_right' => $this->cell_padding['R'],
-			'padding_bottom'
-            
-            => $this->cell_padding['B']
+			'padding_bottom' => $this->cell_padding['B']
 		);
 		return $ret;
 	}

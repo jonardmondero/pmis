@@ -7,8 +7,8 @@
 
 
 ?>
-<div class = "col-12">
- <table id = "department" class = "table table-bordered table-hover" >
+
+ <table id = "department" style = "width:100%;" class = "table table-bordered table-hover" >
             <thead style="font-size:13px" >
             <th> Dept. ID </th>
              <th> Department Name </th>
@@ -30,4 +30,4 @@
                   
              </table>
          
-             </div>
+     

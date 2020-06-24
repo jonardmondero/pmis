@@ -34,7 +34,6 @@ AND d.Date LIKE '".$date."'
 GROUP BY Date";
 // $PHPJasperXML->sql = "CALL spPrintDtr('12345678','2019-10-01','2019-10-31')";
 $PHPJasperXML->transferDBtoArray($server,$user,$pass,$db);
-
 $PHPJasperXML->outpage("I");    //page output method I:standard output  D:Download file
 
 

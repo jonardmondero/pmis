@@ -61,6 +61,7 @@ include('../config/config.php');
               </div>
               <div class = "card-body">
                 <div class ="row">
+                <div class = "col-12">
               <form role="form" 
               method="post" 
               name="form" 
@@ -68,6 +69,7 @@ include('../config/config.php');
             <?php include ('elements/department_table.php'); ?>
 
               </form>
+              </div>
             </div>
            </div>
        </div>
