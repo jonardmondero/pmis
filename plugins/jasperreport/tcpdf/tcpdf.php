@@ -20663,7 +20663,9 @@ class TCPDF {
 			'padding_left' => $this->cell_padding['L'],
 			'padding_top' => $this->cell_padding['T'],
 			'padding_right' => $this->cell_padding['R'],
-			'padding_bottom' => $this->cell_padding['B']
+			'padding_bottom'
+            
+            => $this->cell_padding['B']
 		);
 		return $ret;
 	}

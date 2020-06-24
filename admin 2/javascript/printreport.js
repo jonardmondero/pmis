@@ -47,10 +47,13 @@ $('#print').click(function(){
    var secondhalf = "empno="+hiddenempno+"&year="+year+"-"+finalmonth+"";
    if(period == 'All Period'){
    $('#printlink').attr("href","../plugins/jasperreport/dtrreport.php?"+param,'_parent');
- } else if(period =='16-31'){
+  //  $('#printlink').attr("href","../plugins/jasperreport/report3X3.php?"+param,'_parent');
+ } else if(period =='16-31')
+ {
     $('#printlink').attr("href","../plugins/jasperreport/dtrreport2nd.php?"+secondhalf,'_parent');
  }
- else if(period =='1-15'){
+ else if(period =='1-15')
+ {
     $('#printlink').attr("href","../plugins/jasperreport/dtrreport1st.php?"+secondhalf,'_parent');
  }
    })

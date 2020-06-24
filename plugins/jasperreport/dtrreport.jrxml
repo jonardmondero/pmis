@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dtrreport" language="javascript" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="18" bottomMargin="18" isFloatColumnFooter="true" uuid="d7d62b9c-130d-4b52-908e-9756dc3b0124">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dtrreport" language="javascript" pageWidth="612" pageHeight="792" whenNoDataType="BlankPage" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="18" bottomMargin="18" isFloatColumnFooter="true" isIgnorePagination="true" uuid="d7d62b9c-130d-4b52-908e-9756dc3b0124">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="6"/>
+	<property name="ireport.y" value="0"/>
 	<style name="style1" backcolor="#FFFFFF"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["C:\\xampp\\htdocs\\pmis\\plugins\\jasperreport\\"]]></defaultValueExpression>
@@ -857,7 +857,7 @@
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="174">
+		<band height="191">
 			<staticText>
 				<reportElement x="85" y="14" width="116" height="15" uuid="0333d922-f924-4948-a7f9-f6feaac9cb5a"/>
 				<box>
@@ -1071,12 +1071,12 @@
 		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="9"/>
+		<band/>
 	</pageFooter>
 	<lastPageFooter>
-		<band height="2"/>
+		<band height="10"/>
 	</lastPageFooter>
 	<summary>
-		<band height="7"/>
+		<band/>
 	</summary>
 </jasperReport>
