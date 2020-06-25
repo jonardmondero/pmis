@@ -46,7 +46,7 @@ if(isset($_POST['employeeno'])) {
             //     $finalut2 = $finalut;
             // }
             echo '<tr style="height:10px;font-family:Lucida Console;font-size:13px" class = "tr"> ';
-            echo '<td>';
+            echo '<td bgcolor:red >';
             echo $result3['Date'];
             echo"</td>";
 

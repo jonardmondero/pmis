@@ -55,7 +55,7 @@ if(isset($_POST['empno'])){
  	};
  	echo'</select>';
  	echo "</td>";
- 	echo '<td><button class = "btn btn-warning btn-sm btn-flat reflectlogs" data-id='.$date.' > <i class = "fa fa-save"></button> </td>';
+ 	echo '<td><button class = "btn btn-primary btn-md btn-circle reflectlogs" data-id='.$date.' > <i class = "fa fa-save"></button> </td>';
  	echo "</tr>";
  }
 
