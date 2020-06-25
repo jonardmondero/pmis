@@ -1,4 +1,4 @@
-$(document).ready(function(){
+
 var dataTable = $("#tableemp").DataTable({
   page: true,
   stateSave: true,
@@ -29,9 +29,9 @@ var dataTable = $("#tableemp").DataTable({
       data: null,
       defaultContent:
         '<button class="btn btn-danger btn-sm btn-circle add_worksched">  <i class="fa fa-calendar"></i></button><button class="btn btn-warning btn-sm btn-flat edit_employee">  <i class="fa fa-edit"></i></button>'
-        ,
+    ,
     },
     
   ],
 });
-});
+
