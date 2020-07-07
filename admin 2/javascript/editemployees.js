@@ -1,10 +1,2 @@
-$('#tableemp tbody').on('keyup','.tr',function(){
-    var currow=  $(this).closest('tr');
-    
-    $.ajax({
+//DISPLAY THE USER DATA INTO THE MODAL
 
-        url:'ajaxcall/update_dtr.php',
-        type:'POST',
-        data:{}
-    })
-});

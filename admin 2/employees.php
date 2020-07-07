@@ -145,6 +145,7 @@ $prep_emp->execute();
 <script src="../plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
 <script src="../plugins/tagsinput/tagsinput.js"></script>
 <script src="javascript/searchemployee.js"></script>
+<script src="javascript/editemployees.js"></script>
 
 <script>
 	$(document).ready(function(){
@@ -259,9 +260,12 @@ if(bio == ''){
 
 
 })
-$('.add_worksched').click(function(){
-
-
+$('#addemp').click(function(){
+reset_form_input('employee-form');
+$("#empnum").prop('disabled', false);
+$('#insert').prop('hidden',false);
+$('#update').prop('hidden',true);
+$("#empnum").prop('readonly', false);
 })  
 
 $('#tableemp tbody').on( 'click', '.add_worksched', function(){
@@ -286,6 +290,39 @@ $('#empno').val(col1);
 $('#sel_worksched').change(function(){
  sel_worksched();
 })
+$("#tableemp tbody").on("click", ".edit_employee", function () {
+    event.preventDefault();
+    $("#addemployee").modal('show');
+    $('#insert').hide();
+    $('#update').prop('hidden',false);
+    $("#empnum").prop('readonly', true);
+    var currow=  $(this).closest('tr');
+    var col1 = currow.find('td:eq(0)').text();
+    console.log('hello');
+    $.ajax({
+
+        url:'ajaxcall/get_employee.php',
+        type:'POST',
+        data:{id:col1},
+        success:function(response){
+        var result = jQuery.parseJSON(response);
+        $('#empnum').val(result.employeeno);
+        $('#lname').val(result.lastname);
+        $('#fname').val(result.firstname);
+        $('#mname').val(result.middlename);
+        $('#bioid').val(result.bioid);
+        // $('#department').val(result.department);
+        $(`#department option[value='${result.department}']`).prop('selected', true);
+        $('#estatus').val(result.employmentstatus);
+        $('#supervisor').val(result.supervisor);
+        $('#status').val(result.status);
+        },
+        error: function (xhr, b, c) {
+     console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+       }
+
+    })
+});
 
 
   });

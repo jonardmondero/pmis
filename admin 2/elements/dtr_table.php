@@ -1,4 +1,4 @@
-<div class="col-8">
+<div class="col-8" style = "resize:both;overflow:auto;" >
           <div class="card card-warning">
                <div class="card-header">
                 <h3 class="card-title">Time</h3>
@@ -44,7 +44,7 @@
                      </div>
                  </div>
                        <div class="row">
-                        <div class = "col-12" style="overflow-y:auto;height: 500px;">
+                        <div class = "col-12" style="overflow-y:auto;height:auto;">
                             <table id="dtr"  cellpadding="5" cellmargin ="5" class ="table-bordered table-hover header  "style ="position: relative;">
                                 <thead style ="font-size:13px;position:sticky;">
                                    

@@ -1,4 +1,4 @@
-<div class="card card-primary">
+<div class="card card-primary" >
                <div class="card-header">
                 <h3 class="card-title">Department</h3>
               </div>

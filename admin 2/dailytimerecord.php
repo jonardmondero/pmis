@@ -72,12 +72,10 @@ $otOut='';
           <!-- /.col -->
         </div><!-- /.row -->
             <div class="row">
-            <div class="col-4">
+            <div class="col-4 no-gutters" style = "resize:both;overflow:auto;">
             <?php include('elements/employee_table.php');?>
                 </div>
-        
-    
-   
+          
     <?php include('elements/dtr_table.php');?>
     <!-- /.content -->
   </div>

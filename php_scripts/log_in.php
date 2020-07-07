@@ -34,15 +34,7 @@ $user_data ->execute([
             }
         }
         }
-    } else{
-            //echo "Password does not match!";
-            $alert_msg .= ' 
-            <div class="new-alert new-alert-warning alert-dismissible">
-                <i class="icon fa fa-warning"></i>
-                
-            </div>     
-        ';
-    }   
+     
     }else{
       $alert_msg .= ' 
       <div class="new-alert new-alert-warning alert-dismissible">
@@ -54,7 +46,7 @@ $user_data ->execute([
 
 }
 
-  
+}
 
     
 ?>
