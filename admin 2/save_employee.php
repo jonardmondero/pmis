@@ -1,7 +1,7 @@
 <?php
 include('../config/config.php');
 $employeenum=$fname=$lname=$mname=$bioid=$supervisor=$emptype=$status=$department='';
-if(isset($_POST['insert'])){
+if(isset($_POST['save'])){
 
 
 	$employeenum = $_POST['empnum'];

@@ -272,8 +272,12 @@ $('#tableemp tbody').on( 'click', '.add_worksched', function(){
   event.preventDefault();
   var currow=  $(this).closest('tr');
   var col1 = currow.find('td:eq(0)').text();
+  var col2 = currow.find('td:eq(5)').text();
+  console.log(col2);
+ 
 // var id = $(this).data('id');
 $('#addemployeesched').modal('show');
+$(`#sel_worksched option[value='${col2}']`).prop('selected', true);
 $('#empno').val(col1);
 
         });
