@@ -264,6 +264,7 @@ $('#addemp').click(function(){
 reset_form_input('employee-form');
 $("#empnum").prop('disabled', false);
 $('#insert').prop('hidden',false);
+$('#delete').prop('hidden',true);
 $('#update').prop('hidden',true);
 $("#empnum").prop('readonly', false);
 })  
@@ -295,10 +296,12 @@ $('#sel_worksched').change(function(){
  sel_worksched();
 })
 $("#tableemp tbody").on("click", ".edit_employee", function () {
+  //SHOWS THE ADD EMPLOYEE MODAL AND DISPLAY THE EMPLOYEE'S INFORMATION
     event.preventDefault();
     $("#addemployee").modal('show');
     $('#insert').hide();
     $('#update').prop('hidden',false);
+    $('#delete').prop('hidden',false);
     $("#empnum").prop('readonly', true);
     var currow=  $(this).closest('tr');
     var col1 = currow.find('td:eq(0)').text();

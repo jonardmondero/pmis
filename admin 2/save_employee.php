@@ -50,7 +50,7 @@ if(isset($_POST['save'])){
 	 $alert_msg .= ' 
             <div class="alert alert-success alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <i class="icon fa fa-check"></i>You have successfully inserted the user.
+            <i class="icon fa fa-check"></i>You have successfully inserted the employee.
             </div>     
         ';
 
@@ -103,10 +103,24 @@ if(isset($_POST['update'])){
 	 $alert_msg .= ' 
             <div class="alert alert-success alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <i class="icon fa fa-check"></i>You have successfully inserted the user.
+            <i class="icon fa fa-check"></i>You have successfully updated the employee.
             </div>     
         ';
 
 }	
+if(isset($_POST['delete'])){
+	$employeenum = $_POST['empnum'];
+	$insert_stmt = "DELETE FROM bioinfo where employeeNo = :id";
+	$set_stmt = $con->prepare($insert_stmt);
 
+	$set_stmt->execute([':id'=>$employeenum]);
+
+
+	$alert_msg .= ' 
+            <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="icon fa fa-check"></i>You have successfully deleted the employee.
+            </div>     
+        ';
+}
 ?>

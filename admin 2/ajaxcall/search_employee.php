@@ -47,7 +47,7 @@ $sql = "SELECT CONCAT(b.firstName,' ',LEFT(b.middleName, 1),'. ',b.lastName) as 
         b.supervisor  
         FROM bioinfo b 
         INNER JOIN department d on b.department = d.deptId ";
-$sql.=" ORDER BY b.lastName DESC  LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
+$sql.=" ORDER BY b.lastName ASC  LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
 $get_user_data = $con->prepare($sql);
 $get_user_data->execute();
 // $query=mysqli_query($conn, $sql) or die("search_user.php");
@@ -59,7 +59,8 @@ $getrecordstmt->execute() or die("search_employee.php");
 $getrecord = $getrecordstmt->fetch(PDO::FETCH_ASSOC);
 $totalData = $getrecord['id'];
 // $totalData = mysqli_num_rows($query);
-$totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
+$totalFiltered = $totalData;  
+// when there is no search parameter then total number rows = total number filtered rows.
 
 
 $sql = "SELECT CONCAT(b.firstname,' ',LEFT(b.middlename, 1),'. ',b.lastname) as fullname
@@ -86,7 +87,7 @@ if( !empty($requestData['search']['value']) ) {   // if there is a search parame
 
 
 // $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result. 
-$sql.=" ORDER BY b.LastName  LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
+$sql.=" ORDER BY b.LastName ASC LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
 $get_user_data = $con->prepare($sql);
 $get_user_data->execute();
 // $totalData = $get_user_data->fetch(PDOStatement::rowCount);

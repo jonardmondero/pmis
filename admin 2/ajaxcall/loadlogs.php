@@ -32,6 +32,7 @@ if(isset($_POST['empno'])){
  	if($timeresult == 0){
  		echo "failed";
  	}else{
+		 //DISPLAYS THE TIME INTO THE INSERT LOG TABLE
  	$checktime = $timeresult['checktime'];
  	$checktype = $timeresult['checktype'];
  	$options = array('Check In','Break Out','Break In','Check Out','Overtime In','Overtime Out');
@@ -55,7 +56,7 @@ if(isset($_POST['empno'])){
  	};
  	echo'</select>';
  	echo "</td>";
- 	echo '<td><button class = "btn btn-primary btn-md btn-circle reflectlogs" data-id='.$date.' > <i class = "fa fa-save"></button> </td>';
+ 	echo '<td><button class = "btn btn-primary btn-md btn-circle reflectlogs" data-id='.$date.' > <i class = "fa fa-save"></i></button> </td>';
  	echo "</tr>";
  }
 

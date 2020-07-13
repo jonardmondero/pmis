@@ -74,6 +74,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="add_travel.php" class="nav-link">
+              <i class="nav-icon fa fa-user"></i>
+              <p>
+             Add Travel
+               
+              </p>
+            </a>
+          </li>
           <li class="nav-header">ADMINISTRATION</li>
           <li class="nav-item">
             <a href="users" class="nav-link">
