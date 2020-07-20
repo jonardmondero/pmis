@@ -1,10 +1,10 @@
 <?php
 
 include ('../config/config.php');
+$curdate = date("m/d/Y");
 
-
-        include ('dtrdesign/header.php');
-             
+include ('dtrdesign/header.php');
+$curdate = date("m/d/Y");      
 ?>
 
 
@@ -45,7 +45,7 @@ include ('../config/config.php');
             <div class="card-header">
                 <h3 class="card-title">Search Employee</h3>
               </div>
-            
+           
           <?php include("elements/search_employee.php");?>
  
           
@@ -57,9 +57,62 @@ include ('../config/config.php');
             <div class="card-header">
                 <h3 class="card-title">Details</h3>
               </div>
+              <div class="row">
+              <div class = col-12 style = "margin-top:20px;">
+
+<div class="input-group date">
+        <label style="padding-right:10px;padding-left: 10px">From:  </label> 
+          <div  style = "padding-right:10px" class="input-group-addon">
+                 <i class="fa fa-calendar"></i>
+          </div>
+ 
+<input  style="margin-right:10px;"type="text" data-provide="datepicker"class="form-control col-4 " style="font-size:13px" autocomplete="off" name="datefrom" id="dtefrom" val = "<?php echo $curdate; ?> " >
+               
+    
+    <label style="padding-right:10px">To:</label>
+         <div style = "padding-right:10px" class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+         </div>
+<input type="text" class="form-control col-4 " data-provide="datepicker"  autocomplete="off" name="dateto" id="dteto" val = "<?php echo $curdate; ?> " >
+    
+    
+    </div>
+     
+  </div>
+          </div> 
+          <div class = "row col-12" style = "padding-left:10px;padding-top:20px;">
+          
+        <div class = "form-group col-4">
+        <label style="padding-right:10px;padding-left: 10px">Duration  </label> 
+        <select class = "form-control" name = "duration" id = "duration">
+        <option val = "0"> Whole Day</option>
+        <option val = "1">Morning</option>
+        <option val = "2"> Afternoon</option>
+        <option val = "3"> Break Out / Break In</option>
+        </select>
+        </div>
+        <div class = "form-group col-4">
+        <label style="padding-right:10px;padding-left: 10px">Type  </label> 
+        <select class = "form-control"  name = "type" id = "type">
+        <option val = "FW"> Field Work</option>
+        <option val = "TOB">Travel on Official Business</option>
+        <option val = "OT"> On Official Time</option>
+        <option val = "TOT"> Travel on Official Time</option>
+        </select>
+
+        </div>
+          </div>
+          <div class = "row" style="padding-right:10px;padding-left: 10px">
+          <div class = "form-group col-10">
+          <label style="padding-right:10px;padding-left: 10px">Details  </label> 
+          <input type = "text" name = "details" id = "details" class = "form-control">
+          </div>
+          </div>
          <!-- DISPLAY'S THE SECOND SECTION OF THE FORM -->
               <?php include("elements/travelorder_details.php");?>
- 
+              <div class = "row" style=" margin:auto;padding-top:30px;padding-bottom: 30px">
+              <button type ="submit" class = " btn btn-primary"><i class = "fa fa-save"></i></button>
+              </div>
           
  </div>
     <!-- /.content -->
@@ -151,6 +204,10 @@ function(response, status, xhr) {
 $("#tableemp tbody").on('click','#select',function(){
 
 var currow=  $(this).closest('tr');
+var datefrom = $('#dtefrom').val();
+var dateto = $('#dteto').val();
+var duration = $('#duration').val();
+var type = $('#type').val();
  var col1 = currow.find('td:eq(0)').text();
  var col2 = currow.find('td:eq(1)').text();
  var table = document.getElementById("employees");
@@ -158,9 +215,17 @@ var currow=  $(this).closest('tr');
  var cell1 = row.insertCell(0);
   var cell2 = row.insertCell(1);
   var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+  var cell5 = row.insertCell(4);
+  var cell6 = row.insertCell(5);
+  var cell7 = row.insertCell(6);
   cell1.innerHTML = col1;
   cell2.innerHTML = col2;
-  cell3.innerHTML = '<button id="remove" class = "btn btn-circle btn-sm btn-primary" onclick = "deleteRow(this)">Remove</button>';
+  cell3.innerHTML = datefrom;
+  cell4.innerHTML = dateto ;
+  cell5.innerHTML = duration ;
+  cell6.innerHTML = type;
+  cell7.innerHTML = '<button id="remove" class = "btn btn-circle btn-sm btn-primary" onclick = "deleteRow(this)">Remove</button>';
 console.log(data);
 })
 
