@@ -125,7 +125,7 @@ $selemployee = $_POST['sel_employee'];
               
        
       }
-
+      $progress = '100%';
     }
     if($i == $dateto){
       break;

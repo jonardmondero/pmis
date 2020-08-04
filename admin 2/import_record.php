@@ -1,7 +1,7 @@
 <?php
 include('../config/config.php');
 include ('../config/msconfig.php');
-
+$progress = '';
 $alert_msg='';
 include('generate_record.php');
 include('generate_department.php');
@@ -140,8 +140,15 @@ $list_depid='';
       <div class = "col-12">
        <input style = "margin:auto; width:100%;margin-bottom:10px;"type="submit" class="btn btn-primary" name="import_dep" id = "import_dep" value="GENERATE DEPARTMENT"> 
       </div>
- 
-        
+      <div class = "row">
+  
+      <div class="progress">
+                  <div class="progress-bar bg-primary progress-bar-striped" role="progressbar"
+                       aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                    <span class="sr-only">40% Complete (success)</span>
+                  </div>
+                </div>
+      </div>  
              
               </form>
            </div>
