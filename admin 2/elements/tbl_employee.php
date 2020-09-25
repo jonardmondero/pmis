@@ -1,4 +1,4 @@
-<table class = "table table-hover" style = "margin:auto;" id = "tableemp">
+<table class = "table table-hover" style = "margin:auto;width:100%;" id = "tableemp">
                	<thead>
                		<th>Employee No</th>
                		<th>Full Name</th>

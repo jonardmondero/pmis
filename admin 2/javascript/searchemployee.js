@@ -4,7 +4,7 @@ var dataTable = $("#tableemp").DataTable({
   stateSave: true,
   processing: true,
   serverSide: true,
-  scrollX: true,
+  scrollX: false,
   ajax: {
     url: "ajaxcall/search_employee.php", // json datasource
     type: "post", // method  , by default get

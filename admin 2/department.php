@@ -1,7 +1,8 @@
 <?php 
 include ('dtrdesign/header.php');
 include('../config/config.php');
-
+include('../php_scripts/add_department.php');
+$alert_msg = '';
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,13 +32,13 @@ include('../config/config.php');
           </div>--> 
           <div class ="col-2">
             <button class = "btn btn-primary" 
-            id = "addemp" data-toggle="modal" 
-            data-target="#addemployee">
+            id = "adddept" data-toggle="modal" 
+            data-target="#add_department">
             Add Department 
             </button>
           </div>
            <div class="form-group has-feedback col-8">
-             
+             <?php echo $alert_msg;?>
       </div>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -66,7 +67,8 @@ include('../config/config.php');
               method="post" 
               name="form" 
               action="<?php htmlspecialchars("PHP_SELF");?>">
-            <?php include ('elements/department_table.php'); ?>
+            <?php include ('elements/department_table.php'); 
+            include ('modal/add_department_modal.php');?>
 
               </form>
               </div>
