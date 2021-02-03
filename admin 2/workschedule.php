@@ -272,6 +272,11 @@ var workid = $('#worksched-form').serializeArray();
     })
    
  })
+ function reset_form_input(form_id){
+      $( '#'+form_id ).each(function(){
+          this.reset();
+      });
+    }
     //  TableData.shift();  // first row will be empty - so remove
     // return TableData;
     //  console.log(TableData); 

@@ -7,7 +7,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <!-- iCheck -->
@@ -23,5 +23,5 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="../adminlte2/bower_components/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="../plugins/select2/select2.min.css">
 </head>

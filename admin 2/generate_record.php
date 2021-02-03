@@ -125,7 +125,35 @@ $selemployee = $_POST['sel_employee'];
               
        
       }
+      $timeOutPM = "o";
+      if($chktype == $timeOutPM ){
+    
+    $insert_timeIn = "CALL spInsertOvertimeIn(:empno,:worksched,:i,:chktime)";
+    $insertInAm = $con->prepare($insert_timeIn);
+    $insertInAm ->execute([
+         ':empno' =>$empNo,
+         ':worksched' =>$workId,
+        ':i' => $i,
+        ':chktime'=> $chktime
+    ]);
+        
+ 
+}
+$timeOutPM = "U";
+if($chktype == $timeOutPM ){
 
+$insert_timeIn = "CALL spInsertOvertimeOut(:empno,:worksched,:i,:chktime)";
+$insertInAm = $con->prepare($insert_timeIn);
+$insertInAm ->execute([
+   ':empno' =>$empNo,
+   ':worksched' =>$workId,
+  ':i' => $i,
+  ':chktime'=> $chktime
+]);
+  
+
+}
+      $progress = '100%';
     }
     if($i == $dateto){
       break;

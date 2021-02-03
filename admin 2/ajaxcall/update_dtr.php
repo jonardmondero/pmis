@@ -1,5 +1,5 @@
 <?php
-include ('../config/config.php');
+include ('../../config/config.php');
 if(isset($_POST['empno'])){
 	// echo "<pre>";
 	// print_r("jonard");
@@ -15,7 +15,9 @@ if(isset($_POST['empno'])){
 	$overtimeout =str_replace(' ', '', $_POST['overtimeout']);
 	$late = $_POST['late'];
 	$undertime = $_POST['undertime'];
-
+	$late == '' ? $late = '00:00:00' : $late = $_POST['late'];
+	$undertime == '' ? $undertime = '00:00:00' : $undertime = $_POST['undertime'];
+	
 $updatequery= "CALL spUpdateDtr(:empno,:date,:checkin,:breakout,:breakin,:checkout,:overtimein,:overtimeout,:late,:undertime)";
 	// $updatequery = "UPDATE dailytimerecord SET 
 	// 				inAM = :checkin,
@@ -38,7 +40,7 @@ $prepare_query->execute([
 	':checkout'	=>	$checkout,
 	':overtimein'	=>	$overtimein,
 	':overtimeout'	=>	$overtimeout,
-	':late'	=>	$late,
+	':late'	=>			$late,
 	':undertime'	=>$undertime
 ]);
 

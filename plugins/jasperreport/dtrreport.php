@@ -8,6 +8,7 @@ include_once ('setting.php');
 
 $empno= $_GET['empno'];
 $date = $_GET['year'];
+$days = $_GET['days'];
 $server = 'localhost';
 $user = 'root';
 $pass = '';
@@ -17,7 +18,18 @@ $db = 'pmis';
 $PHPJasperXML = new PHPJasperXML();
 // $PHPJasperXML->debugsql=true;
 // $PHPJasperXML->arrayParameter=array("employeeNo"=>'12345678');
-$xml = $PHPJasperXML->load_xml_file("dtrreport.jrxml");
+        if($days =='31'){
+        $xml = $PHPJasperXML->load_xml_file("dtrreport.jrxml");
+        }
+        if($days =='30'){
+        $xml = $PHPJasperXML->load_xml_file("dtrreport30.jrxml");
+         }
+        if($days =='29'){
+        $xml = $PHPJasperXML->load_xml_file("dtrreport29.jrxml");
+        }
+        if($days =='28'){
+        $xml = $PHPJasperXML->load_xml_file("dtrreport28.jrxml");
+        }
 // $PHPJasperXML->xml_dismantle($xml);
 $PHPJasperXML->sql ="
 SELECT CONCAT(e.lastName,', ',e.firstName,', ',LEFT(e.middleName, 1),'.')  AS fullName,
@@ -34,7 +46,6 @@ AND d.Date LIKE '".$date."'
 GROUP BY Date";
 // $PHPJasperXML->sql = "CALL spPrintDtr('12345678','2019-10-01','2019-10-31')";
 $PHPJasperXML->transferDBtoArray($server,$user,$pass,$db);
-
 $PHPJasperXML->outpage("I");    //page output method I:standard output  D:Download file
 
 

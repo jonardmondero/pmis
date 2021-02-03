@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dtrreport" language="javascript" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="18" bottomMargin="18" isFloatColumnFooter="true" uuid="d7d62b9c-130d-4b52-908e-9756dc3b0124">
-	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="153"/>
 	<style name="style1"/>
 	<queryString>
 		<![CDATA[SELECT CONCAT(e.lastName,', ',e.firstName,', ',LEFT(e.middleName, 1),'.')  AS fullName,e.supervisor,d.inAM,d.outAM,d.inPM,d.outPM,d.otIn,d.otOut,DATE_FORMAT(d.Date,'%d')as day,DATE_FORMAT(d.Date,'%M,%Y')AS month,TIME_FORMAT(d.late,'%H:%i') as late, TIME_FORMAT(d.undertime,'%H:%i') as undertime,
@@ -4500,7 +4500,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
-				<text><![CDATA[24]]></text>
+				<text><![CDATA[27]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="543" y="154" width="29" height="14" uuid="cd054c1e-92ed-4c2d-a5d2-19621650c3ac"/>
@@ -4626,7 +4626,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
-				<text><![CDATA[24]]></text>
+				<text><![CDATA[28]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="543" y="168" width="29" height="14" uuid="36152e9a-9fcf-49ba-bd92-069aad4480d3"/>
@@ -4752,7 +4752,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
-				<text><![CDATA[24]]></text>
+				<text><![CDATA[29]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="543" y="182" width="29" height="14" uuid="7501da0f-6efa-4451-b1f9-da5d54b869fc"/>
@@ -4836,7 +4836,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
-				<text><![CDATA[24]]></text>
+				<text><![CDATA[30]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="485" y="196" width="29" height="14" uuid="47425405-aa09-45f1-a068-731ee1997107"/>
@@ -5018,7 +5018,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
-				<text><![CDATA[24]]></text>
+				<text><![CDATA[31]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="456" y="210" width="29" height="14" uuid="44521c39-3fdc-41ef-9600-3d6dbd695201"/>

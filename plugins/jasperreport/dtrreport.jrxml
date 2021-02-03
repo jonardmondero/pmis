@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dtrreport" language="javascript" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="18" bottomMargin="18" isFloatColumnFooter="true" uuid="d7d62b9c-130d-4b52-908e-9756dc3b0124">
-	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="162"/>
+	<property name="ireport.y" value="0"/>
 	<style name="style1" backcolor="#FFFFFF"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["C:\\xampp\\htdocs\\pmis\\plugins\\jasperreport\\"]]></defaultValueExpression>
@@ -857,7 +857,7 @@
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="174">
+		<band height="176">
 			<staticText>
 				<reportElement x="85" y="14" width="116" height="15" uuid="0333d922-f924-4948-a7f9-f6feaac9cb5a"/>
 				<box>
@@ -915,7 +915,7 @@
 				<textFieldExpression><![CDATA[$F{supervisor}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="511" y="-3" width="58" height="31" uuid="50ae18f1-a69b-4dcf-a9b2-3a1f604dc7c3"/>
+				<reportElement x="511" y="0" width="58" height="28" uuid="50ae18f1-a69b-4dcf-a9b2-3a1f604dc7c3"/>
 				<box>
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -929,7 +929,7 @@
 				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="-2" width="85" height="31" uuid="6c933eaa-b379-484d-81a6-265d61860976"/>
+				<reportElement x="0" y="0" width="85" height="29" uuid="6c933eaa-b379-484d-81a6-265d61860976"/>
 				<box>
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -957,7 +957,7 @@
 				<text><![CDATA[WEEKDAYS]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="201" y="-3" width="58" height="31" uuid="79d99809-a2d1-412b-8bc7-0044f39ad8fd"/>
+				<reportElement x="201" y="0" width="58" height="28" uuid="79d99809-a2d1-412b-8bc7-0044f39ad8fd"/>
 				<box>
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -971,7 +971,7 @@
 				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="310" y="-2" width="85" height="31" uuid="85812ec9-17ed-4362-bdb0-fa82ea0a9306"/>
+				<reportElement x="310" y="0" width="85" height="29" uuid="85812ec9-17ed-4362-bdb0-fa82ea0a9306"/>
 				<box>
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -1071,12 +1071,12 @@
 		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="9"/>
+		<band height="10"/>
 	</pageFooter>
 	<lastPageFooter>
-		<band height="2"/>
+		<band height="10"/>
 	</lastPageFooter>
 	<summary>
-		<band height="7"/>
+		<band/>
 	</summary>
 </jasperReport>

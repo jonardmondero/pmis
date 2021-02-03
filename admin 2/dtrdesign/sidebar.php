@@ -25,7 +25,17 @@
           
 
         
-          <li class="nav-header">ACCOUNT SETTINGS</li>
+          <li class="nav-header">SETTINGS</li>
+
+          <li class="nav-item">
+            <a href="department.php" class="nav-link">
+              <i class="nav-icon fa fa-user"></i>
+              <p>
+                Add Department
+                <span class="badge badge-info right"></span>
+              </p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="employees.php" class="nav-link">
               <i class="nav-icon fa fa-user"></i>
@@ -60,6 +70,15 @@
               <i class="nav-icon fa fa-user"></i>
               <p>
               Import Biometric Records
+               
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="add_travel.php" class="nav-link">
+              <i class="nav-icon fa fa-user"></i>
+              <p>
+             Add Travel
                
               </p>
             </a>

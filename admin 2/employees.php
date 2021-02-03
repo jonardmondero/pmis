@@ -34,7 +34,7 @@ $prep_emp->execute();
          <!--  <div class="col-sm-6">
             <h1 class="m-0 text-dark">Employees</h1><br>
               
-          </div><!-- /.col --> 
+          </div>--> 
           <div class ="col-2">
             <button class = "btn btn-primary" id = "addemp" data-toggle="modal" data-target="#addemployee">Add Employee </button>
           </div>
@@ -62,27 +62,9 @@ $prep_emp->execute();
               <div class = "card-body">
                 <div class ="row">
               <form role="form" method="post" name="form" action="<?php htmlspecialchars("PHP_SELF");?>">
-               <table class = "table table-hover" id = "tableemp">
-               	<thead>
-               		<th>Employee No</th>
-               		<th>Full Name</th>
-               		<th>Department</th>
-               		<th>Biometric ID</th>
-               		<th>Employment Status</th>
-               		<th>Work Schedule ID</th>
-               		<th>Supervisor</th>
-               		<th>Options</th>
-               		
-
-
-               	</thead>
-               	<tbody>
-              
-               
-               
-               	</tbody>
-               </table>
-               
+              <div class = "row col-12">
+             <?php include('elements/tbl_employee.php')?>
+               </div>
               </form>
             </div>
            </div>
@@ -93,8 +75,8 @@ $prep_emp->execute();
            </div>
            </div>
     </section>
-    <?php include('add_employee_modal.php');?>
-    <?php include('add_worksched_modal.php');?>
+    <?php include('modal/add_employee_modal.php');?>
+    <?php include('modal/add_worksched_modal.php');?>
 
 
     <!-- /.content -->
@@ -154,7 +136,7 @@ $prep_emp->execute();
 <!-- <script src="../dist/js/pages/dashboard.js"></script> -->
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
-<script src="../adminlte2/bower_components/select2/dist/js/select2.full.min.js"></script>
+<script src="../plugins/select2/select2.js"></script>
   
 <!-- Bootstrap 4 -->
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -163,6 +145,8 @@ $prep_emp->execute();
 <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
 <script src="../plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
 <script src="../plugins/tagsinput/tagsinput.js"></script>
+<script src="javascript/searchemployee.js"></script>
+<script src="javascript/editemployees.js"></script>
 
 <script>
 	$(document).ready(function(){
@@ -173,38 +157,9 @@ $prep_emp->execute();
   //     'ordering'    : true,
   //     'info'        : true,
   //     'autoWidth'   : true,
-
     
 	// });
-    var dataTable = $('#tableemp').DataTable({
-          "page"     : true,
-          "stateSave" :true,
-					"processing": true,
-          "serverSide": true,
-          'scrollX'   : true,
-          'ajax'  :{
-            url :"search_employee.php", // json datasource
-						type: "post",  // method  , by default get
-						error: function(){  // error handling
-							$("#users-error").html("");
-							$("#users").append('<tbody class="users-error"><tr>< td colspan="3">No data found in the server</td></tr></tbody>');
-							$("#users_processing").css("display","none");
-            }
-          },
-          "columnDefs": 
-          
-          [{  "width": "90px",
-                "targets" : -1,
-                "data" : null,
-                "defaultContent": '<button class="btn btn-warning btn-sm btn-flat add_worksched" >  <i class="fa fa-calendar"></i></button> '
-          
-         
-              }]
-
-
-          
-
-    })
+  sel_worksched();
 	 function is_valid(element){
       // callback function
       // returns every value
@@ -238,7 +193,7 @@ function reset_form_input(form_id){
           this.reset();
       });
     }
-
+    
 
 	
 	$('#empnum').keyup(function(){
@@ -306,25 +261,77 @@ if(bio == ''){
 
 
 })
+$('#addemp').click(function(){
+reset_form_input('employee-form');
+$("#empnum").prop('disabled', false);
+$('#insert').prop('hidden',false);
+$('#delete').prop('hidden',true);
+$('#update').prop('hidden',true);
+$("#empnum").prop('readonly', false);
+})  
+
 $('#tableemp tbody').on( 'click', '.add_worksched', function(){
-
-event.preventDefault();
-var id = $(this).data('id');
+  event.preventDefault();
+  var currow=  $(this).closest('tr');
+  var col1 = currow.find('td:eq(0)').text();
+  var col2 = currow.find('td:eq(5)').text();
+  console.log(col2);
+ 
+// var id = $(this).data('id');
 $('#addemployeesched').modal('show');
-$('#empno').val(id);
+$(`#sel_worksched option[value='${col2}']`).prop('selected', true);
+$('#empno').val(col1);
 
-})
-$('#sel_worksched').change(function(){
- var worksched = $('#sel_worksched').val();
+        });
+  function sel_worksched(){
+    var worksched = $('#sel_worksched').val();
   $('#work_body').load('get_workschedule.php',{workcode:worksched},
    function(response, status, xhr) {
   if (status == "error") {
       alert(msg + xhr.status + " " + xhr.statusText);
       console.log(msg + xhr.status + " " + xhr.statusText);
   }
-
-})
 });
+  }  
+$('#sel_worksched').change(function(){
+ sel_worksched();
+})
+$("#tableemp tbody").on("click", ".edit_employee", function () {
+  //SHOWS THE ADD EMPLOYEE MODAL AND DISPLAY THE EMPLOYEE'S INFORMATION
+    event.preventDefault();
+    $("#addemployee").modal('show');
+    $('#insert').hide();
+    $('#update').prop('hidden',false);
+    $('#delete').prop('hidden',false);
+    $("#empnum").prop('readonly', true);
+    var currow=  $(this).closest('tr');
+    var col1 = currow.find('td:eq(0)').text();
+    console.log('hello');
+    $.ajax({
+
+        url:'ajaxcall/get_employee.php',
+        type:'POST',
+        data:{id:col1},
+        success:function(response){
+        var result = jQuery.parseJSON(response);
+        $('#empnum').val(result.employeeno);
+        $('#lname').val(result.lastname);
+        $('#fname').val(result.firstname);
+        $('#mname').val(result.middlename);
+        $('#bioid').val(result.bioid);
+        // $('#department').val(result.department);
+        $(`#department option[value='${result.department}']`).prop('selected', true);
+        $('#estatus').val(result.employmentstatus);
+        $('#supervisor').val(result.supervisor);
+        $('#status').val(result.status);
+        },
+        error: function (xhr, b, c) {
+     console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+       }
+
+    })
+});
+
 
   });
 </script>
