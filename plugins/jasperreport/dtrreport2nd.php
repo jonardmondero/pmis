@@ -5,7 +5,7 @@
  */
 include_once("PHPJasperXML.inc.php");
 include_once ('setting.php');
-
+//get the date info and combined it into string
 $empno= $_GET['empno'];
 $date = $_GET['year'];
 $server = 'localhost';
@@ -14,7 +14,7 @@ $pass = '1234';
 $db = 'pmis';
 $datefrom 	=		$date."-16";
 $dateto 	= 		$date."-31";		
-
+//sql statement for 2nd half report
 $PHPJasperXML = new PHPJasperXML();
 // $PHPJasperXML->debugsql=true;
 // $PHPJasperXML->arrayParameter=array("employeeNo"=>'12345678');

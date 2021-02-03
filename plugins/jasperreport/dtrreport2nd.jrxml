@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dtrreport" language="javascript" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="18" bottomMargin="18" isFloatColumnFooter="true" uuid="d7d62b9c-130d-4b52-908e-9756dc3b0124">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="393"/>
+	<property name="ireport.y" value="0"/>
 	<style name="style1"/>
 	<subDataset name="Table Dataset 1" uuid="11de359f-7cb3-48d3-b3d7-e2d876064dd8"/>
 	<queryString>
@@ -103,14 +104,6 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="0" y="0" width="259" height="17" uuid="e3b6db38-a19d-4075-a218-51c2360df242"/>
-				<box>
-					<bottomPen lineWidth="0.75"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="78" y="17" width="100" height="14" uuid="cd529ebc-5937-4714-9b9b-cdeb1bf785ce"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
@@ -159,6 +152,14 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[NAME]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="-1" y="0" width="259" height="17" uuid="931401cd-80d1-491c-aedf-588ab63089e4"/>
+				<box>
+					<bottomPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
@@ -4944,7 +4945,7 @@
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="191">
+		<band height="176">
 			<textField>
 				<reportElement x="512" y="0" width="58" height="31" uuid="50ae18f1-a69b-4dcf-a9b2-3a1f604dc7c3"/>
 				<box>
@@ -5158,7 +5159,9 @@
 		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="16"/>
+		<band height="17">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
 	</pageFooter>
 	<lastPageFooter>
 		<band height="4"/>

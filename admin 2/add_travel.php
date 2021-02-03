@@ -20,7 +20,9 @@ $curdate = date("m/d/Y");
  <?php 
  include('dtrdesign/navbar.php');
  include('dtrdesign/sidebar.php');
+ include('save_travel.php');
 
+  
 
    ?>
 
@@ -30,17 +32,17 @@ $curdate = date("m/d/Y");
   <div class="content-wrapper">
  
     <section class="content">
-        <div class="container-fluid">
+        <div class="container-fluid" >
             
             <div class="row ">
           <div class="col-12" >
-          <div class ="justify-content-center" style=>
+          <div class ="justify-content-center" >
             <h1 class="m-0 text-dark ">Add Travel Order </h1><br>
               </div>
           </div>
         </div>
             <div class="row">
-            <div class="col-5 no-gutters" style = "resize:both;overflow:auto;">
+            <div class="col-4 no-gutters" style = "resize:both;overflow:auto;">
             <div class="card card-info" >
             <div class="card-header">
                 <h3 class="card-title">Search Employee</h3>
@@ -52,8 +54,9 @@ $curdate = date("m/d/Y");
  </div>
     <!-- /.content -->
   </div>
-  <div class="col-7 no-gutters" style = "resize:both;overflow:auto;">
-            <div class="card card-warning" >
+  <form method = "POST" id = 'travelform' action <?php htmlspecialchars("PHP_SELF");?>>
+  <div class="col-12 no-gutters "  >
+            <div class="card card-warning" > 
             <div class="card-header">
                 <h3 class="card-title">Details</h3>
               </div>
@@ -111,14 +114,14 @@ $curdate = date("m/d/Y");
          <!-- DISPLAY'S THE SECOND SECTION OF THE FORM -->
               <?php include("elements/travelorder_details.php");?>
               <div class = "row" style=" margin:auto;padding-top:30px;padding-bottom: 30px">
-              <button type ="submit" class = " btn btn-primary"><i class = "fa fa-save"></i></button>
+              <button type ="submit" name = "savetravel" id = "savetravel" class = " btn btn-primary"><i class = "fa fa-save"></i></button>
               </div>
           
  </div>
     <!-- /.content -->
   </div>
   </div>
-
+  </form>
   <!-- /.content-wrapper -->
   </section>
   </div>
@@ -210,7 +213,7 @@ var duration = $('#duration').val();
 var type = $('#type').val();
  var col1 = currow.find('td:eq(0)').text();
  var col2 = currow.find('td:eq(1)').text();
- var table = document.getElementById("employees");
+ var table = document.getElementById("travellist");
  var row = table.insertRow(1);
  var cell1 = row.insertCell(0);
   var cell2 = row.insertCell(1);
@@ -227,12 +230,75 @@ var type = $('#type').val();
   cell6.innerHTML = type;
   cell7.innerHTML = '<button id="remove" class = "btn btn-circle btn-sm btn-primary" onclick = "deleteRow(this)">Remove</button>';
 console.log(data);
+});
+
+$('#savetravel').click(function(){
+  //fetch all the data from the table and save it to the database
+
+  var workid = $('#worksched-form').serializeArray();
+  event.preventDefault();
+$('#travellist tr').each(function(row, tr){
+    var details = $('#details').val();
+    var empno = $(tr).find('td:eq(0)').text();
+     var fname =$(tr).find('td:eq(1)').text();
+     var from =$(tr).find('td:eq(2)').text();
+     var to =$(tr).find('td:eq(3)').text();
+     var duration = $(tr).find('td:eq(4)').text();
+     var type = $(tr).find('td:eq(5)').text();
+  var newfrom = formatDate(from);
+  var newto = formatDate(to);
+     $.ajax({
+url : 'save_travel.php',
+method: 'POST',
+data: {
+  empno:empno,
+  fname:fname,
+  from:newfrom,
+  to:newto,
+  duration:duration,
+  type:type,
+  details:details
+},
+dataType: 'json',
+success:function(){
+    reset_form_input('travelform');
+},
+error: function (xhr, b, c) {
+console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+}
 })
 
+
+
+
+});
+
+});
+//FORMAT THE DATE
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
+//reset the all the data inside the form
+function reset_form_input(form_id){
+      $( '#'+form_id ).each(function(){
+          this.reset();
+      });
+    }
 function deleteRow(r) {
   // DELETE SELECTED ROW
   var i = r.parentNode.parentNode.rowIndex;
-  document.getElementById("employees").deleteRow(i);
+  document.getElementById("travellist").deleteRow(i);
 }
     </script>
    

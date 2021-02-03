@@ -175,11 +175,11 @@ $otOut='';
            dtto: dateto
            
   
-    }, function(response, status, xhr) {
-  if (status == "error") {
-      alert(msg + xhr.status + " " + xhr.statusText);
-      console.log(msg + xhr.status + " " + xhr.statusText);
-  }
+      }, function(response, status, xhr) {
+    if (status == "error") {
+        alert(msg + xhr.status + " " + xhr.statusText);
+        console.log(msg + xhr.status + " " + xhr.statusText);
+    }
 });
 
       }

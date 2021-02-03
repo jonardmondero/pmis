@@ -44,9 +44,10 @@
                      </div>
                  </div>
                        <div class="row">
-                        <div class = "col-12" style="overflow-y:auto;height:auto;">
+                       <div class = "col-12">
+                        <div  style="overflow-y:auto;height:auto;display: inline-block;margin-left:150px;margin-right:150px;">
                             <table id="dtr"  cellpadding="5" cellmargin ="5" class ="table-bordered table-hover header  "style ="position: relative;">
-                                <thead style ="font-size:13px;position:sticky;">
+                                <thead style ="font-size:15px;position:sticky;">
                                    
                                         <th>Date </th>
                                         <th>Day</th>
@@ -65,6 +66,7 @@
                              </tbody>
                                 </table>  
                                 <!-- <button id="saveall">SAVE ALL</button> -->
+                           </div>
                            </div>
                            </div>
               </div>

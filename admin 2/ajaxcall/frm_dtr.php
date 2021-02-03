@@ -4,7 +4,6 @@ if(isset($_POST['employeeno'])) {
     $empno=$_POST['employeeno'];
     $dteFrom=date('Y-m-d', strtotime($_POST['dtfr']));
     $dteTo=date('Y-m-d', strtotime($_POST['dtto']));
-
     $get_time="CALL spShowDTR(:empno,:dtefr,:dteto)";
     $user_data3=$con->prepare($get_time);
     $user_data3->execute([ ':empno'=>$empno,
