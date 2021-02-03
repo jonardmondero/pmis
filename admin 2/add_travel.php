@@ -54,8 +54,8 @@ $curdate = date("m/d/Y");
  </div>
     <!-- /.content -->
   </div>
-  <form method = "POST" id = 'travelform' action <?php htmlspecialchars("PHP_SELF");?>>
-  <div class="col-12 no-gutters "  >
+  <form method = "POST" id = "travelform" action = <?php htmlspecialchars("PHP_SELF");?>>
+  <div class="col-12 no-gutters"  >
             <div class="card card-warning" > 
             <div class="card-header">
                 <h3 class="card-title">Details</h3>
@@ -211,6 +211,11 @@ var datefrom = $('#dtefrom').val();
 var dateto = $('#dteto').val();
 var duration = $('#duration').val();
 var type = $('#type').val();
+var details = $('#details').val();
+if(datefrom ==''|| dateto == '' || details == ''){
+  post_notify("Please complete the information!","danger");
+}else
+{
  var col1 = currow.find('td:eq(0)').text();
  var col2 = currow.find('td:eq(1)').text();
  var table = document.getElementById("travellist");
@@ -229,12 +234,12 @@ var type = $('#type').val();
   cell5.innerHTML = duration ;
   cell6.innerHTML = type;
   cell7.innerHTML = '<button id="remove" class = "btn btn-circle btn-sm btn-primary" onclick = "deleteRow(this)">Remove</button>';
-console.log(data);
+  console.log(data);
+}
 });
 
 $('#savetravel').click(function(){
   //fetch all the data from the table and save it to the database
-
   var workid = $('#worksched-form').serializeArray();
   event.preventDefault();
 $('#travellist tr').each(function(row, tr){
@@ -245,8 +250,8 @@ $('#travellist tr').each(function(row, tr){
      var to =$(tr).find('td:eq(3)').text();
      var duration = $(tr).find('td:eq(4)').text();
      var type = $(tr).find('td:eq(5)').text();
-  var newfrom = formatDate(from);
-  var newto = formatDate(to);
+      var newfrom = formatDate(from);
+      var newto = formatDate(to);
      $.ajax({
 url : 'save_travel.php',
 method: 'POST',
@@ -260,19 +265,16 @@ data: {
   details:details
 },
 dataType: 'json',
-success:function(){
-    reset_form_input('travelform');
-},
 error: function (xhr, b, c) {
 console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
 }
 })
 
-
-
-
 });
-
+//reset all the data inside the table;
+reset_form_input('travelform');
+$("#travellist td").parent().remove();
+post_notify("Record Inserted", "success");
 });
 //FORMAT THE DATE
 function formatDate(date) {
@@ -288,7 +290,30 @@ function formatDate(date) {
 
     return [year, month, day].join('-');
 }
+//display notification 
+function post_notify(message, type){
 
+      if (type == 'success') {
+
+        $.notify({
+          message: message
+        },{
+          type: 'success',
+          delay: 2000
+        });
+
+      } else{
+
+        $.notify({
+          message: message
+        },{
+          type: 'danger',
+          delay: 2000
+        }); 
+
+      }
+
+    }
 //reset the all the data inside the form
 function reset_form_input(form_id){
       $( '#'+form_id ).each(function(){
