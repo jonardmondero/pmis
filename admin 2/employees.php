@@ -62,8 +62,9 @@ $prep_emp->execute();
               <div class = "card-body">
                 <div class ="row">
               <form role="form" method="post" name="form" action="<?php htmlspecialchars("PHP_SELF");?>">
+              <div class = "row col-12">
              <?php include('elements/tbl_employee.php')?>
-               
+               </div>
               </form>
             </div>
            </div>
