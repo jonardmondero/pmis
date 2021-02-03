@@ -137,6 +137,35 @@ if(isset($_POST['import_dep'])){
           ]);
               
       }
+
+      $timeOutPM = "o";
+      if($chktype == $timeOutPM ){
+    
+    $insert_timeIn = "CALL spInsertOvertimeIn(:empno,:worksched,:i,:chktime)";
+    $insertInAm = $con->prepare($insert_timeIn);
+    $insertInAm ->execute([
+         ':empno' =>$empNo,
+         ':worksched' =>$workId,
+        ':i' => $i,
+        ':chktime'=> $chktime
+    ]);
+        
+ 
+}
+$timeOutPM = "U";
+if($chktype == $timeOutPM ){
+
+$insert_timeIn = "CALL spInsertOvertimeOut(:empno,:worksched,:i,:chktime)";
+$insertInAm = $con->prepare($insert_timeIn);
+$insertInAm ->execute([
+   ':empno' =>$empNo,
+   ':worksched' =>$workId,
+  ':i' => $i,
+  ':chktime'=> $chktime
+]);
+  
+
+}
      
     }
     if($i == $dateto){
@@ -146,7 +175,7 @@ if(isset($_POST['import_dep'])){
     
 }
  $alert_msg .= ' 
-   <div class="alert alert-danger alert-dismissible">
+   <div class="alert alert-success alert-dismissible">
    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
    <i class="icon fa fa-check"></i>You have successfully generated the department.
    </div>     

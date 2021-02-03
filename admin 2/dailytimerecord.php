@@ -58,7 +58,7 @@ $otOut='';
             
             <div class="row ">
           <div class="col-12" >
-          <div class ="justify-content-center" style=>
+          <div class ="justify-content-center">
             <h1 class="m-0 text-dark ">Daily Time Record</h1><br>
               </div>
           </div><!-- /.col -->
