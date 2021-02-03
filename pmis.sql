@@ -537,7 +537,7 @@ BEGIN
 	TIME_FORMAT(inPM,'%h:%i %p') AS inPM,
 	TIME_FORMAT(outPM,'%h:%i %p') AS outPM,
 	TIME_FORMAT(otIn,'%h:%i %p') AS otIn,
-	TIME_FORMAT(otOut,'%h:%i %p') AS otIn,
+	TIME_FORMAT(otOut,'%h:%i %p') AS otOut,
 	DATE_FORMAT(Date,'%W')as Day,
 	TIME_FORMAT(late,'%H:%i') as latefinal,
 	TIME_FORMAT(undertime,'%H:%i') as undertimefinal  
