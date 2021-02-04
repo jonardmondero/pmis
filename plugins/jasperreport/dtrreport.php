@@ -11,7 +11,7 @@ $date = $_GET['year'];
 $days = $_GET['days'];
 $server = 'localhost';
 $user = 'root';
-$pass = '';
+$pass = '1234';
 $db = 'pmis';
 
 

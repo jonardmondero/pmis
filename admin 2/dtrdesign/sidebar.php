@@ -83,6 +83,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="add_leave.php" class="nav-link">
+              <i class="nav-icon fa fa-user"></i>
+              <p>
+             Application for Leave
+               
+              </p>
+            </a>
+          </li>
           <li class="nav-header">ADMINISTRATION</li>
           <li class="nav-item">
             <a href="users" class="nav-link">

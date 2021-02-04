@@ -8,7 +8,7 @@
                           <div class = "row">
                               <div class= "col-12">
                                  
-                              <h4 style ="margin-left:200px;margin-right:200px"id ="full-name"> </h4>
+                              <h4 style ="margin-left:200px;margin-right:200px margin:auto;"id ="full-name"> </h4>
       <input type = "hidden" readonly id = "hiddenempno" name = "hiddenempno" value = "<?php echo $hidden;?>">                               
                               </div>
                           </div>
@@ -45,8 +45,8 @@
                  </div>
                        <div class="row">
                        <div class = "col-12">
-                        <div  style="overflow-y:auto;height:auto;display: inline-block;margin-left:150px;margin-right:150px;">
-                            <table id="dtr"  cellpadding="5" cellmargin ="5" class ="table-bordered table-hover header  "style ="position: relative;">
+                        <div  style="overflow-y:auto;height:auto;display: inline-block;margin:auto;">
+                            <table id="dtr"  cellpadding="5" cellmargin ="5" class ="table-bordered table-hover table table-responsive "style ="position: relative;">
                                 <thead style ="font-size:15px;position:sticky;">
                                    
                                         <th>Date </th>
@@ -62,7 +62,7 @@
                                         <th>Options</th>
                                        
                                 </thead>
-                             <tbody style = "font-size:13px;padding:1px;"id ="dtrbody">
+                             <tbody style = "font-size:15px;padding:15px;"id ="dtrbody">
                              </tbody>
                                 </table>  
                                 <!-- <button id="saveall">SAVE ALL</button> -->

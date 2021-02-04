@@ -25,7 +25,7 @@
               </div>
                     
              <div class = "row">  
-                 <div class = "col-12"  style="overflow-y:auto;height: 500px;">
+                 <div class = "col-12"  >
             <table id = "employees" class = "table table-bordered table-hover" >
             <thead style="font-size:13px" >
             <th> Employee No. </th>
