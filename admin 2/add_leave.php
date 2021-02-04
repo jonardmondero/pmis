@@ -38,7 +38,7 @@ $prep_leave_type->execute();
 
             <section class="content">
                 <div class="container-fluid">
-                    <div class="col-12 >
+                    <div class="col-12" >
                     <div class=" row ">
                         <div class=" col-12">
                         <div class="justify-content-center">
@@ -99,7 +99,7 @@ $prep_leave_type->execute();
                                                       
                                                         
                                         </div>
-                                                  <div class = "col-2">
+                                                  <div class = "col-4">
                                                         <div class="form-group p-2 ">
                                                 <label>Specific Date:</label>
                                                 <button type="submit" name="specificdate" id="specificdate"
@@ -108,10 +108,11 @@ $prep_leave_type->execute();
                                                         </div>
                                                 </div>
                                           
-                                             <div class = "row" > 
-                                                 <div class ="col-12">
-                                            <div class="form-group p-2">
-                                                <label>Leave Type:</label>
+                                             <div class = "row" style = "margin:auto;"> 
+                                              
+                                                     <div class ="col-6">
+                                            <div class="form-group ">
+                                                <label>Leave Type</label>
                                                 <select class="form-control select2 " id="leavetype"
                                                     style="width: 100%;" name="leavetype" required>
                                                     <option selected="selected">Select Leave</option>
@@ -121,8 +122,10 @@ $prep_leave_type->execute();
                                                     <?php } ?>
                                                 </select>
                                             </div>
-                                            <div class="form-group p-2">
-                                                <label>Inclusive Date:</label>
+                                                         </div>
+                                                       <div class ="col-4">
+                                            <div class="form-group">
+                                                <label>Inclusive Date</label>
                                                 <select class="form-control select2 " id="inclusivedate"
                                                     style="width: 100%;" name="inclusivedate" required>
                                                     <option selected="selected">Whole Day</option>
@@ -130,24 +133,30 @@ $prep_leave_type->execute();
                                                     <option>Afternoon</option>
                                                 </select>
                                             </div>
+                                                     </div>
+                                                 <div class ="col-2">
+                                                     <button type="submit" name="addleave" id="addleave"
+                                                    class=" btn btn-warning"><i class="fa fa-plus"></i></button>
                                                  </div>
+                                              
                                                   
                                                  </div>  
+<!--
                                             <div class="row">
                                               <div class ="col-6 center-block" style = "margin:auto; background-color:red;">
                                             <div class="form-group p-2 " style = "margin:auto;margin-right:100px;margin-left:100px;">
                                                 <label>Add Leave:</label>
-                                                <button type="submit" name="addleave" id="addleave"
-                                                    class=" btn btn-warning"><i class="fa fa-plus"></i></button>
+                                                
                                                         </div>
                                             </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-12">
+-->
+                                            <div class="row"style="margin:auto;">
+                                                
                                                     <table
-                                                        class="table table-hover table-bordered col-11 table-responsive"
-                                                        style="margin:auto;" id="leavelist">
-                                                        <thead>
+                                                        class="table table-hover table-bordered "
+                                                        style="margin:auto;width:100%;" id="leavelist">
+                                                        <thead style="margin:auto;width:100%;">
                                                             <th>Leave Name</th>
                                                             <th>From</th>
                                                             <th>To</th>
@@ -156,16 +165,16 @@ $prep_leave_type->execute();
                                                         </thead>
 
                                                     </table>
-                                                </div>
+                                               
                                             </div>
-                                            <div class="row">
-                                                <div class="col-6 " style="margin:auto;">
-                                                    <div class="form-group p-2 ">
+                                            <div class="row" style="margin:auto;padding-top:30px;padding-bottom:30px;">
+                                                
+                                                  
 
-                                                        <button type="submit" name="save_leave" id="save_leave"
-                                                            class=" btn btn-primary"><i class="fa fa-save"></i></button>
-                                                    </div>
-                                                </div>
+                                                        <button type="submit" style = "margin:auto;left:50%;right:50%;"name="save_leave" id="save_leave"
+                                                            class=" btn btn-primary toastrDefaultSuccess"><i class="fa fa-save"></i></button>
+                                            
+                                              
                                             </div>
 
                                         </div>
@@ -234,6 +243,8 @@ $prep_leave_type->execute();
     <!-- DataTables -->
     <script src="../plugins/datatables/jquery.dataTables.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
+    <script src="../plugins/sweetalerts/sweetalerts.js"></script>
+    <script src="../plugins/sweetalerts/toastr.js"></script>
     <!-- REFLECT LOGS SCRIPT -->
     <script src="javascript/addlogs.js"></script>
     <!-- PRINT REPORTS  SCRIPT -->
@@ -398,6 +409,19 @@ $prep_leave_type->execute();
             }
 
         }
+        $('.toastrDefaultSuccess').click(function() {
+            event.preventDefault();
+      toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+    });
+    // $('.toastsDefaultSuccess').click(function() {
+    //     event.preventDefault();
+    //   $(document).Toasts('create', {
+    //     class: 'bg-success', 
+    //     title: 'Toast Title',
+    //     subtitle: 'Subtitle',
+    //     body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+    //   })
+    // });
         //reset the all the data inside the form
         function reset_form_input(form_id) {
             $('#' + form_id).each(function () {
