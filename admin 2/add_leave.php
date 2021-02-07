@@ -38,110 +38,120 @@ $prep_leave_type->execute();
 
             <section class="content">
                 <div class="container-fluid">
-                    <div class="col-12" >
-                    <div class=" row ">
-                        <div class=" col-12">
-                        <div class="justify-content-center">
-                            <h1 class="m-0 text-dark ">Application for Leave</h1><br>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4 no-gutters" style="resize:both;overflow:auto;">
-                        <div class="card card-info">
-                            <div class="card-header">
-                                <h3 class="card-title">Search Employee</h3>
+                    <div class="col-12">
+                        <div class=" row ">
+                            <div class=" col-12">
+                                <div class="justify-content-center">
+                                    <h1 class="m-0 text-dark ">Application for Leave</h1><br>
+                                </div>
                             </div>
-
-                            <?php include("elements/search_employee.php");?>
-
-
                         </div>
-                        <!-- /.content -->
-                    </div>
-                    <div class="col-8">
-                        <form method="POST" id="travelform" action=<?php htmlspecialchars("PHP_SELF");?>>
-                            <div class="col-12 no-gutters">
-                                <div class="card card-secondary" style="width:100%">
+                        <div class="row">
+                            <div class="col-4 no-gutters" style="resize:both;overflow:auto;">
+                                <div class="card card-info">
                                     <div class="card-header">
-                                        <h3 class="card-title">Details</h3>
-
-
+                                        <h3 class="card-title">Search Employee</h3>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <input type="text" id="leaveempno" readonly hidden>
-                                            <div class="col-12 " style="text-align:center">
-                                                <label id="fullname"> </label>
+
+                                    <?php include("elements/search_employee.php");?>
+
+
+                                </div>
+                                <!-- /.content -->
+                            </div>
+                            <div class="col-8">
+                                <form method="POST" id="leaveform" action=<?php htmlspecialchars("PHP_SELF");?>>
+                                    <div class="col-12 no-gutters">
+                                        <div class="card card-secondary" style="width:100%">
+                                            <div class="card-header">
+                                                <h3 class="card-title">Details</h3>
+
+
                                             </div>
-                                            <div class ="row">
-                                            <div class="col-8" >
-                                                <div class="input-group date p-2">
-                                                    <label style="padding-right:10px;padding-left: 10px">From: </label>
-                                                    <div style="padding-right:10px" class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <input type="text" id="leaveempno" readonly hidden>
+                                                    <div class="col-12 " style="text-align:center">
+                                                        <label id="fullname"> </label>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-8">
+                                                            <div class="input-group date p-2">
+                                                                <label
+                                                                    style="padding-right:10px;padding-left: 10px">From:
+                                                                </label>
+                                                                <div style="padding-right:10px"
+                                                                    class="input-group-addon">
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </div>
+
+                                                                <input style="margin-right:10px;" type="text"
+                                                                    data-provide="datepicker"
+                                                                    class="form-control col-4 " style="font-size:13px"
+                                                                    autocomplete="off" name="datefrom" id="dtefrom"
+                                                                    val="<?php echo $curdate; ?> ">
+
+
+                                                                <label style="padding-right:10px">To:</label>
+                                                                <div style="padding-right:10px"
+                                                                    class="input-group-addon">
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </div>
+                                                                <input type="text" class="form-control col-4 "
+                                                                    data-provide="datepicker" autocomplete="off"
+                                                                    name="dateto" id="dteto"
+                                                                    val="<?php echo $curdate; ?> ">
+                                                            </div>
+
+
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <div class="form-group p-2 ">
+                                                                <label>Specific Date:</label>
+                                                                <button type="submit" name="specificdate"
+                                                                    id="specificdate" class=" btn btn-primary"><i
+                                                                        class="fa fa-plus"></i></button>
+                                                            </div>
+                                                        </div>
                                                     </div>
 
-                                                    <input style="margin-right:10px;" type="text"
-                                                        data-provide="datepicker" class="form-control col-4 "
-                                                        style="font-size:13px" autocomplete="off" name="datefrom"
-                                                        id="dtefrom" val="<?php echo $curdate; ?> ">
+                                                    <div class="row" style="margin:auto;">
+
+                                                        <div class="col-6">
+                                                            <div class="form-group ">
+                                                                <label>Leave Type</label>
+                                                                <select class="form-control select2 " id="leavetype"
+                                                                    style="width: 100%;" name="leavetype" required>
+                                                                    <option selected="selected">Select Leave</option>
+                                                                    <?php while ($get_result = $prep_leave_type->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                                    <option
+                                                                        value="<?php echo $get_result['Category']; ?>">
+                                                                        <?php echo $get_result['LeaveTypeDescription']; ?>
+                                                                    </option>
+                                                                    <?php } ?>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <div class="form-group">
+                                                                <label>Inclusive Date</label>
+                                                                <select class="form-control select2 " id="inclusivedate"
+                                                                    style="width: 100%;" name="inclusivedate" required>
+                                                                    <option selected="selected">Whole Day</option>
+                                                                    <option>Morning</option>
+                                                                    <option>Afternoon</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-2">
+                                                            <button type="submit" name="addleave" id="addleave"
+                                                                class=" btn btn-warning"><i
+                                                                    class="fa fa-plus"></i></button>
+                                                        </div>
 
 
-                                                    <label style="padding-right:10px">To:</label>
-                                                    <div style="padding-right:10px" class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
                                                     </div>
-                                                    <input type="text" class="form-control col-4 "
-                                                        data-provide="datepicker" autocomplete="off" name="dateto"
-                                                        id="dteto" val="<?php echo $curdate; ?> ">
-                                                        </div>
-                                                      
-                                                        
-                                        </div>
-                                                  <div class = "col-4">
-                                                        <div class="form-group p-2 ">
-                                                <label>Specific Date:</label>
-                                                <button type="submit" name="specificdate" id="specificdate"
-                                                    class=" btn btn-primary"><i class="fa fa-plus"></i></button>
-                                            </div>
-                                                        </div>
-                                                </div>
-                                          
-                                             <div class = "row" style = "margin:auto;"> 
-                                              
-                                                     <div class ="col-6">
-                                            <div class="form-group ">
-                                                <label>Leave Type</label>
-                                                <select class="form-control select2 " id="leavetype"
-                                                    style="width: 100%;" name="leavetype" required>
-                                                    <option selected="selected">Select Leave</option>
-                                                    <?php while ($get_result = $prep_leave_type->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                    <option value="<?php echo $get_result['Category']; ?>">
-                                                        <?php echo $get_result['LeaveTypeDescription']; ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                                         </div>
-                                                       <div class ="col-4">
-                                            <div class="form-group">
-                                                <label>Inclusive Date</label>
-                                                <select class="form-control select2 " id="inclusivedate"
-                                                    style="width: 100%;" name="inclusivedate" required>
-                                                    <option selected="selected">Whole Day</option>
-                                                    <option>Morning</option>
-                                                    <option>Afternoon</option>
-                                                </select>
-                                            </div>
-                                                     </div>
-                                                 <div class ="col-2">
-                                                     <button type="submit" name="addleave" id="addleave"
-                                                    class=" btn btn-warning"><i class="fa fa-plus"></i></button>
-                                                 </div>
-                                              
-                                                  
-                                                 </div>  
-<!--
+                                                    <!--
                                             <div class="row">
                                               <div class ="col-6 center-block" style = "margin:auto; background-color:red;">
                                             <div class="form-group p-2 " style = "margin:auto;margin-right:100px;margin-left:100px;">
@@ -151,38 +161,44 @@ $prep_leave_type->execute();
                                             </div>
                                             </div>
 -->
-                                            <div class="row"style="margin:auto;">
-                                                
-                                                    <table
-                                                        class="table table-hover table-bordered "
-                                                        style="margin:auto;width:100%;" id="leavelist">
-                                                        <thead style="margin:auto;width:100%;">
-                                                            <th>Leave Name</th>
-                                                            <th>From</th>
-                                                            <th>To</th>
-                                                            <th>Inclusive Date</th>
-                                                            <th>Remove</th>
-                                                        </thead>
+                                                    <div class="row" style="margin:auto;">
 
-                                                    </table>
-                                               
+                                                        <table class="table table-hover table-bordered "
+                                                            style="margin:auto;width:100%;" id="leavelist">
+                                                            <thead style="margin:auto;width:100%;">
+                                                                <th>Leave Name</th>
+                                                                <th>From</th>
+                                                                <th>To</th>
+                                                                <th>Inclusive Date</th>
+                                                                <th>Remove</th>
+                                                            </thead>
+
+                                                        </table>
+
+                                                    </div>
+                                                    <div class="row"
+                                                        style="margin:auto;padding-top:30px;padding-bottom:30px;">
+
+
+
+                                                        <button type="submit" style="margin:auto;left:50%;right:50%;"
+                                                            name="save_leave" id="save_leave"
+                                                            class=" btn btn-primary "><i
+                                                                class="fa fa-save"></i></button>
+
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <label id="save_notification"
+                                                            style="text-align:center;margin:auto;"></label>
+                                                    </div>
+
+                                                </div>
                                             </div>
-                                            <div class="row" style="margin:auto;padding-top:30px;padding-bottom:30px;">
-                                                
-                                                  
-
-                                                        <button type="submit" style = "margin:auto;left:50%;right:50%;"name="save_leave" id="save_leave"
-                                                            class=" btn btn-primary toastrDefaultSuccess"><i class="fa fa-save"></i></button>
-                                            
-                                              
-                                            </div>
-
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </form>
-                        <!-- /.content-wrapper -->
+                                </form>
+                                <!-- /.content-wrapper -->
             </section>
         </div>
     </div>
@@ -332,36 +348,40 @@ $prep_leave_type->execute();
                     '<button id="remove" class = "btn btn-circle btn-sm btn-primary" onclick = "deleteRow(this)">Remove</button>';
             }
         })
-        $('#leavesave').click(function () {
+        $('#save_leave').click(function () {
             //fetch all the data from the table and save it to the database
-            var workid = $('#worksched-form').serializeArray();
+            var workid = $('#leaveform').serializeArray();
             event.preventDefault();
-            $('#travellist tr').each(function (row, tr) {
-                var details = $('#details').val();
-                var empno = $(tr).find('td:eq(0)').text();
-                var fname = $(tr).find('td:eq(1)').text();
-                var from = $(tr).find('td:eq(2)').text();
-                var to = $(tr).find('td:eq(3)').text();
-                var duration = $(tr).find('td:eq(4)').text();
-                var type = $(tr).find('td:eq(5)').text();
+            $('#leavelist tr').each(function (row, tr) {
+                var empno = $('#leaveempno').val();
+                console.log(empno);
+                var leavetype = $(tr).find('td:eq(0)').text();
+                var from = $(tr).find('td:eq(1)').text();
+                var to = $(tr).find('td:eq(2)').text();
+                var duration = $(tr).find('td:eq(3)').text();
                 var newfrom = formatDate(from);
                 var newto = formatDate(to);
                 $.ajax({
-                    url: 'save_travel.php',
+                    url: 'ajaxcall/save_leave.php',
                     method: 'POST',
                     data: {
                         empno: empno,
-                        fname: fname,
+                        leavetype: leavetype,
                         from: newfrom,
                         to: newto,
-                        duration: duration,
-                        type: type,
-                        details: details
+                        duration: duration
                     },
                     dataType: 'json',
+                    success: function (message) {
+                        // var message = jQuery.parseJSON(response);
+                        // post_notify(message.responseText,'success');
+                    },
                     error: function (xhr, b, c) {
-                        console.log("xhr=" + xhr.responseText + " b=" + b.responseText +
-                            " c=" + c.responseText);
+                        // console.log("xhr=" + xhr.responseText + " b=" + b.responseText +
+                        //     " c=" + c.responseText);
+                        $('#save_notification').html(xhr.responseText);
+                        // post_notify(xhr.responseText,'success');
+
                     }
                 })
 
@@ -369,7 +389,7 @@ $prep_leave_type->execute();
             //reset all the data inside the table;
             reset_form_input('travelform');
             $("#travellist td").parent().remove();
-            post_notify("Record Inserted", "success");
+            // post_notify("Record Inserted", "success");
         });
         //FORMAT THE DATE
         function formatDate(date) {
@@ -409,19 +429,9 @@ $prep_leave_type->execute();
             }
 
         }
-        $('.toastrDefaultSuccess').click(function() {
-            event.preventDefault();
-      toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
-    });
-    // $('.toastsDefaultSuccess').click(function() {
-    //     event.preventDefault();
-    //   $(document).Toasts('create', {
-    //     class: 'bg-success', 
-    //     title: 'Toast Title',
-    //     subtitle: 'Subtitle',
-    //     body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-    //   })
-    // });
+
+
+
         //reset the all the data inside the form
         function reset_form_input(form_id) {
             $('#' + form_id).each(function () {
