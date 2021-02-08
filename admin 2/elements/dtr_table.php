@@ -5,15 +5,16 @@
               </div>
                 
                       <form role="form" method="POST"  action="<?php htmlspecialchars("PHP_SELF");?>">
-                          <div class = "row">
-                              <div class= "col-12">
-                                 
-                              <h4 style ="margin-left:200px;margin-right:200px margin:auto;"id ="full-name"> </h4>
-      <input type = "hidden" readonly id = "hiddenempno" name = "hiddenempno" value = "<?php echo $hidden;?>">                               
-                              </div>
+                          <div class = "row" style="margin:auto;">
+                              
+                                 <div class = "col-6" style = "margin:auto;">
+                              <h4 id ="full-name"> </h4>
+                              <input type = "hidden" readonly id = "hiddenempno" name = "hiddenempno" value = "<?php echo $hidden;?>">                               
+                           
                           </div>
-                      <div class = "row" style="margin-bottom:30px;">
-                        <div class = col-10>
+                          </div>
+                      <div class = "row" style="margin:auto; margin-bottom:50px;">
+                     
 
                    <div class="input-group date">
                            <label style="padding-right:10px;padding-left: 10px">From:  </label> 
@@ -31,17 +32,15 @@
        <input type="text" class="form-control col-3 " data-provide="datepicker"  autocomplete="off" name="dateto" id="dteto" value = "<?php echo $dteTo;?>" >
                        
                        
-                       </div>
+                       <button type="button"  class="btn btn-primary" style = "margin-left:50px;"data-toggle = "modal" data-target = "#printreport"   value="Print">PRINT</button>
                         
                      </div>
-                     <div class = "col-2">
-                      <?php 
-                     
-                      ?>
                    
-                        <button type="button"  class="btn btn-primary" data-toggle = "modal" data-target = "#printreport"   value="Print">PRINT</button>
+                  
+                   
+                       
                       
-                     </div>
+               
                  </div>
                        <div class="row">
                        

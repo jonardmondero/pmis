@@ -153,17 +153,19 @@ $otOut='';
   
   $(document).ready(function(){
      var deptId = $('#deptId').val();
-     
+     var empstatus = $('#emp_status').val();
   $('#body').load("get_employee_department.php",{
-    dept:deptId
+    dept:deptId,
+    empstatus:empstatus
 
   })
      
  $('#deptId').change(function(){
   var deptId = $('#deptId').val();
+  var empstatus = $('#emp_status').val();
   $('#body').load("get_employee_department.php",{
-    dept:deptId
-
+    dept:deptId,
+    empstatus:empstatus
   })
 
  });

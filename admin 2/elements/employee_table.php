@@ -22,7 +22,12 @@
             </div>
              </div>
               </div>
-                    
+                <div class = "row" style= "margin:auto;margin-bottom:20px">
+                <select class = "form-control"  id = "emp_status">
+                <option val= "Regular">Regular</option>
+                <option val= "Job Order">Job Order</option>
+                </select>
+                </div>     
              <div class = "row">  
                  <div class = "col-12"  >
             <table id = "employees" class = "table table-bordered table-hover" >

@@ -2,10 +2,12 @@
 include ('../config/config.php');
 if(isset($_POST['dept'])){
 $department = $_POST['dept'];
-$get_department = "CALL spGetEmployeeDepartment(:department)";
-$get_department = "SELECT *,CONCAT(lastName,', ',firstName,', ',LEFT(middleName,1),'.') as fullName from bioinfo where department =:department AND status = 'Active' ORDER BY lastName";
+$emp_status = $_POST['empstatus'];
+// $get_department = "CALL spGetEmployeeDepartment(:department,:empstatus)";
+$get_department = "SELECT *,CONCAT(lastName,', ',firstName,', ',LEFT(middleName,1),'.') as fullName from bioinfo where department =:department AND employmentStatus = :empstatus AND status = 'Active' ORDER BY lastName";
 $set_department = $con->prepare($get_department);
-$set_department->execute([':department' => $department]);
+$set_department->execute([':department' => $department,
+							':empstatus'=>$emp_status]);
 while($result = $set_department->fetch(PDO::FETCH_ASSOC)){
 
 	$empno = $result['employeeNo'];
