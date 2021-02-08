@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_Letter_Landscape" printOrder="Horizontal" pageWidth="792" pageHeight="633" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="10" bottomMargin="10" uuid="5b3c26af-9021-4301-a723-7a0729957f6b">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<subDataset name="Dataset1" uuid="120e6625-c61c-445d-9afa-f36b1c1cdc88">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<queryString>
+			<![CDATA[SELECT CONCAT(e.lastName,', ',e.firstName,', ',LEFT(e.middleName, 1),'.')  AS fullName,e.supervisor,d.inAM,d.outAM,d.inPM,d.outPM,d.otIn,d.otOut,DATE_FORMAT(d.Date,'%d')as day,DATE_FORMAT(d.Date,'%M,%Y')AS month,TIME_FORMAT(d.late,'%H:%i') as late, TIME_FORMAT(d.undertime,'%H:%i') as undertime,
+(SELECT TIME_FORMAT(ADDTIME(SEC_TO_TIME(SUM(TIME_TO_SEC(late))),SEC_TO_TIME(SUM(TIME_TO_SEC(undertime)))),'%H:%i')FROM DAILYTIMERECORD)as total  FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP by Date;]]>
+		</queryString>
+		<field name="fullName" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="fullName"/>
+			<property name="com.jaspersoft.studio.field.label" value="fullName"/>
+		</field>
+		<field name="supervisor" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="supervisor"/>
+			<property name="com.jaspersoft.studio.field.label" value="supervisor"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="e"/>
+		</field>
+		<field name="inAM" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="inAM"/>
+			<property name="com.jaspersoft.studio.field.label" value="inAM"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="d"/>
+		</field>
+		<field name="outAM" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="outAM"/>
+			<property name="com.jaspersoft.studio.field.label" value="outAM"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="d"/>
+		</field>
+		<field name="inPM" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="inPM"/>
+			<property name="com.jaspersoft.studio.field.label" value="inPM"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="d"/>
+		</field>
+		<field name="outPM" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="outPM"/>
+			<property name="com.jaspersoft.studio.field.label" value="outPM"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="d"/>
+		</field>
+		<field name="otIn" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="otIn"/>
+			<property name="com.jaspersoft.studio.field.label" value="otIn"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="d"/>
+		</field>
+		<field name="otOut" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="otOut"/>
+			<property name="com.jaspersoft.studio.field.label" value="otOut"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="d"/>
+		</field>
+		<field name="day" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="day"/>
+			<property name="com.jaspersoft.studio.field.label" value="day"/>
+		</field>
+		<field name="month" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="month"/>
+			<property name="com.jaspersoft.studio.field.label" value="month"/>
+		</field>
+		<field name="late" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="late"/>
+			<property name="com.jaspersoft.studio.field.label" value="late"/>
+		</field>
+		<field name="undertime" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="undertime"/>
+			<property name="com.jaspersoft.studio.field.label" value="undertime"/>
+		</field>
+		<field name="total" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="total"/>
+			<property name="com.jaspersoft.studio.field.label" value="total"/>
+		</field>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT CONCAT(e.lastName,', ',e.firstName,', ',LEFT(e.middleName, 1),'.')  AS fullName,e.supervisor,d.inAM,d.outAM,d.inPM,d.outPM,d.otIn,d.otOut,DATE_FORMAT(d.Date,'%d')as day,DATE_FORMAT(d.Date,'%M,%Y')AS month,TIME_FORMAT(d.late,'%H:%i') as late, TIME_FORMAT(d.undertime,'%H:%i') as undertime,
+(SELECT TIME_FORMAT(ADDTIME(SEC_TO_TIME(SUM(TIME_TO_SEC(late))),SEC_TO_TIME(SUM(TIME_TO_SEC(undertime)))),'%H:%i')FROM DAILYTIMERECORD)as total  FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP by Date;]]>
+	</queryString>
+	<field name="fullName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="fullName"/>
+		<property name="com.jaspersoft.studio.field.label" value="fullName"/>
+	</field>
+	<field name="supervisor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="supervisor"/>
+		<property name="com.jaspersoft.studio.field.label" value="supervisor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="e"/>
+	</field>
+	<field name="inAM" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="inAM"/>
+		<property name="com.jaspersoft.studio.field.label" value="inAM"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="d"/>
+	</field>
+	<field name="outAM" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="outAM"/>
+		<property name="com.jaspersoft.studio.field.label" value="outAM"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="d"/>
+	</field>
+	<field name="inPM" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="inPM"/>
+		<property name="com.jaspersoft.studio.field.label" value="inPM"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="d"/>
+	</field>
+	<field name="outPM" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="outPM"/>
+		<property name="com.jaspersoft.studio.field.label" value="outPM"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="d"/>
+	</field>
+	<field name="otIn" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="otIn"/>
+		<property name="com.jaspersoft.studio.field.label" value="otIn"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="d"/>
+	</field>
+	<field name="otOut" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="otOut"/>
+		<property name="com.jaspersoft.studio.field.label" value="otOut"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="d"/>
+	</field>
+	<field name="day" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="day"/>
+		<property name="com.jaspersoft.studio.field.label" value="day"/>
+	</field>
+	<field name="month" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="month"/>
+		<property name="com.jaspersoft.studio.field.label" value="month"/>
+	</field>
+	<field name="late" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="late"/>
+		<property name="com.jaspersoft.studio.field.label" value="late"/>
+	</field>
+	<field name="undertime" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="undertime"/>
+		<property name="com.jaspersoft.studio.field.label" value="undertime"/>
+	</field>
+	<field name="total" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="total"/>
+		<property name="com.jaspersoft.studio.field.label" value="total"/>
+	</field>
+	<background>
+		<band height="613" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="inch"/>
+			<image>
+				<reportElement x="-15" y="-10" width="295" height="623" uuid="8a102502-c794-4c72-aea0-97c478047980">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<imageExpression><![CDATA["DTR LAYOUT 1.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="20" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="69" y="-1" width="100" height="20" uuid="a8ed4312-6048-4505-8273-4f6ea01fdb6e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="590" y="-1" width="100" height="20" uuid="3f02bf82-315c-4bcb-abc6-0682b3119db5">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="89" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement x="12" y="3" width="30" height="12" uuid="ccf2bcac-eac7-4b98-b686-0518cbe8071d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="29da1dc1-e771-418b-91ee-a521725c16e5"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inAM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="42" y="3" width="30" height="12" uuid="b84fd9d3-ce98-483b-a4a4-ca5d7ee96089">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6d18f625-47d6-4f69-8a3e-8907dfb99753"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{outAM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="72" y="3" width="30" height="12" uuid="9d409ce7-7d64-4cce-b754-bd23e0b42034">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b306fc7d-0b9c-4462-b856-04dc22064130"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inPM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="3" width="30" height="12" uuid="138d55cd-dfb3-4e2d-9a1b-a88c9962daea">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3a67df78-9dc0-4ea5-a25e-c7b529e53167"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{outPM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="132" y="3" width="30" height="12" uuid="9adf6ad4-a874-4e6d-8b17-4032979f135a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="92906ccd-6eba-4704-a12b-50ed72e42183"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{otIn}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="192" y="3" width="30" height="12" uuid="decaf565-08c5-4e3f-91c9-fc01d3f60d57">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a98b0d1e-45dc-4ffe-afc0-2e6c8eba6e96"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{late}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="3" width="30" height="12" uuid="b12fd3fd-b5c3-4c61-b388-2b90e3158caf">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8e0fa970-95c1-4b16-b581-2ffc34f9c23d"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{undertime}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="162" y="3" width="30" height="12" uuid="a56517d7-90eb-4810-b167-b000b5ff780b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="68a40fb2-3e5b-444f-8b9c-00d2ee877660"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{otOut}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="28" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="35" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

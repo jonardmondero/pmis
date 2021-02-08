@@ -302,8 +302,8 @@ $prep_leave_type->execute();
             var dateto = $('#dteto').val();
             var inclusivedate = $('#inclusivedate').val();
             var leavetype = $('#leavetype').val();
-
-            if (datefrom == '' || dateto == '' || leavetype == 'Select Leave') {
+            var empno = $('#leaveempno').val();
+            if (datefrom == '' || dateto == '' || leavetype == 'Select Leave' || empno == '') {
                 post_notify("Please complete the information!", "danger");
             } else {
 
@@ -329,7 +329,8 @@ $prep_leave_type->execute();
             var dateto = $('#dteto').val();
             var inclusivedate = $('#inclusivedate').val();
             var leavetype = $('#leavetype').val();
-            if (datefrom == '' || dateto == '' || leavetype == 'Select Leave') {
+            var empno = $('#leaveempno').val();
+            if (datefrom == '' || dateto == '' || leavetype == 'Select Leave'|| empno == '') {
                 post_notify("Please complete the information!", "danger");
             } else {
 

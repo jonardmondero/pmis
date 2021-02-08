@@ -2,7 +2,6 @@
                <div class="card-header">
                 <h3 class="card-title">Department</h3>
               </div>
-                <form role="form" method="POST" action="<?php htmlspecialchars("PHP_SELF");?>">
                 <div class="card-body">
                     <div class = "row">
                         <div class = "col-12">
@@ -27,7 +26,7 @@
              <div class = "row">  
                  <div class = "col-12"  >
             <table id = "employees" class = "table table-bordered table-hover" >
-            <thead style="font-size:13px" >
+            <thead>
             <th> Employee No. </th>
                 <th> Full Name </th>
                       </thead>              
@@ -44,5 +43,5 @@
                  </div>   
 
                      </div>
-                </form>
+            
         </div>  

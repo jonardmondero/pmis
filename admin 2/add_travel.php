@@ -54,6 +54,7 @@ $curdate = date("m/d/Y");
  </div>
     <!-- /.content -->
   </div>
+   <div class ="col-8">
   <form method = "POST" id = "travelform" action = <?php htmlspecialchars("PHP_SELF");?>>
   <div class="col-12 no-gutters"  >
             <div class="card card-warning" > 
@@ -122,6 +123,7 @@ $curdate = date("m/d/Y");
   </div>
   </div>
   </form>
+                </div>
   <!-- /.content-wrapper -->
   </section>
   </div>

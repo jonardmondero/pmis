@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row" style ="margin:auto;">
 
-<table class = "table table-hover table-bordered col-11 table-responsive" style = "margin:auto;"id = "travellist">
+<table class = "table table-hover table-bordered table-responsive" id = "travellist">
                	<thead>
                		<th>Employee No</th>
                		<th>Full Name</th>

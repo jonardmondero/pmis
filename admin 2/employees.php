@@ -54,19 +54,18 @@ $prep_emp->execute();
         <!-- Small boxes (Stat box) -->
        <div class="col-12">
         <div class = "row">
-          <div style="height: 500px;"class ="col-12" >
+          <div class ="col-12" >
           <div class="card card-primary">
                <div class="card-header">
                 <h3 class="card-title">Employees Table</h3>
               </div>
               <div class = "card-body">
-                <div class ="row">
-              <form role="form" method="post" name="form" action="<?php htmlspecialchars("PHP_SELF");?>">
-              <div class = "row col-12">
+              
+     
+              <div class = "row">
              <?php include('elements/tbl_employee.php')?>
-               </div>
-              </form>
-            </div>
+            
+        
            </div>
        </div>
          </div>
