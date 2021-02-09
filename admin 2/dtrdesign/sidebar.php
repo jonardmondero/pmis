@@ -92,6 +92,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="frm_ledger.php" class="nav-link">
+              <i class="nav-icon fa fa-user"></i>
+              <p>
+            Employee Ledger
+               
+              </p>
+            </a>
+          </li>
           <li class="nav-header">ADMINISTRATION</li>
           <li class="nav-item">
             <a href="users" class="nav-link">

@@ -78,7 +78,7 @@ if(isset($_POST['import_dep'])){
 //           $formattedweddingdate = date_format($weddingdate, 'd-m-Y');
 //        echo $date_format_2;
 //      echo $date_format_2;
-      $st_msaccess_search = "SELECT DISTINCT FORMAT([CHECKINOUT.CHECKTIME],'$date_format') as checktime,CHECKINOUT.CHECKTYPE as checktype ,USERINFO.BADGENUMBER from CHECKINOUT inner join USERINFO  on CHECKINOUT.USERID = USERINFO.USERID where USERINFO.BadgeNumber = '$bioPin' AND CHECKINOUT.CHECKTIME like '$date_format_2%'";
+      $st_msaccess_search = "SELECT DISTINCT CHECKINOUT.CHECKTYPE as checktype ,FORMAT([CHECKINOUT.CHECKTIME],'$date_format') as checktime, USERINFO.BADGENUMBER from CHECKINOUT inner join USERINFO  on CHECKINOUT.USERID = USERINFO.USERID where USERINFO.BadgeNumber = '$bioPin' AND CHECKINOUT.CHECKTIME like '$date_format_2%'";
       $pre_msaccess_stmt = $conn->prepare($st_msaccess_search);
       $pre_msaccess_stmt->execute();
       while ($time_result = $pre_msaccess_stmt->fetch(PDO::FETCH_ASSOC)) {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_Letter_Landscape" printOrder="Horizontal" pageWidth="792" pageHeight="633" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="10" bottomMargin="10" uuid="5b3c26af-9021-4301-a723-7a0729957f6b">
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_Letter_Landscape" printOrder="Horizontal" pageWidth="792" pageHeight="633" orientation="Landscape" whenNoDataType="NoPages" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="10" bottomMargin="10" uuid="5b3c26af-9021-4301-a723-7a0729957f6b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -148,10 +149,16 @@
 		<band height="613" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="inch"/>
 			<image>
-				<reportElement x="-15" y="-10" width="295" height="623" uuid="8a102502-c794-4c72-aea0-97c478047980">
-					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-				</reportElement>
-				<imageExpression><![CDATA["DTR LAYOUT 1.jpg"]]></imageExpression>
+				<reportElement x="-16" y="7" width="260" height="600" uuid="c0760822-d08f-472b-8349-f4b9fde6b927"/>
+				<imageExpression><![CDATA["C:/xampp/htdocs/pmis/plugins/jasperreport/DTR LAYOUT 1.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="243" y="7" width="260" height="600" uuid="dc1542ab-def9-4763-a307-51c146b4f1d2"/>
+				<imageExpression><![CDATA["C:/xampp/htdocs/pmis/plugins/jasperreport/DTR LAYOUT 1.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="507" y="5" width="260" height="600" uuid="446e9300-36ab-406e-b538-cc02f5cfbdaf"/>
+				<imageExpression><![CDATA["C:/xampp/htdocs/pmis/plugins/jasperreport/DTR LAYOUT 1.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</background>
@@ -161,44 +168,142 @@
 	<pageHeader>
 		<band height="24" splitType="Stretch">
 			<textField>
-				<reportElement x="69" y="-1" width="100" height="20" uuid="a8ed4312-6048-4505-8273-4f6ea01fdb6e"/>
+				<reportElement x="70" y="3" width="100" height="20" uuid="a8ed4312-6048-4505-8273-4f6ea01fdb6e"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="590" y="-1" width="100" height="20" uuid="3f02bf82-315c-4bcb-abc6-0682b3119db5">
+				<reportElement x="610" y="0" width="100" height="20" uuid="3f02bf82-315c-4bcb-abc6-0682b3119db5">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="89" splitType="Stretch">
+		<band height="68" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="15" splitType="Stretch">
+		<band height="14" splitType="Stretch">
 			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField>
-				<reportElement x="7" y="0" width="30" height="12" uuid="ccf2bcac-eac7-4b98-b686-0518cbe8071d">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="29da1dc1-e771-418b-91ee-a521725c16e5"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="8"/>
+				<reportElement x="8" y="0" width="25" height="14" uuid="9bf13beb-c3b3-48ff-8136-ed0d814c9373"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{inAM}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="33" y="0" width="26" height="14" uuid="31472c51-ed1a-4bd2-9805-bffcfe9dd7f5"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{outAM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="59" y="0" width="26" height="14" uuid="8b248cd1-632d-4aaf-9e14-4f3d197f86da"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inPM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="85" y="0" width="25" height="14" uuid="9073dc02-2713-4cf1-b093-92bcfe59a12b"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{outPM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="0" width="26" height="14" uuid="df9780b1-3916-4443-9c46-7c2685376ec3"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{otIn}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="0" width="24" height="14" uuid="40eb9a5c-7c18-4fff-9fdf-113ec7bf7b39"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{otOut}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="160" y="0" width="38" height="14" uuid="7c8aaa48-b82f-481d-a7a5-b1db4f9952a0"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="199" y="0" width="37" height="14" uuid="41e836fb-a047-48d2-84a7-9eb5a913736e"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="28" splitType="Stretch"/>
+		<band height="62" splitType="Stretch"/>
 	</columnFooter>
-	<pageFooter>
-		<band height="35" splitType="Stretch"/>
-	</pageFooter>
+	<summary>
+		<band height="14"/>
+	</summary>
 </jasperReport>
