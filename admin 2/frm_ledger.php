@@ -59,7 +59,7 @@ $otOut='';
             <div class="row ">
           <div class="col-12" >
           <div class ="justify-content-center">
-            <h1 class="m-0 text-dark ">Daily Time Record</h1><br>
+            <h1 class="m-0 text-dark ">Employee Ledger</h1><br>
               </div>
           </div><!-- /.col -->
             
@@ -120,10 +120,15 @@ $otOut='';
                       
                
                  </div>
-                       <div class="row">
+                 <div class ="row">
+                 <div class = "col-12" style = "margin:auto;text-align:center;">
+                 <label class = "m-0 text-dark" >Travel Order</label>
+                 </div>
+                 </div>
+                       <div class="row" style = "margin:auto;">
                        
-                        <div  style="overflow-y:auto;height:auto;display: inline-block;margin:auto;">
-                            <table id="dtr"  cellpadding="5" cellmargin ="5" class ="table-bordered table-responsive table-hover "style ="position: relative;">
+                      
+                            <table id="" class ="table-bordered table table-hover ">
                                 <thead style ="font-size:15px;position:sticky;">
                                    
                                         <th>Entry No </th>
@@ -135,12 +140,40 @@ $otOut='';
                                        
                                        
                                 </thead>
-                             <tbody style = "font-size:15px;padding:15px;"id ="dtrbody">
+                             <tbody id ="travel">
                              </tbody>
                                 </table>  
                                 <!-- <button id="saveall">SAVE ALL</button> -->
                           
+                           
                            </div>
+                          
+                           <div class ="row">
+                 <div class = "col-12" style = "margin:auto;text-align:center;">
+                 <label class = "m-0 text-dark" >Application for Leave</label>
+                 </div>
+                 </div>
+                       <div class="row" style = "margin:auto;">
+                       
+                      
+                            <table id="" class ="table-bordered table table-hover ">
+                                <thead style ="font-size:15px;position:sticky;">
+                                   
+                                        <th>Entry No </th>
+                                        <th>Date From</th>
+                                        <th>Date To</th>
+                                        <th>Type of Leave</th>
+                                        <th>Status</th>
+                                        <th>Option</th>
+                                       
+                                       
+                                </thead>
+                             <tbody id ="travel">
+                             </tbody>
+                                </table>  
+                                <!-- <button id="saveall">SAVE ALL</button> -->
+                          
+                           
                            </div>
               </div>
            </form>
@@ -237,8 +270,23 @@ $otOut='';
 
  });
  });
-    function loadDtr(empnum,datefr,dateto){
-          $("#dtrbody").load("ajaxcall/frm_dtr.php",{
+    function loadTravel(empnum,datefr,dateto){
+          $("#travel").load("ajaxcall/load_ledger.php",{
+           employeeno: empnum,
+           dtfr: datefr,
+           dtto: dateto
+           
+  
+      }, function(response, status, xhr) {
+    if (status == "error") {
+        alert(msg + xhr.status + " " + xhr.statusText);
+        console.log(msg + xhr.status + " " + xhr.statusText);
+    }
+});
+
+      }
+      function loadleave(empnum,datefr,dateto){
+          $("#travel").load("ajaxcall/load_ledger.php",{
            employeeno: empnum,
            dtfr: datefr,
            dtto: dateto
@@ -267,19 +315,35 @@ var tbody = table.getElementsByTagName("tbody")[0];
         var cells = target.getElementsByTagName("td");
         var datefr = $('#dtefrom').val();
         var dateto = $('#dteto').val();
-        
+        var finaldatefr = formatDate(datefr);
+        var finaldateto = formatDate(dateto);
             empno.push(cells[0].innerHTML);
        fullname.push(cells[1].innerHTML); 
         var empnum = empno.toString();
         var fullname2= fullname.toString();
+        alert(empnum);
         $('#hiddenempno').val(empnum);
         $('#full-name').html(fullname2);
         // $('#empinfo').html(fullname2);
-    loadDtr(empnum,datefr,dateto);
+        loadTravel(empnum,finaldatefr,finaldateto);
     }
    
+   
   }
- 
+  //FORMAT THE DATE
+  function formatDate(date) {
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2)
+                month = '0' + month;
+            if (day.length < 2)
+                day = '0' + day;
+
+            return [year, month, day].join('-');
+        }
 function post_notify(message, type){
 
 if (type == 'success') {
@@ -303,80 +367,11 @@ if (type == 'success') {
 }
 
 }
-$('#dtr tbody').on('keyup','.tr',function(){
-  //UPDATE THE DTR WHEN THE USER CHANGES THE DATA.
-  event.preventDefault();
-   
-       var id = $(this).data('id');
-        var empno = $('#hiddenempno').val();
- 
-     var currow=  $(this).closest('tr');
-     var col1 = currow.find('td:eq(0)').text();
-     var col3 = currow.find('td:eq(2)').text();
-     var col4 = currow.find('td:eq(3)').text();
-     var col5 = currow.find('td:eq(4)').text();
-     var col6 = currow.find('td:eq(5)').text();
-     var col7 = currow.find('td:eq(6)').text();
-     var col8 = currow.find('td:eq(7)').text();
-     var col9 = currow.find('td:eq(8)').text();
-     var col10 = currow.find('td:eq(9)').text();
-     var datefr = $('#dtefrom').val();
-     var dateto = $('#dteto').val();
-      // console.log(col1,col2,col3);
-     $.ajax({
-      url:'ajaxcall/update_dtr.php',
-      type:'POST',
-      data:{idpost:id,
-            empno:empno,
-            date:col1,
-            checkin:col3,
-            breakout:col4,
-            breakin:col5,
-            checkout:col6,
-            overtimein:col7,
-            overtimeout:col8,
-            late:col9,
-            undertime:col10
-      },
-      dataType:'json',
-      // success:post_notify('Successfully saved', 'success'),
-      error: function (xhr, b, c) {
-     console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
-       }
-
-     })
-
-})
- 
-    $(document).ready(function(){
-    $('#dtr tbody').on( 'click', '.addlogs', function(){
-    event.preventDefault();
-    $('#edit-dtr').modal('show');
-     var id = $(this).data('id');
-     var empnum = $('#hiddenempno').val();
-     //date column on dtr
-     var currow=  $(this).closest('tr');
-     var col1 = currow.find('td:eq(0)').text();
 
 
-     $('#empdate').html(col1);
-     $("#findlogs").load("ajaxcall/loadlogs.php",{
-      empno:empnum,
-      date:col1},
-      function(response, status, xhr) {
-  if (status == "error") {
-      alert(msg + xhr.status + " " + xhr.statusText);
-      console.log(msg + xhr.status + " " + xhr.statusText);
-  }
-
-
-
-
-   })
-   });
- 
+    
      
-     });
+ 
         
     </script>
    
