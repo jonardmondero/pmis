@@ -18,18 +18,8 @@ $db = 'pmis';
 $PHPJasperXML = new PHPJasperXML();
 // $PHPJasperXML->debugsql=true;
 // $PHPJasperXML->arrayParameter=array("employeeNo"=>'12345678');
-        if($days =='31'){
-        $xml = $PHPJasperXML->load_xml_file("dtrreport.jrxml");
-        }
-        if($days =='30'){
-        $xml = $PHPJasperXML->load_xml_file("dtrreport30.jrxml");
-         }
-        if($days =='29'){
-        $xml = $PHPJasperXML->load_xml_file("dtrreport29.jrxml");
-        }
-        if($days =='28'){
-        $xml = $PHPJasperXML->load_xml_file("dtrreport28.jrxml");
-        }
+        $xml = $PHPJasperXML->load_xml_file("report3X3.jrxml");
+       
 // $PHPJasperXML->xml_dismantle($xml);
 $PHPJasperXML->sql ="
 SELECT CONCAT(e.lastName,', ',e.firstName,', ',LEFT(e.middleName, 1),'.')  AS fullName,

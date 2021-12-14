@@ -117,7 +117,14 @@ $list_depid='';
                     </div>
       <div class = "col-12">
 
-     <input style = "margin:auto; width:100%;"type="submit" class="btn btn-primary" name="import" value="GENERATE EMPLOYEE"> 
+     <input style = "margin:auto; width:100%;"type="submit" class="btn btn-primary" id= "import_individual" name="import" value="GENERATE EMPLOYEE"> 
+
+            <div class="progress"style = "margin-top:20px;" >
+                  <div class="progress-bar bg-danger progress-bar-striped" role="progressbar"
+                       aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                
+                  </div>
+                </div>
 </div>
      <div class = "col-12">
       <div class ="form-group">
@@ -252,27 +259,27 @@ $list_depid='';
 
 
         });
-  // $('#import_dep').click(function(){
-  //   event.preventDefault();
-  //   var department = $('#selectdep').val();
-  //   var dtefrom = $('#iddatefrom').val();
-  //   var dteto = $('#iddateto').val();
+  $('#import_individual').click(function(){
+    event.preventDefault();
+    var employee = $('#select_employee').val();
+    var dtefrom = $('#iddatefrom').val();
+    var dteto = $('#iddateto').val();
     
-  //   $.ajax({
-  //     url:'generate_department.php',
-  //     type:"post",
-  //     data:{deptId:department,
-  //           datefrom:dtefrom,
-  //           dteto:iddateto
-  //     },
-  //     success:post_notify("Successfully Generated","success"),
-  //     error: function (xhr, b, c) {
-  //      console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
-  //        }
+    $.ajax({
+      url:'generate_record.php',
+      type:"post",
+      data:{sel_employee:employee,
+            datefrom:dtefrom,
+            dteto:iddateto
+      },
+      success:post_notify("Successfully Generated","success"),
+      error: function (xhr, b, c) {
+       console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+         }
 
-  //   })
+    })
 
-  // })
+  })
 
 function post_notify(message, type){
 

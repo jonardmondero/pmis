@@ -19,7 +19,7 @@ if(isset($_POST['employeeno'])) {
        
      
     else {
-        $daystyle ;
+        $daystyle;
         $lateStyle;
         $undertimeStyle;
         $result3['Day'] =='Saturday' ||     $result3['Day'] =='Sunday' ?  $daystyle = 'style="color:red;"' :  $daystyle = 'style="color:black;"';
@@ -27,30 +27,13 @@ if(isset($_POST['employeeno'])) {
         $result3['undertimefinal'] != '00:00' ? $undertimeStyle = 'style="color:red; "' : $undertimeStyle = 'style="color:black; "';
         $result3['latefinal'] >= '08:00' ? $lateStyle = 'style="color:green;font-weight:bold "' : null; 
         $result3['undertimefinal'] >= '08:00' ? $undertimeStyle = 'style="color:green;font-weight:bold "' :null; 
-            // $record = $result3['recordId'];
-            // $date = $result3['Date'];
-            // $finallate2 = '';
-            // $finalut2 = '';
-            // $finallate = $result3['latefinal'];
-            // if($finallate == '00:00'){
-            //     $finallate2 = '';
-            // }else{
-            //     $finallate2 = $finallate;
-            // }
-            // $finalut = $result3['undertimefinal'];
 
-            // if($finalut == '00:00'){
-            //     $finalut2 = '';
-            // }else{
-            //     $finalut2 = $finalut;
-            // }
             echo '<tr style="height:10px;font-family:Lucida Console;font-size:13px" class = "tr"> ';
             echo '<td bgcolor:red >';
             echo $result3['Date'];
             echo"</td>";
 
-            // echo '<td><button class = "btn btn-success btn-sm btn-flat editdtr"  data-id='.$record.' > <i class = "fa fa-edit"</button> </td>';
-              echo '<td '.$daystyle.'>';
+            echo '<td '.$daystyle.'>';
             echo $result3['Day'];
             echo"</td>";
 

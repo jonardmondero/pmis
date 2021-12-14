@@ -18,7 +18,7 @@ $dateto 	= 		$date."-15";
 $PHPJasperXML = new PHPJasperXML();
 // $PHPJasperXML->debugsql=true;
 // $PHPJasperXML->arrayParameter=array("employeeNo"=>'12345678');
-$xml = $PHPJasperXML->load_xml_file("dtrreport1st.jrxml");
+$xml = $PHPJasperXML->load_xml_file("report3x31st.jrxml");
 // $PHPJasperXML->xml_dismantle($xml);
 $PHPJasperXML->sql ="
 SELECT CONCAT(e.lastName,', ',e.firstName,', ',LEFT(e.middleName, 1),'.')  AS fullName,

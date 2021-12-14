@@ -84,7 +84,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="71" splitType="Stretch">
+		<band height="250" splitType="Stretch">
 			<textField>
 				<reportElement x="143" y="4" width="100" height="20" uuid="e7229afa-787e-4299-9614-6d4a58f51e9e"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
@@ -291,7 +291,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="91" splitType="Prevent">
+		<band height="92" splitType="Prevent">
 			<textField>
 				<reportElement x="213" y="-2" width="37" height="12" uuid="19e02063-13dc-4eed-b237-ea50fb4c265e">
 					<printWhenExpression><![CDATA[$F{total}!= "00:00"]]></printWhenExpression>
