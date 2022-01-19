@@ -18,7 +18,7 @@ $db = 'pmis';
 $PHPJasperXML = new PHPJasperXML();
 // $PHPJasperXML->debugsql=true;
 // $PHPJasperXML->arrayParameter=array("employeeNo"=>'12345678');
-        $xml = $PHPJasperXML->load_xml_file("report3X3.jrxml");
+        $xml = $PHPJasperXML->load_xml_file("report3x3.jrxml");
        
 // $PHPJasperXML->xml_dismantle($xml);
 $PHPJasperXML->sql ="
