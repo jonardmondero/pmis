@@ -4,6 +4,7 @@ var dataTable = $("#tableemp").DataTable({
   stateSave: true,
   processing: true,
   serverSide: true,
+  deferRender: true,
   scrollX: false,
   ajax: {
     url: "ajaxcall/search_employee.php", // json datasource
@@ -18,9 +19,7 @@ var dataTable = $("#tableemp").DataTable({
           c.responseText
       );
     },
-    // error: function (xhr, b, c) {
-    //     console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
-    // }
+ 
   },
   columnDefs: [
     {

@@ -33,16 +33,9 @@ $selemployee = $_POST['sel_employee'];
  $pre_insert_off = $con->prepare($stmt_insert_off);
 
   $format = 'Y-m-d';
-     // $dates = array();
  for($z=$datefrom;$z<=$dateto;$z+=86400){
   $i = date($format, $z);
- // while($datefrom<=$dateto){
- //      $dates[] = date($format, $datefrom);
- //    $datefrom = strtotime($stepVal,$datefrom);
-    
- //  // $i = date('Y-m-d', $currentDate); 
- //    } 
- //    return $dates;
+
    
       $pre_insert_dtr ->execute([ 
           ':empno' =>$selemployee,        
@@ -72,10 +65,7 @@ $selemployee = $_POST['sel_employee'];
       while ($time_result = $pre_msaccess_stmt->fetch(PDO::FETCH_ASSOC)) {
         $chktime =  $time_result['checktime'];
         $chktype = $time_result['checktype'];
-//          echo $bioPin;
-//          echo $date_format_2;
-//       echo $chktime;
-//        echo $chktype;
+
          
         if($chktype == $timeIn){
          

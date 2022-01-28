@@ -99,7 +99,7 @@ $otOut='';
 
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
-<script src="../plugins/jquery/jquery.js"></script>
+
 <script src="../plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> -->
@@ -147,29 +147,65 @@ $otOut='';
 <script src="javascript/addlogs.js"></script>
 <!-- PRINT REPORTS  SCRIPT -->
 <script src="javascript/printreport.js"></script>
-
+<!-- SELECT 2 PLUGINS -->
+<script src="../plugins/select2/select2.full.min.js"></script>
     <script language="javascript">
 
   
   $(document).ready(function(){
+   $("#deptId").select2();
      var deptId = $('#deptId').val();
      var empstatus = $('#emp_status').val();
-  $('#body').load("get_employee_department.php",{
-    dept:deptId,
-    empstatus:empstatus
+  // $('#body').load("get_employee_department.php",{
+  //   dept:deptId,
+  //   empstatus:empstatus
+    getEmployees(deptId,empstatus);
+  });
 
-  })
-     
+     function getEmployees(dept,status){
+      var dataTable = $('#employees').DataTable({
+page: true,
+destroy: true,
+stateSave: true,
+processing: true,
+serverSide: true,
+scrollX: false,
+deferRender: true,
+scroller: true,
+ajax: {
+  dataType:"JSON",
+  url: "get_employee_department.php",
+  type: "post",
+  data:{department:dept,empstatus:status},
+  error: function(xhr, b, c) {
+    console.log(
+      "xhr=" +
+      xhr.responseText +
+      " b=" +
+      b.responseText +
+      " c=" +
+      c.responseText
+    );
+  }
+}
+});
+
+
+     }
  $('#deptId').change(function(){
   var deptId = $('#deptId').val();
   var empstatus = $('#emp_status').val();
-  $('#body').load("get_employee_department.php",{
-    dept:deptId,
-    empstatus:empstatus
-  })
+  getEmployees(deptId,empstatus);
 
  });
+
+ $('#emp_status').change(function(){
+  var deptId = $('#deptId').val();
+  var empstatus = $('#emp_status').val();
+  getEmployees(deptId,empstatus);
+
  });
+
     function loadDtr(empnum,datefr,dateto){
           $("#dtrbody").load("ajaxcall/frm_dtr.php",{
            employeeno: empnum,

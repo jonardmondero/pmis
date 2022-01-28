@@ -5,24 +5,22 @@
                 <div class="card-body">
                     <div class = "row">
                         <div class = "col-12">
-                            <div class = "input-group">
-                <select class="form-control select2" style="margin-bottom:20px" name="department" id = "deptId" placeholder="Select" value="<?php echo $department; ?>">
+                          
+                <select class="form-control " style="margin-bottom:20px" name="department" id = "deptId" >
                 <?php
              
                      $get_user_sql = "SELECT * FROM department WHERE status = 'Active'";
                      $user_data = $con->prepare($get_user_sql);  
                      $user_data->execute();
-                        while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {
-                        $deptId = $result['deptId'];
-                        $deptdesc = $result['departmentDescription'];
-                        echo "<option value='".$deptId."'>".$deptdesc."</option>";
-                    }
-                   ?>
+                        while ($result = $user_data->fetch(PDO::FETCH_ASSOC)) {?>
+                      
+                        <option value='<?php echo $result['deptId'];?>'><?php echo  $deptdesc = $result['departmentDescription'];?></option>;
+                    <?php }?>
                 </select>
             </div>
-             </div>
+            
               </div>
-                <div class = "row" style= "margin:auto;margin-bottom:20px">
+                <div class = "row" style= "margin:auto;margin-bottom:20px;margin-top:30px;">
                 <select class = "form-control"  id = "emp_status">
                 <option val= "Regular">Regular</option>
                 <option val= "Job Order">Job Order</option>

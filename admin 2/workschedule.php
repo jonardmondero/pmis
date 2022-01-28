@@ -65,12 +65,13 @@ $workid='';
                		<th>Work Schedule Description</th>
                		<th>Remarks</th>
                     <th>Status</th>
+                    <th>Options</th>
                	
 
                	</thead>
                	<tbody>
                	<?php 
-                $sql = "Select * from workschedule";
+                $sql = "Select * from workschedule where status = 'Active'";
                 $prep_work= $con->prepare($sql);
                 $prep_work->execute();
                 while($result = $prep_work->fetch(PDO::FETCH_ASSOC)){?>
@@ -79,7 +80,11 @@ $workid='';
                			<td><?php echo $result['workScheduleDescription']?> </td>
                			<td><?php echo $result['remarks']?> </td>
                			<td><?php echo $result['status']?> </td>
-               		
+                  <td>
+                    <button class = "btn btn-success btn-sm btn-flat"  id="edit"> <i class = "fa fa-edit" ></i></button>
+                   <button class = "btn btn-danger btn-sm btn-flat"  id = "delete"> <i class = "fa fa-trash" ></i></button> 
+                  </td>
+                
                		</tr>
                	<?php } ?>
                	</tbody>

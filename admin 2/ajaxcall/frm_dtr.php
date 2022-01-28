@@ -69,7 +69,7 @@ if(isset($_POST['employeeno'])) {
             echo $result3['undertimefinal'];
             echo"</td>";
             
-        echo '<td><button class = "btn btn-warning btn-sm btn-flat addlogs" data-id='.$recordId.' > <i class = "fa fa-search"</button> </td>';
+            echo '<td><button class = "btn btn-warning btn-sm btn-flat addlogs" data-id='.$recordId.' > <i class = "fa fa-search"</button> </td>';
             echo "</tr>";
 
         }

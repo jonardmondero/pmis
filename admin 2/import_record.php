@@ -119,12 +119,6 @@ $list_depid='';
 
      <input style = "margin:auto; width:100%;"type="submit" class="btn btn-primary" id= "import_individual" name="import" value="GENERATE EMPLOYEE"> 
 
-            <div class="progress"style = "margin-top:20px;" >
-                  <div class="progress-bar bg-danger progress-bar-striped" role="progressbar"
-                       aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                
-                  </div>
-                </div>
 </div>
      <div class = "col-12">
       <div class ="form-group">

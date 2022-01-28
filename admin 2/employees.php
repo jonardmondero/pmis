@@ -149,7 +149,7 @@ $prep_emp->execute();
 
 <script>
 	$(document).ready(function(){
-      $('.select2').select2();
+      // $('.select2').select2();
 	// $('#tableemp').DataTable({
 	// 	'  paging'    : true,
   //     'searching'   : true,
@@ -278,9 +278,10 @@ $('#tableemp tbody').on( 'click', '.add_worksched', function(){
  
 // var id = $(this).data('id');
 $('#addemployeesched').modal('show');
-$(`#sel_worksched option[value='${col2}']`).prop('selected', true);
-$('#empno').val(col1);
+$(`#sel_worksched option[value='${col2}']`).prop('selected', 'true');
 
+$('#empno').val(col1);
+sel_worksched();
         });
   function sel_worksched(){
     var worksched = $('#sel_worksched').val();
@@ -295,6 +296,7 @@ $('#empno').val(col1);
 $('#sel_worksched').change(function(){
  sel_worksched();
 })
+
 $("#tableemp tbody").on("click", ".edit_employee", function () {
   //SHOWS THE ADD EMPLOYEE MODAL AND DISPLAY THE EMPLOYEE'S INFORMATION
     event.preventDefault();

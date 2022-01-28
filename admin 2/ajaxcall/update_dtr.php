@@ -7,12 +7,22 @@ if(isset($_POST['empno'])){
 	$empno =  $_POST['empno'];
 	$date = $_POST['date'];
 	// $id = 		$_POST['idpost'];
-	$checkin = 	str_replace(' ', '', $_POST['checkin']);
-	$breakout =str_replace(' ', '',  $_POST['breakout']);
-	$breakin = str_replace(' ', '', $_POST['breakin']);
-	$checkout= str_replace(' ', '', $_POST['checkout']);
-	$overtimein = str_replace(' ', '', $_POST['overtimein']);
-	$overtimeout =str_replace(' ', '', $_POST['overtimeout']);
+
+	// $checkin = 	str_replace(' ', '', $_POST['checkin']);
+	// $breakout =str_replace(' ', '',  $_POST['breakout']);
+	// $breakin = str_replace(' ', '', $_POST['breakin']);
+	// $checkout= str_replace(' ', '', $_POST['checkout']);
+	// $overtimein = str_replace(' ', '', $_POST['overtimein']);
+	// $overtimeout =str_replace(' ', '', $_POST['overtimeout']);
+
+
+	$checkin = 	$_POST['checkin'];
+	$breakout =  $_POST['breakout'];
+	$breakin =  $_POST['breakin'];
+	$checkout=  $_POST['checkout'];
+	$overtimein = $_POST['overtimein'];
+	$overtimeout =$_POST['overtimeout'];
+	$late = $_POST['late'];
 	$late = $_POST['late'];
 	$undertime = $_POST['undertime'];
 	$late == '' ? $late = '00:00:00' : $late = $_POST['late'];

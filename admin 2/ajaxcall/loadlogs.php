@@ -17,7 +17,7 @@ if(isset($_POST['empno'])){
 		$dateunformatted = $result['Date'];
 }	
 	$format_current_date = date_create($date); 
-	 $date_format = 'HH:MM';
+	 $date_format = 'Medium Time';
 	  // $date_format_2 = date_format($date,"n/j/Y");
 	 // $date_format_2=  date('n/j/Y', strtotime($date));
 	  // echo print_r($format_current_date);
