@@ -64,6 +64,18 @@
                  <label class = "col-form-label col-3"> Supervisor:  </label>
                  <input type = "text" class = "form-control col-9" id = "supervisor" name = "supervisor">
                 </div>
+
+
+                <div class = "form-group row">
+                 <label class = "col-form-label col-5">Has Work Schedule?  </label>
+                <select class ="form-control col-7" name = "worksched" id ="worksched">
+                  <option val = "Yes">Yes</option>
+                  <option val = "No">No </option>
+                </select>
+                </div>
+
+
+
                 <div class = "form-group row">
                  <label class = "col-form-label col-5">Status:  </label>
                 <select class ="form-control col-7" name = "status" id ="status">

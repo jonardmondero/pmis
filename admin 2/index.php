@@ -249,27 +249,8 @@
 <!--              <a href="" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>-->
             </div>
           </div>
-             <div class="col-lg-3">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                  <a href="frm_pisform.php"> <h3 >PIS</h3> <i class="fa fa-arrow-circle-right"></i></a>
-
-                <p>Personeel Information System</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-user"></i>
-              </div>  
-<!--              <a href="" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>-->
-            </div>
-          </div>
-          <!-- ./col -->
-         
-          <!-- ./col -->
-         
-          <!-- ./col -->
-         
-          <!-- ./col -->
+           
+      
         </div>
         <!-- /.row -->
         <!-- Main row -->

@@ -13,6 +13,7 @@ if(isset($_POST['save'])){
 	$supervisor = $_POST['supervisor'];
 	$emptype = $_POST['estatus'];
 	$status = $_POST['status'];
+	$worksched = $_POST['worksched'];
 	$registered = date("Y/m/d");
 
 // $search_employee ="SELECT * from bioinfo WHERE employeeNo ='$employeenum'";
@@ -29,6 +30,7 @@ if(isset($_POST['save'])){
 					employmentStatus = :empstatus,
 					supervisor =:supervisor,
 					status = :status,
+					schedule = :worksched,
 					date_entered = :date_created";
 					
 	$set_stmt = $con->prepare($insert_stmt);
@@ -38,10 +40,11 @@ if(isset($_POST['save'])){
 		':lname' => $lname,
 		':mname'=> $mname,
 		':bioid' =>	$bioid,
-		':dep' => $dep,
+		':dep' => 	$dep,
 		':empstatus' =>$emptype,	
 		'supervisor' =>$supervisor,
 		':status' =>$status,
+		'worksched' =>$worksched,
 		':date_created'=>$registered
   
 	]);	
@@ -66,6 +69,7 @@ if(isset($_POST['update'])){
 	$supervisor = $_POST['supervisor'];
 	$emptype = $_POST['estatus'];
 	$status = $_POST['status'];
+	$worksched = $_POST['worksched'];
 	$registered = date("Y/m/d");
 
 // $search_employee ="SELECT * from bioinfo WHERE employeeNo ='$employeenum'";
@@ -80,7 +84,8 @@ if(isset($_POST['update'])){
 					department = :dep,
 					employmentStatus = :empstatus,
 					supervisor =:supervisor,
-					status = :status 
+					status = :status,
+					schedule = :worksched 
 					where employeeNo =:empno";
 					
 					
@@ -92,7 +97,8 @@ if(isset($_POST['update'])){
 		':mname'=> $mname,
 		':bioid' =>	$bioid,
 		':dep' => $dep,
-		':empstatus' =>$emptype,	
+		':empstatus' =>$emptype,
+		':worksched' =>$worksched,	
 		'supervisor' =>$supervisor,
 		':status' =>$status
 		

@@ -23,16 +23,20 @@ include ('php_scripts/log_in.php');
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
+<div class = "row" >
+  <image src="icons/scclogo.png" style = "margin:auto"></image>
+  </div>
   <div class="login-logo">
-    <a href="../../index2.html"><b>H.R.</b> Information System</a>
+
+    <a href="../../index2.html"><b>H.R.</b> DTR System</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Please enter your account</p>
 
       <form action="<?php htmlspecialchars("PHP_SELF");?>" method="post">
-        <div class="input-group mb-3">
+        <div class="input-group mb-4">
           <input type="text" class="form-control" name = "username" placeholder="Username">
           <div class="input-group-append">
             <div class="input-group-text">
@@ -40,7 +44,7 @@ include ('php_scripts/log_in.php');
             </div>
           </div>
         </div>
-        <div class="input-group mb-3">
+        <div class="input-group mb-4">
           <input type="password" class="form-control" name = "password"  placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
@@ -52,16 +56,16 @@ include ('php_scripts/log_in.php');
          <?php echo $alert_msg; ?>      
       </div>
         <div class="row">
-          <div class="col-8">
+          <!-- <div class="col-8">
             <div class="icheck-primary">
               <input type="checkbox" id="remember">
               <label for="remember">
                 Remember Me
               </label>
             </div>
-          </div>
+          </div> -->
           <!-- /.col -->
-          <div class="col-4">
+          <div class="col-12">
             <button type="submit" name="submit" class="btn btn-primary btn-block">Sign In</button>
           </div>
           <!-- /.col -->
@@ -82,9 +86,9 @@ include ('php_scripts/log_in.php');
       <!-- <p class="mb-1">
         <a href="forgot-password.html">I forgot my password</a>
       </p> -->
-      <p class="mb-0">
+      <!-- <p class="mb-0">
         <a href="register.html" class="text-center">Register a new membership</a>
-      </p>
+      </p> -->
     </div>
     <!-- /.login-card-body -->
   </div>

@@ -11,13 +11,14 @@ if(isset($_POST['import'])){
   $bioPin = '';
   $workId = '';
 $selemployee = $_POST['sel_employee'];
-  $get_employee = "Select employeeNo,biometricId,workScheduleId from bioinfo  where employeeNo = :empno";
+  $get_employee = "Select employeeNo,biometricId,workScheduleId,schedule from bioinfo  where employeeNo = :empno";
  $prepare_employee = $con->prepare($get_employee);
   $prepare_employee->execute([':empno' => $selemployee]);
     while ($employee = $prepare_employee->fetch(PDO::FETCH_ASSOC)) { 
       $empNo = $employee['employeeNo'];
       $bioPin = $employee['biometricId'];
       $workId = $employee['workScheduleId'];
+      $bolsched = $employee['schedule'];
   }
  $datefrom = strtotime($_POST['datefrom']);
  $dateto= strtotime($_POST['dateto']);
@@ -29,7 +30,7 @@ $selemployee = $_POST['sel_employee'];
  $pre_insert_dtr = $con->prepare($stmt_insert_dtr);
 
  //insert day off
- $stmt_insert_off = "CALL spInsertDayOff(:empno,:worksched,:i)" ;
+ $stmt_insert_off = "CALL spInsertDayOff(:empno,:worksched,:i,:bolsched)" ;
  $pre_insert_off = $con->prepare($stmt_insert_off);
 
   $format = 'Y-m-d';
@@ -48,7 +49,8 @@ $selemployee = $_POST['sel_employee'];
     $pre_insert_off ->execute([ 
         ':empno' =>$selemployee,
          ':worksched' =>$workId,
-        ':i' =>$i
+        ':i' =>$i,
+        ':bolsched'=> $bolsched
 
     ]);
      
@@ -69,82 +71,86 @@ $selemployee = $_POST['sel_employee'];
          
         if($chktype == $timeIn){
          
-          $insert_timeIn = "CALL spInsertTimeIn(:empno,:worksched,:i,:chktime)";
+          $insert_timeIn = "CALL spInsertTimeIn(:empno,:worksched,:i,:chktime,:bolsched)";
           $insertInAm = $con->prepare($insert_timeIn);
           $insertInAm ->execute([
               ':empno' =>$empNo,
               ':worksched'=>$workId,
               ':i' => $i,
-              ':chktime'=> $chktime
+              ':chktime'=> $chktime,
+              ':bolsched'=> $bolsched,
           ]);
         }
           if($chktype == $brkout){
           
-          $insert_timeIn = "CALL spInsertTimeOutAM(:empno,:worksched,:i,:chktime)";
+          $insert_timeIn = "CALL spInsertTimeOutAM(:empno,:worksched,:i,:chktime,:bolsched)";
           $insertInAm = $con->prepare($insert_timeIn);
           $insertInAm ->execute([
                ':empno' =>$empNo,
                ':worksched'=>$workId,
               ':i' => $i,
-              ':chktime'=> $chktime
+              ':chktime'=> $chktime,
+              ':bolsched'=> $bolsched
           ]);
         }
           $timeInPm = "1";
           if($chktype == $timeInPm){
           
-          $insert_timeIn = "CALL spInsertTimeInPM(:empno,:worksched,:i,:chktime)";
+          $insert_timeIn = "CALL spInsertTimeInPM(:empno,:worksched,:i,:chktime,:bolsched)";
           $insertInAm = $con->prepare($insert_timeIn);
           $insertInAm ->execute([
                ':empno' =>$empNo,
                ':worksched' =>$workId,
               ':i' => $i,
-              ':chktime'=> $chktime
+              ':chktime'=> $chktime,
+              ':bolsched'=> $bolsched
           ]);
               
         }
            $timeOutPM = "i";
             if($chktype == $timeOutPM ){
           
-          $insert_timeIn = "CALL spInsertTimeOutPM(:empno,:worksched,:i,:chktime)";
+          $insert_timeIn = "CALL spInsertTimeOutPM(:empno,:worksched,:i,:chktime,:bolsched)";
           $insertInAm = $con->prepare($insert_timeIn);
           $insertInAm ->execute([
                ':empno' =>$empNo,
                ':worksched' =>$workId,
               ':i' => $i,
-              ':chktime'=> $chktime
+              ':chktime'=> $chktime,
+              ':bolsched'=> $bolsched
           ]);
               
        
       }
-      $otTimeIn = "o";
-      if($chktype == $otTimeIn ){
+//       $otTimeIn = "o";
+//       if($chktype == $otTimeIn ){
     
-    $insert_timeIn = "CALL spInsertOvertimeIn(:empno,:worksched,:i,:chktime)";
-    $insertInAm = $con->prepare($insert_timeIn);
-    $insertInAm ->execute([
-         ':empno' =>$empNo,
-         ':worksched' =>$workId,
-        ':i' => $i,
-        ':chktime'=> $chktime
-    ]);
+//     $insert_timeIn = "CALL spInsertOvertimeIn(:empno,:worksched,:i,:chktime)";
+//     $insertInAm = $con->prepare($insert_timeIn);
+//     $insertInAm ->execute([
+//          ':empno' =>$empNo,
+//          ':worksched' =>$workId,
+//         ':i' => $i,
+//         ':chktime'=> $chktime
+//     ]);
         
  
-}
-$otTimeOut = "U";
-if($chktype == $otTimeOut ){
+// }
+// $otTimeOut = "U";
+// if($chktype == $otTimeOut ){
 
-$insert_timeIn = "CALL spInsertOvertimeOut(:empno,:worksched,:i,:chktime)";
-$insertInAm = $con->prepare($insert_timeIn);
-$insertInAm ->execute([
-   ':empno' =>$empNo,
-   ':worksched' =>$workId,
-  ':i' => $i,
-  ':chktime'=> $chktime
-]);
+// $insert_timeIn = "CALL spInsertOvertimeOut(:empno,:worksched,:i,:chktime)";
+// $insertInAm = $con->prepare($insert_timeIn);
+// $insertInAm ->execute([
+//    ':empno' =>$empNo,
+//    ':worksched' =>$workId,
+//   ':i' => $i,
+//   ':chktime'=> $chktime
+// ]);
   
 
-}
-      $progress = '100%';
+// }
+      // $progress = '100%';
     }
     if($i == $dateto){
       break;

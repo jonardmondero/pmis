@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report3X3" language="javascript" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="792" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a6368358-2357-466b-9e30-4afac7745ddd">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="458"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT CONCAT(e.lastName,', ',e.firstName,', ',LEFT(e.middleName, 1),'.')  AS fullName,e.supervisor,d.inAM,d.outAM,d.inPM,d.outPM,d.otIn,d.otOut,DATE_FORMAT(d.Date,'%d')AS DAY,DATE_FORMAT(d.Date,'%M,%Y')AS month,
-TIME_FORMAT( ADDTIME(late,undertime),'%H:%i') AS late,
+TIME_FORMAT(ADDTIME(late,undertime),'%H:%i') AS late,
 (SELECT TIME_FORMAT(ADDTIME(SEC_TO_TIME(SUM(TIME_TO_SEC(late))),SEC_TO_TIME(SUM(TIME_TO_SEC(undertime)))),'%H:%i')FROM DAILYTIMERECORD)AS total
 FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP BY DATE;]]>
 	</queryString>
@@ -60,22 +60,22 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 	<pageHeader>
 		<band height="45">
 			<textField>
-				<reportElement x="55" y="20" width="157" height="18" uuid="5a6f8af1-567d-4314-8ec2-f0f936bfc06f"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
+				<reportElement x="59" y="23" width="157" height="18" uuid="5a6f8af1-567d-4314-8ec2-f0f936bfc06f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="317" y="20" width="157" height="18" uuid="84534639-ad36-4873-b19e-efa7ef59ef06"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
+				<reportElement x="322" y="23" width="157" height="18" uuid="84534639-ad36-4873-b19e-efa7ef59ef06"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="587" y="20" width="157" height="18" uuid="134b5281-8633-43a2-aa58-449fa9b1bac8"/>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
+				<reportElement x="585" y="23" width="157" height="18" uuid="134b5281-8633-43a2-aa58-449fa9b1bac8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
@@ -201,7 +201,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 					<textFieldExpression><![CDATA[$F{outPM}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="135" y="0" width="22" height="12" uuid="e6c48819-4be5-442c-b53b-6b498ae5bf40"/>
+					<reportElement x="136" y="0" width="22" height="12" uuid="e6c48819-4be5-442c-b53b-6b498ae5bf40"/>
 					<textElement textAlignment="Justified" verticalAlignment="Bottom">
 						<font fontName="Arial" size="8"/>
 						<paragraph lineSpacing="Fixed"/>
@@ -209,7 +209,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 					<textFieldExpression><![CDATA[$F{otIn}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="160" y="0" width="22" height="12" uuid="315e9447-89fa-4817-8ec5-4a19e51b844a"/>
+					<reportElement x="161" y="0" width="22" height="12" uuid="315e9447-89fa-4817-8ec5-4a19e51b844a"/>
 					<textElement textAlignment="Justified" verticalAlignment="Bottom">
 						<font fontName="Arial" size="8"/>
 						<paragraph lineSpacing="Fixed"/>
@@ -253,7 +253,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 					<textFieldExpression><![CDATA[$F{otIn}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="318" y="0" width="25" height="12" uuid="1cb2628f-80a6-424b-8703-701d1eaec27a"/>
+					<reportElement x="319" y="0" width="25" height="12" uuid="1cb2628f-80a6-424b-8703-701d1eaec27a"/>
 					<textElement verticalAlignment="Bottom">
 						<font fontName="Arial" size="8"/>
 						<paragraph lineSpacing="Fixed"/>

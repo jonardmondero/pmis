@@ -325,6 +325,7 @@ $("#tableemp tbody").on("click", ".edit_employee", function () {
         $('#estatus').val(result.employmentstatus);
         $('#supervisor').val(result.supervisor);
         $('#status').val(result.status);
+        $('#worksched').val(result.worksched);
         },
         error: function (xhr, b, c) {
      console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);

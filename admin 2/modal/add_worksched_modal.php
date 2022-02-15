@@ -40,7 +40,6 @@
                 <th>Break In</th>
                 <th>Check Out</th>
 
-
               </thead>
             <tbody id = "work_body">
               

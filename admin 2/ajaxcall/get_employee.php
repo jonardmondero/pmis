@@ -15,6 +15,7 @@ if(isset($_POST['id']))
     $employmentstatus   ='';
     $supervisor ='';
     $status ='';
+    $worksched ='';
 // $sql = "SELECT b.*, d.departmentDescription FROM bioinfo b INNER JOIN department d ON b.department  = d.deptId WHERE b.employeeNo = :id LIMIT 1";
 $sql="SELECT * FROM bioinfo where employeeNo = :id LIMIT 1";
 $exe_sql = $con->prepare($sql);
@@ -29,6 +30,7 @@ while($result = $exe_sql->fetch(PDO::FETCH_ASSOC)){
     $employmentstatus = $result['employmentStatus'];
     $supervisor = $result['supervisor'];
     $status = $result['status'];
+    $worksched = $result['schedule'];
 
    
 }
@@ -41,7 +43,8 @@ $data = array(
     'department'   =>   $department, 
     'employmentstatus'=>$employmentstatus, 
     'supervisor'   =>   $supervisor, 
-    'status'   =>       $status
+    'status'   =>       $status,
+    'worksched'   =>   $worksched
    );
    echo json_encode($data);
 }

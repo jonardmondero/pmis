@@ -9,13 +9,13 @@ $breakout = $_POST['BreakOut'];
 $breakin = $_POST['BreakIn'];
 $checkout = $_POST['CheckOut'];
 
-$insert_stmt = "INSERT INTO workscheduledetail set
-				workScheduleDetail = :workid,
-				Day 	= 	:day,
-				inAM	=	:checkin,
-				outAM	=	:breakout,
-				inPM	=	:breakin,
-				outPM	=	:checkout";
+$insert_stmt = "CALL spInsertScheduleDetail(
+				:workid,
+				:day,
+				:checkin,
+				:breakout,
+				:breakin,
+				:checkout)";
 	$prepare_stmt = $con->prepare($insert_stmt);
 	$prepare_stmt->execute([
 		':workid'	=>	$workid,

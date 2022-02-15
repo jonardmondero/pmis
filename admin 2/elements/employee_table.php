@@ -3,10 +3,10 @@
                 <h3 class="card-title">Department</h3>
               </div>
                 <div class="card-body">
-                    <div class = "row">
-                        <div class = "col-12">
+                    <div class = "row" style="margin-bottom:20px;height:30px;">
+                        <div class = "col-12 ">
                           
-                <select class="form-control " style="margin-bottom:20px" name="department" id = "deptId" >
+                <select class="form-control"  name="department" id = "deptId" >
                 <?php
              
                      $get_user_sql = "SELECT * FROM department WHERE status = 'Active'";

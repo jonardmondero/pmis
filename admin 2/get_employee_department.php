@@ -28,8 +28,7 @@ $getIndividualData->execute([
 
 
 $countNoFilter = "SELECT COUNT(employeeNo) as id from bioinfo 
-                where department = :dept AND employmentStatus = :status order by lastName 
-                LIMIT ".$requestData['start']." ,".$requestData['length']." ";
+                where department = :dept AND employmentStatus = :status ";
                 $getrecordstmt = $con->prepare($countNoFilter);
                 $getrecordstmt->execute([
                ':dept' =>$dept,
@@ -68,7 +67,7 @@ CONCAT(lastName,', ',firstName,', ',LEFT(middleName,1),'.') as fullName
       $countfilter.=" OR lastName LIKE '%".$requestData['search']['value']."%' ";
       $countfilter.=" OR CONCAT(firstName,' ',middleName,' ',lastName) LIKE '%" . $requestData['search']['value'] . "%' ";
       $countfilter.=" OR biometricId LIKE '%".$requestData['search']['value']."%') ";
-      $countfilter.=" order by lastName LIMIT ".$requestData['start']." ,".$requestData['length']." ";
+      $countfilter.=" LIMIT ".$requestData['start']." ,".$requestData['length']." ";
 
         $getrecordstmt = $con->prepare($countfilter);
         $getrecordstmt->execute([

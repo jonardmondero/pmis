@@ -28,44 +28,44 @@ if(isset($_POST['employeeno'])) {
         $result3['latefinal'] >= '08:00' ? $lateStyle = 'style="color:green;font-weight:bold "' : null; 
         $result3['undertimefinal'] >= '08:00' ? $undertimeStyle = 'style="color:green;font-weight:bold "' :null; 
 
-            echo '<tr style="height:10px;font-family:Lucida Console;font-size:13px" class = "tr"> ';
-            echo '<td bgcolor:red >';
+            echo '<tr  class = "tr"> ';
+            echo '<td class = "border border-dark col-1" >';
             echo $result3['Date'];
             echo"</td>";
 
-            echo '<td '.$daystyle.'>';
+            echo '<td '.$daystyle.' class = "border border-dark col-1">';
             echo $result3['Day'];
             echo"</td>";
 
-            echo '<td contenteditable="true"> ';
+            echo '<td contenteditable="true" class = "border border-dark"> ';
             echo $result3['inAM'];
             echo"</td>";
 
-            echo '<td contenteditable="true">';
+            echo '<td contenteditable="true" class = "border border-dark">';
             echo $result3['outAM'];
             echo"</td>";
 
-            echo '<td contenteditable="true">';
+            echo '<td contenteditable="true" class = "border border-dark">';
             echo $result3['inPM'];
             echo"</td>";
 
-            echo '<td contenteditable="true">';
+            echo '<td contenteditable="true" class = "border border-dark">';
             echo $result3['outPM'];
             echo"</td>";
 
-            echo '<td contenteditable="true">';
+            echo '<td contenteditable="true" class = "border border-dark">';
             echo $result3['otIn'];
             echo"</td>";
 
-            echo '<td contenteditable="true">';
+            echo '<td contenteditable="true" class = "border border-dark">';
             echo $result3['otOut'];
             echo"</td>";
 
-            echo '<td '.$lateStyle.' contenteditable="true" id= finallate>';
+            echo '<td '.$lateStyle.' contenteditable="true" class = "border border-dark" id= finallate>';
             echo  $result3['latefinal'];
             echo"</td>";
 
-            echo '<td '.$undertimeStyle.'contenteditable="true" id= undertime>';
+            echo '<td '.$undertimeStyle.'contenteditable="true" class = "border border-dark" id= undertime>';
             echo $result3['undertimefinal'];
             echo"</td>";
             

@@ -32,7 +32,7 @@ $otOut='';
 
   <!-- Navbar -->
  <?php 
- include('dtrdesign/navbar.php');
+//  include('dtrdesign/navbar.php');
  include('dtrdesign/sidebar.php');
 
 
@@ -57,11 +57,11 @@ $otOut='';
         <div class="container-fluid">
             
             <div class="row ">
-          <div class="col-12" >
+          <!-- <div class="col-12" >
           <div class ="justify-content-center">
             <h1 class="m-0 text-dark ">Daily Time Record</h1><br>
               </div>
-          </div><!-- /.col -->
+          </div>/.col -->
             
           <!-- <div class="col-md-6">
             <ol class="breadcrumb float-sm-right">
@@ -163,20 +163,22 @@ $otOut='';
   });
 
      function getEmployees(dept,status){
-      var dataTable = $('#employees').DataTable({
-page: true,
+var dataTable = $('#employees').DataTable({
+
+paging: true,
 destroy: true,
 stateSave: true,
 processing: true,
 serverSide: true,
 scrollX: false,
-deferRender: true,
-scroller: true,
 ajax: {
   dataType:"JSON",
   url: "get_employee_department.php",
-  type: "post",
-  data:{department:dept,empstatus:status},
+  type: "POST",
+  data:function (d){
+    d.department = dept,
+    d.empstatus = status
+  },
   error: function(xhr, b, c) {
     console.log(
       "xhr=" +
@@ -260,7 +262,7 @@ if (type == 'success') {
     delay: 2000
   });
 
-} else{
+} else {
 
   $.notify({
     message: message

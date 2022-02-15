@@ -25,7 +25,7 @@ $PHPJasperXML->sql ="
 SELECT CONCAT(e.lastName,', ',e.firstName,', ',LEFT(e.middleName, 1),'.')  AS fullName,
 d.inAM,d.outAM,d.inPM,d.outPM,d.otIn,d.otOut,e.supervisor,DATE_FORMAT(d.Date,'%d')as day,
 DATE_FORMAT(d.Date,'%M,%Y')AS month,
-TIME_FORMAT(d.late,'%H:%i') as late,
+TIME_FORMAT(ADDTIME(late,undertime),'%H:%i') as late,
 TIME_FORMAT(d.undertime,'%H:%i') as undertime,
 (SELECT TIME_FORMAT(ADDTIME(SEC_TO_TIME(SUM(TIME_TO_SEC(late))),SEC_TO_TIME(SUM(TIME_TO_SEC(undertime)))),'%H:%i')  FROM bioinfo e 
 INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo WHERE e.employeeNo = ".$empno." 
