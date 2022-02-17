@@ -243,10 +243,10 @@ $.ajax({
 // console.log(result.data1);
 }
 else{
-  if(bio !=''){
-    $('#checkbioid').html('This Biometric ID is available.');
-    $('#save').prop('disabled', false);
-}
+//   if(bio !=''){
+//     $('#checkbioid').html('This Biometric ID is available.');
+//     $('#save').prop('disabled', false);
+// }
 }
   },
   error: function (xhr, b, c) {

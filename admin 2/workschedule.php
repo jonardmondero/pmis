@@ -59,7 +59,7 @@ $workid='';
               </div>
               <div class = "card-body">
               <form role="form" method="post" name="form" action="<?php htmlspecialchars("PHP_SELF");?>">
-               <table class = "table table-hover" id = "tableemp">
+               <table class = "table table-hover" id = "tablesched">
                	<thead>
                		<th>Work Schedule Code</th>
                		<th>Work Schedule Description</th>
@@ -99,7 +99,10 @@ $workid='';
            </div>
            </div>
     </section>
-    <?php include('workschedule_modal.php')?>
+    <?php include('workschedule_modal.php');
+        include('modal/edit_worksched_modal.php');
+     
+    ?>
   
     <!-- /.content -->
   </div>
@@ -171,7 +174,7 @@ $workid='';
 
 <script>
 $(document).ready(function(){
-  $('#tableemp').DataTable({
+  $('#tablesched').DataTable({
       'paging'    : true,
       'lengthChange': true,
       'searching'   : true,
@@ -277,6 +280,58 @@ var workid = $('#worksched-form').serializeArray();
     })
    
  })
+
+ $('#tablesched tbody').on( 'click', '#edit', function(){
+  event.preventDefault();
+
+
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+
+ $('#editworksched').modal('show');
+ var currow=  $(this).closest('tr');
+    var col1 = currow.find('td:eq(0)').text();
+    var table = document.getElementById("editsched");
+ var row = table.insertRow(1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
+for(i = 0; i < days.length; i ++){
+  
+
+
+      $.ajax({
+        url:'ajaxcall/getworkschedule.php',
+        type:"POST",
+        data:{workschedid:col1,
+        Day:JSON.stringify(days[i])},
+        success:function (response){
+          console.log(JSON.stringify(days[i]));
+          var result = jQuery.parseJSON(response);
+          cell1.innerHTML = days[i];
+          cell2.innerHTML = result.inAM;
+          cell3.innerHTML = result.outAM;
+          cell2.innerHTML = result.inPM;
+          cell2.innerHTML = result.outPM;
+        },
+        error:function (xhr, b, c) {
+     console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+
+        
+         
+},
+      });
+}
+ });
  function reset_form_input(form_id){
       $( '#'+form_id ).each(function(){
           this.reset();

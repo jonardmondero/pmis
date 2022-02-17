@@ -41,7 +41,7 @@
                 <select class ="form-control col-9" name = "department" id ="department">
                  <?php
                      include('../config/config.php');
-                     $get_user_sql = "SELECT * FROM department";
+                     $get_user_sql = "SELECT * FROM department WHERE status = 'Active'";
                      $user_data = $con->prepare($get_user_sql);  
                      $user_data->execute();
                         while ($result2 = $user_data->fetch(PDO::FETCH_ASSOC)) {
