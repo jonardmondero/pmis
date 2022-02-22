@@ -24,6 +24,7 @@ $checkLeave_prep->execute([
 //decide if the insert will be executed if there is no record.
 
     if($checkLeave_prep->rowCount() == 0){
+        
         $save_leave = "CALL spInsertLeave(:empno,:leavetype,:from,:to,:duration)";
 $prep_leave = $con->prepare($save_leave );
 $prep_leave->execute([

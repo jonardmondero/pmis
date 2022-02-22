@@ -168,6 +168,7 @@ $workid='';
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.js"></script>
+<script src="../plugins/sweetalerts/sweetalert.min.js"></script>
 <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
 <script src="../plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
 <script src="../plugins/tagsinput/tagsinput.js"></script>
@@ -176,6 +177,7 @@ $workid='';
 $(document).ready(function(){
   $('#tablesched').DataTable({
       'paging'    : true,
+       stateSave : "true",
       'lengthChange': true,
       'searching'   : true,
       'ordering'    : true,
@@ -296,42 +298,160 @@ var workid = $('#worksched-form').serializeArray();
   ];
 
  $('#editworksched').modal('show');
+ 
  var currow=  $(this).closest('tr');
     var col1 = currow.find('td:eq(0)').text();
     var table = document.getElementById("editsched");
- var row = table.insertRow(1);
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
-    var cell5 = row.insertCell(4);
-for(i = 0; i < days.length; i ++){
-  
 
-
+var tableHeaderRowCount = 1;
+var rowCount = table.rows.length;
+for (var i = tableHeaderRowCount; i < rowCount; i++) {
+    table.deleteRow(tableHeaderRowCount);
+}
+ 
+days.forEach(function(item){
       $.ajax({
         url:'ajaxcall/getworkschedule.php',
         type:"POST",
         data:{workschedid:col1,
-        Day:JSON.stringify(days[i])},
+        Day:item},
         success:function (response){
-          console.log(JSON.stringify(days[i]));
           var result = jQuery.parseJSON(response);
-          cell1.innerHTML = days[i];
-          cell2.innerHTML = result.inAM;
-          cell3.innerHTML = result.outAM;
-          cell2.innerHTML = result.inPM;
-          cell2.innerHTML = result.outPM;
+
+          $('#editworkcode').val(result.workschedid);
+          $('#editworkdesc').val(result.workdesc);
+          $('#editremarks').val(result.remarks);
+          $('#editworkdesc').val(result.workdesc);
+
+
+          var row = table.insertRow(1);
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+          var cell3 = row.insertCell(2);
+          var cell4 = row.insertCell(3);
+          var cell5 = row.insertCell(4);
+
+          cell1.innerHTML = item;
+           cell2.innerHTML = result.inAM;
+           cell3.innerHTML = result.outAM;
+           cell4.innerHTML = result.inPM;
+           cell5.innerHTML = result.outPM;
+      
+          $('td').attr('contenteditable', true);
+          
         },
+
         error:function (xhr, b, c) {
      console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
 
         
          
 },
+})
       });
-}
+
  });
+
+ $('#update').click(function(){
+  event.preventDefault();
+  var worksched = $('#editworkcode').val();
+  var workDesc = $('#editworkdesc').val();
+  var remarks = $('#editremarks').val();
+  var status =  $('#editworkstatus').val();
+ 
+  $.ajax({
+    url:'ajaxcall/updateWorkSchedule.php',
+    type:'POST',
+    dataType:"JSON",
+    data:{
+      worksched:worksched,
+      workdesc:workDesc,
+      remarks:remarks,
+      status:status
+    },
+    success: function(){
+      
+     
+
+    },
+    error: function (xhr, b, c) {
+     console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+
+
+  }
+  })
+
+
+
+  $('#editsched tr').each(function(row, tr){
+
+
+     var col1 = $(tr).find('td:eq(0)').text();
+     var col2 =$(tr).find('td:eq(1)').text();
+     var col3 =$(tr).find('td:eq(2)').text();
+     var col4 =$(tr).find('td:eq(3)').text();
+     var col5 = $(tr).find('td:eq(4)').text();
+     console.log(col1,col2,col3,col4,col5);
+    console.log(worksched);
+    $.ajax({
+      url:'ajaxcall/workScheduleUpdate.php',
+      type:'POST',
+    
+      data:{
+        worksched: worksched,
+        day:  col1,
+        timeIn: col2,
+        breakOut: col3,
+        breakIn:  col4,
+        timeOut:  col5
+      },success:function(){
+        notification("Congratulations", "","Refresh","success","success");
+      
+      },
+      error: function (xhr, b, c) {
+     console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+
+
+  }
+
+    })
+
+  })
+  // window.location.reload();
+});
+
+function notification(title, message,text,value,status) {
+      swal(title, message, status, {
+          buttons: {
+            catch: {
+              text: text,
+              value: value,
+            }
+
+          },
+        })
+        .then((value) => {
+          switch (value) {
+
+            case "success":
+              window.location.reload(true);
+              break;
+              case "error":
+
+              break;
+
+          }
+        });
+
+    }
+
+ $(document).ready(function(){
+ $('#editsched tbody').on( 'click', '#edittime', function(){
+
+  event.preventDefault();
+
+ });
+});
  function reset_form_input(form_id){
       $( '#'+form_id ).each(function(){
           this.reset();

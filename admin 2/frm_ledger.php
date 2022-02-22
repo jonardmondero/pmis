@@ -110,7 +110,7 @@ $otOut='';
        <input type="text" class="form-control col-3 " data-provide="datepicker"  autocomplete="off" name="dateto" id="dteto" value = "<?php echo $dteTo;?>" >
                        
                        
-                       <button type="button"  class="btn btn-primary" style = "margin-left:50px;"data-toggle = "modal" data-target = "#printreport"   value="Print">PRINT</button>
+                    
                         
                      </div>
                    
@@ -254,19 +254,56 @@ $otOut='';
   $(document).ready(function(){
      var deptId = $('#deptId').val();
      var empstatus = $('#emp_status').val();
-  $('#body').load("get_employee_department.php",{
-    dept:deptId,
-    empstatus:empstatus
-
-  })
+ getEmployees(deptId,empstatus);
      
+
+     
+  function getEmployees(dept,status){
+var dataTable = $('#employees').DataTable({
+
+paging: true,
+destroy: true,
+stateSave: true,
+processing: true,
+serverSide: true,
+scrollX: false,
+ajax: {
+  dataType:"JSON",
+  url: "get_employee_department.php",
+  type: "POST",
+  data:function (d){
+    d.department = dept,
+    d.empstatus = status
+  },
+  error: function(xhr, b, c) {
+    console.log(
+      "xhr=" +
+      xhr.responseText +
+      " b=" +
+      b.responseText +
+      " c=" +
+      c.responseText
+    );
+  }
+}
+});
+
+
+     }
  $('#deptId').change(function(){
   var deptId = $('#deptId').val();
   var empstatus = $('#emp_status').val();
-  $('#body').load("get_employee_department.php",{
-    dept:deptId,
-    empstatus:empstatus
-  })
+  // $('#body').load("get_employee_department.php",{
+  //   dept:deptId,
+  //   empstatus:empstatus
+  // })
+  getEmployees(deptId,empstatus)
+ });
+
+ $('#emp_status').change(function(){
+  var deptId = $('#deptId').val();
+  var empstatus = $('#emp_status').val();
+  getEmployees(deptId,empstatus);
 
  });
  });
@@ -321,7 +358,6 @@ var tbody = table.getElementsByTagName("tbody")[0];
        fullname.push(cells[1].innerHTML); 
         var empnum = empno.toString();
         var fullname2= fullname.toString();
-        alert(empnum);
         $('#hiddenempno').val(empnum);
         $('#full-name').html(fullname2);
         // $('#empinfo').html(fullname2);

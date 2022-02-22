@@ -25,7 +25,6 @@ $prep_leave_type->execute();
         <?php 
  include('dtrdesign/navbar.php');
  include('dtrdesign/sidebar.php');
- include('save_travel.php');
 
   
 
@@ -38,16 +37,18 @@ $prep_leave_type->execute();
 
             <section class="content">
                 <div class="container-fluid">
-                    <div class="col-12">
-                        <div class=" row ">
+                <div class=" row ">
                             <div class=" col-12">
                                 <div class="justify-content-center">
                                     <h1 class="m-0 text-dark ">Application for Leave</h1><br>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-4 no-gutters" style="resize:both;overflow:auto;">
+                        <div class=" row ">
+                    <div class="col-4">
+                        
+                     
+                            <div class="col-12 " style="resize:both;overflow:auto;">
                                 <div class="card card-info">
                                     <div class="card-header">
                                         <h3 class="card-title">Search Employee</h3>
@@ -57,7 +58,8 @@ $prep_leave_type->execute();
 
 
                                 </div>
-                                <!-- /.content -->
+                        </div>
+                             
                             </div>
                             <div class="col-8">
                                 <form method="POST" id="leaveform" action=<?php htmlspecialchars("PHP_SELF");?>>
@@ -152,14 +154,7 @@ $prep_leave_type->execute();
 
                                                     </div>
                                                     <!--
-                                            <div class="row">
-                                              <div class ="col-6 center-block" style = "margin:auto; background-color:red;">
-                                            <div class="form-group p-2 " style = "margin:auto;margin-right:100px;margin-left:100px;">
-                                                <label>Add Leave:</label>
-                                                
-                                                        </div>
-                                            </div>
-                                            </div>
+                                          
 -->
                                                     <div class="row" style="margin:auto;">
 
@@ -198,6 +193,8 @@ $prep_leave_type->execute();
                                         </div>
                                     </div>
                                 </form>
+                                              </div>
+                                                                    </div>
                                 <!-- /.content-wrapper -->
             </section>
         </div>
@@ -374,8 +371,7 @@ $prep_leave_type->execute();
                     },
                     dataType: 'json',
                     success: function (message) {
-                        // var message = jQuery.parseJSON(response);
-                        // post_notify(message.responseText,'success');
+                        console.log(message.responseText);
                     },
                     error: function (xhr, b, c) {
                         // console.log("xhr=" + xhr.responseText + " b=" + b.responseText +

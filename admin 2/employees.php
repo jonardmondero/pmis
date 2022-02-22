@@ -297,6 +297,10 @@ $('#sel_worksched').change(function(){
  sel_worksched();
 })
 
+
+
+
+
 $("#tableemp tbody").on("click", ".edit_employee", function () {
   //SHOWS THE ADD EMPLOYEE MODAL AND DISPLAY THE EMPLOYEE'S INFORMATION
     event.preventDefault();

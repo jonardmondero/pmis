@@ -48,41 +48,21 @@ $otOut='';
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     
-    <!-- /.content-header -->
-
-    <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
             
-            <div class="row ">
-          <!-- <div class="col-12" >
-          <div class ="justify-content-center">
-            <h1 class="m-0 text-dark ">Daily Time Record</h1><br>
-              </div>
-          </div>/.col -->
-            
-          <!-- <div class="col-md-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-             
-            </ol>
-          </div> -->
-          <!-- /.col -->
-        </div><!-- /.row -->
             <div class="row">
             <div class="col-4 no-gutters" style = "resize:both;overflow:auto;">
             <?php include('elements/employee_table.php');?>
                 </div>
           
     <?php include('elements/dtr_table.php');?>
-    <!-- /.content -->
+  
   </div>
   </div>
   <?php include('modal/edit_dtr_modal.php');
       include ('print_modal.php');?>
-  <!-- /.content-wrapper -->
   </section>
   </div>
 </div>

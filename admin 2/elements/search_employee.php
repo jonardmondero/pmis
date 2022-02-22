@@ -12,7 +12,7 @@
                	<thead>
                		<th>Employee No</th>
                		<th>Full Name</th>
-                       <th>Add</th>
+                   <th>Option</th>
                	</thead>
                <tbody id = "tbody">
                	</tbody>
