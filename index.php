@@ -6,7 +6,7 @@ include ('php_scripts/log_in.php');
 <head>
   <meta  name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>H.R. Information System</title>
+  <title>H.R. DTR System</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 

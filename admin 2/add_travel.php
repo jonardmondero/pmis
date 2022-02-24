@@ -35,9 +35,9 @@ $curdate = date("m/d/Y");
         <div class="container-fluid" >
             
             <div class="row ">
-          <div class="col-12" >
+          <div class="col-12" style = "margin-bottom:20;" >
           <div class ="justify-content-center" >
-            <h1 class="m-0 text-dark ">Add Travel Order </h1><br>
+            <h1 class="m-0 text-dark ">Add Travel Order </h1>
               </div>
           </div>
         </div>
@@ -57,36 +57,37 @@ $curdate = date("m/d/Y");
    <div class ="col-8">
   <form method = "POST" id = "travelform" action = <?php htmlspecialchars("PHP_SELF");?>>
   <div class="col-12 no-gutters"  >
-            <div class="card card-warning" > 
+            <div class="card card-success" > 
             <div class="card-header">
                 <h3 class="card-title">Details</h3>
               </div>
-              <div class="row">
-              <div class = col-12 style = "margin-top:20px;">
-
-<div class="input-group date">
-        <label style="padding-right:10px;padding-left: 10px">From:  </label> 
-          <div  style = "padding-right:10px" class="input-group-addon">
+              <div class="row" style = "margin-top:20px;">
+     
+<div class = "col-4" style = "margin:auto">
+<div class="input-group date ">
+        <label >From:  </label> 
+          <div class="input-group-addon">
                  <i class="fa fa-calendar"></i>
           </div>
  
-<input  style="margin-right:10px;"type="text" data-provide="datepicker"class="form-control col-4 " style="font-size:13px" autocomplete="off" name="datefrom" id="dtefrom" val = "<?php echo $curdate; ?> " >
-               
-    
-    <label style="padding-right:10px">To:</label>
-         <div style = "padding-right:10px" class="input-group-addon">
+<input type="text" data-provide="datepicker"class="form-control "  autocomplete="off" name="datefrom" id="dtefrom" val = "<?php echo $curdate; ?> " >
+    </div>  
+          </div>
+                  <div class = "col-4" style = "margin:auto;">
+    <div class="input-group date">
+    <label>To:</label>
+         <div  class="input-group-addon">
               <i class="fa fa-calendar"></i>
          </div>
-<input type="text" class="form-control col-4 " data-provide="datepicker"  autocomplete="off" name="dateto" id="dteto" val = "<?php echo $curdate; ?> " >
+<input type="text" class="form-control" data-provide="datepicker"  autocomplete="off" name="dateto" id="dteto" val = "<?php echo $curdate; ?> " >
     
-    
-    </div>
-     
-  </div>
+                  
+                  </div>
+                  </div>
           </div> 
           <div class = "row col-12" style = "padding-left:10px;padding-top:20px;">
           
-        <div class = "form-group col-4">
+        <div class = "form-group col-4" margin:auto;>
         <label style="padding-right:10px;padding-left: 10px">Duration  </label> 
         <select class = "form-control" name = "duration" id = "duration">
         <option val = "0"> Whole Day</option>
@@ -125,8 +126,9 @@ $curdate = date("m/d/Y");
   </form>
                 </div>
   <!-- /.content-wrapper -->
+        </div>
   </section>
-  </div>
+ 
 </div>
   <footer class="main-footer">
     <strong>Copyright &copy; 2014-2018 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
@@ -266,7 +268,14 @@ data: {
   type:type,
   details:details
 },
-dataType: 'json',
+success:function(){
+
+  post_notify("Record Inserted", "success");
+  reset_form_input('travelform');
+$("#travellist td").parent().remove();
+
+},
+
 error: function (xhr, b, c) {
 console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
 }
@@ -274,9 +283,7 @@ console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.respo
 
 });
 //reset all the data inside the table;
-reset_form_input('travelform');
-$("#travellist td").parent().remove();
-post_notify("Record Inserted", "success");
+
 });
 //FORMAT THE DATE
 function formatDate(date) {

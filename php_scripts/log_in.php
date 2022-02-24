@@ -30,7 +30,7 @@ $user_data ->execute([
         }else{
             if ($result['userType']==$userType)
             {
-             header('location:admin 2');
+             header('location: admin 2/dailytimerecord.php');
             }
         }
         }
