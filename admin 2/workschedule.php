@@ -308,7 +308,21 @@ var rowCount = table.rows.length;
 for (var i = tableHeaderRowCount; i < rowCount; i++) {
     table.deleteRow(tableHeaderRowCount);
 }
- 
+ $.ajax({
+        url:'ajaxcall/getworkscheduleinfo.php',
+        type:"POST",
+        data:{workschedid:col1},
+        success:function (response){
+          var result = jQuery.parseJSON(response);
+        $('#editworkcode').val(result.workschedid);
+        $('#editworkdesc').val(result.workdesc);
+        $('#editremarks').val(result.remarks);
+        $('#editworkdesc').val(result.workdesc);
+        },
+      error:function (xhr, b, c) {
+     console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+      }
+ });
 days.forEach(function(item){
       $.ajax({
         url:'ajaxcall/getworkschedule.php',
@@ -317,12 +331,6 @@ days.forEach(function(item){
         Day:item},
         success:function (response){
           var result = jQuery.parseJSON(response);
-
-          $('#editworkcode').val(result.workschedid);
-          $('#editworkdesc').val(result.workdesc);
-          $('#editremarks').val(result.remarks);
-          $('#editworkdesc').val(result.workdesc);
-
 
           var row = table.insertRow(1);
           var cell1 = row.insertCell(0);

@@ -1,7 +1,5 @@
 <?php
-//include('update_user.php');
-// include ("../php_scripts/showdtr.php");
-// include('./plugins/TCPDF/User/printdtr.php');
+
 include ('../config/config.php');
 $hiddenempno =$dteFrom=$dteTo='';
 $timeIn ='';
@@ -10,15 +8,9 @@ $timeinPm ='';
 $timeoutPm='';
 $otIn='';
 $otOut='';
-// $dteFrom ='';
-// $dteTo='';
+
         include ('dtrdesign/header.php');
-                  // if(isset()){
-                  //     // function post(){
-                  //     $hiddenempno = $_POST['hiddenempno'];
-                  //     $dteFrom = $_POST['datefrom'];
-                  //     $dteTo = $_POST['dateto'];
-                  //   }
+          
 ?>
 
 
@@ -30,23 +22,12 @@ $otOut='';
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
-  <!-- Navbar -->
  <?php 
-//  include('dtrdesign/navbar.php');
  include('dtrdesign/sidebar.php');
 
 
    ?>
-  <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
-    <!-- Brand Logo -->
-
-
-    <!-- Sidebar -->
-    
-
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     
     <section class="content">

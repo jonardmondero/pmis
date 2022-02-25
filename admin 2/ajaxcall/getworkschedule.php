@@ -12,17 +12,14 @@ if(isset($_POST['workschedid'])){
     $outPM = '';
 
 
-$sql = "SELECT * FROM workschedule w inner join workscheduledetail d on w.workScheduleId = d.workScheduleDetail where d.workScheduleDetail =:workid AND d.Day =:days LIMIT 1";
+$sql = "CALL spGetWorkSchedule(:workid,:days)";
 $prepare_stmt = $con->prepare($sql);
 $prepare_stmt->execute([
     ':workid' => $_POST['workschedid'],
     ':days' => $_POST['Day']
 ]);
 while ($result = $prepare_stmt->fetch(PDO::FETCH_ASSOC)) {
-    $workschedid = $result['workScheduleId'];
-    $workscheddescp =$result['workScheduleDescription'];
-    $remarks = $result['remarks'];
-    $status = $result['status'];
+  
     $inAM = $result['inAM'];
     $outAM = $result['outAM'];
     $inPM = $result['inPM'];
@@ -31,10 +28,6 @@ while ($result = $prepare_stmt->fetch(PDO::FETCH_ASSOC)) {
 }
 
 $data = array(
-    'workschedid'=>$workschedid,
-    'workdesc'  =>$workscheddescp,
-    'remarks'   =>  $remarks,
-    'status'    =>  $status,
     'inAM'  => $inAM,
     'outAM' => $outAM,
     'inPM' => $inPM,

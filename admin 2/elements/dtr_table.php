@@ -1,4 +1,4 @@
-<div class="col-8" style = "resize:both;overflow:auto;" >
+<div class="col-8" style = "resize:both;overflow:auto;margin-top:10px" >
           <div class="card card-warning">
                <div class="card-header">
                  <div class ="row" style ="margin:auto;">
@@ -41,8 +41,8 @@
                        <div class="row col-12">
                        
                         <div  style="overflow-y:auto;height:auto;display: inline-block;margin:auto;">
-                            <table id="dtr"  style = " border: 1px solid black;" class ="table-bordered table-responsive table-hover  "style ="position: relative;">
-                                <thead class = "table " >
+                            <table id="dtr"  style = " border: 1px solid black;white-space:nowrap;" class ="table-bordered table-responsive table-hover ">
+                                <thead class = "table" style = "">
                                    
                                         <th class = "border border-dark">Date </th>
                                         <th class = "border border-dark">Day</th>
