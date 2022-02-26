@@ -111,7 +111,7 @@ $otOut='';
 <!-- SELECT 2 PLUGINS -->
 <script src="../plugins/select2/select2.full.min.js"></script>
     <script language="javascript">
-
+    var date = '';
   
   $(document).ready(function(){
    $("#deptId").select2();
@@ -238,37 +238,109 @@ if (type == 'success') {
 $('#dtr tbody').on('keyup','.tr',function(){
   //UPDATE THE DTR WHEN THE USER CHANGES THE DATA.
   event.preventDefault();
-   
-       var id = $(this).data('id');
-        var empno = $('#hiddenempno').val();
  
      var currow=  $(this).closest('tr');
      var col1 = currow.find('td:eq(0)').text();
-     var col3 = currow.find('td:eq(2)').text();
-     var col4 = currow.find('td:eq(3)').text();
-     var col5 = currow.find('td:eq(4)').text();
-     var col6 = currow.find('td:eq(5)').text();
-     var col7 = currow.find('td:eq(6)').text();
-     var col8 = currow.find('td:eq(7)').text();
-     var col9 = currow.find('td:eq(8)').text();
-     var col10 = currow.find('td:eq(9)').text();
-     var datefr = $('#dtefrom').val();
-     var dateto = $('#dteto').val();
-      // console.log(col1,col2,col3);
-     $.ajax({
+     date = col1;
+    
+})
+
+function updateInAm(value){
+
+  const field = 'inAM';
+  const empno = $('#hiddenempno').val();
+  
+  updateDTR(empno,date,field,value);
+
+};
+
+function updateInAm(value){
+
+const field = 'inAM';
+const empno = $('#hiddenempno').val();
+
+updateDTR(empno,date,field,value);
+
+};
+
+function updateOutAm(value){
+
+const field = 'outAM';
+const empno = $('#hiddenempno').val();
+
+updateDTR(empno,date,field,value);
+
+};
+
+function updateInPm(value){
+
+const field = 'inPM';
+const empno = $('#hiddenempno').val();
+
+updateDTR(empno,date,field,value);
+
+};
+
+function updateOutPm(value){
+
+const field = 'outPM';
+const empno = $('#hiddenempno').val();
+
+updateDTR(empno,date,field,value);
+
+};
+
+function updateOtIn(value){
+
+const field = 'otIn';
+const empno = $('#hiddenempno').val();
+
+updateDTR(empno,date,field,value);
+
+};
+
+function updateOtOut(value){
+
+const field = 'otOut';
+const empno = $('#hiddenempno').val();
+
+updateDTR(empno,date,field,value);
+
+};
+
+
+function updateLate(value){
+
+const field = 'late';
+const empno = $('#hiddenempno').val();
+
+updateLateUT(empno,date,field,value);
+
+};
+
+
+function updateUndertime(value){
+
+const field = 'undertime';
+const empno = $('#hiddenempno').val();
+
+updateLateUT(empno,date,field,value);
+
+};
+
+
+
+function updateDTR(empno,date,field,value){
+
+  $.ajax({
       url:'ajaxcall/update_dtr.php',
       type:'POST',
-      data:{idpost:id,
+      data:{
             empno:empno,
-            date:col1,
-            checkin:col3,
-            breakout:col4,
-            breakin:col5,
-            checkout:col6,
-            overtimein:col7,
-            overtimeout:col8,
-            late:col9,
-            undertime:col10
+            dateofupdate:date,
+            field:field,
+            value:value
+         
       },
       dataType:'json',
       // success:post_notify('Successfully saved', 'success'),
@@ -278,8 +350,30 @@ $('#dtr tbody').on('keyup','.tr',function(){
 
      })
 
-})
- 
+}
+
+function updateLateUT(empno,date,field,value){
+
+$.ajax({
+    url:'ajaxcall/updateLateUT.php',
+    type:'POST',
+    data:{
+          empno:empno,
+          dateofupdate:date,
+          field:field,
+          value:value
+       
+    },
+    dataType:'json',
+    // success:post_notify('Successfully saved', 'success'),
+    error: function (xhr, b, c) {
+   console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+     }
+
+   })
+
+}
+
     $(document).ready(function(){
     $('#dtr tbody').on( 'click', '.addlogs', function(){
     event.preventDefault();
@@ -306,6 +400,8 @@ $('#dtr tbody').on('keyup','.tr',function(){
 
    })
    });
+ 
+
  
      
      });

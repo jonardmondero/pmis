@@ -25,8 +25,7 @@ if(isset($_POST['empno'])){
 	// $late = $_POST['late'];
 	// $late = $_POST['late'];
 	// $undertime = $_POST['undertime'];
-	// $late == '' ? $late = '00:00:00' : $late = $_POST['late'];
-	// $undertime == '' ? $undertime = '00:00:00' : $undertime = $_POST['undertime'];
+	$value == '' ? $value = '00:00:00' : $value = $_POST['value'];
 	
 // $updatequery= "CALL spUpdateDtr(:empno,:date,:field,:value)";
 	// $updatequery = "UPDATE dailytimerecord SET 

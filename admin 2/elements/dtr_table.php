@@ -50,10 +50,10 @@
                                         <th class = "border border-dark">Break Out</th>
                                         <th class = "border border-dark">Break In</th>
                                         <th class = "border border-dark">Check Out</th>
-                                        <th class = "border border-dark">Overtime In</th>
-                                        <th class = "border border-dark">Overtime Out</th>
+                                        <th class = "border border-dark">OT In</th>
+                                        <th class = "border border-dark">OT Out</th>
                                         <th class = "border border-dark">Late</th>
-                                        <th class = "border border-dark">Undertime</th>
+                                        <th class = "border border-dark">UT</th>
                                         <th class = "border border-dark">Options</th>
                                        
                                 </thead>

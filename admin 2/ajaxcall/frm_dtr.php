@@ -23,10 +23,10 @@ if(isset($_POST['employeeno'])) {
         $lateStyle;
         $undertimeStyle;
         $result3['Day'] =='Saturday' ||     $result3['Day'] =='Sunday' ?  $daystyle = 'style="color:red;"' :  $daystyle = 'style="color:black;"';
-        $result3['latefinal'] != '00:00' ? $lateStyle = 'style="color:red; "' : $lateStyle = 'style="color:black; "'; 
-        $result3['undertimefinal'] != '00:00' ? $undertimeStyle = 'style="color:red; "' : $undertimeStyle = 'style="color:black; "';
-        $result3['latefinal'] >= '08:00' ? $lateStyle = 'style="color:green;font-weight:bold "' : null; 
-        $result3['undertimefinal'] >= '08:00' ? $undertimeStyle = 'style="color:green;font-weight:bold "' :null; 
+        $result3['latefinal'] != '00:00' ? $lateStyle = 'color:red; ' : $lateStyle = 'color:black; '; 
+        $result3['undertimefinal'] != '00:00' ? $undertimeStyle = 'color:red; ' : $undertimeStyle = 'color:black;';
+        $result3['latefinal'] >= '08:00' ? $lateStyle = 'color:green;font-weight:bold ' : null; 
+        $result3['undertimefinal'] >= '08:00' ? $undertimeStyle = 'color:green;font-weight:bold ' :null; 
 
             echo '<tr  class = "tr"> ';
             echo '<td class = "border border-dark col-1" >';
@@ -37,39 +37,39 @@ if(isset($_POST['employeeno'])) {
             echo $result3['Day'];
             echo"</td>";
 
-            echo '<td contenteditable="true" class = "border border-dark"> ';
-            echo $result3['inAM'];
+            echo '<td  >';
+            echo '<input type ="text" onchange="updateInAm(this.value);" id = "inam" class = " border border-dark" style ="height:30px; width:100px;" value="'.$result3['inAM'].'" >';
             echo"</td>";
 
-            echo '<td contenteditable="true" class = "border border-dark">';
-            echo $result3['outAM'];
+            echo '<td >';
+            echo '<input type ="text" onchange="updateOutAm(this.value)"  class = " border border-dark" style ="height:30px; width:100px;" value="'.$result3['outAM'].'" >';
             echo"</td>";
 
-            echo '<td contenteditable="true" class = "border border-dark">';
-            echo $result3['inPM'];
+            echo '<td >';
+            echo '<input type ="text" onchange="updateInPm(this.value)" class = "border border-dark" style ="height:30px; width:100px;" value="'.$result3['inPM'].'" >';
             echo"</td>";
 
-            echo '<td contenteditable="true" class = "border border-dark">';
-            echo $result3['outPM'];
+            echo '<td>';
+            echo '<input type ="text" onchange="updateOutPm(this.value)" class = "border border-dark" style ="height:30px; width:100px;" value="'.$result3['outPM'].'" >';
             echo"</td>";
 
-            echo '<td contenteditable="true" class = "border border-dark">';
-            echo $result3['otIn'];
+            echo '<td >';
+            echo '<input type ="text" onchange="updateOtIn(this.value)" class = "border border-dark" style ="height:30px; width:100px;" value="'.$result3['otIn'].'" >';
             echo"</td>";
 
-            echo '<td contenteditable="true" class = "border border-dark">';
-            echo $result3['otOut'];
+            echo '<td>';
+            echo '<input type ="text" onchange="updateOtOut(this.value)" class = "border border-dark" style ="height:30px; width:100px;" value="'.$result3['otOut'].'" >';
             echo"</td>";
 
-            echo '<td '.$lateStyle.' contenteditable="true" class = "border border-dark" id= finallate>';
-            echo  $result3['latefinal'];
+            echo '<td>';
+            echo '<input type ="text" onchange="updateLate(this.value)" class = "border border-dark" style ="height:30px; width:70px;'.$lateStyle.'"  value="'.$result3['latefinal'].'" >';
             echo"</td>";
 
-            echo '<td '.$undertimeStyle.'contenteditable="true" class = "border border-dark" id= undertime>';
-            echo $result3['undertimefinal'];
+            echo '<td>';
+            echo '<input type ="text" onchange="updateUndertime(this.value)" class = "border border-dark" style ="height:30px; width:70px;'.$undertimeStyle.'"  value="'.$result3['undertimefinal'].'" >';
             echo"</td>";
             
-            echo '<td><button class = "btn btn-warning btn-sm btn-flat addlogs" data-id='.$recordId.' > <i class = "fa fa-search"</button> </td>';
+            echo '<td><button class = "btn btn-warning btn-sm btn-flat addlogs"  > <i class = "fa fa-search"</button> </td>';
             echo "</tr>";
 
         }
