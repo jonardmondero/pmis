@@ -28,22 +28,25 @@
                 
                       <form role="form" method="POST"  action="<?php htmlspecialchars("PHP_SELF");?>">
                           <div class = "row" style="margin-top:10px;">
-                              
-                                 <div class = "col-12" style = "background-color:white-grey;">
-                            
-                              <h4 id ="full-name" align="center"> </h4>
+                              <div class ="col-3"></div>
+                                 <div class = "col-6" style = "background-color:white-grey;">
+                           
+                           <div class = "card " style="height:40px;">
+                              <h4 id ="full-name" align="center" style= "margin-top:5px;"> </h4>
+                              </div>
                               <input type = "hidden" readonly id = "hiddenempno" name = "hiddenempno" value = "<?php echo $hidden;?>">                               
                            
                           </div>
+                          <div class ="col-3"></div>
                           </div>
                   
                        <div class="row col-12">
                        
                         <div  style="overflow-y:auto;height:auto;display: inline-block;margin:auto;">
                             <table id="dtr"  style = " border: 1px solid black;white-space:nowrap;" class ="table-bordered table-responsive table-hover ">
-                                <thead class = "table" style = "">
+                                <thead class = "table" >
                                    
-                                        <th class = "border border-dark">Date </th>
+                                        <th class = "border border-dark ">Date </th>
                                         <th class = "border border-dark">Day</th>
                                         <th class = "border border-dark">Check In</th>
                                         <th class = "border border-dark">Break Out</th>
