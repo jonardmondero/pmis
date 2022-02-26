@@ -1,5 +1,5 @@
-<div class="col-8" style = "resize:both;overflow:auto;margin-top:10px" >
-          <div class="card card-warning">
+<div class="col-8" style = "resize:both;overflow:auto;margin-top:10px;" >
+          <div class="card card-warning" style = "height:98%">
                <div class="card-header">
                  <div class ="row" style ="margin:auto;">
                 <div class="input-group date">

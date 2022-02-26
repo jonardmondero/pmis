@@ -74,7 +74,7 @@ $prep_leave_type->execute();
                                                 <div class="col-12">
                                                     <input type="text" id="leaveempno" readonly hidden>
                                                     <div class="col-12 " style="text-align:center">
-                                                        <label id="fullname"> </label>
+                                                        <h2 id="fullname"> </h2>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-8">

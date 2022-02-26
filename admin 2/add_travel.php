@@ -85,7 +85,8 @@ $curdate = date("m/d/Y");
                   </div>
                   </div>
           </div> 
-          <div class = "row col-12" style = "padding-left:10px;padding-top:20px;">
+         
+          <div class = "row col-6" style = "padding-left:10px;padding-top:20px;">
           
         <div class = "form-group col-4" margin:auto;>
         <label style="padding-right:10px;padding-left: 10px">Duration  </label> 
@@ -106,20 +107,27 @@ $curdate = date("m/d/Y");
         </select>
 
         </div>
+     
           </div>
           <div class = "row" style="padding-right:10px;padding-left: 10px">
-          <div class = "form-group col-10">
+          <div class = "form-group col-12">
           <label style="padding-right:10px;padding-left: 10px">Details  </label> 
           <input type = "text" name = "details" id = "details" class = "form-control">
           </div>
           </div>
+          </div>
          <!-- DISPLAY'S THE SECOND SECTION OF THE FORM -->
+         <div class="card card-primary" >
+            <div class="card-header">
+                <h3 class="card-title">Employee Details</h3>
+              </div>
               <?php include("elements/travelorder_details.php");?>
+
               <div class = "row" style=" margin:auto;padding-top:30px;padding-bottom: 30px">
               <button type ="submit" name = "savetravel" id = "savetravel" class = " btn btn-primary"><i class = "fa fa-save"></i></button>
               </div>
-          
- </div>
+              </div>
+
     <!-- /.content -->
   </div>
   </div>
