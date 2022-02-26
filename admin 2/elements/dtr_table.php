@@ -30,8 +30,7 @@
                           <div class = "row" style="margin-top:10px;">
                               
                                  <div class = "col-12" style = "background-color:white-grey;">
-
-
+                            
                               <h4 id ="full-name" align="center"> </h4>
                               <input type = "hidden" readonly id = "hiddenempno" name = "hiddenempno" value = "<?php echo $hidden;?>">                               
                            
