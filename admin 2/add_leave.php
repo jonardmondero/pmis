@@ -64,7 +64,7 @@ $prep_leave_type->execute();
                             <div class="col-8">
                                 <form method="POST" id="leaveform" action=<?php htmlspecialchars("PHP_SELF");?>>
                                     <div class="col-12 no-gutters">
-                                        <div class="card card-secondary" style="width:100%">
+                                        <div class="card card-primary" style="width:100%">
                                             <div class="card-header">
                                                 <h3 class="card-title">Details</h3>
 
@@ -77,7 +77,7 @@ $prep_leave_type->execute();
                                                         <h2 id="fullname"> </h2>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-8">
+                                                        <div class="col-10">
                                                             <div class="input-group date p-2">
                                                                 <label
                                                                     style="padding-right:10px;padding-left: 10px">From:
@@ -103,18 +103,26 @@ $prep_leave_type->execute();
                                                                     data-provide="datepicker" autocomplete="off"
                                                                     name="dateto" id="dteto"
                                                                     val="<?php echo $curdate; ?> ">
-                                                            </div>
+
+                                                                <div style = "margin-left:20px">
+                                                                    <button style = "margin:auto;" type="submit" name="addleave" id="addleave"
+                                                                class=" btn btn-warning"><i
+                                                                    class="fa fa-plus"></i></button>
 
 
-                                                        </div>
-                                                        <div class="col-4">
-                                                            <div class="form-group p-2 ">
+                                                                   
                                                                 <label>Specific Date:</label>
                                                                 <button type="submit" name="specificdate"
                                                                     id="specificdate" class=" btn btn-primary"><i
                                                                         class="fa fa-plus"></i></button>
                                                             </div>
+</div>
+
+                                                            
+                                                            
+                                                     
                                                         </div>
+                                                       
                                                     </div>
 
                                                     <div class="row" style="margin:auto;">
@@ -145,21 +153,27 @@ $prep_leave_type->execute();
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-2">
-                                                            <button type="submit" name="addleave" id="addleave"
-                                                                class=" btn btn-warning"><i
-                                                                    class="fa fa-plus"></i></button>
-                                                        </div>
+                                                       
 
 
                                                     </div>
                                                     <!--
                                           
--->
+-->                                               
+                                                    </div>
+                                                    </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class ="card card-warning">
+                                                    <div class="card-header">
+                                                <h3 class="card-title">Leave Details</h3>
+
+
+                                            </div>
                                                     <div class="row" style="margin:auto;">
 
                                                         <table class="table table-hover table-bordered "
-                                                            style="margin:auto;width:100%;" id="leavelist">
+                                                            style="margin:auto;width:100%;margin-top:20px;" id="leavelist">
                                                             <thead style="margin:auto;width:100%;">
                                                                 <th>Leave Name</th>
                                                                 <th>From</th>
@@ -169,9 +183,9 @@ $prep_leave_type->execute();
                                                             </thead>
 
                                                         </table>
+                                                        </div>
 
-                                                    </div>
-                                                    <div class="row"
+                                                        <div class="row"
                                                         style="margin:auto;padding-top:30px;padding-bottom:30px;">
 
 
@@ -188,13 +202,20 @@ $prep_leave_type->execute();
                                                             style="text-align:center;margin:auto;"></label>
                                                     </div>
 
+
+
+
+
+                                                    </div>
+                                                    </div>
+                                                  
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                            
+                                       
+                                   
                                 </form>
-                                              </div>
-                                                                    </div>
+                                           
+                                                                  
                                 <!-- /.content-wrapper -->
             </section>
         </div>

@@ -75,51 +75,61 @@ $otOut='';
             <div class="col-4 no-gutters" style = "resize:both;overflow:auto;">
             <?php include('elements/employee_table.php');?>
                 </div>
-          
                 <div class="col-8" style = "resize:both;overflow:auto;" >
-          <div class="card card-warning">
+                    <div class = "card card-success">
+                    <div class="card-header">
+                <h3 class="card-title">Date Filter</h3>
+                <form role="form" method="POST"  action="<?php htmlspecialchars("PHP_SELF");?>">
+              </div>
+                <div class ="d-flex justify-content-center">
+              <div class = "card text-center " style = "height:50px;; width:50%;margin-top:10px;">
+                <h4 class = "justify-content-evenly" id ="full-name"> </h4>
+                  </div>
+                    </div>
+
+
+
+                    <div class = "row d-flex justify-content-center " style="margin:auto; margin-bottom:10px;">
+                     
+                   
+                     <div class="input-group date">
+                             <label style="padding-right:10px;padding-left: 10px">From:  </label> 
+                               <div  style = "padding-right:10px" class="input-group-addon">
+                                      <i class="fa fa-calendar"></i>
+                               </div>
+                      
+        <input  style="margin-right:10px;"type="text" data-provide="datepicker"class="form-control col-3 " style="font-size:13px" autocomplete="off" name="datefrom" id="dtefrom" value = "<?php echo $dteFrom;?>" >
+                                    
+                         
+                         <label style="padding-right:10px">To:</label>
+                              <div style = "padding-right:10px" class="input-group-addon">
+                                   <i class="fa fa-calendar"></i>
+                              </div>
+         <input type="text" class="form-control col-3 " data-provide="datepicker"  autocomplete="off" name="dateto" id="dteto" value = "<?php echo $dteTo;?>" >
+                         
+              
+                       </div>
+                   
+                
+                   </div>
+                    </div>
+
+          <div class="card card-success">
                <div class="card-header">
-                <h3 class="card-title">Time</h3>
+                <h3 class="card-title">Official Business Records</h3>
+               
               </div>
                 
-                      <form role="form" method="POST"  action="<?php htmlspecialchars("PHP_SELF");?>">
+                   
                           <div class = "row" style="margin:auto;">
                               
                                  <div class = "col-6" style = "margin:auto;">
-                              <h4 id ="full-name"> </h4>
+                             
                               <input type = "hidden" readonly id = "hiddenempno" name = "hiddenempno" value = "<?php echo $hidden;?>">                               
                            
                           </div>
                           </div>
-                      <div class = "row" style="margin:auto; margin-bottom:50px;">
                      
-
-                   <div class="input-group date">
-                           <label style="padding-right:10px;padding-left: 10px">From:  </label> 
-                             <div  style = "padding-right:10px" class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                             </div>
-                    
-      <input  style="margin-right:10px;"type="text" data-provide="datepicker"class="form-control col-3 " style="font-size:13px" autocomplete="off" name="datefrom" id="dtefrom" value = "<?php echo $dteFrom;?>" >
-                                  
-                       
-                       <label style="padding-right:10px">To:</label>
-                            <div style = "padding-right:10px" class="input-group-addon">
-                                 <i class="fa fa-calendar"></i>
-                            </div>
-       <input type="text" class="form-control col-3 " data-provide="datepicker"  autocomplete="off" name="dateto" id="dteto" value = "<?php echo $dteTo;?>" >
-                       
-                       
-                    
-                        
-                     </div>
-                   
-                  
-                   
-                       
-                      
-               
-                 </div>
                  <div class ="row">
                  <div class = "col-12" style = "margin:auto;text-align:center;">
                  <label class = "m-0 text-dark" >Travel Order</label>
