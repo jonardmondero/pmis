@@ -68,8 +68,8 @@ $prep_leave_type->execute();
                                             <div class="card-header">
                                                 <h3 class="card-title">Details</h3>
 
-
                                             </div>
+                                            <div class = "card-body">
                                             <div class="row">
                                                 <div class="col-12">
                                                     <input type="text" id="leaveempno" readonly hidden>
@@ -77,7 +77,7 @@ $prep_leave_type->execute();
                                                         <h2 id="fullname"> </h2>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-10">
+                                                       
                                                             <div class="input-group date p-2">
                                                                 <label
                                                                     style="padding-right:10px;padding-left: 10px">From:
@@ -116,22 +116,22 @@ $prep_leave_type->execute();
                                                                     id="specificdate" class=" btn btn-primary"><i
                                                                         class="fa fa-plus"></i></button>
                                                             </div>
-</div>
+                                                         </div>
 
                                                             
                                                             
                                                      
-                                                        </div>
+                                                      
                                                        
                                                     </div>
-
+                                                    </div>
                                                     <div class="row" style="margin:auto;">
 
-                                                        <div class="col-6">
+                                                        <div class = "col-6">
                                                             <div class="form-group ">
                                                                 <label>Leave Type</label>
                                                                 <select class="form-control select2 " id="leavetype"
-                                                                    style="width: 100%;" name="leavetype" required>
+                                                                    name="leavetype" required>
                                                                     <option selected="selected">Select Leave</option>
                                                                     <?php while ($get_result = $prep_leave_type->fetch(PDO::FETCH_ASSOC)) { ?>
                                                                     <option
@@ -141,8 +141,8 @@ $prep_leave_type->execute();
                                                                     <?php } ?>
                                                                 </select>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-4">
+                                                            </div>
+                                                            <div class = "col-6">             
                                                             <div class="form-group">
                                                                 <label>Inclusive Date</label>
                                                                 <select class="form-control select2 " id="inclusivedate"
@@ -154,22 +154,20 @@ $prep_leave_type->execute();
                                                             </div>
                                                         </div>
                                                        
-
-
+                                                              
                                                     </div>
                                                     <!--
                                           
 -->                                               
                                                     </div>
-                                                    </div>
+                                               
                                                     </div>
                                                     </div>
                                                     <div class ="card card-warning">
                                                     <div class="card-header">
                                                 <h3 class="card-title">Leave Details</h3>
-
-
                                             </div>
+                                            <div class = "card-body">
                                                     <div class="row" style="margin:auto;">
 
                                                         <table class="table table-hover table-bordered "
@@ -190,7 +188,7 @@ $prep_leave_type->execute();
 
 
 
-                                                        <button type="submit" style="margin:auto;left:50%;right:50%;"
+                                                        <button type="submit" style="margin:auto;left:50%;right:50%;height:50px;width:50px"
                                                             name="save_leave" id="save_leave"
                                                             class=" btn btn-primary "><i
                                                                 class="fa fa-save"></i></button>
@@ -202,7 +200,7 @@ $prep_leave_type->execute();
                                                             style="text-align:center;margin:auto;"></label>
                                                     </div>
 
-
+                                                    </div>
 
 
 
@@ -382,7 +380,7 @@ $prep_leave_type->execute();
                 var newto = formatDate(to);
                 $.ajax({
                     url: 'ajaxcall/save_leave.php',
-                    method: 'POST',
+                    type: 'POST',
                     data: {
                         empno: empno,
                         leavetype: leavetype,
@@ -392,7 +390,7 @@ $prep_leave_type->execute();
                     },
                     dataType: 'json',
                     success: function (message) {
-                        console.log(message.responseText);
+                        notification(message.responseText, "","Refresh","success","success");
                     },
                     error: function (xhr, b, c) {
                         // console.log("xhr=" + xhr.responseText + " b=" + b.responseText +
@@ -409,6 +407,32 @@ $prep_leave_type->execute();
             $("#travellist td").parent().remove();
             // post_notify("Record Inserted", "success");
         });
+
+        function notification(title, message,text,value,status) {
+      swal(title, message, status, {
+          buttons: {
+            catch: {
+              text: text,
+              value: value,
+            }
+
+          },
+        })
+        .then((value) => {
+          switch (value) {
+
+            case "success":
+              window.location.reload(true);
+              break;
+              case "error":
+
+              break;
+
+          }
+        });
+
+    }
+
         //FORMAT THE DATE
         function formatDate(date) {
             var d = new Date(date),

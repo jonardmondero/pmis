@@ -43,7 +43,7 @@
                        <div class="row col-12">
                        
                         <div  style="overflow-y:auto;height:auto;display: inline-block;margin:auto;">
-                            <table id="dtr"  style = " border: 1px solid black;white-space:nowrap;" class ="table-bordered table-responsive table-hover ">
+                            <table id="dtr" class ="form__table table-bordered table-responsive table-hover ">
                                 <thead class = "table" >
                                    
                                         <th class = "border border-dark ">Date </th>

@@ -75,12 +75,13 @@ $otOut='';
             <div class="col-4 no-gutters" style = "resize:both;overflow:auto;">
             <?php include('elements/employee_table.php');?>
                 </div>
-                <div class="col-8" style = "resize:both;overflow:auto;" >
-                    <div class = "card card-success">
+                <div class="col-8" style = "resize:both;overflow:auto;margin-top:10px;" >
+                    <div class = "card card-primary">
                     <div class="card-header">
                 <h3 class="card-title">Date Filter</h3>
-                <form role="form" method="POST"  action="<?php htmlspecialchars("PHP_SELF");?>">
+               
               </div>
+              <form role="form" method="POST"  action="<?php htmlspecialchars("PHP_SELF");?>">
                 <div class ="d-flex justify-content-center">
               <div class = "card text-center " style = "height:50px;; width:50%;margin-top:10px;">
                 <h4 class = "justify-content-evenly" id ="full-name"> </h4>
@@ -89,9 +90,8 @@ $otOut='';
 
 
 
-                    <div class = "row d-flex justify-content-center " style="margin:auto; margin-bottom:10px;">
+                    <div class = "row" style="margin:auto; margin-bottom:10px;">
                      
-                   
                      <div class="input-group date">
                              <label style="padding-right:10px;padding-left: 10px">From:  </label> 
                                <div  style = "padding-right:10px" class="input-group-addon">
@@ -117,10 +117,9 @@ $otOut='';
           <div class="card card-success">
                <div class="card-header">
                 <h3 class="card-title">Official Business Records</h3>
-               
+            
               </div>
-                
-                   
+                <div class = "card-body">
                           <div class = "row" style="margin:auto;">
                               
                                  <div class = "col-6" style = "margin:auto;">
@@ -130,11 +129,6 @@ $otOut='';
                           </div>
                           </div>
                      
-                 <div class ="row">
-                 <div class = "col-12" style = "margin:auto;text-align:center;">
-                 <label class = "m-0 text-dark" >Travel Order</label>
-                 </div>
-                 </div>
                        <div class="row" style = "margin:auto;">
                        
                       
@@ -153,11 +147,17 @@ $otOut='';
                              <tbody id ="travel">
                              </tbody>
                                 </table>  
-                                <!-- <button id="saveall">SAVE ALL</button> -->
-                          
+                        
                            
                            </div>
-                          
+                           </div>
+                           </div>
+                           <div class="card card-success">
+               <div class="card-header">
+                <h3 class="card-title">Application for Leave</h3>
+            
+              </div>
+                <div class = "card-body">
                            <div class ="row">
                  <div class = "col-12" style = "margin:auto;text-align:center;">
                  <label class = "m-0 text-dark" >Application for Leave</label>
@@ -181,11 +181,12 @@ $otOut='';
                              <tbody id ="travel">
                              </tbody>
                                 </table>  
-                                <!-- <button id="saveall">SAVE ALL</button> -->
                           
                            
                            </div>
-              </div>
+                  </div>
+                  </div>
+             
            </form>
            </div>
     <!-- /.content -->
@@ -211,27 +212,14 @@ $otOut='';
 <script src="../plugins/jquery/jquery.min.js"></script>
 <script src="../plugins/jquery/jquery.js"></script>
 <script src="../plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> -->
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-  // $.widget.bridge('uibutton', $.ui.button)
 </script>
 <script src="../plugins/moments/moments.js"> </script>
 <!-- Bootstrap 4 -->
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Morris.js charts -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script> -->
-<!-- <script src="../plugins/morris/morris.min.js"></script> -->
-<!-- Sparkline -->
+
 <script src="../plugins/sparkline/jquery.sparkline.min.js"></script>
-<!-- jvectormap -->
-<!-- <script src="../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script> -->
-<!-- jQuery Knob Chart -->
-<!-- <script src="../plugins/knob/jquery.knob.js"></script> -->
-<!-- daterangepicker -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script> -->
+
 <script src="../plugins/daterangepicker/daterangepicker.js"></script>
 <!-- datepicker -->
 <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
@@ -243,8 +231,7 @@ $otOut='';
 <script src="../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<!-- <script src="../dist/js/pages/dashboard.js"></script> -->
+
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
  
