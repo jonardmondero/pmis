@@ -18,21 +18,21 @@
        <input type="text" class="form-control  " data-provide="datepicker"  autocomplete="off" name="dateto" id="dteto" value = "<?php echo $dteTo;?>" >
                        
                        
-                       <button type="button"  class="btn btn-primary" style = "margin-left:50px;"data-toggle = "modal" data-target = "#printreport"   value="Print">PRINT</button>
+                       <button type="button"  class="btn btn-primary" style = "margin-left:50px;"data-toggle = "modal" data-target = "#printreport"   value="Print"><i class = "fa fa-print"></i></button>
                         
                      </div>
                      </div>
 
               </div>
 
-                
+                <div class = "card-body">
                       <form role="form" method="POST"  action="<?php htmlspecialchars("PHP_SELF");?>">
-                          <div class = "row" style="margin-top:10px;">
+                          <div class = "row" style="margin-top:5px;">
                               <div class ="col-3"></div>
                                  <div class = "col-6" style = "background-color:white-grey;">
                            
-                           <div class = "card " style="height:40px;">
-                              <h4 id ="full-name" align="center" style= "margin-top:5px;"> </h4>
+                           <div class = "card full_name" >
+                              <h4 id ="full-name" > </h4>
                               </div>
                               <input type = "hidden" readonly id = "hiddenempno" name = "hiddenempno" value = "<?php echo $hidden;?>">                               
                            
@@ -59,13 +59,14 @@
                                         <th class = "border border-dark">Options</th>
                                        
                                 </thead>
-                             <tbody style = "font-size:15px;padding:15px;border-width:3px"id ="dtrbody">
+                             <tbody id ="dtrbody">
                              </tbody>
                                 </table>  
                                 <!-- <button id="saveall">SAVE ALL</button> -->
                           
                            </div>
                            </div>
+              </div>
               </div>
            </form>
            </div>

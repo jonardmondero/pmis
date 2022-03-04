@@ -71,13 +71,17 @@ $prep_leave_type->execute();
                                             </div>
                                             <div class = "card-body">
                                             <div class="row">
-                                                <div class="col-12">
+                                               
+                                                <div class ="col-3"></div>
+                                                <div class = "col-6" style = "background-color:white-grey;">
                                                     <input type="text" id="leaveempno" readonly hidden>
-                                                    <div class="col-12 " style="text-align:center">
-                                                        <h2 id="fullname"> </h2>
+                                                    <div class="card full_name">
+                                                        <h4 id="fullname"> </h4>
                                                     </div>
-                                                    <div class="row">
-                                                       
+                                                </div>
+                                                <div class ="col-3"></div>
+                                                    <div class="row col-12">
+
                                                             <div class="input-group date p-2">
                                                                 <label
                                                                     style="padding-right:10px;padding-left: 10px">From:
@@ -118,16 +122,16 @@ $prep_leave_type->execute();
                                                             </div>
                                                          </div>
 
-                                                            
+                                         
                                                             
                                                      
                                                       
                                                        
                                                     </div>
-                                                    </div>
-                                                    <div class="row" style="margin:auto;">
+                                                  
+                                                    <div class="row col-12">
 
-                                                        <div class = "col-6">
+                                                        <div class = "col-8">
                                                             <div class="form-group ">
                                                                 <label>Leave Type</label>
                                                                 <select class="form-control select2 " id="leavetype"
@@ -142,7 +146,7 @@ $prep_leave_type->execute();
                                                                 </select>
                                                             </div>
                                                             </div>
-                                                            <div class = "col-6">             
+                                                            <div class = "col-4">             
                                                             <div class="form-group">
                                                                 <label>Inclusive Date</label>
                                                                 <select class="form-control select2 " id="inclusivedate"
@@ -188,9 +192,9 @@ $prep_leave_type->execute();
 
 
 
-                                                        <button type="submit" style="margin:auto;left:50%;right:50%;height:50px;width:50px"
+                                                        <button type="submit" 
                                                             name="save_leave" id="save_leave"
-                                                            class=" btn btn-primary "><i
+                                                            class=" custom_button btn btn-primary"><i
                                                                 class="fa fa-save"></i></button>
 
 
@@ -276,6 +280,7 @@ $prep_leave_type->execute();
     <script src="../plugins/datatables/jquery.dataTables.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
     <script src="../plugins/sweetalerts/sweetalerts.js"></script>
+    <script src="../plugins/sweetalerts/sweetalert.min.js"></script>
     <script src="../plugins/sweetalerts/toastr.js"></script>
     <!-- REFLECT LOGS SCRIPT -->
     <script src="javascript/addlogs.js"></script>
@@ -388,14 +393,16 @@ $prep_leave_type->execute();
                         to: newto,
                         duration: duration
                     },
-                    dataType: 'json',
+                    dataType: 'JSON',
                     success: function (message) {
                         notification(message.responseText, "","Refresh","success","success");
                     },
                     error: function (xhr, b, c) {
-                        // console.log("xhr=" + xhr.responseText + " b=" + b.responseText +
-                        //     " c=" + c.responseText);
-                        $('#save_notification').html(xhr.responseText);
+                        console.log("xhr=" + xhr.responseText + " b=" + b.responseText +
+                            " c=" + c.responseText);
+                        // $('#save_notification').html(xhr.responseText);
+                        // notification(xhr.responseText, "","Refresh","success","success");
+                        // post_notify(xhr.responseText,"danger");
                         // post_notify(xhr.responseText,'success');
 
                     }

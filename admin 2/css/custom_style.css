@@ -1,13 +1,44 @@
+
 .form__table {
 
-    font-family:monospace;
+    font-family: 'Open Sans';
     border: 1px solid black;
     white-space:nowrap;
+    
 
 }
 
-.form__table-tbody {
+.form__table tbody {
     font-size:15px;
-    padding:15px;
+    padding:13px;
     border-width:3px;
 }
+
+.form__table th {
+    font-size:15px;
+    border-width:3px;
+}
+
+.custom_button{
+
+    margin:auto;
+    height:50px;
+    width:50px;
+    border-radius: .5rem .5rem;
+
+}
+
+.full_name {
+
+    height:40px;
+}
+
+.full_name h4{
+text-align: center;
+margin-top: 5px;
+font-family: 'Stencil Std';
+color:grey;
+}
+
+
+
