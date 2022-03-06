@@ -1,6 +1,6 @@
-<div class="card card-primary"  style ="margin-top:10px;">
+<div class="card_employee card-primary"  style ="margin-top:10px;">
                <div class="card-header">
-                <h3 class="card-title">Department</h3>
+                <h3 class="card-title capitalize" >Department</h3>
               </div>
                 <div class="card-body">
                     <div class = "row" style="margin-bottom:20px;height:30px;">

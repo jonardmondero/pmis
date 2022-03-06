@@ -1,5 +1,5 @@
 <div class="col-8" style = "resize:both;overflow:auto;margin-top:10px;" >
-          <div class="card card-warning" style = "height:98%">
+          <div class="card_dtr card-warning" >
                <div class="card-header">
                  <div class ="row" style ="margin:auto;">
                 <div class="input-group date">
@@ -15,7 +15,7 @@
                             <div style = "padding-right:10px" class="input-group-addon">
                                  <i class="fa fa-calendar"></i>
                             </div>
-       <input type="text" class="form-control  " data-provide="datepicker"  autocomplete="off" name="dateto" id="dteto" value = "<?php echo $dteTo;?>" >
+       <input type="text" class="form-control " data-provide="datepicker"  autocomplete="off" name="dateto" id="dteto" value = "<?php echo $dteTo;?>" >
                        
                        
                        <button type="button"  class="btn btn-primary" style = "margin-left:50px;"data-toggle = "modal" data-target = "#printreport"   value="Print"><i class = "fa fa-print"></i></button>

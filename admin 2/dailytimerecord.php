@@ -31,8 +31,9 @@ $otOut='';
     <section class="content">
         <div class="container-fluid">
             
-            <div class="row">
+            <div class="row max_height">
             <div class="col-4 no-gutters" style = "resize:both;overflow:auto;">
+            
             <?php include('elements/employee_table.php');?>
                 </div>
           
