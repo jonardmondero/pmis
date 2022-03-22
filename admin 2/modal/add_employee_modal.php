@@ -37,8 +37,8 @@
                    <label id = "checkbioid" style = "margin-left:115px;padding-top:5px;font-size:13px;color:red;font:Arial;"></label>
                </div>
                 <div class = "form-group row">
-                 <label class = "col-form-label col-3"> Department:  </label>
-                <select class ="form-control col-9" name = "department" id ="department">
+                 <label class = "col-form-label"> Department:  </label>
+                <select class ="form-control select2" style = "width:100%" name = "department" id ="department">
                  <?php
                      include('../config/config.php');
                      $get_user_sql = "SELECT * FROM department WHERE status = 'Active'";

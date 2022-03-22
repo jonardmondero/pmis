@@ -25,11 +25,20 @@
           
 
         
-          <li class="nav-header">SETTINGS</li>
+          <li class="nav-header">ADD RECORD</li>
 
           <li class="nav-item">
+            <a href="import_record.php" class="nav-link">
+              <i class="nav-icon fa fa-download"></i>
+              <p>
+              Import Biometric Records
+               
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="department.php" class="nav-link">
-              <i class="nav-icon fa fa-user"></i>
+              <i class="nav-icon fa fa-building"></i>
               <p>
                 Add Department
                 <span class="badge badge-info right"></span>
@@ -47,10 +56,28 @@
           </li>
            <li class="nav-item">
             <a href="workschedule.php" class="nav-link">
-              <i class="nav-icon fa fa-user"></i>
+              <i class="nav-icon fa fa-calendar"></i>
               <p>
                 Add Work Schedule
                 <span class="badge badge-info right"></span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="add_leave.php" class="nav-link">
+              <i class="nav-icon fa fa-list"></i>
+              <p>
+             Add Leave
+               
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="add_travel.php" class="nav-link">
+              <i class="nav-icon fa fa-car"></i>
+              <p>
+             Add Travel
+               
               </p>
             </a>
           </li>
@@ -58,43 +85,19 @@
             
              <li class="nav-item">
             <a href="dailytimerecord.php" class="nav-link">
-              <i class="nav-icon fa fa-user"></i>
+              <i class="nav-icon fa fa-calendar"></i>
               <p>
              Daily Time Record
                
               </p>
             </a>
           </li>
-             <li class="nav-item">
-            <a href="import_record.php" class="nav-link">
-              <i class="nav-icon fa fa-user"></i>
-              <p>
-              Import Biometric Records
-               
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="add_travel.php" class="nav-link">
-              <i class="nav-icon fa fa-user"></i>
-              <p>
-             Add Travel
-               
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="add_leave.php" class="nav-link">
-              <i class="nav-icon fa fa-user"></i>
-              <p>
-             Application for Leave
-               
-              </p>
-            </a>
-          </li>
+            
+         
+         
           <li class="nav-item">
             <a href="frm_ledger.php" class="nav-link">
-              <i class="nav-icon fa fa-user"></i>
+              <i class="nav-icon fa fa-calendar"></i>
               <p>
             Employee Ledger
                

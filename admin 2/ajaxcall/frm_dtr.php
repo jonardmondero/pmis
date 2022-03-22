@@ -69,7 +69,10 @@ if(isset($_POST['employeeno'])) {
             echo '<input type ="text" onchange="updateUndertime(this.value)" class = "border border-dark" style ="height:30px; width:70px;'.$undertimeStyle.'"  value="'.$result3['undertimefinal'].'" >';
             echo"</td>";
             
-            echo '<td><button class = "btn btn-warning btn-sm btn-flat addlogs"  > <i class = "fa fa-search"</button> </td>';
+            echo '<td>';
+            echo '<button class = "btn btn-warning btn-sm btn-flat addlogs"  > <i class = "fa fa-search"></i></button>';
+            echo '<button class = "btn btn-danger btn-sm btn-flat removeut"> <i class = "fa fa-trash"></i></button>';  
+            echo'</td>';
             echo "</tr>";
 
         }

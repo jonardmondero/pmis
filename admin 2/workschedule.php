@@ -211,7 +211,7 @@ var workid = $('#worksched-form').serializeArray();
       
       $.ajax({
 
-          url : 'insert_workschedule.php',
+          url : 'ajaxcall/insert_workschedule.php',
           method: 'POST',
           data: $.param(workid),
           dataType: 'json'
@@ -229,7 +229,7 @@ var workid = $('#worksched-form').serializeArray();
     // TableData = $.toJSON(storeTblValues());
          $.ajax({
 
-          url : 'insert_workscheduledetail.php',
+          url : 'ajaxcall/insert_workscheduledetail.php',
           method: 'POST',
           data: {workId:workId,
             Day:col1,
@@ -256,7 +256,7 @@ var workid = $('#worksched-form').serializeArray();
   // console.log("hello");s
   var workcode = $('#workcode').val();
     $.ajax({
-      url:'get_workcode.php',
+      url:'ajaxcall/get_workcode.php',
       type:"POST",
       data:{workcode:workcode},
       success:function(msg){

@@ -1,6 +1,6 @@
 <?php
 
-include('../config/config.php');
+include('../../config/config.php');
 
 if(isset($_POST['workcode'])){
 $workcode = $_POST['workcode'];

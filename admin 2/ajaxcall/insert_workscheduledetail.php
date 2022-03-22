@@ -1,5 +1,5 @@
 <?php
-include('../config/config.php');
+include('../../config/config.php');
 
 if(isset($_POST['workId'])){
 $workid = $_POST['workId'];

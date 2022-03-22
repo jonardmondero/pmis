@@ -3,7 +3,7 @@
 include ('dtrdesign/header.php');
 include('../config/config.php');
 $alert_msg='';
-include('save_employee.php');
+include('sql/save_employee.php');
 $select_emp = "CALL spGetAllEmployee";
 $prep_emp = $con->prepare($select_emp);
 $prep_emp->execute();
@@ -100,26 +100,15 @@ $prep_emp->execute();
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
 <script src="../plugins/jquery/jquery.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> -->
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<!-- <script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script> -->
-<!-- Bootstrap 4 -->
+
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Morris.js charts -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script> -->
 <script src="../plugins/morris/morris.min.js"></script>
 <!-- Sparkline -->
 <script src="../plugins/sparkline/jquery.sparkline.min.js"></script>
-<!-- jvectormap -->
-<!-- <script src="../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script> -->
-<!-- <script src="../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script> -->
-<!-- jQuery Knob Chart -->
+
 <script src="../plugins/knob/jquery.knob.js"></script>
 <!-- daterangepicker -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script> -->
 <script src="../plugins/daterangepicker/daterangepicker.js"></script>
 <!-- datepicker -->
 <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
@@ -131,12 +120,8 @@ $prep_emp->execute();
 <script src="../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<!-- <script src="../dist/js/pages/dashboard.js"></script> -->
-<!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
 <script src="../plugins/select2/select2.js"></script>
-  
 <!-- Bootstrap 4 -->
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables -->
@@ -149,15 +134,7 @@ $prep_emp->execute();
 
 <script>
 	$(document).ready(function(){
-      // $('.select2').select2();
-	// $('#tableemp').DataTable({
-	// 	'  paging'    : true,
-  //     'searching'   : true,
-  //     'ordering'    : true,
-  //     'info'        : true,
-  //     'autoWidth'   : true,
-    
-	// });
+     
   sel_worksched();
 	 function is_valid(element){
       // callback function
@@ -200,7 +177,7 @@ function reset_form_input(form_id){
  
 $.ajax({
   type:"POST",
-  url:"check_empnumber.php",
+  url:"ajaxcall/heck_empnumber.php",
   data:{empnum:emp},
   success: function(response){
     var result = jQuery.parseJSON(response);
@@ -267,10 +244,16 @@ $('#insert').prop('hidden',false);
 $('#delete').prop('hidden',true);
 $('#update').prop('hidden',true);
 $("#empnum").prop('readonly', false);
+
+$('#department').select2({
+        dropdownParent: $('#addemployee')
+      });
+
 })  
 
 $('#tableemp tbody').on( 'click', '.add_worksched', function(){
-  event.preventDefault();
+        event.preventDefault();
+     
   var currow=  $(this).closest('tr');
   var col1 = currow.find('td:eq(0)').text();
   var col2 = currow.find('td:eq(5)').text();
@@ -279,13 +262,20 @@ $('#tableemp tbody').on( 'click', '.add_worksched', function(){
 // var id = $(this).data('id');
 $('#addemployeesched').modal('show');
 $(`#sel_worksched option[value='${col2}']`).prop('selected', 'true');
-
 $('#empno').val(col1);
-sel_worksched();
-        });
-  function sel_worksched(){
+
+
+$('#sel_worksched').select2({
+        dropdownParent: $('#addemployeesched')
+      });
+      sel_worksched();
+})  
+   
+
+
+function sel_worksched(){
     var worksched = $('#sel_worksched').val();
-  $('#work_body').load('get_workschedule.php',{workcode:worksched},
+  $('#work_body').load('ajaxcall/get_workschedule.php',{workcode:worksched},
    function(response, status, xhr) {
   if (status == "error") {
       alert(msg + xhr.status + " " + xhr.statusText);
@@ -293,6 +283,9 @@ sel_worksched();
   }
 });
   }  
+
+
+
 $('#sel_worksched').change(function(){
  sel_worksched();
 })
@@ -324,18 +317,23 @@ $("#tableemp tbody").on("click", ".edit_employee", function () {
         $('#fname').val(result.firstname);
         $('#mname').val(result.middlename);
         $('#bioid').val(result.bioid);
-        // $('#department').val(result.department);
+        $('#department').val(result.department);
         $(`#department option[value='${result.department}']`).prop('selected', true);
         $('#estatus').val(result.employmentstatus);
         $('#supervisor').val(result.supervisor);
         $('#status').val(result.status);
         $('#worksched').val(result.worksched);
+
+        $('#department').select2({
+        dropdownParent: $('#addemployee')
+      });
         },
         error: function (xhr, b, c) {
      console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
        }
 
     })
+   
 });
 
 

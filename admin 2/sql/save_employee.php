@@ -1,5 +1,4 @@
 <?php
-include('../config/config.php');
 $employeenum=$fname=$lname=$mname=$bioid=$supervisor=$emptype=$status=$department='';
 if(isset($_POST['save'])){
 

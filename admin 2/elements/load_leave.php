@@ -30,7 +30,7 @@ while( $ledgerresult = $prep_select->fetch(PDO::FETCH_ASSOC)) {
         echo '<td>';
         echo $ledgerresult['status'];
         echo '</td>'; 
-        echo '<td><button class = "btn btn-primary btn-md btn-circle reflectlogs" data-id='.$ledgerresult['employeeNo'].' > <i class = "fa fa-save"></i></button> </td>';   
+        echo '<td><button class = "btn btn-primary btn-md btn-circle" data-id='.$ledgerresult['employeeNo'].' id = "update_leave" > <i class = "fa fa-save"></i></button> </td>';   
         echo '</tr>';
         echo "<p>";
         echo print_r($ledgerresult['entryId']);

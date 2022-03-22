@@ -25,11 +25,11 @@ $selemployee = $_POST['sel_employee'];
     $timeIn = "O";
     $brkout = "0";
 
- //1.2 insert blank records in dailytimerecord
+ //1.2 INSERT BLANK RECORD
  $stmt_insert_dtr = "CALL spInsertDTR(:empno,:i)" ;
  $pre_insert_dtr = $con->prepare($stmt_insert_dtr);
 
- //insert day off
+ //INSERT DAY OFF
  $stmt_insert_off = "CALL spInsertDayOff(:empno,:worksched,:i,:bolsched)" ;
  $pre_insert_off = $con->prepare($stmt_insert_off);
 
@@ -122,35 +122,7 @@ $selemployee = $_POST['sel_employee'];
               
        
       }
-//       $otTimeIn = "o";
-//       if($chktype == $otTimeIn ){
-    
-//     $insert_timeIn = "CALL spInsertOvertimeIn(:empno,:worksched,:i,:chktime)";
-//     $insertInAm = $con->prepare($insert_timeIn);
-//     $insertInAm ->execute([
-//          ':empno' =>$empNo,
-//          ':worksched' =>$workId,
-//         ':i' => $i,
-//         ':chktime'=> $chktime
-//     ]);
-        
- 
-// }
-// $otTimeOut = "U";
-// if($chktype == $otTimeOut ){
 
-// $insert_timeIn = "CALL spInsertOvertimeOut(:empno,:worksched,:i,:chktime)";
-// $insertInAm = $con->prepare($insert_timeIn);
-// $insertInAm ->execute([
-//    ':empno' =>$empNo,
-//    ':worksched' =>$workId,
-//   ':i' => $i,
-//   ':chktime'=> $chktime
-// ]);
-  
-
-// }
-      // $progress = '100%';
     }
     if($i == $dateto){
       break;

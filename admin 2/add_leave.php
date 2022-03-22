@@ -290,7 +290,7 @@ $prep_leave_type->execute();
     <script language="javascript">
         $(document).ready(function () {
             $('.select2').select2();
-        });
+   
 
 
         $("#search").keyup(function () {
@@ -373,6 +373,7 @@ $prep_leave_type->execute();
         $('#save_leave').click(function () {
             //fetch all the data from the table and save it to the database
             var workid = $('#leaveform').serializeArray();
+            const success = '';
             event.preventDefault();
             $('#leavelist tr').each(function (row, tr) {
                 var empno = $('#leaveempno').val();
@@ -393,10 +394,6 @@ $prep_leave_type->execute();
                         to: newto,
                         duration: duration
                     },
-                    dataType: 'JSON',
-                    success: function (message) {
-                        notification(message.responseText, "","Refresh","success","success");
-                    },
                     error: function (xhr, b, c) {
                         console.log("xhr=" + xhr.responseText + " b=" + b.responseText +
                             " c=" + c.responseText);
@@ -406,12 +403,15 @@ $prep_leave_type->execute();
                         // post_notify(xhr.responseText,'success');
 
                     }
+                }).done(function(message){
+                    notification(message, "","Refresh","success","success");
                 })
 
             });
             //reset all the data inside the table;
-            reset_form_input('travelform');
-            $("#travellist td").parent().remove();
+            // post_notify(success, "success");
+            // reset_form_input('travelform');
+            // $("#travellist td").parent().remove();
             // post_notify("Record Inserted", "success");
         });
 
@@ -493,6 +493,7 @@ $prep_leave_type->execute();
             var i = r.parentNode.parentNode.rowIndex;
             document.getElementById("leavelist").deleteRow(i);
         }
+    });
     </script>
 
 </body>

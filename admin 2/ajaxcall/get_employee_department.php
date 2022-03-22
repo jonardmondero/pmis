@@ -1,6 +1,6 @@
 <?php 
 
-include('../config/config.php');
+include('../../config/config.php');
 $columns= array( 
     // datatable column index  => database column name
         0 =>  'entity_no', 

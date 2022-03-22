@@ -20,7 +20,7 @@ $curdate = date("m/d/Y");
  <?php 
  include('dtrdesign/navbar.php');
  include('dtrdesign/sidebar.php');
- include('save_travel.php');
+ include('sql/save_travel.php');
 
   
 
@@ -91,10 +91,10 @@ $curdate = date("m/d/Y");
         <div class = "form-group col-4" margin:auto;>
         <label style="padding-right:10px;padding-left: 10px">Duration  </label> 
         <select class = "form-control" name = "duration" id = "duration">
-        <option val = "0"> Whole Day</option>
+        <option val = "0">Whole Day</option>
         <option val = "1">Morning</option>
-        <option val = "2"> Afternoon</option>
-        <option val = "3"> Break Out / Break In</option>
+        <option val = "2">Afternoon</option>
+        <option val = "3">Break Out / Break In</option>
         </select>
         </div>
         <div class = "form-group col-4">
@@ -121,10 +121,11 @@ $curdate = date("m/d/Y");
             <div class="card-header">
                 <h3 class="card-title">Employee Details</h3>
               </div>
+              <div class = "card-body">
               <?php include("elements/travelorder_details.php");?>
-
+              </div>
               <div class = "row" style=" margin:auto;padding-top:30px;padding-bottom: 30px">
-              <button type ="submit" name = "savetravel" id = "savetravel" class = " btn btn-primary"><i class = "fa fa-save"></i></button>
+              <button type ="submit" name = "savetravel" id = "savetravel" class = " btn btn-primary custom_button"><i class = "fa fa-save"></i></button>
               </div>
               </div>
 
@@ -150,51 +151,7 @@ $curdate = date("m/d/Y");
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="../plugins/jquery/jquery.min.js"></script>
-<script src="../plugins/jquery/jquery.js"></script>
-<script src="../plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> -->
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  // $.widget.bridge('uibutton', $.ui.button)
-</script>
-<script src="../plugins/moments/moments.js"> </script>
-<!-- Bootstrap 4 -->
-<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Morris.js charts -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script> -->
-<!-- <script src="../plugins/morris/morris.min.js"></script> -->
-<!-- Sparkline -->
-<script src="../plugins/sparkline/jquery.sparkline.min.js"></script>
-<!-- jvectormap -->
-<!-- <script src="../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script> -->
-<!-- jQuery Knob Chart -->
-<!-- <script src="../plugins/knob/jquery.knob.js"></script> -->
-<!-- daterangepicker -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script> -->
-<script src="../plugins/daterangepicker/daterangepicker.js"></script>
-<!-- datepicker -->
-<script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-<!-- Slimscroll -->
-<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="../plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="../dist/js/adminlte.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<!-- <script src="../dist/js/pages/dashboard.js"></script> -->
-<!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
- 
-<!-- Bootstrap 4 -->
-<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables -->
-<script src="../plugins/datatables/jquery.dataTables.js"></script>
-<script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
+<?php include('dtrdesign/footer.php');?>
 <!-- REFLECT LOGS SCRIPT -->
 <script src="javascript/addlogs.js"></script>
 <!-- PRINT REPORTS  SCRIPT -->
@@ -246,9 +203,9 @@ if(datefrom ==''|| dateto == '' || details == ''){
   cell5.innerHTML = duration ;
   cell6.innerHTML = type;
   cell7.innerHTML = '<button id="remove" class = "btn btn-circle btn-sm btn-primary" onclick = "deleteRow(this)">Remove</button>';
-  console.log(data);
 }
 });
+
 
 $('#savetravel').click(function(){
   //fetch all the data from the table and save it to the database
@@ -265,8 +222,8 @@ $('#travellist tr').each(function(row, tr){
       var newfrom = formatDate(from);
       var newto = formatDate(to);
      $.ajax({
-url : 'save_travel.php',
-method: 'POST',
+url :'save_travel.php',
+type:'POST',
 data: {
   empno:empno,
   fname:fname,
@@ -276,11 +233,9 @@ data: {
   type:type,
   details:details
 },
-success:function(){
+success:function(message){
 
-  post_notify("Record Inserted", "success");
-  reset_form_input('travelform');
-$("#travellist td").parent().remove();
+  notification(message, "","Refresh","success","success");
 
 },
 
@@ -290,7 +245,6 @@ console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.respo
 })
 
 });
-//reset all the data inside the table;
 
 });
 //FORMAT THE DATE
@@ -331,6 +285,32 @@ function post_notify(message, type){
       }
 
     }
+    //sweet alert notifications
+    function notification(title, message,text,value,status) {
+      swal(title, message, status, {
+          buttons: {
+            catch: {
+              text: text,
+              value: value,
+            }
+
+          },
+        })
+        .then((value) => {
+          switch (value) {
+
+            case "success":
+              window.location.reload(true);
+              break;
+              case "error":
+
+              break;
+
+          }
+        });
+
+    }
+
 //reset the all the data inside the form
 function reset_form_input(form_id){
       $( '#'+form_id ).each(function(){

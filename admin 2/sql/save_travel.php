@@ -1,7 +1,7 @@
 <?php 
-include('../config/config.php');
 // save the data from the table in database
 if(isset($_POST['empno'])){
+$message = "The Official Business entry has been encoded";
 $empno = $_POST['empno'];
 $fname = $_POST['fname'];
 $from = $_POST['from'];
@@ -21,6 +21,6 @@ $prep_query->execute([
 	':type' =>$type,
 	':detail' =>$details
 ]);
-header('location : employees.php');
+echo $message;
 }
 ?>

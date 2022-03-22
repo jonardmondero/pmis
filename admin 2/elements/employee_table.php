@@ -6,7 +6,7 @@
                     <div class = "row" style="margin-bottom:20px;height:30px;">
                         <div class = "col-12 ">
                           
-                <select class="form-control"  name="department" id = "deptId" >
+                <select class="form-control select2"  name="department" id = "deptId" >
                 <?php
              
                      $get_user_sql = "SELECT * FROM department WHERE status = 'Active'";
