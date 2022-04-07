@@ -5,13 +5,10 @@
  */
 include_once("PHPJasperXML.inc.php");
 include_once ('setting.php');
+include('reportconnection.php');
 //get the date info and combined it into string
 $empno= $_GET['empno'];
 $date = $_GET['year'];
-$server = 'localhost';
-$user = 'root';
-$pass = '1234';
-$db = 'pmis';
 $datefrom 	=		$date."-16";
 $dateto 	= 		$date."-31";		
 //sql statement for 2nd half report

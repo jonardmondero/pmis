@@ -48,7 +48,8 @@ $curdate = date("m/d/Y");
                 <h3 class="card-title">Search Employee</h3>
               </div>
            
-          <?php include("elements/search_employee.php");?>
+          <?php include("elements/search_employee.php");
+          include('modal/update_supervisor_modal.php');?>
  
           
  </div>
@@ -159,21 +160,7 @@ $curdate = date("m/d/Y");
 
     <script language="javascript">
 
-$("#search").keyup(function(){
-var keyword = $('#search').val();
-
-$('#tbody').load("ajaxcall/load_employee.php",{keyword:keyword},
-function(response, status, xhr) {
-  if (status == "error") {
-      alert(msg + xhr.status + " " + xhr.statusText);
-      console.log(msg + xhr.status + " " + xhr.statusText);
-  }
-  });
-
-
-})
-
-$("#tableemp tbody").on('click','#select',function(){
+$("#tblsearch tbody").on('click','#select',function(){
 
 var currow=  $(this).closest('tr');
 var datefrom = $('#dtefrom').val();
@@ -221,8 +208,11 @@ $('#travellist tr').each(function(row, tr){
      var type = $(tr).find('td:eq(5)').text();
       var newfrom = formatDate(from);
       var newto = formatDate(to);
+      if(details == '' ||empno == '' || newfrom == '' || newto == '' || duration == ''){
+        notification('Please check the fields!', "","Go back","error","error");
+      }else{
      $.ajax({
-url :'save_travel.php',
+url :'sql/save_travel.php',
 type:'POST',
 data: {
   empno:empno,
@@ -234,16 +224,13 @@ data: {
   details:details
 },
 success:function(message){
-
   notification(message, "","Refresh","success","success");
-
 },
-
 error: function (xhr, b, c) {
 console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
 }
 })
-
+}
 });
 
 });
@@ -285,31 +272,8 @@ function post_notify(message, type){
       }
 
     }
-    //sweet alert notifications
-    function notification(title, message,text,value,status) {
-      swal(title, message, status, {
-          buttons: {
-            catch: {
-              text: text,
-              value: value,
-            }
-
-          },
-        })
-        .then((value) => {
-          switch (value) {
-
-            case "success":
-              window.location.reload(true);
-              break;
-              case "error":
-
-              break;
-
-          }
-        });
-
-    }
+    
+   
 
 //reset the all the data inside the form
 function reset_form_input(form_id){

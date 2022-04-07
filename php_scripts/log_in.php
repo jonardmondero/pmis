@@ -16,22 +16,26 @@ $user_data ->execute([
     {
         session_start();
         $_SESSION['id'] = $result['userId'];
-      
-        
+        $_SESSION['usertype'] = $result['userType'];
+        $hash_password  = $result['upass'];
         // if($accnttype == 1)
        
-        if($pssword!=$result['upass']){
-            $alert_msg .= ' 
-            <div class="new-alert new-alert-warning alert-dismissible">
-                <i class="icon fa fa-warning"></i>
-                Incorrect Password!
-            </div>     
-        ';
+        if(password_verify($pssword, $hash_password)){
+
+          if ($result['userType']==$userType)
+          {
+           header('location: admin 2/dailytimerecord.php');
+          }
         }else{
-            if ($result['userType']==$userType)
-            {
-             header('location: admin 2/dailytimerecord.php');
-            }
+
+
+          $alert_msg .= ' 
+          <div class="new-alert new-alert-warning alert-dismissible">
+              <i class="icon fa fa-warning"></i>
+              Incorrect Password!
+          </div>     
+      ';
+           
         }
         }
      

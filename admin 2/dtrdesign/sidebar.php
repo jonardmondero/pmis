@@ -81,6 +81,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="add_co.php" class="nav-link">
+              <i class="nav-icon fa fa-car"></i>
+              <p>
+             Add Compensatory Off
+               
+              </p>
+            </a>
+          </li>
                 <li class="nav-header">TRANSACTIONS</li>
             
              <li class="nav-item">
@@ -100,6 +109,16 @@
               <i class="nav-icon fa fa-calendar"></i>
               <p>
             Employee Ledger
+               
+              </p>
+            </a>
+          </li>
+          <li class="nav-header">UPDATE DTR RECORD</li>
+          <li class="nav-item">
+            <a href="frm_ledger.php" class="nav-link" id = "update_sup">
+              <i class="nav-icon fa fa-user"></i>
+              <p>
+             Update Supervisor
                
               </p>
             </a>

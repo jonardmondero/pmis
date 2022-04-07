@@ -38,71 +38,77 @@ include("../php_scripts/search_user.php");
 
     <!-- Main content -->
                      <section class="content">
-                     <div class="container-fluid">
-                       <div class = "row">
-                        <div class="col-3">
-                         <div class="box box-solid" style = "width:50%;">
-                        <a href="add_user.php">
-                            <button class="btn btn-primary btn-block margin-bottom">
-                                Add User
-                            </button>
-                        </a> 
-                        </div>
-            </div>
-</div>
-    <div classs = "row">
-        <div class="col-9 pull-right ">
-         <div class="card">
-     
-       
-                    <form role="form" method="get" action="<?php htmlspecialchars("PHP_SELF");?>">
-                                <div class="box-body">
-                                    <table id="users" class="table table-bordered table-hover">
-                                        <thead>
-                                            <tr >
-                                                <th> Full Name </th>
-                                                <th>Username</th>
-                                                <th>Options</th>
-                                            </tr>
-                                        </thead>
-                                        <?php while ($user_data = $get_allusers_data->fetch(PDO::FETCH_ASSOC)) { ?>
-                                        <tr>
-                                            <td><?php echo ucfirst($user_data['firstName']) . '  ' . ucfirst($user_data['lastName']);?></td>
+                       <div class="container-fluid">
+                         <div class="row">
+                           <div class="col-3">
+                             <div class="box box-solid" style="width:50%;">
+                               <a href="add_user.php">
+                                 <button class="btn btn-primary btn-block margin-bottom">
+                                   Add User
+                                 </button>
+                               </a>
+                             </div>
+                           </div>
+                         </div>
+                         <div classs="row">
+                           <div class="col-9 pull-right ">
+                             <div class="card">
 
 
-                                            <td><?php echo $user_data['username'];?></td>
-                                            <td>
-                                                <a class="btn btn-outline-success btn-xs" href="update_user.php?userpass=<?php echo $user_data['userpass'];?>&id=<?php echo $user_data['id_no'];?> "><i class="fa fa-check-square-o"></i>
-                                                </a>
-                                                &nbsp;
-                                                <button class="btn btn-outline-danger btn-xs" data-role="confirm_delete" data-id="<?php echo $user_data['id_no']; ?>"><i class="fa fa-trash-o"></i></button>
-                                            </td>
-                                        </tr>
+                               <form role="form" method="get" action="<?php htmlspecialchars("PHP_SELF");?>">
+                                 <div class="box-body">
+                                   <table id="users" class="table table-bordered table-hover">
+                                     <thead>
+                                       <tr>
+                                         <th> Full Name </th>
+                                         <th>Username</th>
+                                         <th>Options</th>
+                                       </tr>
+                                     </thead>
+                                     <?php while ($user_data = $get_allusers_data->fetch(PDO::FETCH_ASSOC)) { ?>
+                                     <tr>
+                                       <td>
+                                         <?php echo ucfirst($user_data['firstName']) . '  ' . ucfirst($user_data['lastName']);?>
+                                       </td>
 
 
-                                        <?php } ?>
-                                        </tbody>
+                                       <td><?php echo $user_data['username'];?></td>
+                                       <td>
+                                         <a class="btn btn-outline-success btn-xs"
+                                           href="update_user.php?userpass=<?php echo $user_data['userpass'];?>&id=<?php echo $user_data['id_no'];?> "><i
+                                             class="fa fa-check-square-o"></i>
+                                         </a>
+                                         &nbsp;
+                                         <button class="btn btn-outline-danger btn-xs" data-role="confirm_delete"
+                                           data-id="<?php echo $user_data['id_no']; ?>"><i
+                                             class="fa fa-trash-o"></i></button>
+                                       </td>
+                                     </tr>
 
-                                    </table>
-                                </div>
-                                  </div>
-                                <!-- /.box-body -->
-                            </form>
-                            </div>
-                                        </div>
 
-    
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2018 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.0-alpha
-    </div>
-  </footer>
+                                     <?php } ?>
+                                     </tbody>
+
+                                   </table>
+                                 </div>
+                             </div>
+                             <!-- /.box-body -->
+                             </form>
+                           </div>
+                         </div>
+
+
+                     </section>
+                     <!-- /.content -->
+                     </div>
+                     <!-- /.content-wrapper -->
+                     <footer class="main-footer">
+                       <strong>Copyright &copy; 2014-2018 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+                       All rights reserved.
+                       <div class="float-right d-none d-sm-inline-block">
+                         <b>Version</b> 3.0.0-alpha
+                       </div>
+                     </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

@@ -5,14 +5,10 @@
  */
 include_once("PHPJasperXML.inc.php");
 include_once ('setting.php');
-
+include('reportconnection.php');
 $empno= $_GET['empno'];
 $date = $_GET['year'];
 $days = $_GET['days'];
-$server = 'localhost';
-$user = 'root';
-$pass = '1234';
-$db = 'pmis';
 
 
 $PHPJasperXML = new PHPJasperXML();

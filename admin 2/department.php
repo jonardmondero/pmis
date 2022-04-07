@@ -2,6 +2,7 @@
 include ('dtrdesign/header.php');
 include('../config/config.php');
 include('../php_scripts/add_department.php');
+include('session.php');
 $alert_msg = '';
 ?>
 <!DOCTYPE html>

@@ -42,7 +42,7 @@
                   
                        <div class="row col-12">
                        
-                        <div  style="height:auto;display: inline-block;margin:auto;">
+                        <div  style="margin:auto;">
                             <table id="dtr" class ="form__table table-bordered table-responsive table-hover ">
                                 <thead class = "table" >
                                    

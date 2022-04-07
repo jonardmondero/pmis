@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report3X3" language="javascript" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="792" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a6368358-2357-466b-9e30-4afac7745ddd">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="388"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT CONCAT(e.lastName,', ',e.firstName,', ',LEFT(e.middleName, 1),'.')  AS fullName,e.supervisor,d.inAM,d.outAM,d.inPM,d.outPM,d.otIn,d.otOut,DATE_FORMAT(d.Date,'%d')AS DAY,DATE_FORMAT(d.Date,'%M,%Y')AS month,
@@ -58,7 +58,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 		</band>
 	</background>
 	<pageHeader>
-		<band height="45">
+		<band height="45" splitType="Immediate">
 			<textField>
 				<reportElement x="62" y="23" width="157" height="18" uuid="5a6f8af1-567d-4314-8ec2-f0f936bfc06f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -83,7 +83,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="65" splitType="Prevent">
+		<band height="65" splitType="Immediate">
 			<textField>
 				<reportElement x="143" y="2" width="100" height="20" uuid="e7229afa-787e-4299-9614-6d4a58f51e9e"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
@@ -108,7 +108,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="12" splitType="Prevent">
+		<band height="12" splitType="Immediate">
 			<textField>
 				<reportElement x="656" y="0" width="25" height="12" uuid="47aa6420-85b2-4014-a203-edc658af534f"/>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
@@ -168,9 +168,9 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textFieldExpression><![CDATA[$F{inPM}]]></textFieldExpression>
 			</textField>
 			<elementGroup>
-				<textField>
+				<textField pattern="">
 					<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="33" y="0" width="22" height="12" uuid="f70742d4-eb4e-4ef2-bdac-aae15783ec5c"/>
-					<textElement textAlignment="Justified" verticalAlignment="Bottom">
+					<textElement textAlignment="Justified" verticalAlignment="Bottom" markup="none">
 						<font fontName="Arial" size="8"/>
 						<paragraph lineSpacing="Fixed"/>
 					</textElement>
@@ -245,8 +245,8 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 					<textFieldExpression><![CDATA[$F{outPM}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="396" y="0" width="25" height="12" uuid="574fc50f-fc5f-4cc5-b590-b2764a653300"/>
-					<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<reportElement x="394" y="0" width="22" height="12" uuid="574fc50f-fc5f-4cc5-b590-b2764a653300"/>
+					<textElement textAlignment="Justified" verticalAlignment="Bottom">
 						<font fontName="Arial" size="8"/>
 						<paragraph lineSpacing="Fixed"/>
 					</textElement>
@@ -270,7 +270,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				</textField>
 				<textField>
 					<reportElement x="293" y="0" width="25" height="12" uuid="aa25d514-fe40-4564-ad13-b5c0b0c0ed53"/>
-					<textElement textAlignment="Justified" verticalAlignment="Bottom">
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
 						<font fontName="Arial" size="8"/>
 						<paragraph lineSpacing="Fixed"/>
 					</textElement>
@@ -290,7 +290,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="88" splitType="Prevent">
+		<band height="88" splitType="Immediate">
 			<textField>
 				<reportElement x="223" y="-2" width="37" height="12" uuid="19e02063-13dc-4eed-b237-ea50fb4c265e">
 					<printWhenExpression><![CDATA[$F{total}!= "00:00"]]></printWhenExpression>
@@ -345,9 +345,9 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="39"/>
+		<band height="39" splitType="Immediate"/>
 	</pageFooter>
 	<lastPageFooter>
-		<band height="15"/>
+		<band height="15" splitType="Immediate"/>
 	</lastPageFooter>
 </jasperReport>

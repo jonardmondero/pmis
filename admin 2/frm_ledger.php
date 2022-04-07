@@ -1,6 +1,7 @@
 <?php
 
 include ('../config/config.php');
+include('session.php');
 $hiddenempno =$dteFrom=$dteTo='';
 $timeIn ='';
 $timeoutAm ='';

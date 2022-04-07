@@ -2,6 +2,7 @@
 
 include ('dtrdesign/header.php');
 include('../config/config.php');
+include('session.php');
 $alert_msg='';
 include('sql/save_employee.php');
 $select_emp = "CALL spGetAllEmployee";
@@ -76,7 +77,7 @@ $prep_emp->execute();
     </section>
     <?php include('modal/add_employee_modal.php');?>
     <?php include('modal/add_worksched_modal.php');?>
-
+   <?php include('modal/update_supervisor_modal.php');?>
 
     <!-- /.content -->
   </div>
@@ -98,39 +99,7 @@ $prep_emp->execute();
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="../plugins/jquery/jquery.min.js"></script>
-<script src="../plugins/jquery/jquery.js"></script>
-
-<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Morris.js charts -->
-<script src="../plugins/morris/morris.min.js"></script>
-<!-- Sparkline -->
-<script src="../plugins/sparkline/jquery.sparkline.min.js"></script>
-
-<script src="../plugins/knob/jquery.knob.js"></script>
-<!-- daterangepicker -->
-<script src="../plugins/daterangepicker/daterangepicker.js"></script>
-<!-- datepicker -->
-<script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-<!-- Slimscroll -->
-<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="../plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="../dist/js/adminlte.js"></script>
-<script src="../dist/js/demo.js"></script>
-<script src="../plugins/select2/select2.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables -->
-<script src="../plugins/datatables/jquery.dataTables.js"></script>
-<script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
-<script src="../plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
-<script src="../plugins/tagsinput/tagsinput.js"></script>
-<script src="javascript/searchemployee.js"></script>
-<script src="javascript/editemployees.js"></script>
+<?php include('dtrdesign/footer.php');?>
 
 <script>
 	$(document).ready(function(){
@@ -177,7 +146,7 @@ function reset_form_input(form_id){
  
 $.ajax({
   type:"POST",
-  url:"ajaxcall/heck_empnumber.php",
+  url:"ajaxcall/check_empnumber.php",
   data:{empnum:emp},
   success: function(response){
     var result = jQuery.parseJSON(response);
@@ -210,7 +179,7 @@ $('#bioid').keyup(function(){
  
 $.ajax({
   type:"POST",
-  url:"check_empnumber.php",
+  url:"ajaxcall/check_empnumber.php",
   data:{bioid:bio},
   success: function(response){
     var result = jQuery.parseJSON(response);
@@ -251,7 +220,7 @@ $('#department').select2({
 
 })  
 
-$('#tableemp tbody').on( 'click', '.add_worksched', function(){
+$('#table_employee tbody').on( 'click', '.add_worksched', function(){
         event.preventDefault();
      
   var currow=  $(this).closest('tr');
@@ -294,7 +263,7 @@ $('#sel_worksched').change(function(){
 
 
 
-$("#tableemp tbody").on("click", ".edit_employee", function () {
+$("#table_employee tbody").on("click", ".edit_employee", function () {
   //SHOWS THE ADD EMPLOYEE MODAL AND DISPLAY THE EMPLOYEE'S INFORMATION
     event.preventDefault();
     $("#addemployee").modal('show');

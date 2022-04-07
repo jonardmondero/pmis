@@ -1,5 +1,4 @@
-
-var dataTable = $("#tableemp").DataTable({
+var dataTable = $("#table_employee").DataTable({
   page: true,
   stateSave: true,
   processing: true,
@@ -19,7 +18,6 @@ var dataTable = $("#tableemp").DataTable({
           c.responseText
       );
     },
- 
   },
   columnDefs: [
     {
@@ -27,10 +25,7 @@ var dataTable = $("#tableemp").DataTable({
       targets: -1,
       data: null,
       defaultContent:
-        '<button class="btn btn-danger btn-sm btn-circle add_worksched">  <i class="fa fa-calendar"></i></button><button class="btn btn-warning btn-sm btn-circle edit_employee">  <i class="fa fa-edit"></i></button>'
-    ,
+        '<button class="btn btn-danger btn-sm btn-circle add_worksched">  <i class="fa fa-calendar"></i></button><button class="btn btn-warning btn-sm btn-circle edit_employee">  <i class="fa fa-edit"></i></button>',
     },
-    
   ],
 });
-

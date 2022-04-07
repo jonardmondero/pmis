@@ -5,26 +5,19 @@ $("#findtable tbody").on("click", ".reflectlogs", function () {
   var convert = "";
   if (insertstate == "Check In") {
     convert = "inAM";
-  }
-  else if (insertstate == "Break Out") {
+  } else if (insertstate == "Break Out") {
     convert = "outAM";
-  }
-  else if (insertstate == "Break In") {
+  } else if (insertstate == "Break In") {
     convert = "inPM";
-  }
-  else if (insertstate == "Check Out") {
+  } else if (insertstate == "Check Out") {
     convert = "outPM";
-  }
-  else if (insertstate == "Overtime In") {
+  } else if (insertstate == "Overtime In") {
     convert = "otIn";
-  }
-  else if (insertstate == "Overtime Out") {
+  } else if (insertstate == "Overtime Out") {
     convert = "otOut";
   }
- 
+
   console.log(insertstate);
-
-
 
   var empnum = $("#hiddenempno").val();
   var datefr = $("#dtefrom").val();
@@ -35,11 +28,9 @@ $("#findtable tbody").on("click", ".reflectlogs", function () {
   $.ajax({
     url: "ajaxcall/addlogs.php",
     type: "POST",
-    dataType:"JSON",
+    dataType: "JSON",
     data: { id: date, empno: empnum, stateno: convert, time: col1 },
-    success: function(){
-   
-  },
+    success: function () {},
     error: function (xhr, b, c) {
       console.log(
         "xhr=" +
@@ -50,15 +41,8 @@ $("#findtable tbody").on("click", ".reflectlogs", function () {
           c.responseText
       );
 
-         
       loadDtr(empnum, datefr, dateto);
-      post_notify('Record Inserted','success');
-
+      post_notify("Record Inserted", "success");
     },
-   
   });
-
-    
-   
-  
 });

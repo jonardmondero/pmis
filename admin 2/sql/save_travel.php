@@ -1,6 +1,9 @@
 <?php 
+
 // save the data from the table in database
-if(isset($_POST['empno'])){
+if(isset($_POST['empno'])){	
+	$message = '';
+include('../../config/config.php');
 $message = "The Official Business entry has been encoded";
 $empno = $_POST['empno'];
 $fname = $_POST['fname'];
@@ -12,7 +15,7 @@ $details = $_POST['details'];
 $query = "CALL spInsertTravel(:empno,:fname,:from,:to,:duration,:type,:detail)";
 $prep_query = $con->prepare($query);
 
-$prep_query->execute([
+if($prep_query->execute([
 	':empno' =>$empno,
 	':fname' =>$fname,
 	':from' =>$from,
@@ -20,7 +23,12 @@ $prep_query->execute([
 	':duration' =>$duration,
 	':type' =>$type,
 	':detail' =>$details
-]);
-echo $message;
+])){
+$message = "Official Business encoded";
 }
+
+}else {
+	$message = "Please check fields!";
+}
+echo $message;
 ?>

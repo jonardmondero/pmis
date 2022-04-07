@@ -5,13 +5,9 @@
  */
 include_once("PHPJasperXML.inc.php");
 include_once ('setting.php');
-
+include('reportconnection.php');
 $empno= $_GET['empno'];
 $date = $_GET['year'];
-$server = 'localhost';
-$user = 'root';
-$pass = '1234';
-$db = 'pmis';
 $datefrom 	=		$date."-01";
 $dateto 	= 		$date."-15";		
 

@@ -10,12 +10,13 @@
 
 .form__table tbody {
     font-size:15px;
-    padding:13px;
+    padding:10px;
     border-width:3px;
 }
 
 .form__table th {
     font-size:15px;
+    padding:10px;
     border-width:3px;
 }
 

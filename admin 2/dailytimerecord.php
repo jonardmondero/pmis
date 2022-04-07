@@ -1,6 +1,7 @@
 <?php
 
 include ('../config/config.php');
+include('session.php');
 $hiddenempno =$dteFrom=$dteTo='';
 $timeIn ='';
 $timeoutAm ='';
@@ -31,14 +32,15 @@ $otOut='';
     <section class="content">
         <div class="container-fluid">
             
-            <div class="row max_height">
-            <div class="col-4 no-gutters" style = "resize:both;overflow:auto;">
+            <div class="row">
+            <div class="col-4 " >
             
             <?php include('elements/employee_table.php');?>
                 </div>
           
-    <?php include('elements/dtr_table.php');?>
-  
+    <?php include('elements/dtr_table.php');
+    include('modal/update_supervisor_modal.php');
+    ?>
   </div>
   </div>
   <?php include('modal/edit_dtr_modal.php');
@@ -64,6 +66,7 @@ $otOut='';
   
   $(document).ready(function(){
    $("#deptId").select2();
+  
      var deptId = $('#deptId').val();
      var empstatus = $('#emp_status').val();
   // $('#body').load("get_employee_department.php",{
@@ -349,7 +352,6 @@ $.ajax({
    })
    });
 
-
    $('#dtr tbody').on( 'click', '.removeut', function(){
      event.preventDefault();
      var empnum = $('#hiddenempno').val();
@@ -384,7 +386,38 @@ $.ajax({
   }
 });
 
-        
+$('#btn_update_supervisor').click(function () {
+
+const department = $("#update_supervisor_department").val();
+const supervisor_name = $("#supervisor_name").val();
+console.log(department,supervisor_name);
+$.ajax({
+  type:"POST",
+  url: "ajaxcall/update_supervisor.php",
+  data: {
+    dept: department,
+    supervisor: supervisor_name
+  },
+  success: function (message) {
+      notification(message, "","Refresh","success","success");
+  },
+  error: function (xhr, b, c) {
+    console.log(
+      "xhr=" +
+        xhr.responseText +
+        " b=" +
+        b.responseText +
+        " c=" +
+        c.responseText
+    );
+
+  },
+});
+});
+
+
+
+       
     </script>
    
 </body>

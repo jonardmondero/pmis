@@ -21,7 +21,6 @@
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.js"></script>
 <script src="../dist/js/demo.js"></script>
-
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.js"></script>
 <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
@@ -31,5 +30,10 @@
 <script src="javascript/printreport.js"></script>
 <!-- SELECT 2 PLUGINS -->
 <script src="../plugins/sweetalerts/sweetalert.min.js"></script>
-
+<script src="javascript/searchemployee.js"></script>
+<script src="javascript/editemployees.js"></script>
+<script src="javascript/notification.js"></script>
+<script src="javascript/update_supervisor.js"></script>
+<script src="javascript/employee_search.js"></script>
+<script src="javascript/show_update_sup.js"></script>
 <script src="../plugins/select2/select2.js"></script>
