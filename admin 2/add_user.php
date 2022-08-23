@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
-<?php include('dtrdesign/header.php'); 
+
+
+<?php 
+$titlename = 'Add User';
+include('dtrdesign/header.php'); 
 ?>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">

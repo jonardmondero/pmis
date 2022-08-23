@@ -5,9 +5,9 @@ if (session_status() == PHP_SESSION_NONE) {
 
 $user_type = $_SESSION['usertype'];
 
-if($user_type == 'User'){
-    header('location:../index.php');
-}
+// if($user_type == 'User'){
+//     header('location:../index.php');
+// }
 
 if (!isset($_SESSION['id'])) {
     header('location:../index.php');

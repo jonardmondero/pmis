@@ -1,7 +1,7 @@
 <?php
 //include('update_user.php');
 include "../php_scripts/search_user.php";
-
+$titlename = 'Compensatory Day Off';
 ?>
 
 <!DOCTYPE html>
@@ -271,7 +271,7 @@ include 'dtrdesign/sidebar.php';
                 success: function(e){
                 },  
                 error: function (xhr, b, c) {
-                    notification("Compensatory Record is saved.", "","Refresh","success","success");
+                  
              console.log(
       "xhr=" +
         xhr.responseText +

@@ -3,6 +3,7 @@
 include ('../config/config.php');
 $curdate = date("m/d/Y");
 include('session.php');
+$titlename = 'Application for Leave';
 include ('dtrdesign/header.php');
 
 
@@ -36,7 +37,7 @@ $prep_leave_type->execute();
         <div class="content-wrapper">
 
             <section class="content">
-                <div class="container-fluid">
+                <div class="container-fluid ">
                 <div class=" row ">
                             <div class=" col-12">
                                 <div class="justify-content-center">
@@ -48,8 +49,9 @@ $prep_leave_type->execute();
                     <div class="col-4">
                         
                      
-                            <div class="col-12 " style="resize:both;overflow:auto;">
+                            <div class="col-12 " >
                                 <div class="card card-info">
+                                    <div class = "wrapper">
                                     <div class="card-header">
                                         <h3 class="card-title">Search Employee</h3>
                                     </div>
@@ -58,6 +60,7 @@ $prep_leave_type->execute();
 
 
                                 </div>
+                                    </div>
                         </div>
                              
                             </div>
@@ -83,13 +86,16 @@ $prep_leave_type->execute();
                                                     <div class="row col-12">
 
                                                             <div class="input-group date p-2">
-                                                                <label
+                                                                <span class = "input-group-text"> <label
                                                                     style="padding-right:10px;padding-left: 10px">From:
                                                                 </label>
                                                                 <div style="padding-right:10px"
                                                                     class="input-group-addon">
                                                                     <i class="fa fa-calendar"></i>
                                                                 </div>
+                                                            </span>
+                                                               
+                                                               
 
                                                                 <input style="margin-right:10px;" type="text"
                                                                     data-provide="datepicker"
@@ -97,12 +103,14 @@ $prep_leave_type->execute();
                                                                     autocomplete="off" name="datefrom" id="dtefrom"
                                                                     val="<?php echo $curdate; ?> ">
 
-
-                                                                <label style="padding-right:10px">To:</label>
+                                                                    <span class = "input-group-text">
+                                                                    <label style="padding-right:10px">To:</label>
                                                                 <div style="padding-right:10px"
                                                                     class="input-group-addon">
                                                                     <i class="fa fa-calendar"></i>
                                                                 </div>
+                                                                    </span>
+                                                                
                                                                 <input type="text" class="form-control col-4 "
                                                                     data-provide="datepicker" autocomplete="off"
                                                                     name="dateto" id="dteto"
@@ -268,7 +276,7 @@ $prep_leave_type->execute();
                 cell3.innerHTML = dateto;
                 cell4.innerHTML = inclusivedate;
                 cell5.innerHTML =
-                    '<button id="remove" class = "btn btn-circle btn-sm btn-primary" onclick = "deleteRow(this)">Remove</button>';
+                    '<button id="remove" class = "btn btn-circle btn-sm btn-primary" id = "remove">Remove</button>';
             }
         });
 
@@ -417,6 +425,7 @@ $prep_leave_type->execute();
         }
 
         function deleteRow(r) {
+            event.preventDefault();
             // DELETE SELECTED ROW
             var i = r.parentNode.parentNode.rowIndex;
             document.getElementById("leavelist").deleteRow(i);

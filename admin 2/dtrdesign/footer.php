@@ -36,4 +36,4 @@
 <script src="javascript/update_supervisor.js"></script>
 <script src="javascript/employee_search.js"></script>
 <script src="javascript/show_update_sup.js"></script>
-<script src="../plugins/select2/select2.js"></script>
+<script src="../plugins/select2/select2.full.js"></script>

@@ -8,6 +8,7 @@
 					   <th>To</th>
 					   <th>Duration</th>
 					   <th>Type</th>
+					   <th>Details</th>
                        <th>Remove</th>
                	</thead>
 				   

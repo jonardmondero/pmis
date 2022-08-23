@@ -9,6 +9,7 @@ $timeinPm ='';
 $timeoutPm='';
 $otIn='';
 $otOut='';
+$titlename = 'Employees Ledger';
 
         include ('dtrdesign/header.php');
              
@@ -100,9 +101,9 @@ $otOut='';
                    </div>
               
                        </div>
-                    <submit type = "submit" name = "approve_ob" class = "btn btn-primary">Apply All OB entries </submit>
+                    <submit type = "submit" name = "approve_ob"  id = "approve_ob" class = "btn btn-primary">Apply All OB entries </submit>
 
-                    <submit type = "submit" name = "approve_leave"  class = "btn btn-primary">Apply All Leave entries </submit>
+                    <submit type = "submit" name = "approve_leave" id = "approve_leave" class = "btn btn-primary">Apply All Leave entries </submit>
                  
                     <div class = "col-3"></div>
                       
@@ -350,7 +351,60 @@ var tbody = table.getElementsByTagName("tbody")[0];
 
             return [year, month, day].join('-');
         }
+$('#approve_ob').click(function(){
 
+var empno = $('#hiddenempno').val();
+var dtefrom = formatDate($('#dtefrom').val());
+var dteto = formatDate($('#dteto').val());
+var status = $('#status_type').val();
+event.preventDefault();
+$.ajax({
+url:'sql/reflect_all_ob.php',
+type:'POST',
+data:{
+  empno:empno,
+  dtefrom:dtefrom,
+  dteto:dteto,
+  status:status
+},
+success: function(e){
+  console.log(e);
+  notification("REFLECTED !", "This record has been reflected.","Refresh","success","success");
+},
+error:function (xhr, b, c) {     
+     console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+       }
+
+})
+
+})
+$('#approve_leave').click(function(){
+
+var empno = $('#hiddenempno').val();
+var dtefrom = formatDate($('#dtefrom').val());
+var dteto = formatDate($('#dteto').val());
+var status = $('#status_type').val();
+event.preventDefault();
+$.ajax({
+url:'sql/reflect_all_leave.php',
+type:'POST',
+data:{
+  empno:empno,
+  dtefrom:dtefrom,
+  dteto:dteto,
+  status:status
+},
+success: function(e){
+  console.log(e);
+  notification("REFLECTED !", "This record has been reflected.","Refresh","success","success");
+},
+error:function (xhr, b, c) {     
+     console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+       }
+
+})
+
+})
 $('#tbl__ob tbody').on( 'click', '.ob__button', function(){
   event.preventDefault();
   const empno = $('#hiddenempno').val();

@@ -1,24 +1,30 @@
-<div class="col-8" style = "resize:both;overflow:auto;margin-top:10px;" >
-          <div class="card_dtr card-warning" >
+<div class="col-8" style = "margin-top:10px;" >
+          <div class="wrapper" >
                <div class="card-header">
                  <div class ="row" style ="margin:auto;">
                 <div class="input-group date">
-                           <label style="padding-right:10px;padding-left: 10px">From:  </label> 
+                   <span class = "input-group-text">
+                   <label style="padding-right:10px;padding-left: 10px">From:  </label> 
                              <div  style = "padding-right:10px" class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                              </div>
-                    
+                   </span>
+                          
+                 
       <input  style="margin-right:10px;"type="text" data-provide="datepicker"class="form-control  " style="font-size:13px" autocomplete="off" name="datefrom" id="dtefrom" value = "<?php echo $dteFrom;?>" >
                                   
-                       
-                       <label style="padding-right:10px">To:</label>
+      <span class = "input-group-text">
+      <label style="padding-right:10px">To:</label>
                             <div style = "padding-right:10px" class="input-group-addon">
                                  <i class="fa fa-calendar"></i>
                             </div>
+      </span>
+                      
        <input type="text" class="form-control " data-provide="datepicker"  autocomplete="off" name="dateto" id="dteto" value = "<?php echo $dteTo;?>" >
                        
                        
-                       <button type="button"  class="btn btn-primary" style = "margin-left:50px;"data-toggle = "modal" data-target = "#printreport"   value="Print"><i class = "fa fa-print"></i></button>
+                       <button type="button"  class="btn btn-primary" style = "margin-left:50px;margin-right:30px;"data-toggle = "modal" data-target = "#printreport"   value="Print"><i class = "fa fa-print"></i></button>
+                     
                         
                      </div>
                      </div>
@@ -34,7 +40,8 @@
                            <div class = "card full_name" >
                               <h4 id ="full-name" > </h4>
                               </div>
-                              <input type = "hidden" readonly id = "hiddenempno" name = "hiddenempno" value = "<?php echo $hidden;?>">                               
+                              <input type = "hidden" readonly id = "hiddenempno" name = "hiddenempno" value = "<?php echo $hidden;?>">  
+                              <input type = "hidden" readonly id = "hiddendeptid" name = "hiddendeptid" value = "">                               
                            
                           </div>
                           <div class ="col-3"></div>

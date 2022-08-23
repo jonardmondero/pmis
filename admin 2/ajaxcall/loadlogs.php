@@ -35,20 +35,30 @@ if(isset($_POST['empno'])){
 		 //DISPLAYS THE TIME INTO THE INSERT LOG TABLE
  	$checktime = $timeresult['checktime'];
 	 $checktype = $timeresult['checktype'];
-	 $checkstate = '';
-	 if($checktype == 'O'){
-		$checkstate = 'Check In';
-	 }
-	 if($checktype == '0'){
-		$checkstate = 'Break Out';
-	 }
-	 if($checktype == '1'){
-		$checkstate = 'Break In';
-	 }
-	 if($checktype == 'i'){
+	 $checkstate = 'Check In';
+	//  if($checktype == 'O'){
+	// 	$checkstate = 'Check In';
+	//  }
+	//  if($checktype == '0'){
+	// 	$checkstate = 'Break Out';
+	//  }
+	//  if($checktype == '1'){
+	// 	$checkstate = 'Break In';
+	//  }
+	//  if($checktype == 'i'){
+	// 	$checkstate = 'Check Out';
+	//  }
+	 switch($checktype){
+		case "O":
+			$checkstate = 'Check In';
+		case "0":
+			$checkstate = 'Break Out';
+		case "1":
+			$checkstate = 'Break In';
+		case "i":
 		$checkstate = 'Check Out';
+
 	 }
-	 
 	 
  	$options = array('Check In','Break Out','Break In','Check Out','Overtime In','Overtime Out');
  	echo $checktime;	

@@ -2,6 +2,9 @@
 
 include ('../config/config.php');
 include('session.php');
+
+
+
 $hiddenempno =$dteFrom=$dteTo='';
 $timeIn ='';
 $timeoutAm ='';
@@ -9,12 +12,10 @@ $timeinPm ='';
 $timeoutPm='';
 $otIn='';
 $otOut='';
-        include ('dtrdesign/header.php');
+$titlename = 'Daily Time Record';
+include ('dtrdesign/header.php');
           
 ?>
-
-
-
 <!DOCTYPE html>
 <html>
 
@@ -30,21 +31,25 @@ $otOut='';
   <div class="content-wrapper">
     
     <section class="content">
+      <div class = "wrapper">
         <div class="container-fluid">
             
             <div class="row">
-            <div class="col-4 " >
+            <div class="col-4" >
             
             <?php include('elements/employee_table.php');?>
                 </div>
           
     <?php include('elements/dtr_table.php');
-    include('modal/update_supervisor_modal.php');
+   
     ?>
   </div>
-  </div>
+
   <?php include('modal/edit_dtr_modal.php');
+      include('modal/update_supervisor_modal.php');
       include ('modal/print_modal.php');?>
+        </div>
+
   </section>
   </div>
 </div>
@@ -56,7 +61,7 @@ $otOut='';
     
   </footer>
 
-  
+  </div>
 <!-- ./wrapper -->
 
 <!-- jQuery -->
@@ -68,7 +73,7 @@ $otOut='';
    $("#deptId").select2();
   
      var deptId = $('#deptId').val();
-     var empstatus = $('#emp_status').val();
+     var empstatus = $('#emp_status').val();   
   // $('#body').load("get_employee_department.php",{
   //   dept:deptId,
   //   empstatus:empstatus
@@ -107,10 +112,14 @@ ajax: {
 
 
      }
+
+
+
  $('#deptId').change(function(){
   var deptId = $('#deptId').val();
   var empstatus = $('#emp_status').val();
   getEmployees(deptId,empstatus);
+  $('#hiddendeptid').val(deptId);
 
  });
 
@@ -164,6 +173,8 @@ var tbody = table.getElementsByTagName("tbody")[0];
    
   }
  
+
+
 function post_notify(message, type){
 
 if (type == 'success') {
@@ -352,6 +363,15 @@ $.ajax({
    })
    });
 
+
+   $('#dtr tbody').on( 'click', '.col', function(){
+
+event.preventDefault();
+
+
+});
+
+
    $('#dtr tbody').on( 'click', '.removeut', function(){
      event.preventDefault();
      var empnum = $('#hiddenempno').val();
@@ -385,6 +405,9 @@ $.ajax({
    return false;
   }
 });
+
+
+
 
 $('#btn_update_supervisor').click(function () {
 

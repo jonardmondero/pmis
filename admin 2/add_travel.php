@@ -1,10 +1,10 @@
 <?php
 
-include ('../config/config.php');
+include '../config/config.php';
 $curdate = date("m/d/Y");
-
-include ('dtrdesign/header.php');
-$curdate = date("m/d/Y");      
+$titlename = 'Travel Order/Pass Slip';
+include 'dtrdesign/header.php';
+$curdate = date("m/d/Y");
 ?>
 
 
@@ -17,23 +17,47 @@ $curdate = date("m/d/Y");
 <div class="wrapper">
 
 
- <?php 
- include('dtrdesign/navbar.php');
- include('dtrdesign/sidebar.php');
- include('sql/save_travel.php');
+ <?php
+include 'dtrdesign/navbar.php';
+include 'dtrdesign/sidebar.php';
+include 'sql/save_travel.php';
 
-  
+?>
 
-   ?>
 
-    
+<style>
 
+  .dateformat{
+    margin:auto;
+
+  }
+  .dateformat label{
+    padding-right:0.5em;
+    padding-top:0.5em;
+  }
+  .dateformat input {
+    border-radius:0.5em;
+    border-left:0.05em;
+    margin-right:0.5em;
+  }
+  .dateformat i {
+
+    padding-right:0.5em;
+
+  }
+
+  span {
+    height:3em;
+    text-align:center;
+  }
+
+</style>
 
   <div class="content-wrapper">
- 
+
     <section class="content">
         <div class="container-fluid" >
-            
+
             <div class="row ">
           <div class="col-12" style = "margin-bottom:20;" >
           <div class ="justify-content-center" >
@@ -47,60 +71,67 @@ $curdate = date("m/d/Y");
             <div class="card-header">
                 <h3 class="card-title">Search Employee</h3>
               </div>
-           
-          <?php include("elements/search_employee.php");
-          include('modal/update_supervisor_modal.php');?>
- 
-          
+
+          <?php include "elements/search_employee.php";
+include 'modal/update_supervisor_modal.php';?>
+
+
  </div>
     <!-- /.content -->
   </div>
    <div class ="col-8">
   <form method = "POST" id = "travelform" action = <?php htmlspecialchars("PHP_SELF");?>>
   <div class="col-12 no-gutters"  >
-            <div class="card card-success" > 
-            <div class="card-header">
-                <h3 class="card-title">Details</h3>
-              </div>
+            <div class="card " >
               <div class="row" style = "margin-top:20px;">
-     
-<div class = "col-4" style = "margin:auto">
-<div class="input-group date ">
-        <label >From:  </label> 
-          <div class="input-group-addon">
+
+<div class = "col-4 dateformat">
+
+
+          <div class="input-group" >
+            <span class = "input-group-text">
+            <label  ><b>From:</b>  </label>
                  <i class="fa fa-calendar"></i>
+                </span>
+      <input type="text" data-provide="datepicker" class="form-control "
+          autocomplete="off" name="datefrom" id="dtefrom" val = "<?php echo $curdate; ?> " >
+         </div>
+
           </div>
- 
-<input type="text" data-provide="datepicker"class="form-control "  autocomplete="off" name="datefrom" id="dtefrom" val = "<?php echo $curdate; ?> " >
-    </div>  
-          </div>
-                  <div class = "col-4" style = "margin:auto;">
-    <div class="input-group date">
-    <label>To:</label>
+                  <div class = "col-4 dateformat">
+    <div class="input-group">
+      <span class = "input-group-text">
+    <label><b>To:</b></label>
          <div  class="input-group-addon">
               <i class="fa fa-calendar"></i>
          </div>
+         </span>
 <input type="text" class="form-control" data-provide="datepicker"  autocomplete="off" name="dateto" id="dteto" val = "<?php echo $curdate; ?> " >
-    
-                  
+
+
                   </div>
                   </div>
-          </div> 
-         
-          <div class = "row col-6" style = "padding-left:10px;padding-top:20px;">
-          
-        <div class = "form-group col-4" margin:auto;>
-        <label style="padding-right:10px;padding-left: 10px">Duration  </label> 
-        <select class = "form-control" name = "duration" id = "duration">
+          </div>
+
+          <div class = "row col-10" style = "padding-left:10px;padding-top:20px;">
+
+        <div class = "input-group col-4" >
+          <span class = "input-group-text" >
+            <label>Duration: </label>
+          </span>
+        <select class = " form-control " name = "duration" id = "duration" style = "height:3em;width:10em;"  >
         <option val = "0">Whole Day</option>
         <option val = "1">Morning</option>
         <option val = "2">Afternoon</option>
         <option val = "3">Break Out / Break In</option>
         </select>
         </div>
-        <div class = "form-group col-4">
-        <label style="padding-right:10px;padding-left: 10px">Type  </label> 
-        <select class = "form-control"  name = "type" id = "type">
+        <div class = "input-group col-4">
+          <span class = "input-group-text">  
+            <label style="padding-right:10px;padding-left: 10px">Type: 
+         </label> </span>
+      
+        <select style = "height:3em;width:10em;" class = "form-control"  name = "type" id = "type">
         <option val = "FW"> Field Work</option>
         <option val = "TOB">Travel on Official Business</option>
         <option val = "OT"> On Official Time</option>
@@ -108,12 +139,12 @@ $curdate = date("m/d/Y");
         </select>
 
         </div>
-     
+
           </div>
-          <div class = "row" style="padding-right:10px;padding-left: 10px">
-          <div class = "form-group col-12">
-          <label style="padding-right:10px;padding-left: 10px">Details  </label> 
-          <input type = "text" name = "details" id = "details" class = "form-control">
+          <div class = "row" style="padding-right:10px;padding-left:10px;margin-top:20px;">
+          <div class = "form-group col-4">
+          <label style="padding-right:10px;padding-left: 10px">Details  </label>
+          <textarea name = "details" id = "details" class = "form-control" style = "height:5rem;"></textarea>
           </div>
           </div>
           </div>
@@ -123,7 +154,7 @@ $curdate = date("m/d/Y");
                 <h3 class="card-title">Employee Details</h3>
               </div>
               <div class = "card-body">
-              <?php include("elements/travelorder_details.php");?>
+              <?php include "elements/travelorder_details.php";?>
               </div>
               <div class = "row" style=" margin:auto;padding-top:30px;padding-bottom: 30px">
               <button type ="submit" name = "savetravel" id = "savetravel" class = " btn btn-primary custom_button"><i class = "fa fa-save"></i></button>
@@ -138,21 +169,21 @@ $curdate = date("m/d/Y");
   <!-- /.content-wrapper -->
         </div>
   </section>
- 
+
 </div>
   <footer class="main-footer">
     <strong>Copyright &copy; 2014-2018 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.0.0-alpha
-    
+
   </footer>
 
-  
+
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<?php include('dtrdesign/footer.php');?>
+<?php include 'dtrdesign/footer.php';?>
 <!-- REFLECT LOGS SCRIPT -->
 <script src="javascript/addlogs.js"></script>
 <!-- PRINT REPORTS  SCRIPT -->
@@ -183,13 +214,15 @@ if(datefrom ==''|| dateto == '' || details == ''){
   var cell5 = row.insertCell(4);
   var cell6 = row.insertCell(5);
   var cell7 = row.insertCell(6);
+  var cell8 = row.insertCell(7);
   cell1.innerHTML = col1;
   cell2.innerHTML = col2;
   cell3.innerHTML = datefrom;
   cell4.innerHTML = dateto ;
   cell5.innerHTML = duration ;
-  cell6.innerHTML = type;
-  cell7.innerHTML = '<button id="remove" class = "btn btn-circle btn-sm btn-primary" onclick = "deleteRow(this)">Remove</button>';
+  cell6.innerHTML = type; 
+  cell7.innerHTML = details;
+  cell8.innerHTML = '<button id="remove" class = "btn btn-circle btn-sm btn-primary" onclick = "deleteRow(this)">Remove</button>';
 }
 });
 
@@ -199,16 +232,17 @@ $('#savetravel').click(function(){
   var workid = $('#worksched-form').serializeArray();
   event.preventDefault();
 $('#travellist tr').each(function(row, tr){
-    var details = $('#details').val();
+    // var details = $('#details').val();
     var empno = $(tr).find('td:eq(0)').text();
      var fname =$(tr).find('td:eq(1)').text();
      var from =$(tr).find('td:eq(2)').text();
      var to =$(tr).find('td:eq(3)').text();
      var duration = $(tr).find('td:eq(4)').text();
      var type = $(tr).find('td:eq(5)').text();
+     var details = $(tr).find('td:eq(6)').text();
       var newfrom = formatDate(from);
       var newto = formatDate(to);
-      if(details == '' ||empno == '' || newfrom == '' || newto == '' || duration == ''){
+      if(empno == '' || newfrom == '' || newto == '' || duration == ''){
         notification('Please check the fields!', "","Go back","error","error");
       }else{
      $.ajax({
@@ -241,14 +275,14 @@ function formatDate(date) {
         day = '' + d.getDate(),
         year = d.getFullYear();
 
-    if (month.length < 2) 
+    if (month.length < 2)
         month = '0' + month;
-    if (day.length < 2) 
+    if (day.length < 2)
         day = '0' + day;
 
     return [year, month, day].join('-');
 }
-//display notification 
+//display notification
 function post_notify(message, type){
 
       if (type == 'success') {
@@ -267,13 +301,13 @@ function post_notify(message, type){
         },{
           type: 'danger',
           delay: 2000
-        }); 
+        });
 
       }
 
     }
-    
-   
+
+
 
 //reset the all the data inside the form
 function reset_form_input(form_id){
@@ -287,6 +321,6 @@ function deleteRow(r) {
   document.getElementById("travellist").deleteRow(i);
 }
     </script>
-   
+
 </body>
 </html>

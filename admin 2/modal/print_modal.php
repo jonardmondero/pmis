@@ -59,6 +59,11 @@
 
               </a>
 
+              <a style="margin:auto;" target="blank" id="printlink_all" href="../plugins/jasperreport/dtrreport.php?dept=<?php echo $hiddenempno;?>&datefrom=<?php echo $dteFrom;?>&dateto=<?php echo $dteTo;?>"  >
+                      <button type="button" class="btn btn-warning" name="print" id="printAll" value="Print">PRINT ALL</button>
+
+              </a>
+
             </div>
 
         </form>

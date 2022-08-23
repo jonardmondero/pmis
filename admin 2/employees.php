@@ -1,5 +1,6 @@
 <?php
-
+$titlename = 'Employees';
+include_once('reject_user_account.php');
 include ('dtrdesign/header.php');
 include('../config/config.php');
 include('session.php');
@@ -55,7 +56,7 @@ $prep_emp->execute();
         <!-- Small boxes (Stat box) -->
        <div class="col-12">
         <div class = "row">
-          <div class ="col-12" >
+          <div class ="col-12 wrapper" >
           <div class="card card-primary">
                <div class="card-header">
                 <h3 class="card-title">Employees Table</h3>
@@ -141,7 +142,7 @@ function reset_form_input(form_id){
     
 
 	
-	$('#empnum').keyup(function(){
+	$('#empnum').change(function(){
   var emp = $('#empnum').val();
  
 $.ajax({
@@ -173,8 +174,8 @@ if(emp == ''){
 
 
 })
-
-$('#bioid').keyup(function(){
+//check the biometric id if it is available.
+$('#bioid').change(function(){
   var bio = $('#bioid').val();
  
 $.ajax({
@@ -186,13 +187,13 @@ $.ajax({
     if(result.data2!= ''){
       $('#checkbioid').html('This Biometric ID is already taken.');
       $('#save').prop('disabled', true);
-// console.log(result.data1);
+
 }
 else{
-//   if(bio !=''){
-//     $('#checkbioid').html('This Biometric ID is available.');
-//     $('#save').prop('disabled', false);
-// }
+  if(bio !=''){
+    $('#checkbioid').html('This Biometric ID is available.');
+    $('#save').prop('disabled', false);
+}
 }
   },
   error: function (xhr, b, c) {
@@ -208,6 +209,8 @@ if(bio == ''){
 })
 $('#addemp').click(function(){
 reset_form_input('employee-form');
+$('#checkbioid').html('');
+$('#checkempid').html('');
 $("#empnum").prop('disabled', false);
 $('#insert').prop('hidden',false);
 $('#delete').prop('hidden',true);

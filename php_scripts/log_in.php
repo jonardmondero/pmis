@@ -21,23 +21,10 @@ $user_data ->execute([
         // if($accnttype == 1)
        
         if(password_verify($pssword, $hash_password)){
-
-          if ($result['userType']==$userType)
-          {
+        
            header('location: admin 2/dailytimerecord.php');
-          }
-        }else{
 
-
-          $alert_msg .= ' 
-          <div class="new-alert new-alert-warning alert-dismissible">
-              <i class="icon fa fa-warning"></i>
-              Incorrect Password!
-          </div>     
-      ';
-           
-        }
-        }
+        
      
     }else{
       $alert_msg .= ' 
@@ -48,9 +35,10 @@ $user_data ->execute([
   ';
     
 
-}
+    }
+  }
 
 }
-
+}
     
 ?>
