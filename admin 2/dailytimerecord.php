@@ -47,7 +47,7 @@ include ('dtrdesign/header.php');
 
   <?php include('modal/edit_dtr_modal.php');
       include('modal/update_supervisor_modal.php');
-      include ('modal/print_modal.php');?>
+     ?>
         </div>
 
   </section>

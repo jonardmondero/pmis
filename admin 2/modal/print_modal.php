@@ -1,14 +1,5 @@
-<div class="modal fade" id="printreport">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">PRINT DTR</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-      <div class="modal-body">
+<div id="printreport">
+  
         <form class="form-horizontal" method="post" action="<?php htmlspecialchars("PHP_SELF");?>" id="employee-form">
 
           <div class="col-12">
@@ -67,8 +58,8 @@
             </div>
 
         </form>
-      </div>
-    </div>
+
+   
     <!-- /.modal-content -->
   </div>
 </div>
