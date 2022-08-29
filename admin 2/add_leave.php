@@ -65,7 +65,7 @@ $prep_leave_type->execute();
                              
                             </div>
                             <div class="col-8">
-                                <form method="POST" id="leaveform" action=<?php htmlspecialchars("PHP_SELF");?>>
+                              
                                     <div class="col-12 no-gutters">
                                         <div class="card card-primary" style="width:100%">
                                             <div class="card-header">
@@ -223,7 +223,7 @@ $prep_leave_type->execute();
                                             
                                        
                                    
-                                </form>
+                         
                                            
                                                                   
                                 <!-- /.content-wrapper -->
@@ -424,13 +424,14 @@ $prep_leave_type->execute();
             });
         }
 
-        function deleteRow(r) {
-            event.preventDefault();
+      
+    });
+
+    function deleteRow(r) {
             // DELETE SELECTED ROW
             var i = r.parentNode.parentNode.rowIndex;
             document.getElementById("leavelist").deleteRow(i);
         }
-    });
     </script>
 
 </body>

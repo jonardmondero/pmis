@@ -2,7 +2,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Find Record</h4>
+              <h4 class="modal-title">Check Biometric Record</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -11,7 +11,7 @@
               <div class = "container-fluid">
                 <div class = "row " >
                 <div class = "col-12 d-flex justify-content-center" >
-                 <label style ="margin:auto;font-size:30px" id = "empdate" name = "empdate"></label>
+                 <label style ="margin:auto;font-size:30px" id = "emp_name" name = "emp_name"></label>
                  </div>
                 </div>
                 <div class ="row">
