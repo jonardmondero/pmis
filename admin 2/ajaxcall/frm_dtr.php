@@ -5,6 +5,7 @@ if(isset($_POST['employeeno'])) {
     $dteFrom=date('Y-m-d', strtotime($_POST['dtfr']));
     $dteTo=date('Y-m-d', strtotime($_POST['dtto']));
     $get_time="CALL spShowDTR(:empno,:dtefr,:dteto)";
+    $add_item = 0;
     $user_data3=$con->prepare($get_time);
     $user_data3->execute([ ':empno'=>$empno,
         ':dtefr'=> $dteFrom,
@@ -16,9 +17,8 @@ if(isset($_POST['employeeno'])) {
         }
             
      
-       
-     
     else {
+        $add_item + 1;
         $daystyle;
         $lateStyle;
         $undertimeStyle;
@@ -70,9 +70,17 @@ if(isset($_POST['employeeno'])) {
             echo"</td>";
             
             echo '<td>';
+
+         echo   '<button class="btn btn-primary" style="margin-top:10px;" type="button" data-toggle="collapse"
+            data-target="#showOptions'.$add_item.'" aria-expanded="false" aria-controls="multiCollapseExample2">Print DTR</button>
+        <div class="collapse multi-collapse" id="showOptions'.$add_item.'" style="margin-top:10px;">
+            <div class="card card-body">';
             echo '<button class = "btn btn-warning btn-sm btn-flat addlogs"  > <i class = "fa fa-search"></i></button>';
             echo '<button class = "btn btn-danger btn-sm btn-flat removeut"> <i class = "fa fa-trash"></i></button>';  
-            echo'</td>';
+            echo $add_item;
+           echo ' </div>';
+           echo ' </div>';
+        echo'</td>';
             echo "</tr>";
 
         }
