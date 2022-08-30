@@ -5,7 +5,6 @@ if(isset($_POST['employeeno'])) {
     $dteFrom=date('Y-m-d', strtotime($_POST['dtfr']));
     $dteTo=date('Y-m-d', strtotime($_POST['dtto']));
     $get_time="CALL spShowDTR(:empno,:dtefr,:dteto)";
-    $add_item = 0;
     $user_data3=$con->prepare($get_time);
     $user_data3->execute([ ':empno'=>$empno,
         ':dtefr'=> $dteFrom,
@@ -18,7 +17,7 @@ if(isset($_POST['employeeno'])) {
             
      
     else {
-        $add_item + 1;
+       
         $daystyle;
         $lateStyle;
         $undertimeStyle;
@@ -69,18 +68,20 @@ if(isset($_POST['employeeno'])) {
             echo '<input type ="text" onchange="updateUndertime(this.value)" class = "border border-dark" style ="height:30px; width:70px;'.$undertimeStyle.'"  value="'.$result3['undertimefinal'].'" >';
             echo"</td>";
             
-            echo '<td>';
-
-         echo   '<button class="btn btn-primary" style="margin-top:10px;" type="button" data-toggle="collapse"
-            data-target="#showOptions'.$add_item.'" aria-expanded="false" aria-controls="multiCollapseExample2">Print DTR</button>
-        <div class="collapse multi-collapse" id="showOptions'.$add_item.'" style="margin-top:10px;">
-            <div class="card card-body">';
-            echo '<button class = "btn btn-warning btn-sm btn-flat addlogs"  > <i class = "fa fa-search"></i></button>';
-            echo '<button class = "btn btn-danger btn-sm btn-flat removeut"> <i class = "fa fa-trash"></i></button>';  
-            echo $add_item;
+            echo '<td >';
+            echo '<button class = "btn btn-warning addlogs"  > <i class = "fa fa-search"></i></button>';
+            echo   '<button class="btn btn-danger" type="button" data-toggle="collapse"
+            data-target="#showOptions'.$result3['Date'].'" aria-expanded="false" ><label style = "font-size:10">RL</label></button>
+             <div class="collapse multi-collapse" id="showOptions'.$result3['Date'].'">
+            <div class="card card-body" style = "width:120px;">';
+            echo '<div class = "row">';
+            echo '<label>Remove Late?</label>';
+            echo '<button class = "btn btn-danger btn-sm btn-flat removelate">Yes</button>';  
+            echo '<button class = "btn btn-success btn-sm btn-flat " data-toggle="collapse"  data-target="#showOptions'.$result3['Date'].'" >No</button>'; 
+            echo ' </div>';
            echo ' </div>';
            echo ' </div>';
-        echo'</td>';
+            echo'</td>';
             echo "</tr>";
 
         }
