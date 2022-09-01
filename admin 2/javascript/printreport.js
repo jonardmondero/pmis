@@ -150,7 +150,7 @@ $('#printAll').click(function() {
     "&days=" +
     getDaysInMonth(finalmonth, year);
   var secondhalf =
-    "dept=" + deptid + "&year=" + year + "-" + finalmonth + "";
+    "dept=" + deptid + "&empstatus="+ emptype + "&year=" + year + "-" + finalmonth + "";
   if (period == "All Period") {
     $("#printlink_all").attr(
       "href",

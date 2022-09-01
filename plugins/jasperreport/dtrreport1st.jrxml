@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dtrreportsample" language="javascript" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="772" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10" uuid="c525d381-fa7f-4609-bbab-64326ff26db7">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="124"/>
+	<property name="ireport.x" value="363"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT CONCAT(e.lastName,', ',e.firstName,', ',LEFT(e.middleName, 1),'.')  AS fullName,e.supervisor,
@@ -2320,7 +2320,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textFieldExpression><![CDATA[$F{outPM}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="22" y="1" width="27" height="11" uuid="54c772ef-55ca-408a-90b7-f1e195458bc0"/>
+				<reportElement x="21" y="1" width="27" height="11" uuid="54c772ef-55ca-408a-90b7-f1e195458bc0"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Arial" size="9"/>
 					<paragraph lineSpacing="Proportional"/>
@@ -2386,7 +2386,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textFieldExpression><![CDATA[$F{outAM}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="280" y="1" width="27" height="11" uuid="514ec339-6aa0-4ead-b81d-dd61da74231b"/>
+				<reportElement x="279" y="1" width="27" height="11" uuid="514ec339-6aa0-4ead-b81d-dd61da74231b"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Arial" size="9"/>
 					<paragraph lineSpacing="Proportional"/>
@@ -2417,7 +2417,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textFieldExpression><![CDATA[$F{outAM}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="539" y="1" width="27" height="11" uuid="e7a8c0af-37bb-4e3e-bc81-7135046db97f"/>
+				<reportElement x="538" y="1" width="27" height="11" uuid="e7a8c0af-37bb-4e3e-bc81-7135046db97f"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Arial" size="9"/>
 					<paragraph lineSpacing="Proportional"/>
@@ -2473,21 +2473,27 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textFieldExpression><![CDATA[$F{supervisor}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="474" y="-1" width="34" height="11" forecolor="#FF0000" uuid="4c0ae17b-e66d-4f97-a83d-3157d77c1ff6"/>
+				<reportElement x="474" y="-1" width="34" height="11" forecolor="#FF0000" uuid="4c0ae17b-e66d-4f97-a83d-3157d77c1ff6">
+					<printWhenExpression><![CDATA[$F{total} != "00:00"]]></printWhenExpression>
+				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="216" y="-1" width="34" height="11" forecolor="#FF0000" uuid="2d14ad7e-3b50-43d0-b658-76e328a6017a"/>
+				<reportElement x="216" y="-1" width="34" height="11" forecolor="#FF0000" uuid="2d14ad7e-3b50-43d0-b658-76e328a6017a">
+					<printWhenExpression><![CDATA[$F{total} != "00:00"]]></printWhenExpression>
+				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="733" y="-1" width="34" height="11" forecolor="#FF0000" uuid="63cb0548-88f2-49f1-aeae-52ca0eda4f56"/>
+				<reportElement x="733" y="-1" width="34" height="11" forecolor="#FF0000" uuid="63cb0548-88f2-49f1-aeae-52ca0eda4f56">
+					<printWhenExpression><![CDATA[$F{total} != "00:00"]]></printWhenExpression>
+				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Arial" size="9"/>
 				</textElement>

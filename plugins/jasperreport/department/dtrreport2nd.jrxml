@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dtrreportsample" language="javascript" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="772" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10" uuid="c525d381-fa7f-4609-bbab-64326ff26db7">
-	<property name="ireport.zoom" value="3.0"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dtrreportsample" language="javascript" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="772" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10" isIgnorePagination="true" uuid="c525d381-fa7f-4609-bbab-64326ff26db7">
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="640"/>
+	<property name="ireport.y" value="192"/>
 	<queryString>
 		<![CDATA[SELECT CONCAT(e.lastName,', ',e.firstName,', ',LEFT(e.middleName, 1),'.')  AS fullName,e.supervisor,
 d.inAM,
@@ -14,8 +14,9 @@ d.otOut,
 DATE_FORMAT(d.Date,'%d')AS DAY,
 DATE_FORMAT(d.Date,'%M,%Y')AS month,
 TIME_FORMAT(ADDTIME(late,undertime),'%H:%i') AS late,
-(SELECT TIME_FORMAT(ADDTIME(SEC_TO_TIME(SUM(TIME_TO_SEC(late))),SEC_TO_TIME(SUM(TIME_TO_SEC(undertime)))),'%H:%i')FROM DAILYTIMERECORD)AS total
-FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP BY DATE;]]>
+(SELECT TIME_FORMAT(ADDTIME(SEC_TO_TIME(SUM(TIME_TO_SEC(late))),SEC_TO_TIME(SUM(TIME_TO_SEC(undertime)))),'%H:%i')FROM DAILYTIMERECORD
+ GROUP BY DAY) AS totallate
+FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP BY fullName,DATE;]]>
 	</queryString>
 	<field name="fullName" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -48,7 +49,102 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 	<field name="late" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="total" class="java.lang.String"/>
+	<field name="totallate" class="java.lang.String"/>
+	<group name="Name" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{fullName}]]></groupExpression>
+		<groupHeader>
+			<band height="280">
+				<textField>
+					<reportElement x="27" y="0" width="200" height="15" uuid="e284a9f0-10c6-4835-9a6c-6a4bc8844851"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="154" y="21" width="82" height="20" uuid="24b8d95b-57e4-4658-aa97-7953d6afcd26"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{month}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="407" y="21" width="82" height="20" uuid="311aaa95-fefa-476f-8300-1105b4d8d2d2"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{month}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="272" y="0" width="200" height="15" uuid="edcf5d60-2a6c-4648-8cc2-230c4b433810"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="666" y="21" width="82" height="20" uuid="3002716e-b0b3-40f9-adfa-cf320714c6d7"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{month}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="546" y="0" width="200" height="15" uuid="6d27000d-e6df-4df0-8278-7326e6acbb60"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="93">
+				<textField>
+					<reportElement x="217" y="0" width="32" height="11" forecolor="#FF0000" uuid="598fb8d2-a853-4ed7-81b3-8246d8b834a8">
+						<printWhenExpression><![CDATA[$F{totallate} != "00:00"]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{totallate}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="51" y="62" width="150" height="20" uuid="7d2dd4cd-5738-4322-9b91-a607dba821e6"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{supervisor}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="308" y="62" width="150" height="20" uuid="16346864-4f82-473d-b3d8-a6f386d0c75c"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{supervisor}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="570" y="62" width="150" height="20" uuid="6d51270b-37d9-481b-87a6-cdb0e04a282b"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{supervisor}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="475" y="0" width="32" height="11" forecolor="#FF0000" uuid="f17d759b-2ef2-4a42-988b-47d213611759">
+						<printWhenExpression><![CDATA[$F{totallate} != "00:00"]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{totallate}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="735" y="0" width="32" height="11" forecolor="#FF0000" uuid="6687cb44-e62b-4303-a874-22dd272c4d11">
+						<printWhenExpression><![CDATA[$F{totallate} != "00:00"]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{totallate}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
 	<background>
 		<band height="590" splitType="Stretch">
 			<elementGroup>
@@ -2253,51 +2349,10 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 		</band>
 	</background>
 	<pageHeader>
-		<band height="35" splitType="Stretch">
-			<textField>
-				<reportElement x="29" y="19" width="200" height="15" uuid="e284a9f0-10c6-4835-9a6c-6a4bc8844851"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="286" y="19" width="200" height="15" uuid="edcf5d60-2a6c-4648-8cc2-230c4b433810"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="546" y="19" width="200" height="15" uuid="6d27000d-e6df-4df0-8278-7326e6acbb60"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
-			</textField>
-		</band>
+		<band height="19" splitType="Stretch"/>
 	</pageHeader>
-	<columnHeader>
-		<band height="265" splitType="Stretch">
-			<textField>
-				<reportElement mode="Transparent" x="149" y="6" width="82" height="20" uuid="24b8d95b-57e4-4658-aa97-7953d6afcd26"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{month}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="407" y="6" width="82" height="20" uuid="311aaa95-fefa-476f-8300-1105b4d8d2d2"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{month}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="666" y="6" width="82" height="20" uuid="3002716e-b0b3-40f9-adfa-cf320714c6d7"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{month}]]></textFieldExpression>
-			</textField>
-		</band>
-	</columnHeader>
 	<detail>
-		<band height="13" splitType="Immediate">
+		<band height="13">
 			<textField>
 				<reportElement x="49" y="1" width="27" height="11" uuid="b9838b55-8458-4579-a0b0-fb10ee59d208"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -2320,7 +2375,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textFieldExpression><![CDATA[$F{outPM}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="22" y="1" width="27" height="11" uuid="54c772ef-55ca-408a-90b7-f1e195458bc0"/>
+				<reportElement x="21" y="1" width="27" height="11" uuid="54c772ef-55ca-408a-90b7-f1e195458bc0"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Arial" size="9"/>
 					<paragraph lineSpacing="Proportional"/>
@@ -2386,7 +2441,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textFieldExpression><![CDATA[$F{outAM}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="280" y="1" width="27" height="11" uuid="514ec339-6aa0-4ead-b81d-dd61da74231b"/>
+				<reportElement x="279" y="1" width="27" height="11" uuid="514ec339-6aa0-4ead-b81d-dd61da74231b"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Arial" size="9"/>
 					<paragraph lineSpacing="Proportional"/>
@@ -2417,7 +2472,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textFieldExpression><![CDATA[$F{outAM}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="539" y="1" width="27" height="11" uuid="e7a8c0af-37bb-4e3e-bc81-7135046db97f"/>
+				<reportElement x="538" y="1" width="27" height="11" uuid="e7a8c0af-37bb-4e3e-bc81-7135046db97f"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Arial" size="9"/>
 					<paragraph lineSpacing="Proportional"/>
@@ -2456,56 +2511,10 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 			</textField>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="93">
-			<textField>
-				<reportElement x="50" y="66" width="150" height="20" uuid="7d2dd4cd-5738-4322-9b91-a607dba821e6"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{supervisor}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="307" y="66" width="150" height="20" uuid="16346864-4f82-473d-b3d8-a6f386d0c75c"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{supervisor}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="474" y="-1" width="34" height="11" forecolor="#FF0000" uuid="4c0ae17b-e66d-4f97-a83d-3157d77c1ff6"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Arial" size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="216" y="-1" width="34" height="11" forecolor="#FF0000" uuid="2d14ad7e-3b50-43d0-b658-76e328a6017a"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Arial" size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="733" y="-1" width="34" height="11" forecolor="#FF0000" uuid="63cb0548-88f2-49f1-aeae-52ca0eda4f56"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Arial" size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="566" y="66" width="150" height="20" uuid="6d51270b-37d9-481b-87a6-cdb0e04a282b"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{supervisor}]]></textFieldExpression>
-			</textField>
-		</band>
-	</columnFooter>
 	<pageFooter>
-		<band height="6"/>
+		<band/>
 	</pageFooter>
 	<lastPageFooter>
-		<band height="6"/>
+		<band height="7"/>
 	</lastPageFooter>
 </jasperReport>

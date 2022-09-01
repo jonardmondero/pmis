@@ -68,20 +68,8 @@ if(isset($_POST['employeeno'])) {
             echo '<input type ="text" onchange="updateUndertime(this.value)" class = "border border-dark" style ="height:30px; width:70px;'.$undertimeStyle.'"  value="'.$result3['undertimefinal'].'" >';
             echo"</td>";
             
-            echo '<td >';
-            echo '<button class = "btn btn-warning addlogs"  > <i class = "fa fa-search"></i></button>';
-            echo   '<button class="btn btn-danger" type="button" data-toggle="collapse"
-            data-target="#showOptions'.$result3['Date'].'" aria-expanded="false" ><label style = "font-size:10">RL</label></button>
-             <div class="collapse multi-collapse" id="showOptions'.$result3['Date'].'">
-            <div class="card card-body" style = "width:120px;">';
-            echo '<div class = "row">';
-            echo '<label>Remove Late?</label>';
-            echo '<button class = "btn btn-danger btn-sm btn-flat removelate">Yes</button>';  
-            echo '<button class = "btn btn-success btn-sm btn-flat " data-toggle="collapse"  data-target="#showOptions'.$result3['Date'].'" >No</button>'; 
-            echo ' </div>';
-           echo ' </div>';
-           echo ' </div>';
-            echo'</td>';
+           include('../elements/dtr_options.php');
+
             echo "</tr>";
 
         }

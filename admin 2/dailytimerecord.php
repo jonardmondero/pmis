@@ -374,6 +374,7 @@ include ('dtrdesign/header.php');
 
 
         $('#dtr tbody').on('click', '.removelate', function() {
+            var late = "removelate";
             event.preventDefault();
             var empnum = $('#hiddenempno').val();
             var currow = $(this).closest('tr');
@@ -384,7 +385,8 @@ include ('dtrdesign/header.php');
                 type: 'POST',
                 data: {
                     empno: empnum,
-                    date: col1
+                    date: col1,
+                    opt: late
                 },
                 error: function(xhr, b, c) {
                     console.log("xhr=" + xhr.responseText + " b=" + b.responseText +
@@ -399,6 +401,65 @@ include ('dtrdesign/header.php');
             })
 
         });
+
+        $('#dtr tbody').on('click', '.removeundertime', function() {
+            var late = "removeundertime";
+            event.preventDefault();
+            var empnum = $('#hiddenempno').val();
+            var currow = $(this).closest('tr');
+            var col1 = currow.find('td:eq(0)').text();
+
+            $.ajax({
+                url: 'ajaxcall/remove_late.php',
+                type: 'POST',
+                data: {
+                    empno: empnum,
+                    date: col1,
+                    opt: late
+                },
+                error: function(xhr, b, c) {
+                    console.log("xhr=" + xhr.responseText + " b=" + b.responseText +
+                        " c=" + c.responseText);
+
+                }
+            }).done(function() {
+                var datefr = $('#dtefrom').val();
+                var dateto = $('#dteto').val();
+                $('#hiddenempno').val(empnum);
+                loadDtr(empnum, datefr, dateto);
+            })
+
+        });
+
+        $('#dtr tbody').on('click', '.removelateundertime', function() {
+            var late = "removelateundertime";
+            event.preventDefault();
+            var empnum = $('#hiddenempno').val();
+            var currow = $(this).closest('tr');
+            var col1 = currow.find('td:eq(0)').text();
+
+            $.ajax({
+                url: 'ajaxcall/remove_late.php',
+                type: 'POST',
+                data: {
+                    empno: empnum,
+                    date: col1,
+                    opt: late
+                },
+                error: function(xhr, b, c) {
+                    console.log("xhr=" + xhr.responseText + " b=" + b.responseText +
+                        " c=" + c.responseText);
+
+                }
+            }).done(function() {
+                var datefr = $('#dtefrom').val();
+                var dateto = $('#dteto').val();
+                $('#hiddenempno').val(empnum);
+                loadDtr(empnum, datefr, dateto);
+            })
+
+        });
+   
     });
     $(document).keypress(function(event) {
         var keycode = (event.keyCode ? event.keyCode : event.which);
