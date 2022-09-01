@@ -67,9 +67,8 @@ include ('dtrdesign/header.php');
     <!-- jQuery -->
     <?php include('dtrdesign/footer.php'); ?>
     <script language="javascript">
-        
     var date = '';
-    var datefr='';
+    var datefr = '';
     var dateto = '';
     $(document).ready(function() {
         $("#deptId").select2();
@@ -82,13 +81,14 @@ include ('dtrdesign/header.php');
         getEmployees(deptId, empstatus);
 
         $('input[name="daterange"]').daterangepicker({
-    opens: 'left'
-  }, function(start, end, label) {
-     datefr = start.format('YYYY-MM-DD');
-     dateto = end.format('YYYY-MM-DD');
-    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+            opens: 'left'
+        }, function(start, end, label) {
+            datefr = start.format('YYYY-MM-DD');
+            dateto = end.format('YYYY-MM-DD');
+            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end
+                .format('YYYY-MM-DD'));
 
-  });
+        });
 
 
     });
@@ -170,7 +170,7 @@ include ('dtrdesign/header.php');
         }
         if (target) {
             var cells = target.getElementsByTagName("td");
-            
+
 
             empno.push(cells[0].innerHTML);
             fullname.push(cells[1].innerHTML);
@@ -405,8 +405,6 @@ include ('dtrdesign/header.php');
 
                 }
             }).done(function() {
-                var datefr = $('#dtefrom').val();
-                var dateto = $('#dteto').val();
                 $('#hiddenempno').val(empnum);
                 loadDtr(empnum, datefr, dateto);
             })
@@ -434,8 +432,6 @@ include ('dtrdesign/header.php');
 
                 }
             }).done(function() {
-                var datefr = $('#dtefrom').val();
-                var dateto = $('#dteto').val();
                 $('#hiddenempno').val(empnum);
                 loadDtr(empnum, datefr, dateto);
             })
@@ -463,14 +459,12 @@ include ('dtrdesign/header.php');
 
                 }
             }).done(function() {
-                var datefr = $('#dtefrom').val();
-                var dateto = $('#dteto').val();
                 $('#hiddenempno').val(empnum);
                 loadDtr(empnum, datefr, dateto);
             })
 
         });
-   
+
     });
     $(document).keypress(function(event) {
         var keycode = (event.keyCode ? event.keyCode : event.which);

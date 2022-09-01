@@ -2,9 +2,9 @@
     <div class="wrapper">
         <div class="card-header">
             <div class="row" style="margin:auto;">
-                <div class="input-group">
+                <div class="input-group col-6">
 
-                    
+
                     <span class="input-group-text">
                         <label style="padding-right:10px;padding-left: 10px">From: </label>
                         <div style="padding-right:10px" class="input-group-addon">
@@ -14,12 +14,12 @@
                     <input style="margin-right:10px;" type="text" class="form-control" style="font-size:13px"
                         autocomplete="off" name="daterange" id="dtefrom" value="<?php echo $dteFrom;?>">
 
-
-                    <button class="btn btn-primary" style="margin-top:10px;" type="button" data-toggle="collapse"
-                        data-target="#printDtr" aria-expanded="false" aria-controls="multiCollapseExample2">Print
-                        DTR</button>
-
                 </div>
+
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#printDtr"
+                    aria-expanded="false" aria-controls="multiCollapseExample2"><i class="fa fa-print"></i>
+                </button>
+
             </div>
 
             <div class="collapse multi-collapse" id="printDtr" style="margin-top:10px;">
