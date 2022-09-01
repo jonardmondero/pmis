@@ -2,35 +2,26 @@
     <div class="wrapper">
         <div class="card-header">
             <div class="row" style="margin:auto;">
-                <div class="input-group date">
+                <div class="input-group">
+
+                    
                     <span class="input-group-text">
                         <label style="padding-right:10px;padding-left: 10px">From: </label>
                         <div style="padding-right:10px" class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
                     </span>
+                    <input style="margin-right:10px;" type="text" class="form-control" style="font-size:13px"
+                        autocomplete="off" name="daterange" id="dtefrom" value="<?php echo $dteFrom;?>">
 
 
-                    <input style="margin-right:10px;" type="text" data-provide="datepicker" class="form-control  "
-                        style="font-size:13px" autocomplete="off" name="datefrom" id="dtefrom"
-                        value="<?php echo $dteFrom;?>">
-
-                    <span class="input-group-text">
-                        <label style="padding-right:10px">To:</label>
-                        <div style="padding-right:10px" class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                        </div>
-                    </span>
-
-                    <input type="text" class="form-control " data-provide="datepicker" autocomplete="off" name="dateto"
-                        id="dteto" value="<?php echo $dteTo;?>">
-
-
+                    <button class="btn btn-primary" style="margin-top:10px;" type="button" data-toggle="collapse"
+                        data-target="#printDtr" aria-expanded="false" aria-controls="multiCollapseExample2">Print
+                        DTR</button>
 
                 </div>
             </div>
-            <button class="btn btn-primary" style="margin-top:10px;" type="button" data-toggle="collapse"
-                data-target="#printDtr" aria-expanded="false" aria-controls="multiCollapseExample2">Print DTR</button>
+
             <div class="collapse multi-collapse" id="printDtr" style="margin-top:10px;">
                 <div class="card card-body">
                     <?php include ('modal/print_modal.php');?>

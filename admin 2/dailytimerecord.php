@@ -67,8 +67,10 @@ include ('dtrdesign/header.php');
     <!-- jQuery -->
     <?php include('dtrdesign/footer.php'); ?>
     <script language="javascript">
+        
     var date = '';
-
+    var datefr='';
+    var dateto = '';
     $(document).ready(function() {
         $("#deptId").select2();
 
@@ -78,11 +80,21 @@ include ('dtrdesign/header.php');
         //   dept:deptId,
         //   empstatus:empstatus
         getEmployees(deptId, empstatus);
+
+        $('input[name="daterange"]').daterangepicker({
+    opens: 'left'
+  }, function(start, end, label) {
+     datefr = start.format('YYYY-MM-DD');
+     dateto = end.format('YYYY-MM-DD');
+    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+
+  });
+
+
     });
 
     function getEmployees(dept, status) {
         var dataTable = $('#employees').DataTable({
-
             paging: true,
             destroy: true,
             stateSave: true,
@@ -158,8 +170,7 @@ include ('dtrdesign/header.php');
         }
         if (target) {
             var cells = target.getElementsByTagName("td");
-            var datefr = $('#dtefrom').val();
-            var dateto = $('#dteto').val();
+            
 
             empno.push(cells[0].innerHTML);
             fullname.push(cells[1].innerHTML);
