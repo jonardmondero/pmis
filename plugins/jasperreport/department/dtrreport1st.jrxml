@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dtrreportsample" language="javascript" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="772" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10" isIgnorePagination="true" uuid="c525d381-fa7f-4609-bbab-64326ff26db7">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="110"/>
-	<property name="ireport.y" value="192"/>
+	<property name="ireport.x" value="17"/>
+	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT CONCAT(e.lastName,', ',e.firstName,', ',LEFT(e.middleName, 1),'.')  AS fullName,e.supervisor,
 d.inAM,
@@ -55,7 +55,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 		<groupHeader>
 			<band height="100">
 				<textField>
-					<reportElement x="27" y="0" width="200" height="15" uuid="e284a9f0-10c6-4835-9a6c-6a4bc8844851"/>
+					<reportElement x="31" y="0" width="200" height="15" uuid="e284a9f0-10c6-4835-9a6c-6a4bc8844851"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
 				</textField>
@@ -74,7 +74,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 					<textFieldExpression><![CDATA[$F{month}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="272" y="0" width="200" height="15" uuid="edcf5d60-2a6c-4648-8cc2-230c4b433810"/>
+					<reportElement x="285" y="0" width="200" height="15" uuid="edcf5d60-2a6c-4648-8cc2-230c4b433810"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
 				</textField>
