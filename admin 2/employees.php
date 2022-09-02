@@ -113,7 +113,6 @@ $prep_emp->execute();
             // returns every value
             return element.value;
         }
-
         function post_notify(message, type) {
 
             if (type == 'success') {
@@ -230,7 +229,11 @@ $prep_emp->execute();
             });
 
         })
-
+        $('#emp_sched').select2({
+                dropdownParent: $('#addemployee')
+            });
+        
+        //ADD A WORK SCHEDULE TO THE EMPLOYEE
         $('#table_employee tbody').on('click', '.add_worksched', function() {
             event.preventDefault();
 
@@ -248,11 +251,16 @@ $prep_emp->execute();
             $('#sel_worksched').select2({
                 dropdownParent: $('#addemployeesched')
             });
+
+            $('#emp_sched').select2({
+                dropdownParent: $('#addemployee')
+            });
+
             sel_worksched();
         })
 
 
-
+        //SELECT THE WORK SCHEDULE AND DISPLAY TO THE TABLE
         function sel_worksched() {
             var worksched = $('#sel_worksched').val();
             $('#work_body').load('ajaxcall/get_workschedule.php', {
@@ -267,7 +275,7 @@ $prep_emp->execute();
         }
 
 
-
+        //DISPLAY THE WORK SCHEDULE TO THE TABLE WHENEVER THE DROP DOWN CHANGES VALUE
         $('#sel_worksched').change(function() {
             sel_worksched();
         })
@@ -286,7 +294,6 @@ $prep_emp->execute();
             $("#empnum").prop('readonly', true);
             var currow = $(this).closest('tr');
             var col1 = currow.find('td:eq(0)').text();
-            console.log('hello');
             $.ajax({
 
                 url: 'ajaxcall/get_employee.php',
@@ -308,10 +315,18 @@ $prep_emp->execute();
                     $('#supervisor').val(result.supervisor);
                     $('#status').val(result.status);
                     $('#worksched').val(result.worksched);
+                    $('#emp_sched').val(result.workId);
+                    $(`#emp_sched option[value='${result.workDesc}']`).prop('selected',
+                        true);
 
+                    $('#emp_sched').select2({
+                        dropdownParent: $('#addemployee')
+                    });
                     $('#department').select2({
                         dropdownParent: $('#addemployee')
                     });
+                    console.log(result.department);
+                    console.log(result.workId);
                 },
                 error: function(xhr, b, c) {
                     console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" +

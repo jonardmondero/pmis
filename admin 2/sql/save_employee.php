@@ -13,6 +13,7 @@ if(isset($_POST['save'])){
 	$emptype = $_POST['estatus'];
 	$status = $_POST['status'];
 	$worksched = $_POST['worksched'];
+	$emp_sched = $_POST['emp_sched'];
 	$registered = date("Y/m/d");
 
 // $search_employee ="SELECT * from bioinfo WHERE employeeNo ='$employeenum'";
@@ -27,6 +28,7 @@ if(isset($_POST['save'])){
 					biometricId	=:bioid,
 					department = :dep,
 					employmentStatus = :empstatus,
+					workScheduleId = :emp_sched,
 					supervisor =:supervisor,
 					status = :status,
 					schedule = :worksched,
@@ -40,7 +42,8 @@ if(isset($_POST['save'])){
 		':mname'=> $mname,
 		':bioid' =>	$bioid,
 		':dep' => 	$dep,
-		':empstatus' =>$emptype,	
+		':empstatus' =>$emptype,
+		':emp_sched'	=>$emp_sched,	
 		'supervisor' =>$supervisor,
 		':status' =>$status,
 		'worksched' =>$worksched,
@@ -69,6 +72,7 @@ if(isset($_POST['update'])){
 	$emptype = $_POST['estatus'];
 	$status = $_POST['status'];
 	$worksched = $_POST['worksched'];
+	$workId = $_POST['emp_sched'];
 	$registered = date("Y/m/d");
 
 // $search_employee ="SELECT * from bioinfo WHERE employeeNo ='$employeenum'";
@@ -84,7 +88,8 @@ if(isset($_POST['update'])){
 					employmentStatus = :empstatus,
 					supervisor =:supervisor,
 					status = :status,
-					schedule = :worksched 
+					schedule = :worksched,
+					workScheduleId = :emp_id 
 					where employeeNo =:empno";
 					
 					
@@ -97,7 +102,8 @@ if(isset($_POST['update'])){
 		':bioid' =>	$bioid,
 		':dep' => $dep,
 		':empstatus' =>$emptype,
-		':worksched' =>$worksched,	
+		':worksched' =>$worksched,
+		':emp_id' =>$workId,		
 		'supervisor' =>$supervisor,
 		':status' =>$status
 		

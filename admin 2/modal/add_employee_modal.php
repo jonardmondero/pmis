@@ -45,14 +45,6 @@ include('./components/textfields.php');
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-form-label col-5"> Employment Status: </label>
-                            <select class="form-control col-7" name="estatus" id="estatus">
-                                <option val="Regular">Regular</option>
-                                <option val="Job Order">Job Order </option>
-                            </select>
-                        </div>
-                        <?php textField(' Supervisor:','supervisor','supervisor');?>
-                        <div class="form-group row">
                             <label class="col-form-label col-5">Has Work Schedule? </label>
                             <select class="form-control col-7" name="worksched" id="worksched">
                                 <option val="Yes">Yes</option>
@@ -60,7 +52,31 @@ include('./components/textfields.php');
                             </select>
                         </div>
 
+                        <div class="form-group row">
+                           
+                            <label class="col-form-label col-3">Schedule: </label>
+                            <select class="form-control col-9 select2"  style = "width:73%" name="emp_sched" id="emp_sched">
+                            <option value="Select Work Schedule" selected> Select Work Schedule</option>
+                            <?php 
+                            $get_schedule = $con->prepare("SELECT * FROM workschedule WHERE Status ='Active'");
+                            $get_schedule->execute();
+                            while($get_sched_result = $get_schedule->fetch(PDO::FETCH_ASSOC)){
+                            ?>
+                            <option value = "<?php echo $get_sched_result['workScheduleId'];?>"><?php echo $get_sched_result['workScheduleDescription'];?></option>
+                            <?php }?>
+                            </select>
+                        </div>
 
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-5"> Employment Status: </label>
+                            <select class="form-control col-7" name="estatus" id="estatus">
+                                <option val="Regular">Regular</option>
+                                <option val="Job Order">Job Order </option>
+                            </select>
+                        </div>
+                        <?php textField(' Supervisor:','supervisor','supervisor');?>
+                       
 
                         <div class="form-group row">
                             <label class="col-form-label col-5">Status: </label>
