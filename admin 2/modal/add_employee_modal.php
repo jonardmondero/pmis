@@ -23,13 +23,13 @@ include('./components/textfields.php');
                       textField('Last Name:','lname','lname');  
                       textField('First Name:','fname','fname');
                       textField('Mdle Name:','mname','mname');   
-                      textField('Bio I.D.:','bioid','bioid'); ?>
+                      textField('Bio I.D.:','checkbioid','bioid'); ?>
 
                         <div class="form-group row">
                             <label class="col-form-label" style="margin-right:70px;margin-left:5px;"> Dept: </label>
                             <select class="form-control select2 col-5" style="width:75%;height:50px;" name="department"
                                 id="department">
-                                <option value="Select Department" selected> Select Department </option>
+                                <option value="Select Department" selected> Select Department... </option>
                                 <?php
                      include('../config/config.php');
                      $get_user_sql = "SELECT * FROM department WHERE status = 'Active'";
@@ -53,17 +53,19 @@ include('./components/textfields.php');
                         </div>
 
                         <div class="form-group row">
-                           
+
                             <label class="col-form-label col-3">Schedule: </label>
-                            <select class="form-control col-9 select2"  style = "width:73%" name="emp_sched" id="emp_sched">
-                            <option value="Select Work Schedule" selected> Select Work Schedule</option>
-                            <?php 
+                            <select class="form-control col-9 select2" style="width:73%" name="emp_sched"
+                                id="emp_sched">
+                                <option value="Select Work Schedule" selected> Select Work Schedule...</option>
+                                <?php 
                             $get_schedule = $con->prepare("SELECT * FROM workschedule WHERE Status ='Active'");
                             $get_schedule->execute();
                             while($get_sched_result = $get_schedule->fetch(PDO::FETCH_ASSOC)){
                             ?>
-                            <option value = "<?php echo $get_sched_result['workScheduleId'];?>"><?php echo $get_sched_result['workScheduleDescription'];?></option>
-                            <?php }?>
+                                <option value="<?php echo $get_sched_result['workScheduleId'];?>">
+                                    <?php echo $get_sched_result['workScheduleDescription'];?></option>
+                                <?php }?>
                             </select>
                         </div>
 
@@ -76,7 +78,7 @@ include('./components/textfields.php');
                             </select>
                         </div>
                         <?php textField(' Supervisor:','supervisor','supervisor');?>
-                       
+
 
                         <div class="form-group row">
                             <label class="col-form-label col-5">Status: </label>
@@ -94,7 +96,7 @@ include('./components/textfields.php');
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="submit" name="delete" id="delete" class="btn btn-danger">Delete</button>
-                        <button type="submit" name="save" id="insert" class="btn btn-primary">Save</button>
+                        <button type="submit" name="save" id="save" class="btn btn-primary">Save</button>
                         <button type="submit" name="update" id="update" class="btn btn-primary">Update</button>
                     </div>
                 </form>
