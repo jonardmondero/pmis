@@ -113,6 +113,7 @@ $prep_emp->execute();
             // returns every value
             return element.value;
         }
+        //DISPLAY NOTIFICATION MESSAGE
         function post_notify(message, type) {
 
             if (type == 'success') {
@@ -144,7 +145,7 @@ $prep_emp->execute();
         }
 
 
-
+        //CHECK IF THE EMPLOYEE NUMBER IS AVAILABLE
         $('#empnum').change(function() {
             var emp = $('#empnum').val();
 
@@ -214,10 +215,12 @@ $prep_emp->execute();
 
 
         })
+        //ADD NEW EMPLOYEE
         $('#addemp').click(function() {
             reset_form_input('employee-form');
             $('#checkbioid').html('');
             $('#checkempid').html('');
+            $('.modal-title').html('Add employee');
             $("#empnum").prop('disabled', false);
             $('#insert').prop('hidden', false);
             $('#delete').prop('hidden', true);
@@ -230,9 +233,9 @@ $prep_emp->execute();
 
         })
         $('#emp_sched').select2({
-                dropdownParent: $('#addemployee')
-            });
-        
+            dropdownParent: $('#addemployee')
+        });
+
         //ADD A WORK SCHEDULE TO THE EMPLOYEE
         $('#table_employee tbody').on('click', '.add_worksched', function() {
             event.preventDefault();
@@ -242,7 +245,6 @@ $prep_emp->execute();
             var col2 = currow.find('td:eq(5)').text();
             console.log(col2);
 
-            // var id = $(this).data('id');
             $('#addemployeesched').modal('show');
             $(`#sel_worksched option[value='${col2}']`).prop('selected', 'true');
             $('#empno').val(col1);
@@ -287,8 +289,9 @@ $prep_emp->execute();
         $("#table_employee tbody").on("click", ".edit_employee", function() {
             //SHOWS THE ADD EMPLOYEE MODAL AND DISPLAY THE EMPLOYEE'S INFORMATION
             event.preventDefault();
+            $(".modal-title").html("Edit Employee");
             $("#addemployee").modal('show');
-            $('#insert').hide();
+            $('#insert').prop('hidden', true);
             $('#update').prop('hidden', false);
             $('#delete').prop('hidden', false);
             $("#empnum").prop('readonly', true);

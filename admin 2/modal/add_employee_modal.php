@@ -7,7 +7,6 @@ include('./components/textfields.php');
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-
                 <h4 class="modal-title">Add Employee</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -93,10 +92,10 @@ include('./components/textfields.php');
 
 
                     </div>
-                    <div class="modal-footer justify-content-between">
+                    <div class="modal-footer float-right">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="submit" name="delete" id="delete" class="btn btn-danger">Delete</button>
-                        <button type="submit" name="save" id="save" class="btn btn-primary">Save</button>
+                        <button type="submit" name="save" id="insert" class="btn btn-primary">Save</button>
                         <button type="submit" name="update" id="update" class="btn btn-primary">Update</button>
                     </div>
                 </form>
