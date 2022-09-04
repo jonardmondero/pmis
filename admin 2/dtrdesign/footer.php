@@ -1,5 +1,4 @@
 <script src="../plugins/jquery/jquery.min.js"></script>
-
 <script src="../plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
