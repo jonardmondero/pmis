@@ -68,6 +68,7 @@ $(document).ready(function(){
   var secondhalf =
     "empno=" + hiddenempno + "&year=" + year + "-" + finalmonth + "";
   if (period == "All Period") {
+    
     $("#printlink").attr(
       "href",
       "../plugins/jasperreport/dtrreport.php?" + param,
@@ -89,7 +90,7 @@ $(document).ready(function(){
   }
   });
 
-  
+  //PRINT ALL DTR INSIDE THE SPECIFIC DEPARTMENT
 $('#printAll').click(function() {
   console.log('print all');
   const deptid = $("#hiddendeptid").val();

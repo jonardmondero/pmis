@@ -27,12 +27,12 @@
 <script src="javascript/addlogs.js"></script>
 <!-- PRINT REPORTS  SCRIPT -->
 <script src="javascript/printreport.js"></script>
-<!-- SELECT 2 PLUGINS -->
 <script src="../plugins/sweetalerts/sweetalert.min.js"></script>
-<script src="javascript/searchemployee.js"></script>
 <script src="javascript/editemployees.js"></script>
 <script src="javascript/notification.js"></script>
 <script src="javascript/update_supervisor.js"></script>
+<!-- CUSTOM SEARCH EMPLOYEE TABLE -->
 <script src="javascript/employee_search.js"></script>
 <script src="javascript/show_update_sup.js"></script>
+<!-- SELECT 2 PLUGINS -->
 <script src="../plugins/select2/select2.min.js"></script>

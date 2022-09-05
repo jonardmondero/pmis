@@ -4,7 +4,7 @@
     $db_name = "pmis";
     $username = "root";
     $password = "";
-
+// @hrm8ioMetrics -- HRM SERVER PASSWORD
     try{
 
         $con = new PDO("mysql:host=$host; dbname=$db_name", $username, $password);

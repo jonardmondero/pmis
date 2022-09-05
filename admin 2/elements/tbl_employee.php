@@ -1,3 +1,5 @@
+
+<!-- TABLE USED IN EMPLOYEE FORM -->
 <table class = "table table-hover" style = "margin:auto;width:100%;" id = "table_employee">
                	<thead>
                		<th>Employee No</th>

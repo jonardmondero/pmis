@@ -1,33 +1,34 @@
 <div class="col-8" style="margin-top:10px;">
-    <div class="wrapper">
-        <div class="card-header">
-            <div class="row" style="margin:auto;">
-                <div class="input-group col-6">
+    <div class="card">
+        <div class="wrapper">
+            <div class="card-header">
+                <div class="row" style="margin:auto;">
+                    <div class="input-group col-6">
 
 
-                    <span class="input-group-text">
-                        <label style="padding-right:10px;padding-left: 10px">From: </label>
-                        <div style="padding-right:10px" class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                        </div>
-                    </span>
-                    <input style="margin-right:10px;" type="text" class="form-control" style="font-size:13px"
-                        autocomplete="off" name="daterange" id="dtefrom" value="<?php echo $dteFrom;?>">
+                        <span class="input-group-text">
+                            <label style="padding-right:10px;padding-left: 10px">From: </label>
+                            <div style="padding-right:10px" class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                        </span>
+                        <input style="margin-right:10px;" type="text" class="form-control" style="font-size:13px"
+                            autocomplete="off" name="daterange" id="dtefrom" value="<?php echo $dteFrom;?>">
+
+                    </div>
+
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#printDtr"
+                        aria-expanded="false" aria-controls="multiCollapseExample2"><i class="fa fa-print"></i>
+                    </button>
 
                 </div>
 
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#printDtr"
-                    aria-expanded="false" aria-controls="multiCollapseExample2"><i class="fa fa-print"></i>
-                </button>
-
-            </div>
-
-            <div class="collapse multi-collapse" id="printDtr" style="margin-top:10px;">
-                <div class="card card-body">
-                    <?php include ('modal/print_modal.php');?>
+                <div class="collapse multi-collapse" id="printDtr" style="margin-top:10px;">
+                    <div class="card card-body">
+                        <?php include ('modal/print_modal.php');?>
+                    </div>
                 </div>
             </div>
-
             <div class="card-body">
 
 
@@ -71,13 +72,15 @@
                                 <tbody id="dtrbody">
                                 </tbody>
                             </table>
-                            <!-- <button id="saveall">SAVE ALL</button> -->
+                  
 
                         </div>
                     </div>
+            
             </div>
 
 
+
+            </form>
         </div>
-        </form>
     </div>

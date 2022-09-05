@@ -11,7 +11,7 @@ b.status = 'Active' AND
 (b.lastName like '".$keyword."%' OR 
 b.firstName like '".$keyword."%' OR 
 d.departmentDescription like '".$keyword."%') 
-ORDER BY b.lastName LIMIT 300
+ORDER BY b.lastName LIMIT 50
 ";
 
 $get_query = $con->prepare($sql);
