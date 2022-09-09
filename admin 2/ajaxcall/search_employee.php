@@ -105,9 +105,9 @@ $get_user_data->execute();
 	$countfilter.=" OR workScheduleId LIKE '%".$requestData['search']['value']."%' ";
     $countfilter.=" OR status LIKE '%".$requestData['search']['value']."%') ";
 
-$countfilter.="LIMIT ".$requestData['start']." ,".$requestData['length']." " ;//count all rows w/ filter
+$countfilter.=" LIMIT ".$requestData['length']." " ;//count all rows w/ filter
 $getrecordstmt = $con->prepare($countfilter);
-$getrecordstmt->execute() or die("search_user.php");
+$getrecordstmt->execute() or die("search_employee.php");
 $getrecord = $getrecordstmt->fetch(PDO::FETCH_ASSOC);
 $totalData = $getrecord['id'];
 $totalFiltered = $totalData;

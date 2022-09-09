@@ -1,10 +1,11 @@
+
+$(document).ready(function() {
+
 var dataTable = $("#table_employee").DataTable({
   page: true,
   stateSave: true,
   processing: true,
   serverSide: true,
-  deferRender: true,
-  scrollX: false,
   ajax: {
     url: "ajaxcall/search_employee.php", // json datasource
     type: "post", // method  , by default get
@@ -30,7 +31,7 @@ var dataTable = $("#table_employee").DataTable({
   ],
 });
 
-$(document).ready(function() {
+
 
   sel_worksched();
 

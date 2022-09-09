@@ -1,7 +1,7 @@
 var date = "";
 var datefr = "";
 var dateto = "";
-$(document).ready(function () {
+$(function () {
   $("#deptId").select2();
 
   var deptId = $("#deptId").val();
