@@ -247,6 +247,7 @@ $list_depid='';
         console.log(datefr);
         console.log(dteto);
         $("#import_individual").prop("disabled",true);
+        $('.alert').attr("class","alert alert-danger");
         $("#import_status").html("The system is importing logs. Please wait...");
         $.ajax({
         url: "sql/generate_record.php",
@@ -269,6 +270,7 @@ $list_depid='';
         }).done(function (e) {
         $("#import_individual").prop("disabled",false);
         $("#import_status").html(e);
+        $('.alert').attr("class","alert alert-success");
         });
 
         });
@@ -282,6 +284,7 @@ $list_depid='';
         console.log(emp_status);
         console.log(datefr);
         console.log(dteto);
+        $('.alert').attr("class","alert alert-danger");
         $("#import_dep").prop("disabled",true);
         $("#import_status").html("The system is importing logs. Please wait...");
         $.ajax({
@@ -307,7 +310,7 @@ $list_depid='';
 
         $("#import_dep").prop("disabled",false);
         $("#import_status").html(e);
-
+        $('.alert').attr("class","alert alert-success");
 
 
         });

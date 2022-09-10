@@ -76,7 +76,7 @@ $empstatus = $_POST['emp_status'];
 
     ]);
   
-     
+     //GET THE TIME BASE ON THE USER TRANSACTION TYPE
       $date_format = 'HH:MM';
       $format_current_date = date_create($i);
       $date_format_2 = date_format($format_current_date,"n/j/Y");
