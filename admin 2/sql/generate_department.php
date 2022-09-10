@@ -184,7 +184,7 @@ $empstatus = $_POST['emp_status'];
   }
     
 }
-echo "Congratulations you already imported the record!";
+echo "Congratulations you successfully imported the selected department.";
 
 
 ?>

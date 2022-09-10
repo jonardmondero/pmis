@@ -121,11 +121,12 @@ $selemployee = $_POST['sel_employee'];
               
        
       }
-      echo "Congratulations you already imported the record!";
+    
     }
     if($i == $dateto){
       break;
     }
+    echo "Congratulations you already imported the record!";
   }
 
 ?>

@@ -7,7 +7,7 @@ $progress = '';
 $alert_msg='';
 $titlename = 'Import Record';
 // include('sql/generate_record.php');
-include('sql/generate_department.php');
+// include('sql/generate_department.php');
 include('dtrdesign/header.php');
 
 $st_get_employee = "SELECT CONCAT(firstName,' ', SUBSTRING(middleName,1,1),'.',' ',lastName) as fullName,
@@ -81,7 +81,7 @@ $list_depid='';
                                         <form role="form" method="post" name="form"
                                             action="<?php htmlspecialchars("PHP_SELF");?>">
 
-                                            <div class="input-group col-6">
+                                            <div class="input-group col-12" style="margin-bottom:10px;">
 
 
                                                 <span class="input-group-text">
@@ -96,18 +96,17 @@ $list_depid='';
 
                                             </div>
 
+                                            <div class="alert alert-info ">
 
-
-
-                                            <div class="row">
-
-
-
-
-                                                <div class="col-12">
-                                                    <?php echo $alert_msg;?>
-                                                </div>
+                                                <h5><i class="icon fa fa-info"></i> Notification
+                                                </h5>
+                                                <label id="import_status">Your importation status will be showed
+                                                    here.</label>
                                             </div>
+
+
+
+
 
 
                                     </div>
@@ -247,6 +246,8 @@ $list_depid='';
         console.log(empno);
         console.log(datefr);
         console.log(dteto);
+        $("#import_individual").prop("disabled",true);
+        $("#import_status").html("The system is importing logs. Please wait...");
         $.ajax({
         url: "sql/generate_record.php",
         type: "POST",
@@ -266,7 +267,8 @@ $list_depid='';
         );
         },
         }).done(function (e) {
-
+        $("#import_individual").prop("disabled",false);
+        $("#import_status").html(e);
         });
 
         });
@@ -280,7 +282,8 @@ $list_depid='';
         console.log(emp_status);
         console.log(datefr);
         console.log(dteto);
-
+        $("#import_dep").prop("disabled",true);
+        $("#import_status").html("The system is importing logs. Please wait...");
         $.ajax({
         url: "sql/generate_department.php",
         type: "POST",
@@ -302,8 +305,8 @@ $list_depid='';
         },
         }).done(function (e) {
 
-
-
+        $("#import_dep").prop("disabled",false);
+        $("#import_status").html(e);
 
 
 
