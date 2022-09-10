@@ -25,3 +25,6 @@
 
 <input style="margin:auto; width:100%;margin-bottom:10px; margin-top:1rem;" type="submit" class="btn btn-primary"
     name="import_dep" id="import_dep" value="GENERATE DEPARTMENT">
+
+
+</style>

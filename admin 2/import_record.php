@@ -192,6 +192,8 @@ $list_depid='';
 
         var datefr = "";
         var dteto = "";
+
+
         $(document).ready(function() {
         $('.select2').select2();
 
@@ -220,6 +222,8 @@ $list_depid='';
 
         }
 
+
+        //DATE RANGE
         $('input[name="daterange"]').daterangepicker(
         {
         opens: "left",
@@ -263,14 +267,51 @@ $list_depid='';
         },
         }).done(function (e) {
 
-        alert(e);
+        });
+
+        });
+
+        $("#import_dep").on("click",function(){
+
+        event.preventDefault();
+        var dept = $('#selectdep').val();
+        var empstatus = $("#emp_status").val();
+        console.log(dept);
+        console.log(emp_status);
+        console.log(datefr);
+        console.log(dteto);
+
+        $.ajax({
+        url: "sql/generate_department.php",
+        type: "POST",
+        data: {
+        selectdep: dept,
+        emp_status: empstatus,
+        datefrom: datefr,
+        dateto: dteto,
+        },
+        error: function (xhr, b, c) {
+        console.log(
+        "xhr=" +
+        xhr.responseText +
+        " b=" +
+        b.responseText +
+        " c=" +
+        c.responseText
+        );
+        },
+        }).done(function (e) {
+
+
 
 
 
 
         });
-        })
         });
+        });
+
+
 
 
 

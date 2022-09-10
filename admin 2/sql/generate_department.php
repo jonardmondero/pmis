@@ -1,15 +1,14 @@
 <?php
 //include('update_user.php');
 //include ("../php_scripts/search_user.php");
-include('../config/config.php');
-include('../config/msconfig.php');
+include('../../config/config.php');
+include('../../config/msconfig.php');
 // $datefrom=$dateto=$selemployee ='';
 $db = '';
 // $st_get_employee = "SELECT CONCAT(e.firstName,' ', SUBSTRING(e.middleName,1,1),'.',' ',e.lastName) as fullName, e.employeeNo as empno, b.biometricId as biopin from employee e inner join biopin b on e.employeeNo = b.employeeNo";
 // $result = $con->prepare($st_get_employee);
 // $result->execute();
  //1.1 end
-if(isset($_POST['import_dep'])){
 $empstatus = $_POST['emp_status'];
 //select the employees in the selected department
   $seldep = $_POST['selectdep'];
@@ -185,11 +184,7 @@ $empstatus = $_POST['emp_status'];
   }
     
 }
- $alert_msg .= ' 
-   <div class="alert alert-success alert-dismissible">
-   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-   <i class="icon fa fa-check"></i>You have successfully generated the department.
-   </div>     
-';
-}
+echo "Congratulations you already imported the record!";
+
+
 ?>
