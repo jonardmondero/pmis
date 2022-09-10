@@ -1,12 +1,12 @@
 <?php
 //include('update_user.php');
 //include ("../php_scripts/search_user.php");
-
+include('../../config/config.php');
+include ('../../config/msconfig.php');
 $datefrom=$dateto=$selemployee ='';
 $db = '';
 
  //1.1 end
-if(isset($_POST['import'])){
   $empNo = '';
   $bioPin = '';
   $workId = '';
@@ -32,7 +32,6 @@ $selemployee = $_POST['sel_employee'];
  //INSERT DAY OFF
  $stmt_insert_off = "CALL spInsertDayOff(:empno,:worksched,:i,:bolsched)" ;
  $pre_insert_off = $con->prepare($stmt_insert_off);
-
   $format = 'Y-m-d';
  for($z=$datefrom;$z<=$dateto;$z+=86400){
   $i = date($format, $z);
@@ -128,12 +127,5 @@ $selemployee = $_POST['sel_employee'];
       break;
     }
   }
-     $alert_msg .= ' 
-   <div class="alert alert-success alert-dismissible">
-   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-   <i class="icon fa fa-check"></i>You have successfully generated the employee.
-   </div>     
-';
-
-}
+echo $empNo;
 ?>

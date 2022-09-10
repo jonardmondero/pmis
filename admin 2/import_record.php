@@ -6,7 +6,7 @@ include('sql/sqlbackup/backup_sql.php');
 $progress = '';
 $alert_msg='';
 $titlename = 'Import Record';
-include('sql/generate_record.php');
+// include('sql/generate_record.php');
 include('sql/generate_department.php');
 include('dtrdesign/header.php');
 
@@ -70,7 +70,7 @@ $list_depid='';
 
 
                     <!-- Small boxes (Stat box) -->
-                    <div class="col-6 " style = "margin:auto;">
+                    <div class="col-6 " style="margin:auto;">
                         <div class="row">
                             <div style="margin:auto;" class="col-12">
                                 <div class="card card-primary">
@@ -81,30 +81,24 @@ $list_depid='';
                                         <form role="form" method="post" name="form"
                                             action="<?php htmlspecialchars("PHP_SELF");?>">
 
-                                            <div class="col-8" style="margin:auto;margin-top:10px">
-                                                <div style="margin-bottom:10px" class="input-group date">
-                                                    <label>Date From:</label>
-                                                    <div style="padding-right:5px;" class="input-group-addon">
+                                            <div class="input-group col-6">
 
-                                                    </div>
-                                                    <input type="date" autocomplete="off"
-                                                        class="form-control pull-right custom_field" name="datefrom"
-                                                        id="iddatefrom">
-                                                </div>
-                                            </div>
-                                            <div class="col-8" style="margin:auto;">
-                                                <div style="margin-bottom:10px;" class="input-group date">
-                                                    <label style="margin-right:5px">Date To:</label>
-                                                    <div class="input-group-addon">
 
+                                                <span class="input-group-text">
+                                                    <label style="padding-right:10px;padding-left: 10px">From: </label>
+                                                    <div style="padding-right:10px" class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
                                                     </div>
-                                                    <input style="margin-left:25px;" type="date" autocomplete="off"
-                                                        class="form-control pull-right" name="dateto" id="iddateto">
-                                                </div>
+                                                </span>
+                                                <input style="margin-right:10px;" type="text" class="form-control"
+                                                    style="font-size:13px" autocomplete="off" name="daterange"
+                                                    id="dtefrom" value="<?php echo $dteFrom;?>">
+
                                             </div>
 
-                                           
-                                           
+
+
+
                                             <div class="row">
 
 
@@ -115,61 +109,62 @@ $list_depid='';
                                                 </div>
                                             </div>
 
-                                      
+
                                     </div>
                                 </div>
                             </div>
                             <div style="margin:auto;" class="col-12">
-                            <div class="card card-primary card-outline card-tabs">
-                                <div class="card-header p-0 pt-1 border-bottom-0">
-                                    <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" id="custom-tabs-three-home-tab"
-                                                data-toggle="pill" href="#custom-tabs-three-home" role="tab"
-                                                aria-controls="custom-tabs-three-home" aria-selected="true">Department</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill"
-                                                href="#custom-tabs-three-profile" role="tab"
-                                                aria-controls="custom-tabs-three-profile"
-                                                aria-selected="false">Employee</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="custom-tabs-three-messages-tab" data-toggle="pill"
-                                                href="#custom-tabs-three-messages" role="tab"
-                                                aria-controls="custom-tabs-three-messages"
-                                                aria-selected="false">Backup</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="card-body">
-                                    <div class="tab-content" id="custom-tabs-three-tabContent">
-                                        <div class="tab-pane fade active show" id="custom-tabs-three-home"
-                                            role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
-                                      <?php include('elements/import_dep_tab.php');?>
-                                        </div>
-                                        <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel"
-                                            aria-labelledby="custom-tabs-three-profile-tab">
-                                            <?php include('elements/import_emp_tab.php');?>
-                                        </div>
-                                        <div class="tab-pane fade" id="custom-tabs-three-messages" role="tabpanel"
-                                            aria-labelledby="custom-tabs-three-messages-tab">
-                                            <div class="col-12">
-                                               
-                                               
-                                                <input
-                                                    style="margin:auto; width:100%;margin-bottom:10px; margin-top:1rem;"
-                                                    type="submit" class="btn btn-primary" name="backup_database"
-                                                    id="import_dep" value="BACKUP DATABASE">
-                                            </div>
-                                        </div>
-                                    
+                                <div class="card card-primary card-outline card-tabs">
+                                    <div class="card-header p-0 pt-1 border-bottom-0">
+                                        <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="custom-tabs-three-home-tab"
+                                                    data-toggle="pill" href="#custom-tabs-three-home" role="tab"
+                                                    aria-controls="custom-tabs-three-home"
+                                                    aria-selected="true">Department</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="custom-tabs-three-profile-tab"
+                                                    data-toggle="pill" href="#custom-tabs-three-profile" role="tab"
+                                                    aria-controls="custom-tabs-three-profile"
+                                                    aria-selected="false">Employee</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="custom-tabs-three-messages-tab"
+                                                    data-toggle="pill" href="#custom-tabs-three-messages" role="tab"
+                                                    aria-controls="custom-tabs-three-messages"
+                                                    aria-selected="false">Backup</a>
+                                            </li>
+                                        </ul>
                                     </div>
-                                </div>
+                                    <div class="card-body">
+                                        <div class="tab-content" id="custom-tabs-three-tabContent">
+                                            <div class="tab-pane fade active show" id="custom-tabs-three-home"
+                                                role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
+                                                <?php include('elements/import_dep_tab.php');?>
+                                            </div>
+                                            <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel"
+                                                aria-labelledby="custom-tabs-three-profile-tab">
+                                                <?php include('elements/import_emp_tab.php');?>
+                                            </div>
+                                            <div class="tab-pane fade" id="custom-tabs-three-messages" role="tabpanel"
+                                                aria-labelledby="custom-tabs-three-messages-tab">
+                                                <div class="col-12">
 
+
+                                                    <input
+                                                        style="margin:auto; width:100%;margin-bottom:10px; margin-top:1rem;"
+                                                        type="submit" class="btn btn-primary" name="backup_database"
+                                                        id="import_dep" value="BACKUP DATABASE">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
-        </div>
-        </form>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -195,7 +190,8 @@ $list_depid='';
     <!-- jQuery -->
     <<?php include('dtrdesign/footer.php'); ?> <script language="javascript">
 
-
+        var datefr = "";
+        var dteto = "";
         $(document).ready(function() {
         $('.select2').select2();
 
@@ -223,8 +219,63 @@ $list_depid='';
         }
 
         }
+
+        $('input[name="daterange"]').daterangepicker(
+        {
+        opens: "left",
+        },
+        function (start, end, label) {
+        datefr = start.format("MM/DD/YYYY");
+        dteto = end.format("MM/DD/YYYY");
+        console.log(
+        "A new date selection was made: " +
+        start.format("MM/DD/YYYY") +
+        " to " +
+        end.format("MM/DD/YYYY")
+        );
+        }
+        );
+
+        $("#import_individual").on("click",function(){
+
+        event.preventDefault();
+        var empno = $('#select_employee').val();
+        console.log(empno);
+        console.log(datefr);
+        console.log(dteto);
+        $.ajax({
+        url: "sql/generate_record.php",
+        type: "POST",
+        data: {
+        sel_employee: empno,
+        datefrom: datefr,
+        dateto: dteto,
+        },
+        error: function (xhr, b, c) {
+        console.log(
+        "xhr=" +
+        xhr.responseText +
+        " b=" +
+        b.responseText +
+        " c=" +
+        c.responseText
+        );
+        },
+        }).done(function (e) {
+
+        alert(e);
+
+
+
+
         });
+        })
+        });
+
+
+
         </script>
+
 
 
 

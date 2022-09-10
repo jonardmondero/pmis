@@ -23,8 +23,7 @@
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.js"></script>
 <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
-<!-- REFLECT LOGS SCRIPT -->
-<script src="javascript/addlogs.js"></script>
+
 <!-- PRINT REPORTS  SCRIPT -->
 <script src="javascript/printreport.js"></script>
 <script src="../plugins/sweetalerts/sweetalert.min.js"></script>
