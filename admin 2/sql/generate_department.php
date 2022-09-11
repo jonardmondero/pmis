@@ -185,6 +185,7 @@ $empstatus = $_POST['emp_status'];
     
 }
 echo "Congratulations you successfully imported the selected department.";
-
+$con = null;
+$conn = null;
 
 ?>

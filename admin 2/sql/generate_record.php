@@ -129,5 +129,7 @@ $selemployee = $_POST['sel_employee'];
     }
  
   }
+  $con = null;
+  $conn = null;
   echo "Congratulations you already imported the record!";
 ?>
