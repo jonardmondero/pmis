@@ -147,20 +147,24 @@ $(document).ready(function () {
     reset_form_input("employee-form");
     $("#checkbioid").html("");
     $("#checkempid").html("");
-    $(".modal-title").html("Add employee");
+    $(".modal-title").html("Add Employee");
     $("#empnum").prop("disabled", false);
     $("#insert").prop("hidden", false);
     $("#delete").prop("hidden", true);
     $("#update").prop("hidden", true);
     $("#empnum").prop("readonly", false);
-
+    var cs = "CS";
+    // $(`#emp_sched option[value='${cs}']`).prop("selected", "true");
+    // $('#emp_sched').val(cs);
     $("#department").select2({
       dropdownParent: $("#addemployee"),
     });
+
+    $("#emp_sched").select2({
+      dropdownParent: $("#addemployee"),
+    });
   });
-  $("#emp_sched").select2({
-    dropdownParent: $("#addemployee"),
-  });
+ 
 
   //ADD A WORK SCHEDULE TO THE EMPLOYEE
   $("#table_employee tbody").on("click", ".add_worksched", function () {

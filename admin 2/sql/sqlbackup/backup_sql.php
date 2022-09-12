@@ -6,7 +6,7 @@ if(isset($_POST['backup_database'])){
 
     /* Define database parameters here */
     define("DB_USER", 'root');
-    define("DB_PASSWORD", '1234');
+    define("DB_PASSWORD", '@hrm8ioMetrics');
     define("DB_NAME", 'pmis');
     define("DB_HOST", 'localhost');
     define("OUTPUT_DIR", 'dbBackup'); // Folder Path / Directory Name

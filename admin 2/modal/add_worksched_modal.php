@@ -52,7 +52,7 @@
           </div>
             <div class="modal-footer justify-content-between">
               <button type="button" id = "closeschedule" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit"  name = "insert" class="btn btn-primary">Save changes</button>
+              <button type="submit"  name = "insert"  id = "insert" class="btn btn-primary">Save changes</button>
             </div>
           </div>
         </form>

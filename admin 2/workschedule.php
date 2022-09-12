@@ -183,9 +183,9 @@ $workid='';
             dataType: 'json'
         })
 
-        $('#tablesched tr').each(function(row, tr) {
-
-            // var currow=  $('#tablesched').closest('tr');
+        $('#show_sched tr').each(function(row, tr) {
+    
+            //  var currow=  $('#show_sched').closest('tr');
             var col1 = $(tr).find('td:eq(0)').text();
             var col2 = $(tr).find('td:eq(1)').text();
             var col3 = $(tr).find('td:eq(2)').text();
@@ -193,6 +193,7 @@ $workid='';
             var col5 = $(tr).find('td:eq(4)').text();
             console.log(col1, col2, col3, col4, col5);
             // TableData = $.toJSON(storeTblValues());
+            console.log(col1);
             $.ajax({
 
                 url: 'ajaxcall/insert_workscheduledetail.php',
@@ -216,7 +217,7 @@ $workid='';
             })
         })
 
-        window.location.reload();
+     
 
     });
 
