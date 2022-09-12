@@ -76,14 +76,14 @@ $workid='';
                                                 <tbody>
                                                     <?php 
                 $sql = "SELECT e.`workScheduleId`,e.`workScheduleDescription`,e.`remarks`,e.status, COUNT(b.`workScheduleId`) AS countworksched FROM workschedule e 
-                INNER JOIN bioinfo b ON e.workScheduleId = b.workScheduleId  COLLATE latin1_general_ci where e.Status = 'Active'
+                INNER JOIN bioinfo b  ON e.workScheduleId  = b.workScheduleId  COLLATE latin1_swedish_ci  where e.Status = 'Active'
                  GROUP BY E.`workScheduleId` ORDER BY e.`workScheduleId` ASC";
                 $prep_work= $con->prepare($sql);
                 $prep_work->execute();
                 while($result = $prep_work->fetch(PDO::FETCH_ASSOC)){?>
                                                     <tr>
                                                         <td><?php echo $result['workScheduleId']?> </td>
-                                                        <td><?php echo $result['workScheduleDescription']?> </td>            
+                                                        <td><?php echo $result['workScheduleDescription']?> </td>
                                                         <td><?php echo $result['remarks']?> </td>
                                                         <td><?php echo $result['countworksched']?> </td>
                                                         <td><?php echo $result['status']?> </td>
@@ -156,7 +156,7 @@ $workid='';
     }
 
 
-
+    //SAVE THE WORK SCHEDULE
     $('#insert').click(function(event) {
         event.preventDefault();
         var workId = $('#workcode').val();
@@ -183,8 +183,8 @@ $workid='';
             dataType: 'json'
         })
 
-        $('#show_sched tr').each(function(row, tr) {
-    
+        $('#tablesched tr').each(function(row, tr) {
+
             //  var currow=  $('#show_sched').closest('tr');
             var col1 = $(tr).find('td:eq(0)').text();
             var col2 = $(tr).find('td:eq(1)').text();
@@ -217,10 +217,10 @@ $workid='';
             })
         })
 
-     
+
 
     });
-
+    //CHECK IF THE WORK CODE IS AVAILABLE
     $('#workcode').keyup(function() {
         // console.log("hello");s
         var workcode = $('#workcode').val();
@@ -253,7 +253,7 @@ $workid='';
         })
 
     })
-
+    //EDIT THE WORK SCHEDULE
     $('#tablesched tbody').on('click', '#edit', function() {
         event.preventDefault();
 
@@ -337,7 +337,7 @@ $workid='';
         });
 
     });
-
+    //UPDATE THE WORK SCHEDULE
     $('#update').click(function() {
         event.preventDefault();
         var worksched = $('#editworkcode').val();

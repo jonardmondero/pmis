@@ -7,11 +7,11 @@ $workdesc = $_POST['workdesc'];
 $remarks = $_POST['remarks'];
 $status = $_POST['status'];
 
-$insert_stmt = "INSERT into workschedule set
+$insert_stmt = "INSERT into workschedule set 
 				workScheduleId = :workid,
 				workScheduleDescription = :workdesc,
 				remarks	=	:remarks,
-				status	=	:status";
+				status	=	:status ";
 
 	$prepare_stmt = $con->prepare($insert_stmt);
 	$prepare_stmt->execute([
