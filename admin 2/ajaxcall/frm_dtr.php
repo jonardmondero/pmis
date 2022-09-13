@@ -21,7 +21,7 @@ if(isset($_POST['employeeno'])) {
         $daystyle;
         $lateStyle;
         $undertimeStyle;
-        $result3['Day'] =='Saturday' ||     $result3['Day'] =='Sunday' ?  $daystyle = 'style="color:red;"' :  $daystyle = 'style="color:black;"';
+        $result3['DAY'] =='Saturday' ||     $result3['DAY'] =='Sunday' ?  $daystyle = 'style="color:red;"' :  $daystyle = 'style="color:black;"';
         $result3['latefinal'] != '00:00' ? $lateStyle = 'color:red; ' : $lateStyle = 'color:black; '; 
         $result3['undertimefinal'] != '00:00' ? $undertimeStyle = 'color:red; ' : $undertimeStyle = 'color:black;';
         $result3['latefinal'] >= '08:00' ? $lateStyle = 'color:green;font-weight:bold ' : null; 
@@ -33,7 +33,7 @@ if(isset($_POST['employeeno'])) {
             echo"</td>";
 
             echo '<td '.$daystyle.' class = "border border-dark col-1">';
-            echo $result3['Day'];
+            echo $result3['DAY'];
             echo"</td>";
 
             echo '<td  >';

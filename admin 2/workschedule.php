@@ -74,7 +74,7 @@ $workid='';
                                                 </thead>
                                                 <tbody>
                                                     <?php 
-                $sql = "SELECT * FROM workschedule ";
+                                $sql = "SELECT * FROM workschedule ";
                
                 $prep_work= $con->prepare($sql);
                 $prep_work->execute();
@@ -83,7 +83,7 @@ $workid='';
                                                         <td><?php echo $result['workScheduleId']?> </td>
                                                         <td><?php echo $result['workScheduleDescription']?> </td>
                                                         <td><?php echo $result['remarks']?> </td>
-                                                
+
                                                         <td><?php echo $result['status']?> </td>
                                                         <td>
                                                             <button class="btn btn-success btn-sm btn-flat" id="edit">
@@ -180,7 +180,7 @@ $workid='';
             data: $.param(workid),
             dataType: 'json'
         })
-        
+
         $('#input-sched tr').each(function(row, tr) {
 
             //  var currow=  $('#show_sched').closest('tr');
@@ -216,7 +216,7 @@ $workid='';
         })
 
         notification("Congratulations", "", "Refresh", "success",
-                        "success");
+            "success");
 
 
 
