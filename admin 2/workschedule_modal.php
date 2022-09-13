@@ -47,7 +47,7 @@
                 </div>
                 <div class = "form-group col-12">
                  <label class = " col-form-label "> Work Schedule  </label>
-                <table style="margin:auto;width:100%;" class = "table-bordered table-hover" name= "tablesched" id = "tablesched" >
+                <table style="margin:auto;width:100%;" class = "table-bordered table-hover" name= "input-sched" id = "input-sched" >
                   <thead>
                     <th>Day</th>
                     <th>Check In</th>

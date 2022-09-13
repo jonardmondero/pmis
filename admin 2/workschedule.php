@@ -67,7 +67,6 @@ $workid='';
                                                     <th>Work Schedule Code</th>
                                                     <th>Work Schedule Description</th>
                                                     <th>Remarks</th>
-                                                    <th>Employee's Assigned</th>
                                                     <th>Status</th>
                                                     <th>Options</th>
 
@@ -75,9 +74,8 @@ $workid='';
                                                 </thead>
                                                 <tbody>
                                                     <?php 
-                $sql = "SELECT e.`workScheduleId`,e.`workScheduleDescription`,e.`remarks`,e.status, COUNT(b.`workScheduleId`) AS countworksched FROM workschedule e 
-                INNER JOIN bioinfo b  ON e.workScheduleId  = b.workScheduleId  COLLATE latin1_swedish_ci  where e.Status = 'Active'
-                 GROUP BY E.`workScheduleId` ORDER BY e.`workScheduleId` ASC";
+                $sql = "SELECT * FROM workschedule ";
+               
                 $prep_work= $con->prepare($sql);
                 $prep_work->execute();
                 while($result = $prep_work->fetch(PDO::FETCH_ASSOC)){?>
@@ -85,7 +83,7 @@ $workid='';
                                                         <td><?php echo $result['workScheduleId']?> </td>
                                                         <td><?php echo $result['workScheduleDescription']?> </td>
                                                         <td><?php echo $result['remarks']?> </td>
-                                                        <td><?php echo $result['countworksched']?> </td>
+                                                
                                                         <td><?php echo $result['status']?> </td>
                                                         <td>
                                                             <button class="btn btn-success btn-sm btn-flat" id="edit">
@@ -182,8 +180,8 @@ $workid='';
             data: $.param(workid),
             dataType: 'json'
         })
-
-        $('#tablesched tr').each(function(row, tr) {
+        
+        $('#input-sched tr').each(function(row, tr) {
 
             //  var currow=  $('#show_sched').closest('tr');
             var col1 = $(tr).find('td:eq(0)').text();
@@ -216,6 +214,9 @@ $workid='';
                 }
             })
         })
+
+        notification("Congratulations", "", "Refresh", "success",
+                        "success");
 
 
 
