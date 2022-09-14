@@ -1,6 +1,5 @@
 <?php
 include('../config/config.php');
-include ('../config/msconfig.php');
 include('reject_user_account.php');
 include('sql/sqlbackup/backup_sql.php');
 $progress = '';
@@ -129,6 +128,12 @@ $list_depid='';
                                                     aria-selected="false">Employee</a>
                                             </li>
                                             <li class="nav-item">
+                                                <a class="nav-link" id="custom-tabs-three-profile-tab"
+                                                    data-toggle="pill" href="#custom-tabs-three-batch" role="tab"
+                                                    aria-controls="custom-tabs-three-batch" aria-selected="false">Batch
+                                                    Import</a>
+                                            </li>
+                                            <li class="nav-item">
                                                 <a class="nav-link" id="custom-tabs-three-messages-tab"
                                                     data-toggle="pill" href="#custom-tabs-three-messages" role="tab"
                                                     aria-controls="custom-tabs-three-messages"
@@ -145,6 +150,11 @@ $list_depid='';
                                             <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel"
                                                 aria-labelledby="custom-tabs-three-profile-tab">
                                                 <?php include('elements/import_emp_tab.php');?>
+                                            </div>
+
+                                            <div class="tab-pane fade" id="custom-tabs-three-batch" role="tabpanel"
+                                                aria-labelledby="custom-tabs-three-profile-tab">
+                                                <?php include('elements/batch_import_tab.php');?>
                                             </div>
                                             <div class="tab-pane fade" id="custom-tabs-three-messages" role="tabpanel"
                                                 aria-labelledby="custom-tabs-three-messages-tab">
@@ -195,7 +205,7 @@ $list_depid='';
 
         $(document).ready(function() {
         $('.select2').select2();
-
+        $("#select_batch").select2();
 
         function post_notify(message, type){
 
@@ -238,7 +248,7 @@ $list_depid='';
         );
         }
         );
-
+        //IMPORT INDIVIDUAL EMPLOYEE
         $("#import_individual").on("click",function(){
 
         event.preventDefault();
@@ -272,9 +282,29 @@ $list_depid='';
         $("#import_status").html(e);
         $('.alert').attr("class","alert alert-success");
         });
+        // IMPORT BATCH OF DEPARTMENTS
+        });
+        $("#select_batch").on("change",function(){
+
+        var deptCode = $("#select_batch").val();
+        var deptName = $( "#select_batch option:selected" ).text();
+        var table = document.getElementById("tblBatchImport");
+        var row = table.insertRow(1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        cell1.innerHTML = deptCode;
+        cell2.innerHTML = deptName;
+        cell3.innerHTML = datefr;
+        cell4.innerHTML = dteto;
+        cell5.innerHTML =
+        '<button id="remove" class="btn btn-circle btn-sm btn-primary" onclick="deleteRow(this)">Remove</button>';
 
         });
 
+        //import the department
         $("#import_dep").on("click",function(){
 
         event.preventDefault();
@@ -315,9 +345,15 @@ $list_depid='';
 
         });
         });
+
+
         });
 
-
+        function deleteRow(r) {
+        // DELETE SELECTED ROW
+        var i = r.parentNode.parentNode.rowIndex;
+        document.getElementById("tblBatchImport").deleteRow(i);
+        }
 
 
 
