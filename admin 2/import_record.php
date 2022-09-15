@@ -91,7 +91,7 @@ $list_depid='';
                                                 </span>
                                                 <input style="margin-right:10px;" type="text" class="form-control"
                                                     style="font-size:13px" autocomplete="off" name="daterange"
-                                                    id="dtefrom" value="<?php echo $dteFrom;?>">
+                                                    id="dtefrom" value="<?php echo date("m/d/Y");?>">
 
                                             </div>
 
@@ -199,8 +199,8 @@ $list_depid='';
     <!-- jQuery -->
     <<?php include('dtrdesign/footer.php'); ?> <script language="javascript">
 
-        var datefr = "";
-        var dteto = "";
+        var datefr = "<?php echo date("m/d/Y");?>";
+        var dteto = "<?php echo date("m/d/Y");?>";
 
 
         $(document).ready(function() {
@@ -304,14 +304,12 @@ $list_depid='';
 
         });
 
-        //import the department
+        //IMPORT THE DEPARTMENT
         $("#import_dep").on("click",function(){
 
         event.preventDefault();
         var dept = $('#selectdep').val();
-        var empstatus = $("#emp_status").val();
         console.log(dept);
-        console.log(emp_status);
         console.log(datefr);
         console.log(dteto);
         $('.alert').attr("class","alert alert-danger");
@@ -322,7 +320,6 @@ $list_depid='';
         type: "POST",
         data: {
         selectdep: dept,
-        emp_status: empstatus,
         datefrom: datefr,
         dateto: dteto,
         },
@@ -347,7 +344,57 @@ $list_depid='';
         });
 
 
+// GENERATE THE BATCH OF OFFICES
+        $("#import_dep_batch").on("click",function(){
+
+        event.preventDefault();
+      
+        $('.alert').attr("class","alert alert-danger");
+        $("#import_dep_batch").prop("disabled",true);
+
+        $('#tblBatchImport tr').each(function(row, tr) {
+
+         console.log(dept);
+        console.log(datefr);
+        console.log(dteto);
+
+        var dept = $(tr).find('td:eq(0)').text();
+        var datefr = $(tr).find('td:eq(2)').text();
+        var dteto = $(tr).find('td:eq(3)').text();
+
+        $.ajax({
+        url: "sql/generate_batch.php",
+        type: "POST",
+        data: {
+        selectdep: dept,
+        datefrom: datefr,
+        dateto: dteto
+        },
+        error: function (xhr, b, c) {
+        console.log(
+        "xhr=" +
+        xhr.responseText +
+        " b=" +
+        b.responseText +
+        " c=" +
+        c.responseText
+        );
+        },
+        }).done(function(e){
+            $("#import_dep_batch").prop("disabled",false);
+        $("#import_status").html("You have successfully imported the offices");
+        $('.alert').attr("class","alert alert-success");
         });
+
+        })
+        });
+
+     
+
+        });
+
+
+
 
         function deleteRow(r) {
         // DELETE SELECTED ROW
