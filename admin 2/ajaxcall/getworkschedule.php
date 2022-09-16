@@ -10,7 +10,7 @@ if(isset($_POST['workschedid'])){
     $outAM = '';
     $inPM = '';
     $outPM = '';
-
+    $getDay = '';
 
 $sql = "CALL spGetWorkSchedule(:workid,:days)";
 $prepare_stmt = $con->prepare($sql);
@@ -19,7 +19,7 @@ $prepare_stmt->execute([
     ':days' => $_POST['Day']
 ]);
 while ($result = $prepare_stmt->fetch(PDO::FETCH_ASSOC)) {
-  
+    $getDay = $result['Day'];
     $inAM = $result['inAM'];
     $outAM = $result['outAM'];
     $inPM = $result['inPM'];
@@ -28,6 +28,7 @@ while ($result = $prepare_stmt->fetch(PDO::FETCH_ASSOC)) {
 }
 
 $data = array(
+    'getDay'=>$getDay,
     'inAM'  => $inAM,
     'outAM' => $outAM,
     'inPM' => $inPM,

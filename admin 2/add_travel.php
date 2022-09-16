@@ -89,7 +89,7 @@ include 'sql/save_travel.php';
                                             <div class="col-4 dateformat">
 
 
-                                                <div class="input-group" style = "margin-left:10px">
+                                                <div class="input-group" style="margin-left:10px">
                                                     <span class="input-group-text">
                                                         <label><b>From:</b> </label>
                                                         <i class="fa fa-calendar"></i>
@@ -100,9 +100,9 @@ include 'sql/save_travel.php';
 
                                             </div>
 
-                                      
 
-                                      
+
+
 
                                             <div class="input-group col-4">
                                                 <span class="input-group-text">
@@ -130,7 +130,7 @@ include 'sql/save_travel.php';
                                                 </select>
 
                                             </div>
-                                         
+
                                         </div>
                                         <div class="row" style="padding-right:10px;padding-left:10px;margin-top:20px;">
                                             <div class="form-group col-4">
@@ -242,6 +242,7 @@ include 'sql/save_travel.php';
             //fetch all the data from the table and save it to the database
             var workid = $('#worksched-form').serializeArray();
             event.preventDefault();
+
             $('#travellist tr').each(function(row, tr) {
                 // var details = $('#details').val();
                 var empno = $(tr).find('td:eq(0)').text();
