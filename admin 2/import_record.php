@@ -205,7 +205,6 @@ $list_depid='';
 
         $(document).ready(function() {
         $('.select2').select2();
-        $("#select_batch").select2();
 
         function post_notify(message, type){
 
@@ -344,29 +343,37 @@ $list_depid='';
         });
 
 
-// GENERATE THE BATCH OF OFFICES
+        // GENERATE THE BATCH OF OFFICES
         $("#import_dep_batch").on("click",function(){
 
         event.preventDefault();
-      
-        $('.alert').attr("class","alert alert-danger");
-        $("#import_dep_batch").prop("disabled",true);
+        var loading = '';
+        var arrayDept =[];
 
         $('#tblBatchImport tr').each(function(row, tr) {
 
-         console.log(dept);
-        console.log(datefr);
-        console.log(dteto);
+        $('.alert').attr("class","alert alert-danger");
+        $("#import_dep_batch").prop("disabled",true);
+       
 
         var dept = $(tr).find('td:eq(0)').text();
         var datefr = $(tr).find('td:eq(2)').text();
         var dteto = $(tr).find('td:eq(3)').text();
+        // console.log(dept);
+        // console.log(datefr);
+        // console.log(dteto);
+        
+        arrayDept.push(dept);
+       
+   
 
+        })
+        console.log(arrayDept);
         $.ajax({
         url: "sql/generate_batch.php",
         type: "POST",
         data: {
-        selectdep: dept,
+        selectdep: arrayDept,
         datefrom: datefr,
         dateto: dteto
         },
@@ -381,15 +388,13 @@ $list_depid='';
         );
         },
         }).done(function(e){
-            $("#import_dep_batch").prop("disabled",false);
-        $("#import_status").html("You have successfully imported the offices");
+        $("#import_dep_batch").prop("disabled",false);
+        $("#import_status").html(e);
         $('.alert').attr("class","alert alert-success");
         });
-
-        })
         });
 
-     
+
 
         });
 

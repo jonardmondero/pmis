@@ -12,11 +12,13 @@ $db = '';
 // $empstatus = $_POST['emp_status'];
 //select the employees in the selected department
   $seldep = $_POST['selectdep'];
+foreach($seldep as $value){
+
   $select_emp = "SELECT employeeNo,biometricId,workScheduleId,schedule from bioinfo 
   where department = :dep 
   and status ='Active'";
   $prepare_emp = $con->prepare($select_emp);
-  $prepare_emp->execute([':dep' => $seldep
+  $prepare_emp->execute([':dep' => $value
                         ]);
   while($get_result = $prepare_emp->fetch(PDO::FETCH_ASSOC)){
 
@@ -182,6 +184,7 @@ $db = '';
     }
   }
     
+}
 }
 echo "Congratulations you successfully imported the selected department.";
 $con = null;
