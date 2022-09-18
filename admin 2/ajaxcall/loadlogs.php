@@ -28,26 +28,31 @@ if(isset($_POST['empno'])){
  	$checktime = $timeresult['checktime'];
 	 $checktype = $timeresult['checktype'];
 	 $checkstate = 'Check In';
+	 $checkColor = 'Green';
 
 	 switch($checktype){
 		case "O":
 			$checkstate = 'Check In';
+			$checkColor = 'Green';
 			break;
 		case "0":
 			$checkstate = 'Break Out';
+			$checkColor = 'Yellow';
 			break;
 		case "1":
 			$checkstate = 'Break In';
+			$checkColor = 'Pink';
 			break;
 		case "i":
 		$checkstate = 'Check Out';
+		$checkColor = 'Brown';
 		break;
 
 	 }
 	 
  	$options = array('Check In','Break Out','Break In','Check Out','Overtime In','Overtime Out');
  	echo $checktime;	
- 	echo "<tr>";
+ 	echo "<tr style = 'background-color:".$checkColor."'>";
  	echo "<td>";
  	echo $dateunformatted;
  	echo "</td>";
