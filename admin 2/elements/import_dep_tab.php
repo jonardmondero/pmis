@@ -3,7 +3,7 @@
         <label> Select Department: </label>
         <!--  $list_desc = $get_result['departmentDescription'];
           $list_deptid= $get_result['depId']; -->
-        <select class="form-control select2" name="selectdep" id="selectdep" multiple="multiple">
+        <select class="form-control select2" name="selectdep" id="selectdep">
             <option value=""></option>
             <?php
           while($get_result = $prep_dep->fetch(PDO::FETCH_ASSOC)){

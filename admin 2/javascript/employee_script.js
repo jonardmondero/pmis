@@ -1,11 +1,11 @@
-$(function(){
-  $("#empnum").prop("readonly",true);
-})
+$(function () {
+  $("#empnum").prop("readonly", true);
+});
 
 $(document).ready(function () {
-
   var dataTable = $("#table_employee").DataTable({
     page: true,
+    ordering: true,
     stateSave: true,
     processing: true,
     serverSide: true,
@@ -169,24 +169,23 @@ $(document).ready(function () {
       dropdownParent: $("#addemployee"),
     });
   });
- 
-//GENERATE EMPLOYEE NO 
-$("#lname").on("change",function(){
-  if ($('#empnum').val() == '') {
-    $.ajax({
-        type: 'POST',
-        data: {},
-        url: 'ajaxcall/generate_empno.php',
-        success: function(data) {
-            //$('#entity_no').val(data);
-            document.getElementById("empnum").value = data;
-            console.log(data);
-        }
-    });
-}
-$("#empnum").prop("readonly",true);
-})
 
+  //GENERATE EMPLOYEE NO
+  $("#lname").on("change", function () {
+    if ($("#empnum").val() == "") {
+      $.ajax({
+        type: "POST",
+        data: {},
+        url: "ajaxcall/generate_empno.php",
+        success: function (data) {
+          //$('#entity_no').val(data);
+          document.getElementById("empnum").value = data;
+          console.log(data);
+        },
+      });
+    }
+    $("#empnum").prop("readonly", true);
+  });
 
   //ADD A WORK SCHEDULE TO THE EMPLOYEE
   $("#table_employee tbody").on("click", ".add_worksched", function () {
