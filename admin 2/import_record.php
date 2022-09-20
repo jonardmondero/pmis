@@ -139,6 +139,12 @@ $list_depid='';
                                                     aria-controls="custom-tabs-three-messages"
                                                     aria-selected="false">Backup</a>
                                             </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="custom-tabs-three-messages-tab"
+                                                    data-toggle="pill" href="#custom-tabs-three-remove" role="tab"
+                                                    aria-controls="custom-tabs-three-messages"
+                                                    aria-selected="false">Remove Records</a>
+                                            </li>
                                         </ul>
                                     </div>
                                     <div class="card-body">
@@ -165,6 +171,14 @@ $list_depid='';
                                                         style="margin:auto; width:100%;margin-bottom:10px; margin-top:1rem;"
                                                         type="submit" class="btn btn-primary" name="backup_database"
                                                         id="import_dep" value="BACKUP DATABASE">
+                                                </div>
+                                            </div>
+
+                                            <div class="tab-pane fade" id="custom-tabs-three-remove" role="tabpanel"
+                                                aria-labelledby="custom-tabs-three-messages-tab">
+                                                <div class="col-12">
+
+                                                    <?php include('elements/remove_att_records.php');?>
                                                 </div>
                                             </div>
 
@@ -354,7 +368,7 @@ $list_depid='';
 
         $('.alert').attr("class","alert alert-danger");
         $("#import_dep_batch").prop("disabled",true);
-       
+
 
         var dept = $(tr).find('td:eq(0)').text();
         var datefr = $(tr).find('td:eq(2)').text();
@@ -362,10 +376,10 @@ $list_depid='';
         // console.log(dept);
         // console.log(datefr);
         // console.log(dteto);
-        
+
         arrayDept.push(dept);
-       
-   
+
+
 
         })
         console.log(arrayDept);
