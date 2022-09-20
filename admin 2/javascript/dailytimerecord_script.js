@@ -1,6 +1,6 @@
 var date = "";
-let  datefr = "";
-let  dateto = "";
+var  datefr ;
+var  dateto ;
 $(function () {
   $("#deptId").select2();
 
@@ -416,9 +416,10 @@ $("#findtable tbody").on("click", ".reflectlogs", function () {
   $.ajax({
     url: "ajaxcall/addlogs.php",
     type: "POST",
-    dataType: "JSON",
     data: { id: date, empno: empnum, stateno: convert, time: col1 },
-    success: function () {},
+    success: function () {
+      
+    },
     error: function (xhr, b, c) {
       console.log(
         "xhr=" +
@@ -429,10 +430,14 @@ $("#findtable tbody").on("click", ".reflectlogs", function () {
           c.responseText
       );
 
-      loadDtr(empnum, datefr, dateto);
-      post_notify("Record Inserted", "success");
+    
+   
     },
+  }).done(function(){
+    post_notify("Record Inserted", "success");
+    loadDtr(empnum, datefr, dateto);
   });
+
 });
 
 //UPDATE THE SUPERVISOR
