@@ -37,6 +37,25 @@
 
                 <input style="margin:auto; width:100%;margin-bottom:10px; margin-top:1rem;" type="submit"
                     class="btn btn-primary" name="import_dep_batch" id="import_dep_batch" value="GENERATE DEPARTMENTS">
+                <div class="col-12 card">
+                    <div class="card-header">
+                        <h5>SET TIMER FOR IMPORT</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>Time:</label>
+                                    <input type="time" style="width:80%" id="appt" name="appt" min="00:00" max="24:00">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <input style="margin:auto;width:100%" type="submit" class="btn btn-primary"
+                                    name="schedule_import" id="schedule_import" value="SCHEDULE IMPORT">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

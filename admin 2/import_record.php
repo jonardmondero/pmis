@@ -211,219 +211,287 @@ $list_depid='';
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <<?php include('dtrdesign/footer.php'); ?> <script language="javascript">
+    <?php include('dtrdesign/footer.php'); ?> <script language="javascript">
+    var datefr = "<?php echo date("m/d/Y");?>";
+    var dteto = "<?php echo date("m/d/Y");?>";
 
-        var datefr = "<?php echo date("m/d/Y");?>";
-        var dteto = "<?php echo date("m/d/Y");?>";
 
-
-        $(document).ready(function() {
+    $(document).ready(function() {
         $('.select2').select2();
 
-        function post_notify(message, type){
+        function post_notify(message, type) {
 
-        if (type == 'success') {
+            if (type == 'success') {
 
-        $.notify({
-        message: message
-        },{
-        type: 'success',
-        delay: 10000
-        });
+                $.notify({
+                    message: message
+                }, {
+                    type: 'success',
+                    delay: 10000
+                });
 
-        } else{
+            } else {
 
-        $.notify({
-        message: message
-        },{
-        type: 'danger',
-        delay: 2000
-        });
+                $.notify({
+                    message: message
+                }, {
+                    type: 'danger',
+                    delay: 2000
+                });
 
-        }
+            }
 
         }
 
 
         //DATE RANGE
-        $('input[name="daterange"]').daterangepicker(
-        {
-        opens: "left",
-        },
-        function (start, end, label) {
-        datefr = start.format("MM/DD/YYYY");
-        dteto = end.format("MM/DD/YYYY");
-        console.log(
-        "A new date selection was made: " +
-        start.format("MM/DD/YYYY") +
-        " to " +
-        end.format("MM/DD/YYYY")
-        );
-        }
+        $('input[name="daterange"]').daterangepicker({
+                opens: "left",
+            },
+            function(start, end, label) {
+                datefr = start.format("MM/DD/YYYY");
+                dteto = end.format("MM/DD/YYYY");
+                console.log(
+                    "A new date selection was made: " +
+                    start.format("MM/DD/YYYY") +
+                    " to " +
+                    end.format("MM/DD/YYYY")
+                );
+            }
         );
         //IMPORT INDIVIDUAL EMPLOYEE
-        $("#import_individual").on("click",function(){
+        $("#import_individual").on("click", function() {
 
-        event.preventDefault();
-        var empno = $('#select_employee').val();
-        console.log(empno);
-        console.log(datefr);
-        console.log(dteto);
-        $("#import_individual").prop("disabled",true);
-        $('.alert').attr("class","alert alert-danger");
-        $("#import_status").html("The system is importing logs. Please wait...");
-        $.ajax({
-        url: "sql/generate_record.php",
-        type: "POST",
-        data: {
-        sel_employee: empno,
-        datefrom: datefr,
-        dateto: dteto,
-        },
-        error: function (xhr, b, c) {
-        console.log(
-        "xhr=" +
-        xhr.responseText +
-        " b=" +
-        b.responseText +
-        " c=" +
-        c.responseText
-        );
-        },
-        }).done(function (e) {
-        $("#import_individual").prop("disabled",false);
-        $("#import_status").html(e);
-        $('.alert').attr("class","alert alert-success");
+            event.preventDefault();
+            var empno = $('#select_employee').val();
+            console.log(empno);
+            console.log(datefr);
+            console.log(dteto);
+            $("#import_individual").prop("disabled", true);
+            $('.alert').attr("class", "alert alert-danger");
+            $("#import_status").html("The system is importing logs. Please wait...");
+            $.ajax({
+                url: "sql/generate_record.php",
+                type: "POST",
+                data: {
+                    sel_employee: empno,
+                    datefrom: datefr,
+                    dateto: dteto,
+                },
+                error: function(xhr, b, c) {
+                    console.log(
+                        "xhr=" +
+                        xhr.responseText +
+                        " b=" +
+                        b.responseText +
+                        " c=" +
+                        c.responseText
+                    );
+                },
+            }).done(function(e) {
+                $("#import_individual").prop("disabled", false);
+                $("#import_status").html(e);
+                $('.alert').attr("class", "alert alert-success");
+            });
+            // IMPORT BATCH OF DEPARTMENTS
         });
-        // IMPORT BATCH OF DEPARTMENTS
-        });
-        $("#select_batch").on("change",function(){
+        $("#select_batch").on("change", function() {
 
-        var deptCode = $("#select_batch").val();
-        var deptName = $( "#select_batch option:selected" ).text();
-        var table = document.getElementById("tblBatchImport");
-        var row = table.insertRow(1);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        var cell4 = row.insertCell(3);
-        var cell5 = row.insertCell(4);
-        cell1.innerHTML = deptCode;
-        cell2.innerHTML = deptName;
-        cell3.innerHTML = datefr;
-        cell4.innerHTML = dteto;
-        cell5.innerHTML =
-        '<button id="remove" class="btn btn-circle btn-sm btn-primary" onclick="deleteRow(this)">Remove</button>';
+            var deptCode = $("#select_batch").val();
+            var deptName = $("#select_batch option:selected").text();
+            var table = document.getElementById("tblBatchImport");
+            var row = table.insertRow(1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            cell1.innerHTML = deptCode;
+            cell2.innerHTML = deptName;
+            cell3.innerHTML = datefr;
+            cell4.innerHTML = dteto;
+            cell5.innerHTML =
+                '<button id="remove" class="btn btn-circle btn-sm btn-primary" onclick="deleteRow(this)">Remove</button>';
 
         });
 
         //IMPORT THE DEPARTMENT
-        $("#import_dep").on("click",function(){
+        $("#import_dep").on("click", function() {
 
-        event.preventDefault();
-        var dept = $('#selectdep').val();
-        console.log(dept);
-        console.log(datefr);
-        console.log(dteto);
-        $('.alert').attr("class","alert alert-danger");
-        $("#import_dep").prop("disabled",true);
-        $("#import_status").html("The system is importing logs. Please wait...");
-        $.ajax({
-        url: "sql/generate_department.php",
-        type: "POST",
-        data: {
-        selectdep: dept,
-        datefrom: datefr,
-        dateto: dteto,
-        },
-        error: function (xhr, b, c) {
-        console.log(
-        "xhr=" +
-        xhr.responseText +
-        " b=" +
-        b.responseText +
-        " c=" +
-        c.responseText
-        );
-        },
-        }).done(function (e) {
+            event.preventDefault();
+            var dept = $('#selectdep').val();
+            console.log(dept);
+            console.log(datefr);
+            console.log(dteto);
+            $('.alert').attr("class", "alert alert-danger");
+            $("#import_dep").prop("disabled", true);
+            $("#import_status").html("The system is importing logs. Please wait...");
+            $.ajax({
+                url: "sql/generate_department.php",
+                type: "POST",
+                data: {
+                    selectdep: dept,
+                    datefrom: datefr,
+                    dateto: dteto,
+                },
+                error: function(xhr, b, c) {
+                    console.log(
+                        "xhr=" +
+                        xhr.responseText +
+                        " b=" +
+                        b.responseText +
+                        " c=" +
+                        c.responseText
+                    );
+                },
+            }).done(function(e) {
 
-        $("#import_dep").prop("disabled",false);
-        $("#import_status").html(e);
-        $('.alert').attr("class","alert alert-success");
+                $("#import_dep").prop("disabled", false);
+                $("#import_status").html(e);
+                $('.alert').attr("class", "alert alert-success");
 
 
-        });
+            });
         });
 
 
         // GENERATE THE BATCH OF OFFICES
-        $("#import_dep_batch").on("click",function(){
+        $("#import_dep_batch").on("click", function() {
 
-        event.preventDefault();
-        var loading = '';
-        var arrayDept =[];
+            event.preventDefault();
+            var loading = '';
+            var arrayDept = [];
 
+            $('#tblBatchImport tr').each(function(row, tr) {
+
+                $('.alert').attr("class", "alert alert-danger");
+                $("#import_dep_batch").prop("disabled", true);
+
+
+                var dept = $(tr).find('td:eq(0)').text();
+                var datefr = $(tr).find('td:eq(2)').text();
+                var dteto = $(tr).find('td:eq(3)').text();
+                // console.log(dept);
+                // console.log(datefr);
+                // console.log(dteto);
+
+                arrayDept.push(dept);
+
+
+
+            })
+            console.log(arrayDept);
+            $.ajax({
+                url: "sql/generate_batch.php",
+                type: "POST",
+                data: {
+                    selectdep: arrayDept,
+                    datefrom: datefr,
+                    dateto: dteto
+                },
+                error: function(xhr, b, c) {
+                    console.log(
+                        "xhr=" +
+                        xhr.responseText +
+                        " b=" +
+                        b.responseText +
+                        " c=" +
+                        c.responseText
+                    );
+                },
+            }).done(function(e) {
+                $("#import_dep_batch").prop("disabled", false);
+                $("#import_status").html(e);
+                $('.alert').attr("class", "alert alert-success");
+            });
+        });
+
+
+
+        //GENERATE THE BATCH OF OFFICE WITH SCHEDULED TIME
+        $("#schedule_import").on("click", function() {
+            event.preventDefault();
+            $("#schedule_import").prop("disabled", true);
+            var time = tConvert($("#appt").val());
+            var getCurrentDateTime = '<?php echo date("m/d/Y")?> ' + time;
+            alert(getCurrentDateTime);
+            var timeIsBeing936 = new Date(getCurrentDateTime).getTime(),
+                currentTime = new Date().getTime(),
+                subtractMilliSecondsValue = timeIsBeing936 - currentTime;
+            setTimeout(timeToGenerate, subtractMilliSecondsValue);
+
+
+        });
+
+
+    });
+
+    function tConvert(time) {
+        // Check correct time format and split into components
+        time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+        if (time.length > 1) { // If time format correct
+            time = time.slice(1); // Remove full string match value
+            time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
+            time[0] = +time[0] % 12 || 12; // Adjust hours
+        }
+        return time.join(''); // return adjusted time or original string
+    }
+
+
+    function timeToGenerate() {
+        var arrayDept = [];
         $('#tblBatchImport tr').each(function(row, tr) {
 
-        $('.alert').attr("class","alert alert-danger");
-        $("#import_dep_batch").prop("disabled",true);
+            $('.alert').attr("class", "alert alert-danger");
 
 
-        var dept = $(tr).find('td:eq(0)').text();
-        var datefr = $(tr).find('td:eq(2)').text();
-        var dteto = $(tr).find('td:eq(3)').text();
-        // console.log(dept);
-        // console.log(datefr);
-        // console.log(dteto);
+            var dept = $(tr).find('td:eq(0)').text();
+            var datefr = $(tr).find('td:eq(2)').text();
+            var dteto = $(tr).find('td:eq(3)').text();
+            // console.log(dept);
+            // console.log(datefr);
+            // console.log(dteto);
 
-        arrayDept.push(dept);
+            arrayDept.push(dept);
 
 
 
         })
         console.log(arrayDept);
         $.ajax({
-        url: "sql/generate_batch.php",
-        type: "POST",
-        data: {
-        selectdep: arrayDept,
-        datefrom: datefr,
-        dateto: dteto
-        },
-        error: function (xhr, b, c) {
-        console.log(
-        "xhr=" +
-        xhr.responseText +
-        " b=" +
-        b.responseText +
-        " c=" +
-        c.responseText
-        );
-        },
-        }).done(function(e){
-        $("#import_dep_batch").prop("disabled",false);
-        $("#import_status").html(e);
-        $('.alert').attr("class","alert alert-success");
+            url: "sql/generate_batch.php",
+            type: "POST",
+            data: {
+                selectdep: arrayDept,
+                datefrom: datefr,
+                dateto: dteto
+            },
+            error: function(xhr, b, c) {
+                console.log(
+                    "xhr=" +
+                    xhr.responseText +
+                    " b=" +
+                    b.responseText +
+                    " c=" +
+                    c.responseText
+                );
+            },
+        }).done(function(e) {
+            $("#schedule_import").prop("disabled", false);
+            $("#import_status").html(e);
+            $('.alert').attr("class", "alert alert-success");
         });
-        });
+    }
 
 
 
-        });
-
-
-
-
-        function deleteRow(r) {
+    function deleteRow(r) {
         // DELETE SELECTED ROW
         var i = r.parentNode.parentNode.rowIndex;
         document.getElementById("tblBatchImport").deleteRow(i);
-        }
-
-
-
-        </script>
+    }
+    </script>
 
 
 
