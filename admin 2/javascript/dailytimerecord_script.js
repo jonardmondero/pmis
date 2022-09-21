@@ -1,6 +1,6 @@
 var date = "";
-var  datefr ;
-var  dateto ;
+var  datefr = "" ;
+var  dateto = "";
 $(function () {
   $("#deptId").select2();
 
