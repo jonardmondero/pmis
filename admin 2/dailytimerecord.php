@@ -31,7 +31,7 @@ include ('dtrdesign/header.php');
 
             <section class="content">
                 <div class="wrapper">
-                    <div class="container-fluid">
+                    <div class="container-fluid" >
 
                         <div class="row">
                             <div class="col-4">
