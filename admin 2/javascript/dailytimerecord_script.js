@@ -388,8 +388,9 @@ $(document).keypress(function (event) {
   }
 });
 //REFLECT THE BIOMETRIC LOGS IN THE COLUMN
-$("#findtable tbody").on("click", ".reflectlogs", function () {
-  event.preventDefault();
+$("#findtable tbody").on("click", ".reflectrecords", function (e) {
+  
+  e.preventDefault();
   var currow = $(this).closest("tr");
   var insertstate = currow.find("select").val();
   var convert = "";
@@ -406,20 +407,14 @@ $("#findtable tbody").on("click", ".reflectlogs", function () {
   } else if (insertstate == "Overtime Out") {
     convert = "otOut";
   }
-
-  console.log(insertstate);
-
+  console.log("hello");
   var empnum = $("#hiddenempno").val();
-
   var col1 = currow.find("td:eq(1)").text();
   var date = currow.find("td:eq(0)").text();
   $.ajax({
     url: "ajaxcall/addlogs.php",
     type: "POST",
     data: { id: date, empno: empnum, stateno: convert, time: col1 },
-    success: function () {
-      
-    },
     error: function (xhr, b, c) {
       console.log(
         "xhr=" +

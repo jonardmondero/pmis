@@ -76,7 +76,7 @@ echo '</option>';
 
 echo'</select>';
 echo "</td>";
-echo '<td><button class="btn btn-primary btn-md btn-circle reflectlogs" data-id='.$date.'> <i
+echo '<td><button class="btn btn-primary btn-md btn-circle reflectrecords" data-id='.$date.'> <i
             class="fa fa-save"></i></button> </td>';
 echo "</tr>";
 }
