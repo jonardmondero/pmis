@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dtrreportsample" language="javascript" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="772" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10" uuid="c525d381-fa7f-4609-bbab-64326ff26db7">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="91"/>
+	<property name="ireport.x" value="463"/>
+	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT CONCAT(e.lastName,', ',e.firstName,', ',LEFT(e.middleName, 1),'.')  AS fullName,e.supervisor,
 d.inAM,
@@ -92,9 +92,9 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="91">
+			<band height="120">
 				<textField>
-					<reportElement x="217" y="0" width="32" height="11" forecolor="#FF0000" uuid="192749fb-4b8d-49b1-a630-3a149cb435dd">
+					<reportElement x="217" y="37" width="32" height="11" forecolor="#FF0000" uuid="192749fb-4b8d-49b1-a630-3a149cb435dd">
 						<printWhenExpression><![CDATA[$F{totallate} != "00:00"]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -103,28 +103,28 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 					<textFieldExpression><![CDATA[$F{totallate}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement mode="Transparent" x="26" y="68" width="198" height="20" uuid="7d2dd4cd-5738-4322-9b91-a607dba821e6"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
+					<reportElement mode="Transparent" x="22" y="99" width="204" height="20" uuid="7d2dd4cd-5738-4322-9b91-a607dba821e6"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
 						<font size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{supervisor}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement mode="Transparent" x="281" y="68" width="198" height="20" uuid="16346864-4f82-473d-b3d8-a6f386d0c75c"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
+					<reportElement mode="Transparent" x="282" y="99" width="203" height="20" uuid="16346864-4f82-473d-b3d8-a6f386d0c75c"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
 						<font size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{supervisor}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement mode="Transparent" x="542" y="68" width="197" height="20" uuid="6d51270b-37d9-481b-87a6-cdb0e04a282b"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
+					<reportElement mode="Transparent" x="544" y="99" width="195" height="20" uuid="6d51270b-37d9-481b-87a6-cdb0e04a282b"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
 						<font size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{supervisor}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="475" y="0" width="32" height="11" forecolor="#FF0000" uuid="86c750dd-2d94-4a7d-879d-1a30051ee759">
+					<reportElement x="475" y="37" width="32" height="11" forecolor="#FF0000" uuid="86c750dd-2d94-4a7d-879d-1a30051ee759">
 						<printWhenExpression><![CDATA[$F{totallate} != "00:00"]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -133,7 +133,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 					<textFieldExpression><![CDATA[$F{totallate}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="734" y="0" width="32" height="11" forecolor="#FF0000" uuid="83c1ad06-f8c1-4af8-91cc-398fda125b57">
+					<reportElement x="734" y="37" width="32" height="11" forecolor="#FF0000" uuid="83c1ad06-f8c1-4af8-91cc-398fda125b57">
 						<printWhenExpression><![CDATA[$F{totallate} != "00:00"]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -2511,9 +2511,9 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="6"/>
+		<band height="1"/>
 	</pageFooter>
 	<lastPageFooter>
-		<band height="6"/>
+		<band height="1"/>
 	</lastPageFooter>
 </jasperReport>

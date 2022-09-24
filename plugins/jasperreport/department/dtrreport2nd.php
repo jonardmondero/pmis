@@ -9,6 +9,7 @@ include('../reportconnection.php');
 //get the date info and combined it into string
 $dept = $_GET['dept'];  
 $date = $_GET['year'];
+$days = $_GET['days'];
 $datefrom 	=		$date."-16";
 $dateto 	= 		$date."-31";
 $emp_status = $_GET['empstatus'];		
@@ -16,7 +17,11 @@ $emp_status = $_GET['empstatus'];
 $PHPJasperXML = new PHPJasperXML();
 // $PHPJasperXML->debugsql=true;
 // $PHPJasperXML->arrayParameter=array("employeeNo"=>'12345678');
-$xml = $PHPJasperXML->load_xml_file("dtrreport2nd.jrxml");
+if($days == '31'){$xml = $PHPJasperXML->load_xml_file("dtrreport2nd.jrxml");}
+if($days == '30'){$xml = $PHPJasperXML->load_xml_file("dtrreport2nd-30.jrxml");}
+if($days == '29'){$xml = $PHPJasperXML->load_xml_file("dtrreport2nd-29.jrxml");}
+if($days == '28'){$xml = $PHPJasperXML->load_xml_file("dtrreport2nd-28.jrxml");}
+
 // $PHPJasperXML->xml_dismantle($xml);
 $PHPJasperXML->sql ="
 SELECT CONCAT(e.lastName,', ',e.firstName,', ',LEFT(e.middleName, 1),'.')  AS fullName,e.supervisor,

@@ -19,7 +19,10 @@ $emp_status = $_GET['empstatus'];
 // $empno[] = $result['employeeNo'];
 // }
 $PHPJasperXML = new PHPJasperXML();
-$xml = $PHPJasperXML->load_xml_file("report3x3.jrxml");  
+if($days == '30'){$xml = $PHPJasperXML->load_xml_file("report3x3-30.jrxml");}
+if($days == '31'){$xml = $PHPJasperXML->load_xml_file("report3x3.jrxml");}
+if($days == '29'){$xml = $PHPJasperXML->load_xml_file("report3x3-29.jrxml");}
+if($days == '28'){$xml = $PHPJasperXML->load_xml_file("report3x3-28.jrxml"); }
 // $PHPJasperXML->debugsql=true;
 // $PHPJasperXML->arrayParameter=array("employeeNo"=>'12345678');
 // foreach($empno as $value){
