@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dtrreportsample" language="javascript" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="772" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10" uuid="c525d381-fa7f-4609-bbab-64326ff26db7">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="363"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.x" value="217"/>
+	<property name="ireport.y" value="337"/>
 	<queryString>
 		<![CDATA[SELECT CONCAT(e.lastName,', ',e.firstName,', ',LEFT(e.middleName, 1),'.')  AS fullName,e.supervisor,
 d.inAM,
@@ -2459,16 +2459,16 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 	<columnFooter>
 		<band height="93">
 			<textField>
-				<reportElement x="50" y="66" width="150" height="20" uuid="7d2dd4cd-5738-4322-9b91-a607dba821e6"/>
+				<reportElement x="19" y="66" width="208" height="20" uuid="7d2dd4cd-5738-4322-9b91-a607dba821e6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
+					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{supervisor}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="307" y="66" width="150" height="20" uuid="16346864-4f82-473d-b3d8-a6f386d0c75c"/>
+				<reportElement x="278" y="66" width="208" height="20" uuid="16346864-4f82-473d-b3d8-a6f386d0c75c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
+					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{supervisor}]]></textFieldExpression>
 			</textField>
@@ -2500,9 +2500,9 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="566" y="66" width="150" height="20" uuid="6d51270b-37d9-481b-87a6-cdb0e04a282b"/>
+				<reportElement x="543" y="66" width="208" height="20" uuid="6d51270b-37d9-481b-87a6-cdb0e04a282b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
+					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{supervisor}]]></textFieldExpression>
 			</textField>
