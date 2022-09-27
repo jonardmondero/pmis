@@ -105,21 +105,21 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textField>
 					<reportElement mode="Transparent" x="26" y="68" width="198" height="20" uuid="7d2dd4cd-5738-4322-9b91-a607dba821e6"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font size="8"/>
+						<font size="9"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{supervisor}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement mode="Transparent" x="281" y="68" width="198" height="20" uuid="16346864-4f82-473d-b3d8-a6f386d0c75c"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font size="8"/>
+						<font size="9"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{supervisor}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement mode="Transparent" x="542" y="68" width="197" height="20" uuid="6d51270b-37d9-481b-87a6-cdb0e04a282b"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font size="8"/>
+						<font size="9"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{supervisor}]]></textFieldExpression>
 				</textField>
