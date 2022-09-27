@@ -17,6 +17,8 @@ $user_data ->execute([
         session_start();
         $_SESSION['id'] = $result['userId'];
         $_SESSION['usertype'] = $result['userType'];
+        $_SESSION['fname'] = $result['firstName'];
+        $_SESSION['lname'] = $result['lastName'];
         $hash_password  = $result['upass'];
         // if($accnttype == 1)
        

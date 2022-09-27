@@ -10,7 +10,9 @@
           <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Jonard Mondero</a>
+          <a href="#" class="d-block">
+            <?php echo $_SESSION['fname']." ".$_SESSION['lname']?>
+          </a>
         </div>
       </div>
 
@@ -40,7 +42,7 @@
             <a href="department.php" class="nav-link">
               <i class="nav-icon fa fa-building"></i>
               <p>
-                Add Department
+                Department
                 <span class="badge badge-info right"></span>
               </p>
             </a>
@@ -49,7 +51,7 @@
             <a href="employees.php" class="nav-link">
               <i class="nav-icon fa fa-user"></i>
               <p>
-                Add Employee
+                Employee
                 <span class="badge badge-info right"></span>
               </p>
             </a>
@@ -58,7 +60,7 @@
             <a href="workschedule.php" class="nav-link">
               <i class="nav-icon fa fa-calendar"></i>
               <p>
-                Add Work Schedule
+                Work Schedule
                 <span class="badge badge-info right"></span>
               </p>
             </a>
@@ -67,7 +69,7 @@
             <a href="add_leave.php" class="nav-link">
               <i class="nav-icon fa fa-list"></i>
               <p>
-             Add Leave
+             Application for Leave
                
               </p>
             </a>
@@ -76,7 +78,7 @@
             <a href="add_travel.php" class="nav-link">
               <i class="nav-icon fa fa-car"></i>
               <p>
-             Add Travel
+           Travel
                
               </p>
             </a>
@@ -85,7 +87,7 @@
             <a href="add_co.php" class="nav-link">
               <i class="nav-icon fa fa-car"></i>
               <p>
-             Add Compensatory Off
+            Compensatory Off
                
               </p>
             </a>
@@ -136,6 +138,19 @@
             <a href="users" class="nav-link">
               <i class="nav-icon fa fa-user"></i>
               <p>Manage Users</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="signout" class="nav-link">
+              <i class="nav-icon fa fa-user"></i>
+              <p>Sign Out</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="signout" class="nav-link">
+              <i class="nav-icon fa fa-user"></i>
+              <p>Lockscreen</p>
             </a>
           </li>
           

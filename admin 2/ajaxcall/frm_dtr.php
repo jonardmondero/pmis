@@ -12,7 +12,11 @@ if(isset($_POST['employeeno'])) {
 
     while ($result3=$user_data3->fetch(PDO::FETCH_ASSOC)) {
         if($result3==0) {
-           
+            echo "<tr>";
+            echo "<td>";
+        echo "No Record";
+        echo "</td>";
+        echo "</tr>";
         }
             
      

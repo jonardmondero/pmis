@@ -3,6 +3,13 @@
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<style name="Holiday" mode="Opaque" forecolor="#00CC00" backcolor="#33FF33" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{outAM}== "HOLI"]]></conditionExpression>
+			<style/>
+		</conditionalStyle>
+	</style>
+	<style name="style1" mode="Opaque" forecolor="#00CC00" backcolor="#00CC00" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
 	<queryString>
 		<![CDATA[SELECT CONCAT(e.lastName,', ',e.firstName,', ',LEFT(e.middleName, 1),'.')  AS fullName,e.supervisor,
 d.inAM,
@@ -2306,7 +2313,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textFieldExpression><![CDATA[$F{otIn}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="49" y="1" width="27" height="11" forecolor="#000000" backcolor="#FFFF33" uuid="b9838b55-8458-4579-a0b0-fb10ee59d208"/>
+				<reportElement style="Holiday" mode="Transparent" x="49" y="1" width="27" height="11" forecolor="#000000" backcolor="#F0F0F0" uuid="b9838b55-8458-4579-a0b0-fb10ee59d208"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="9"/>
 				</textElement>
@@ -2327,7 +2334,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textFieldExpression><![CDATA[$F{outPM}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="21" y="1" width="27" height="11" uuid="54c772ef-55ca-408a-90b7-f1e195458bc0"/>
+				<reportElement style="style1" mode="Transparent" x="21" y="1" width="27" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="54c772ef-55ca-408a-90b7-f1e195458bc0"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Arial" size="9"/>
 					<paragraph lineSpacing="Proportional"/>
