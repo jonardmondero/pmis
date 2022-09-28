@@ -28,7 +28,7 @@ $getIndividualData->execute([
 
 
 $countNoFilter = "SELECT COUNT(employeeNo) as id from bioinfo 
-                where department = :dept AND employmentStatus = :status ";
+                where department = :dept AND employmentStatus = :status and status = 'Active'";
                 $getrecordstmt = $con->prepare($countNoFilter);
                 $getrecordstmt->execute([
                ':dept' =>$dept,
@@ -76,7 +76,7 @@ CONCAT(lastName,', ',firstName,', ',LEFT(middleName,1),'.') as fullName
             ':status'	=>$status
         ]) or die("get_employee_department.php");
         $getrecord1 = $getrecordstmt->fetch(PDO::FETCH_ASSOC);
-        $totalData = $getrecord['id'];
+        $totalData = $getrecord1['id'];
         $totalFiltered = $totalData;
      }
 

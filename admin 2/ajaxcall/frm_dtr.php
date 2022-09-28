@@ -4,19 +4,20 @@ if(isset($_POST['employeeno'])) {
     $empno=$_POST['employeeno'];
     $dteFrom=date('Y-m-d', strtotime($_POST['dtfr']));
     $dteTo=date('Y-m-d', strtotime($_POST['dtto']));
-    $get_time="CALL spShowDTR(:empno,:dtefr,:dteto)";
+    $date1=date_create($dteFrom);
+    $date2=date_create($dteTo);
+    $diff=date_diff( $date1,$date2);
+    $get_time="CALL spShowDTR(:empno,:dtefr,:dteto,:limit)";
     $user_data3=$con->prepare($get_time);
     $user_data3->execute([ ':empno'=>$empno,
         ':dtefr'=> $dteFrom,
-        'dteto'=> $dteTo]);
+        'dteto'=> $dteTo,
+        ':limit'=>$diff->format("%a") + 1
+    ]);
 
     while ($result3=$user_data3->fetch(PDO::FETCH_ASSOC)) {
         if($result3==0) {
-            echo "<tr>";
-            echo "<td>";
-        echo "No Record";
-        echo "</td>";
-        echo "</tr>";
+
         }
             
      

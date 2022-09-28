@@ -12,6 +12,7 @@
             <button class = "btn btn-danger btn-sm removelate" style = "margin-right:2px;margin-bottom:2px"><b>L</b></button> 
             <button class = "btn btn-warning btn-sm removeundertime" style = "margin-right:2px;margin-bottom:2px" ><b>UT</b></button> 
             <button class = "btn btn-success btn-sm removelateundertime" style = "margin-right:2px;margin-bottom:2px "><b>L/UT</b></button> 
+            <button class = "btn btn-success btn-sm removedayoff" style = "margin-right:2px;margin-bottom:2px "><b>D. OFF</b></button> 
              </div>
              </div>
              </div>

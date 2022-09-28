@@ -7,6 +7,7 @@ $titlename = 'List of Holidays';
 <html>
 <?php include 'dtrdesign/header.php';
 include('../config/config.php');
+include('session.php'); 
 $alert = "false";
 
 
@@ -22,7 +23,7 @@ $deptId [] = '';
 $deptdesc [] = '';
 
 $getRecord = "SELECT *, DATE_FORMAT(DATE,'%b %e, %Y') 
-AS ddate,DATE_FORMAT(DATE,'%m-%d-%Y') AS dateformat from holiday group by dateformat";
+AS ddate,DATE_FORMAT(DATE,'%m-%d-%Y') AS dateformat from holiday ORDER BY dateformat ASC";
 $get_holidays = $con->prepare($getRecord);
 $get_holidays->execute();
 
@@ -196,7 +197,8 @@ while ($result = $getDepartmentQuery->fetch(PDO::FETCH_ASSOC)) {
     <script>
       $(function () {
     
-           $("#users").DataTable({   
+           $("#users").DataTable({ 
+           "ordering":false
         
             }
           

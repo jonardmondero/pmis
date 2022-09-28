@@ -32,7 +32,6 @@ $(function () {
 
 function getEmployees(dept, status) {
   var dataTable = $("#employees").DataTable({
-    paging: true,
     destroy: true,
     stateSave: true,
     processing: true,
@@ -300,7 +299,8 @@ $(document).ready(function () {
       type: "POST",
       data: {
         empno: empnum,
-        date: col1,
+        dateFrom: datefr,
+        dateTo: dateto,
         opt: late,
       },
       error: function (xhr, b, c) {
@@ -331,7 +331,8 @@ $(document).ready(function () {
       type: "POST",
       data: {
         empno: empnum,
-        date: col1,
+        dateFrom: datefr,
+        dateTo: dateto,
         opt: late,
       },
       error: function (xhr, b, c) {
@@ -362,7 +363,41 @@ $(document).ready(function () {
       type: "POST",
       data: {
         empno: empnum,
-        date: col1,
+        dateFrom: datefr,
+        dateTo: dateto,
+        opt: late,
+      },
+      error: function (xhr, b, c) {
+        console.log(
+          "xhr=" +
+            xhr.responseText +
+            " b=" +
+            b.responseText +
+            " c=" +
+            c.responseText
+        );
+      },
+    }).done(function () {
+      $("#hiddenempno").val(empnum);
+      loadDtr(empnum, datefr, dateto);
+    });
+  });
+  //removes the day off
+  $("#dtr tbody").on("click", ".removedayoff", function () {
+    var late = "removedayoff";
+    console.log(late);
+    event.preventDefault();
+    var empnum = $("#hiddenempno").val();
+    var currow = $(this).closest("tr");
+    var col1 = currow.find("td:eq(0)").text();
+
+    $.ajax({
+      url: "ajaxcall/remove_late.php",
+      type: "POST",
+      data: {
+        empno: empnum,
+        dateFrom: datefr,
+        dateTo: dateto,
         opt: late,
       },
       error: function (xhr, b, c) {

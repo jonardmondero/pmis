@@ -4,12 +4,9 @@ include '../config/config.php';
 $curdate = date("m/d/Y");
 $titlename = 'Travel Order/Pass Slip';
 include 'dtrdesign/header.php';
+include('session.php');
 $curdate = date("m/d/Y");
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html>
 
@@ -20,10 +17,8 @@ $curdate = date("m/d/Y");
         <?php
 include 'dtrdesign/navbar.php';
 include 'dtrdesign/sidebar.php';
-include 'sql/save_travel.php';
 
 ?>
-
 
         <style>
         .dateformat {

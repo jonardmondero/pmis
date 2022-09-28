@@ -1,5 +1,6 @@
 <?php
 $titlename = 'Work Schedule';
+include('session.php');
 include ('dtrdesign/header.php');
 include('../config/config.php');
 $alert_msg='';
