@@ -33,19 +33,19 @@ if(isset($_POST['empno'])){
 	 switch($checktype){
 		case "O":
 			$checkstate = 'Check In';
-			$checkColor = 'Green';
+			$checkColor = '#F3ED1A';
 			break;
 		case "0":
 			$checkstate = 'Break Out';
-			$checkColor = 'Yellow';
+			$checkColor = '#91FF61';
 			break;
 		case "1":
 			$checkstate = 'Break In';
-			$checkColor = 'Pink';
+			$checkColor = '#FFC100';
 			break;
 		case "i":
 		$checkstate = 'Check Out';
-		$checkColor = 'Brown';
+		$checkColor = '#00FFEC';
 		break;
 
 	 }

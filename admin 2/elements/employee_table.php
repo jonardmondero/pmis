@@ -11,6 +11,7 @@ if($user_type == 'User'){
 
 <div class=" card card-primary"  style ="margin-top:10px;">
 <div class = "wrapper">
+  <div class = "container-fluid">
                <div class="card-header">
                 <h3 class="card-title capitalize" >Department</h3>
               </div>
@@ -59,4 +60,5 @@ if($user_type == 'User'){
 
                      </div>
                      </div>
+                        </div>
         </div>  
