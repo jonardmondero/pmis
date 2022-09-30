@@ -56,7 +56,9 @@
 .capitalize {
   text-transform: uppercase;
 }
-
+.text_align {
+  text-align: center;
+}
 .card_dtr {
   position: relative;
   height: max-content;

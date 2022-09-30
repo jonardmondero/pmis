@@ -56,7 +56,7 @@
 
                                 <div style="margin:auto;">
                                     <table id="dtr" class="form__table table-bordered table-responsive table-hover ">
-                                        <thead class="table">
+                                        <thead class="table text_align">
 
                                             <th class="border border-dark ">Date </th>
                                             <th class="border border-dark">Day</th>
