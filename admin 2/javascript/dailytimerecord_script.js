@@ -1,6 +1,6 @@
 var date = "";
-var  datefr = "" ;
-var  dateto = "";
+var datefr = "";
+var dateto = "";
 $(function () {
   $("#deptId").select2();
 
@@ -11,8 +11,7 @@ $(function () {
   //   empstatus:empstatus
   getEmployees(deptId, empstatus);
 
-  
-// DATE RANGE PICKER
+  // DATE RANGE PICKER
   $('input[name="daterange"]').daterangepicker(
     {
       opens: "left",
@@ -286,7 +285,7 @@ $(document).ready(function () {
   $("#dtr tbody").on("click", ".col", function () {
     event.preventDefault();
   });
-//REMOVE THE LATE
+  //REMOVE THE LATE
   $("#dtr tbody").on("click", ".removelate", function () {
     var late = "removelate";
     event.preventDefault();
@@ -318,7 +317,7 @@ $(document).ready(function () {
       loadDtr(empnum, datefr, dateto);
     });
   });
-//REMOVE THE UNDERTIME
+  //REMOVE THE UNDERTIME
   $("#dtr tbody").on("click", ".removeundertime", function () {
     var late = "removeundertime";
     event.preventDefault();
@@ -350,7 +349,7 @@ $(document).ready(function () {
       loadDtr(empnum, datefr, dateto);
     });
   });
-//REMOVE THE LATE AND UNDERTIME
+  //REMOVE THE LATE AND UNDERTIME
   $("#dtr tbody").on("click", ".removelateundertime", function () {
     var late = "removelateundertime";
     event.preventDefault();
@@ -424,7 +423,6 @@ $(document).keypress(function (event) {
 });
 //REFLECT THE BIOMETRIC LOGS IN THE COLUMN
 $("#findtable tbody").on("click", ".reflectrecords", function (e) {
-  
   e.preventDefault();
   var currow = $(this).closest("tr");
   var insertstate = currow.find("select").val();
@@ -459,17 +457,49 @@ $("#findtable tbody").on("click", ".reflectrecords", function (e) {
           " c=" +
           c.responseText
       );
-
-    
-   
     },
-  }).done(function(){
+  }).done(function () {
     post_notify("Record Inserted", "success");
     loadDtr(empnum, datefr, dateto);
   });
-
 });
-
+//RECOMPUTE LATE AND UNDERTIME
+$("#dtr tbody").on("click", ".recompute", function () {
+  event.preventDefault();
+  var empnum = $("#hiddenempno").val();
+  var currow = $(this).closest("tr");
+  var col1 = currow.find("td:eq(0)").text();
+  var col2 = $(currow).find("td:eq(2) input[type='text']").val();
+  var col3 = $(currow).find("td:eq(3) input[type='text']").val();
+  var col4 = $(currow).find("td:eq(4) input[type='text']").val();
+  var col5 = $(currow).find("td:eq(5) input[type='text']").val();
+  console.log(col2, col3, col4, col5);
+  $.ajax({
+    url: "ajaxcall/recompute.php",
+    type: "POST",
+    data: {
+      empno: empnum,
+      date: col1,
+      inAM: col2,
+      outAM: col3,
+      inPM: col4,
+      outPM: col5,
+    },
+    error: function (xhr, b, c) {
+      console.log(
+        "xhr=" +
+          xhr.responseText +
+          " b=" +
+          b.responseText +
+          " c=" +
+          c.responseText
+      );
+    },
+  }).done(function (e) {
+    $("#hiddenempno").val(empnum);
+    loadDtr(empnum, datefr, dateto);
+  });
+});
 //UPDATE THE SUPERVISOR
 $("#btn_update_supervisor").click(function () {
   const department = $("#update_supervisor_department").val();

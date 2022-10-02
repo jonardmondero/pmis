@@ -55,7 +55,8 @@
                             <div class="row col-12">
 
                                 <div style="margin:auto;">
-                                    <table id="dtr" class="form__table table-bordered table-responsive table-hover ">
+                                    <table id="dtr"
+                                        class="form__table table-bordered table-responsive table-hover bg-white ">
                                         <thead class="table text_align">
 
                                             <th class="border border-dark ">Date </th>

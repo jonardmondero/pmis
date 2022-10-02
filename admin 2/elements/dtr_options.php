@@ -1,4 +1,3 @@
-
 <?php
             echo '<td >
             <button class = "btn btn-warning addlogs"  > <i class = "fa fa-search"></i></button>
@@ -13,6 +12,7 @@
             <button class = "btn btn-warning btn-sm removeundertime" style = "margin-right:2px;margin-bottom:2px" ><b>UT</b></button> 
             <button class = "btn btn-success btn-sm removelateundertime" style = "margin-right:2px;margin-bottom:2px "><b>L/UT</b></button> 
             <button class = "btn btn-success btn-sm removedayoff" style = "margin-right:2px;margin-bottom:2px "><b>D. OFF</b></button> 
+            <button class = "btn btn-info btn-sm recompute" style = "margin-right:2px;margin-bottom:2px "><b>RECMPT</b></button> 
              </div>
              </div>
              </div>
