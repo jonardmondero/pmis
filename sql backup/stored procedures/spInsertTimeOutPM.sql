@@ -35,8 +35,8 @@ SET @checktimeoutPM = (SELECT outPM FROM dailytimerecord WHERE DATE = ddate AND 
 	SET @checkovertime = (SELECT outPM FROM dailytimerecord WHERE DATE = ddate AND employeeNo = empno LIMIT 1);
 	
 	SET @formatoutpm = (SELECT STR_TO_DATE(@checkovertime, '%h:%i %p'));
-	
-	IF(@checkovertime != '' && @convertedtime > '19:00' && @formatoutpm > '17:00') THEN	
+	SET @getOvertime = TIMEDIFF(@convertedtime,@formatoutpm);
+	IF(@checkovertime != '' AND @getOvertime > '00:30:00' ) THEN	
 	
 	UPDATE dailytimerecord SET otOut = @timeIn  /*UPDATE THE IN PM*/
 	WHERE employeeNo=empno AND DATE = ddate LIMIT 1;

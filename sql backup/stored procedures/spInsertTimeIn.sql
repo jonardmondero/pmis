@@ -12,10 +12,8 @@ SET @DDate =(SELECT inAM FROM workscheduledetail WHERE workscheduleDetail = work
 SET @latesched = (SELECT STR_TO_DATE(@DDate, '%h:%i %p')); /*CONVERT THE TIME FROM SCHEDULE INTO 24 HOURS FORMAT*/
 SET @morning =( SELECT late FROM dailytimerecord WHERE employeeNo = empno AND DATE = ddate);/*GET THE LATE IN THE MORNING*/
 SET @checkInAM = (SELECT inAM FROM dailytimerecord WHERE DATE = ddate AND employeeNo = empno);
-	IF(@convertedtime < '17:00') THEN
 	
 	IF(@checkInAM = '') THEN
-	
 	UPDATE dailytimerecord SET inAM = @timeIn  /*UPDATE THE IN PM*/
 	WHERE employeeNo=empno AND DATE = ddate;
 	
@@ -33,12 +31,17 @@ SET @checkInAM = (SELECT inAM FROM dailytimerecord WHERE DATE = ddate AND employ
 	END IF;
 	END IF;
 	
-	ELSE
+	SET @checkovertimeIn = (SELECT inAM FROM dailytimerecord WHERE DATE = ddate AND employeeNo = empno LIMIT 1);
+	SET @formatinAM = (SELECT STR_TO_DATE(@checkovertimeIn, '%h:%i %p'));/*GET THE CHECK IN AND COMPARE IT TO THE ANOTHER CHECK IN TIME */
+	
+	SET @getOvertimeIn = TIMEDIFF(@convertedtime,@formatinAM);/* GET THE TIME DIFFERENCE TO BE USED AS CONDITION FOR THE ADDING OF OVERTIME*/
+	IF(@checkInAM != '' AND @getOvertimeIn > '05:00:00')THEN
 	
 	UPDATE dailytimerecord SET otIn = @timeIn  /*UPDATE THE IN PM*/
 	WHERE employeeNo=empno AND DATE = ddate;
 	
 	END IF;
+
 	
 	END$$
 
