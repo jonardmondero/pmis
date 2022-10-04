@@ -42,7 +42,7 @@ if($user_type == 'User'){
                 </div>
                 <div class="row" id="slim">
                     <div class="col-12">
-                        <table id="employees" class="table table-bordered table-reponsive table-hover dataTable"
+                        <table id="employees" class="table table-bordered table-reponsive table-hover dataTable text_align"
                             role="grid">
                             <thead>
                                 <th> Employee No. </th>

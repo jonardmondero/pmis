@@ -36,6 +36,8 @@ function getEmployees(dept, status) {
     processing: true,
     serverSide: true,
     scrollX: false,
+    scrollY: '500px',
+    scrollCollapse: true,
     ajax: {
       dataType: "JSON",
       url: "ajaxcall/get_employee_department.php",
