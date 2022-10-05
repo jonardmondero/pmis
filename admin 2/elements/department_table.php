@@ -12,7 +12,7 @@
             <thead style="font-size:13px" >
             <th> Dept. ID </th>
              <th> Department Name </th>
-             <th> Location </th>
+             <th> Connection </th>
              <th> Status </th>
              <th> Options </th>
                       </thead>              
@@ -22,7 +22,7 @@
                     <tr id = "row" >
                     <td><?php echo $result['deptId']?> </td>
                     <td><?php echo $result['departmentDescription']?> </td>
-                    <td><?php echo $result['location']?> </td>
+                    <td><?php echo $result['connection']?> </td>
                     <td><?php echo $result['status']?> </td>
                     <td><button class = "btn btn-danger  btn-sm btn-circle" id = "edit" ><i class = "fa fa-edit"></button</td>
                   </tr>

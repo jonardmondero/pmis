@@ -8,7 +8,7 @@ $deptname =  $_POST['deptname'];
 $create_dept = "INSERT INTO department SET 
 deptId =:deptId, 
 departmentDescription = :deptName,
-location = :location ,
+connection = :location ,
 status  = 'Active'";
 $prep_dept = $con->prepare($create_dept);
 $prep_dept->execute([':deptId'  => $deptid,
@@ -31,7 +31,7 @@ if(isset($_POST['save-edit'])){
 
   $updateDept = "UPDATE department SET
     departmentDescription = :deptname,
-    location = :location,
+    connection = :location,
     `status` = :stat
     WHERE deptId = :deptId";
 

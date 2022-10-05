@@ -47,7 +47,7 @@ $sql = "SELECT CONCAT(b.firstName,' ',LEFT(b.middleName, 1),'. ',b.lastName) as 
         b.supervisor  
         FROM bioinfo b 
         INNER JOIN department d on b.department = d.deptId ";
-$sql.=" ORDER BY b.lastName ASC  LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
+$sql.=" ORDER BY b.lastName ASC LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
 $get_user_data = $con->prepare($sql);
 $get_user_data->execute();
 // $query=mysqli_query($conn, $sql) or die("search_user.php");
@@ -74,20 +74,21 @@ FROM bioinfo b
 INNER JOIN department d on b.department = d.deptId ";
 if( !empty($requestData['search']['value']) ) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
 	$sql.="  and (b.employeeNo LIKE '".$requestData['search']['value']."%' ";    
-	$sql.=" OR b.firstName LIKE '%".$requestData['search']['value']."%' ";
-	$sql.=" OR b.middleName LIKE '%".$requestData['search']['value']."%' ";
-	$sql.=" OR b.lastName LIKE '%".$requestData['search']['value']."%' ";
+	$sql.=" OR b.firstName LIKE '".$requestData['search']['value']."%' ";
+	$sql.=" OR b.middleName LIKE '".$requestData['search']['value']."%' ";
+	$sql.=" OR b.lastName LIKE '".$requestData['search']['value']."%' ";
+	$sql.=" OR CONCAT(firstName,' ',lastName) LIKE '".$requestData['search']['value']."%' ";
 	$sql.=" OR b.biometricId LIKE '".$requestData['search']['value']."%' ";
 	$sql.=" OR b.employmentStatus LIKE '%".$requestData['search']['value']."%' ";
 	$sql.=" OR b.workScheduleId LIKE '%".$requestData['search']['value']."%' ";
-	$sql.=" OR d.departmentDescription LIKE '%".$requestData['search']['value']."%' ";
+	$sql.=" OR d.departmentDescription LIKE '".$requestData['search']['value']."%' ";
     $sql.=" OR b.status LIKE '%".$requestData['search']['value']."%' )";
 
 // $query=mysqli_query($conn, $sql) or die("search_user.php");
 
 
 // $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result. 
-$sql.=" ORDER BY b.biometricId ASC LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
+$sql.=" ORDER BY b.lastName ASC LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
 $get_user_data = $con->prepare($sql);
 $get_user_data->execute();
 // $totalData = $get_user_data->fetch(PDOStatement::rowCount);
@@ -96,12 +97,13 @@ $get_user_data->execute();
 
 	$countfilter= "SELECT COUNT(employeeNo) as id from bioinfo where ";
 	$countfilter.="  (employeeNo LIKE '".$requestData['search']['value']."%' ";    
-	$countfilter.=" OR firstName LIKE '%".$requestData['search']['value']."%' ";
-	$countfilter.=" OR middleName LIKE '%".$requestData['search']['value']."%' ";
-	$countfilter.=" OR lastName LIKE '%".$requestData['search']['value']."%' ";
+	$countfilter.=" OR firstName LIKE '".$requestData['search']['value']."%' ";
+	$countfilter.=" OR CONCAT(firstName,' ',lastName) LIKE '%".$requestData['search']['value']."%' ";
+	$countfilter.=" OR middleName LIKE '".$requestData['search']['value']."%' ";
+	$countfilter.=" OR lastName LIKE '".$requestData['search']['value']."%' ";
 	$countfilter.=" OR biometricId LIKE '".$requestData['search']['value']."%' ";
 	$countfilter.=" OR employmentStatus LIKE '%".$requestData['search']['value']."%' ";
-	$countfilter.=" OR department LIKE '%".$requestData['search']['value']."%' ";
+	$countfilter.=" OR department LIKE '".$requestData['search']['value']."%' ";
 	$countfilter.=" OR supervisor LIKE '%".$requestData['search']['value']."%' ";
 	$countfilter.=" OR workScheduleId LIKE '%".$requestData['search']['value']."%' ";
     $countfilter.=" OR status LIKE '%".$requestData['search']['value']."%') ";

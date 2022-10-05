@@ -22,8 +22,8 @@
                             <div class="form-group col-12">
                                 <label class="col-6">Location</label>
                                 <select class="form-control" id="location" name = "location">
-                                    <option value="INSIDE">INSIDE CITY HALL</option>
-                                    <option value="OUTSIDE">OUTSIDE CITY HALL</option>
+                                    <option value="CONNECTED">CONNECTED</option>
+                                    <option value="DISCONNECTED">DISCONNECTED</option>
                                 </select>
                             </div>
                             <div class="form-group col-12">

@@ -5,10 +5,10 @@ $(function () {
 $(document).ready(function () {
   var dataTable = $("#table_employee").DataTable({
     page: true,
-    ordering: true,
     stateSave: true,
     processing: true,
     serverSide: true,
+    deferRender: true,
     ajax: {
       url: "ajaxcall/search_employee.php", // json datasource
       type: "post", // method  , by default get
