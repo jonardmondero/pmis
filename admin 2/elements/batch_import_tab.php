@@ -56,6 +56,29 @@
                         </div>
                     </div>
                 </div>
+
+
+                <div class="col-12 card">
+                    <div class="card-header">
+                        <h5>IMPORT BY CATEGORY</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label>Category:</label>
+                                    <select class = "form-control" id = "category" name = "category">
+                                        <option value = "CONNECTED"> CONNECTED MACHINES</option>
+                                        <option value = "DISCONNECTED"> DISCONNECTED MACHINES</option>
+                                    </select>
+                                </div>
+                                <input style="margin:auto;width:100%" type="submit" class="btn btn-primary"
+                                    name="generate_category" id="generate_category" value="GENERATE RECORDS">
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

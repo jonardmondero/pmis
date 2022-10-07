@@ -2466,14 +2466,14 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 	<columnFooter>
 		<band height="93">
 			<textField>
-				<reportElement mode="Transparent" x="43" y="66" width="170" height="20" uuid="7d2dd4cd-5738-4322-9b91-a607dba821e6"/>
+				<reportElement mode="Transparent" x="22" y="66" width="205" height="20" uuid="7d2dd4cd-5738-4322-9b91-a607dba821e6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{supervisor}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="302" y="66" width="170" height="20" uuid="16346864-4f82-473d-b3d8-a6f386d0c75c"/>
+				<reportElement mode="Transparent" x="281" y="66" width="203" height="20" uuid="16346864-4f82-473d-b3d8-a6f386d0c75c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
@@ -2507,7 +2507,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="558" y="66" width="170" height="20" uuid="6d51270b-37d9-481b-87a6-cdb0e04a282b"/>
+				<reportElement mode="Transparent" x="535" y="66" width="209" height="20" uuid="6d51270b-37d9-481b-87a6-cdb0e04a282b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>

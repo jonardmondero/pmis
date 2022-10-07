@@ -425,6 +425,45 @@ $list_depid='';
 
 
     });
+    //GENERATE BY CATEGORY
+    $("#generate_category").on("click", function() {
+
+event.preventDefault();
+var cat = $('#category').val();
+console.log(cat);
+console.log(datefr);
+console.log(dteto);
+$('.alert').attr("class", "alert alert-danger");
+$("#generate_category").prop("disabled", true);
+$("#import_status").html("The system is importing logs. Please wait...");
+$.ajax({
+    url: "sql/generate_category.php",
+    type: "POST",
+    data: {
+        category: cat,
+        datefrom: datefr,
+        dateto: dteto,
+    },
+    error: function(xhr, b, c) {
+        console.log(
+            "xhr=" +
+            xhr.responseText +
+            " b=" +
+            b.responseText +
+            " c=" +
+            c.responseText
+        );
+    },
+}).done(function(e) {
+
+    $("#generate_category").prop("disabled", false);
+    $("#import_status").html(e);
+    $('.alert').attr("class", "alert alert-success");
+
+
+});
+});
+
 
     function tConvert(time) {
         // Check correct time format and split into components
