@@ -11,7 +11,7 @@ $db = '';
   $bioPin = '';
   $workId = '';
 $category = $_POST['category'];
-  $get_employee = "SELECT * from viewbioinfo  where connection = :connected ORDER BY department ASC ";
+  $get_employee = "SELECT * from viewbioinfo  where connection = :connected  AND dep_status = 'Active' and bio_status = 'Active' ORDER BY department ASC ";
  $prepare_employee = $con->prepare($get_employee);
   $prepare_employee->execute([':connected' => $category]);
     while ($employee = $prepare_employee->fetch(PDO::FETCH_ASSOC)) { 
