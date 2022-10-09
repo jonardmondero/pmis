@@ -39,7 +39,7 @@ include ('dtrdesign/header.php');
                                             <input type="text" class="form-control" id="mnumber">
                                         </div>
                                         <div class="date">
-                                            <input style="margin-bottom:10px;" type="date" data-provide="datepicker"
+                                            <input style="margin-bottom:10px;" type="text" data-provide="datepicker"
                                                 class="form-control " style="font-size:13px" autocomplete="off"
                                                 name="date" id="date" val="<?php echo $curdate; ?> ">
                                         </div>
@@ -97,7 +97,7 @@ include ('dtrdesign/header.php');
                     );
                 },
             }).done(function(e) {
-                console.log("Message sent!")
+                console.log(e);
             })
         })
     });
