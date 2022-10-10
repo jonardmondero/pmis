@@ -2,7 +2,7 @@
 include("config/config.php");
 $alert_msg='';
 if(isset($_POST['submit'])){
-   
+   $emptySession = '';
   $username=$_POST['username'];
   $pssword=$_POST['password'];
 $userType = "Administrator";
@@ -20,6 +20,7 @@ $user_data ->execute([
         $_SESSION['fname'] = $result['firstName'];
         $_SESSION['lname'] = $result['lastName'];
         $hash_password  = $result['upass'];
+        $_SESSION['currentGeneration'] =  $emptySession;
         // if($accnttype == 1)
        
         if(password_verify($pssword, $hash_password)){
