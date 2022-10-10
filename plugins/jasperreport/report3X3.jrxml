@@ -2313,7 +2313,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textFieldExpression><![CDATA[$F{otIn}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Holiday" mode="Transparent" x="49" y="1" width="27" height="11" forecolor="#000000" backcolor="#F0F0F0" uuid="b9838b55-8458-4579-a0b0-fb10ee59d208"/>
+				<reportElement style="Holiday" mode="Transparent" x="50" y="1" width="27" height="11" forecolor="#000000" backcolor="#F0F0F0" uuid="b9838b55-8458-4579-a0b0-fb10ee59d208"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="9"/>
 				</textElement>
@@ -2334,8 +2334,8 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textFieldExpression><![CDATA[$F{outPM}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="style1" mode="Transparent" x="21" y="1" width="27" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="54c772ef-55ca-408a-90b7-f1e195458bc0"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
+				<reportElement style="style1" mode="Transparent" x="22" y="1" width="27" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="54c772ef-55ca-408a-90b7-f1e195458bc0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="9"/>
 					<paragraph lineSpacing="Proportional"/>
 				</textElement>
@@ -2386,15 +2386,15 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textFieldExpression><![CDATA[$F{outPM}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="307" y="1" width="27" height="11" uuid="4ae8c816-dc4d-4d3b-b2c8-43695d760916"/>
+				<reportElement mode="Transparent" x="308" y="1" width="27" height="11" uuid="4ae8c816-dc4d-4d3b-b2c8-43695d760916"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{outAM}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="279" y="1" width="27" height="11" uuid="514ec339-6aa0-4ead-b81d-dd61da74231b"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
+				<reportElement mode="Transparent" x="280" y="1" width="27" height="11" uuid="514ec339-6aa0-4ead-b81d-dd61da74231b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="9"/>
 					<paragraph lineSpacing="Proportional"/>
 				</textElement>
@@ -2417,15 +2417,15 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textFieldExpression><![CDATA[$F{inPM}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="566" y="1" width="27" height="11" uuid="9c437453-493d-4f6c-a1f9-feee0f42880a"/>
+				<reportElement mode="Transparent" x="567" y="1" width="27" height="11" uuid="9c437453-493d-4f6c-a1f9-feee0f42880a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{outAM}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="538" y="1" width="27" height="11" uuid="e7a8c0af-37bb-4e3e-bc81-7135046db97f"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
+				<reportElement mode="Transparent" x="539" y="1" width="27" height="11" uuid="e7a8c0af-37bb-4e3e-bc81-7135046db97f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="9"/>
 					<paragraph lineSpacing="Proportional"/>
 				</textElement>

@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dtrreportsample" language="javascript" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="772" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10" uuid="c525d381-fa7f-4609-bbab-64326ff26db7">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="182"/>
+	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT CONCAT(e.lastName,', ',e.firstName,', ',LEFT(e.middleName, 1),'.')  AS fullName,e.supervisor,
 d.inAM,
@@ -2320,8 +2320,8 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textFieldExpression><![CDATA[$F{outPM}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="21" y="1" width="27" height="11" uuid="54c772ef-55ca-408a-90b7-f1e195458bc0"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
+				<reportElement x="22" y="1" width="27" height="11" uuid="54c772ef-55ca-408a-90b7-f1e195458bc0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="9"/>
 					<paragraph lineSpacing="Proportional"/>
 				</textElement>
@@ -2386,8 +2386,8 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textFieldExpression><![CDATA[$F{outAM}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="279" y="1" width="27" height="11" uuid="514ec339-6aa0-4ead-b81d-dd61da74231b"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
+				<reportElement x="280" y="1" width="27" height="11" uuid="514ec339-6aa0-4ead-b81d-dd61da74231b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="9"/>
 					<paragraph lineSpacing="Proportional"/>
 				</textElement>
@@ -2417,8 +2417,8 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textFieldExpression><![CDATA[$F{outAM}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="538" y="1" width="27" height="11" uuid="e7a8c0af-37bb-4e3e-bc81-7135046db97f"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
+				<reportElement x="539" y="1" width="27" height="11" uuid="e7a8c0af-37bb-4e3e-bc81-7135046db97f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="9"/>
 					<paragraph lineSpacing="Proportional"/>
 				</textElement>

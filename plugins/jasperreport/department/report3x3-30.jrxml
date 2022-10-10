@@ -2381,8 +2381,8 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textFieldExpression><![CDATA[$F{outPM}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="21" y="1" width="27" height="11" uuid="54c772ef-55ca-408a-90b7-f1e195458bc0"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
+				<reportElement mode="Transparent" x="22" y="1" width="27" height="11" uuid="54c772ef-55ca-408a-90b7-f1e195458bc0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="9"/>
 					<paragraph lineSpacing="Proportional"/>
 				</textElement>
@@ -2440,8 +2440,8 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textFieldExpression><![CDATA[$F{outAM}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="279" y="1" width="27" height="11" uuid="514ec339-6aa0-4ead-b81d-dd61da74231b"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
+				<reportElement mode="Transparent" x="280" y="1" width="27" height="11" uuid="514ec339-6aa0-4ead-b81d-dd61da74231b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="9"/>
 					<paragraph lineSpacing="Proportional"/>
 				</textElement>
@@ -2471,8 +2471,8 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 				<textFieldExpression><![CDATA[$F{outAM}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="538" y="1" width="27" height="11" uuid="e7a8c0af-37bb-4e3e-bc81-7135046db97f"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
+				<reportElement mode="Transparent" x="539" y="1" width="27" height="11" uuid="e7a8c0af-37bb-4e3e-bc81-7135046db97f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="9"/>
 					<paragraph lineSpacing="Proportional"/>
 				</textElement>
