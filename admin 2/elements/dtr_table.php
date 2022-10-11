@@ -24,6 +24,11 @@
                                     class="fa fa-print"></i>
                             </button>
 
+                            <button class="btn btn-warning float-right" style = "margin-left:10px;" type="button" id = "editEmployee"
+                              aria-expanded="false" ><i
+                                    class="fa fa-edit"></i>
+                            </button>
+
                         </div>
                     </div>
 

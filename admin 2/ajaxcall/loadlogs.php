@@ -61,7 +61,7 @@ if(isset($_POST['empno'])){
  	echo "</td>";
  	echo "<td>";
 
-	 echo '<select id = "insert">';
+	 echo '<select id = "insert_record">';
  	foreach ($options as $value){
 		if($checkstate == $value){
 			$set_selected = 'selected';

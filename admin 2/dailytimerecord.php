@@ -46,6 +46,7 @@ include ('dtrdesign/header.php');
 
                         <?php include('modal/edit_dtr_modal.php');
                          include('modal/update_supervisor_modal.php');
+                         include('modal/add_employee_modal.php');
      ?>
                     </div>
 

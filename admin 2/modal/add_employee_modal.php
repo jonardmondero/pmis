@@ -14,7 +14,7 @@ include('./components/textfields.php');
             </div>
 
             <div class="modal-body">
-                <form class="form-horizontal" method="post" action="<?php htmlspecialchars("PHP_SELF");?>"
+                <form class="form-horizontal" method="post" id = "addEmployeeForm" action="<?php htmlspecialchars("PHP_SELF");?>"
                     id="employee-form">
 
                     <div class="col-12">

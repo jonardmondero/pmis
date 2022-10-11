@@ -529,3 +529,110 @@ $("#btn_update_supervisor").click(function () {
     },
   });
 });
+
+$("#editEmployee").on("click",function() {
+  //SHOWS THE ADD EMPLOYEE MODAL AND DISPLAY THE EMPLOYEE'S INFORMATION
+  event.preventDefault();
+  $(".modal-title").html("Edit Employee");
+  $("#addemployee").modal("show");
+  $("#insert").prop("hidden", true);
+  $("#update").prop("hidden", false);
+  $("#delete").prop("hidden", false);
+  $("#empnum").prop("readonly", true);
+  const empno = $("#hiddenempno").val();
+  $.ajax({
+    url: "ajaxcall/get_employee.php",
+    type: "POST",
+    data: {
+      id: empno,
+    },
+    success: function (response) {
+      var result = jQuery.parseJSON(response);
+      $("#empnum").val(result.employeeno);
+      $("#lname").val(result.lastname);
+      $("#fname").val(result.firstname);
+      $("#mname").val(result.middlename);
+      $("#bioid").val(result.bioid);
+      $("#department").val(result.department);
+      $(`#department option[value='${result.department}']`).prop(
+        "selected",
+        true
+      );
+      $("#estatus").val(result.employmentstatus);
+      $("#supervisor").val(result.supervisor);
+      $("#status").val(result.status);
+      $("#worksched").val(result.worksched);
+      $("#emp_sched").val(result.workId);
+      $(`#emp_sched option[value='${result.workDesc}']`).prop(
+        "selected",
+        true
+      );
+
+      $("#emp_sched").select2({
+        dropdownParent: $("#addemployee"),
+      });
+      $("#department").select2({
+        dropdownParent: $("#addemployee"),
+      });
+      console.log(result.department);
+      console.log(result.workId);
+    },
+    error: function (xhr, b, c) {
+      console.log(
+        "xhr=" +
+          xhr.responseText +
+          " b=" +
+          b.responseText +
+          " c=" +
+          c.responseText
+      );
+    },
+  });
+});
+$("#update").on("click",function(){
+event.preventDefault();
+var employeeNumber = $("#empnum").val();
+var lastName  = $("lname").val();
+var firstName = $("#fname").val();
+var middlename = $('#mname').val();
+var biometricpin  = $("#bioid").val();
+var department = $('#department').val();
+var estatus = $('#e').val();
+var department = $('#department').val();
+
+
+var userdata = $('#addEmployeeForm').serializeArray();
+var dataObj = {};
+$(userdata).each(function(i, field){
+  dataObj[field.name] = field.value;
+});
+
+
+userdata.push({name : 'updateemp', value : 'submit'});
+console.log(userdata);
+$.ajax({
+  url: "sql/save_employee.php",
+  type: "POST",
+  data:$.param(userdata),
+  error: function (xhr, b, c) {
+    console.log(
+      "xhr=" +
+        xhr.responseText +
+        " b=" +
+        b.responseText +
+        " c=" +
+        c.responseText
+    );
+  },
+}).done(function (e) {
+  console.log(e);
+  $("#addemployee").modal("hide");
+  var deptId = $("#deptId").val();
+  var empstatus = $("#emp_status").val();
+  post_notify("Employee information is updated", "success");
+  getEmployees(deptId, empstatus);
+
+});
+})
+
+
