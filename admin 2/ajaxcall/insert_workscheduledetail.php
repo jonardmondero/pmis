@@ -1,9 +1,9 @@
-<?php
+ <?php
 include('../../config/config.php');
 
 if(isset($_POST['workId'])){
 $workid = $_POST['workId'];
-$day = $_POST['Day'];
+$day = $_POST['day'];
 $checkin = $_POST['CheckIn'];
 $breakout = $_POST['BreakOut'];
 $breakin = $_POST['BreakIn'];
@@ -26,9 +26,17 @@ $insert_stmt = "CALL spInsertScheduleDetail(
 		':checkout'=>	$checkout
 
 	]);
-		$delete = "DELETE FROM workscheduledetail WHERE workScheduleDetail = '$workid' AND
-			Day = '' AND inAM = '' AND outAM = '' AND inPM = ''  AND outPM = '' ";
+		$delete = "DELETE FROM workscheduledetail WHERE workScheduleDetail = :workid AND
+		 inAM = '' AND outAM = '' AND inPM = ''  AND outPM = '' ";
 			$delete_prepare = $con->prepare($delete);
-			$delete_prepare->execute();
+			$delete_prepare->execute([
+				':workid'	=>	$workid
+			]);
+		if($prepare_stmt){
+			echo "success";
+		}else{
+			echo "failed";	
+		}
 }
+
 ?>

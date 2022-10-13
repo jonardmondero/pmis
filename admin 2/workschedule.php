@@ -184,40 +184,74 @@ $workid='';
 
         $('#input-sched tr').each(function(row, tr) {
 
-            //  var currow=  $('#show_sched').closest('tr');
+            
+            // var col1 = $(tr).find('td:eq(0)').text();
+            // var col2 = $(tr).find('td:eq(1)').text();
+            // var col3 = $(tr).find('td:eq(2)').text();
+            // var col4 = $(tr).find('td:eq(3)').text();
+            // var col5 = $(tr).find('td:eq(4)').text();
+            // console.log(col1, col2, col3, col4, col5);
+            // // TableData = $.toJSON(storeTblValues());
+            // console.log(col1);
+            // $.ajax({
+
+            //     url: 'ajaxcall/insert_workscheduledetail.php',
+            //     method: 'POST',
+            //     data: {
+            //         workId: workId,
+            //         Day: col1,
+            //         CheckIn: col2,
+            //         BreakOut: col3,
+            //         BreakIn: col4,
+            //         CheckOut: col5
+            //     },
+            //     dataType: 'json',
+            //     success: function(e) {
+            //         console.log(e);
+            //         notification("Congratulations", "", "Refresh", "success",
+            // "success");
+            //     },
+            //     error: function(xhr, b, c) {
+            //         console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" +
+            //             c.responseText);
+            //     }
+            // })
+            var currow=  $('#show_sched').closest('tr');
             var col1 = $(tr).find('td:eq(0)').text();
             var col2 = $(tr).find('td:eq(1)').text();
             var col3 = $(tr).find('td:eq(2)').text();
             var col4 = $(tr).find('td:eq(3)').text();
             var col5 = $(tr).find('td:eq(4)').text();
             console.log(col1, col2, col3, col4, col5);
-            // TableData = $.toJSON(storeTblValues());
-            console.log(col1);
+            console.log(workId);
             $.ajax({
-
                 url: 'ajaxcall/insert_workscheduledetail.php',
-                method: 'POST',
+                type: 'POST',
                 data: {
                     workId: workId,
-                    Day: col1,
+                    day: col1,
                     CheckIn: col2,
                     BreakOut: col3,
                     BreakIn: col4,
                     CheckOut: col5
                 },
-                dataType: 'json',
-                success: function() {
-
+                success: function(e) {
+                    notification("Congratulations", "", "Refresh", "success",
+                        "success");
+                   console.log(e);
                 },
                 error: function(xhr, b, c) {
-                    console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" +
+                    console.log("xhr=" + xhr.responseText + " b=" + b.responseText +
+                        " c=" +
                         c.responseText);
+
+
                 }
+
             })
+           
         })
 
-        notification("Congratulations", "", "Refresh", "success",
-            "success");
 
 
 

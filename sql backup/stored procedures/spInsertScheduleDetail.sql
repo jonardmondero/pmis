@@ -14,7 +14,6 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertScheduleDetail`(
     
     )
 BEGIN
-	IF(inam != '' && outam != '' && inpm != '' && outpm != '') THEN 
 	INSERT INTO workscheduledetail SET 
 	`workScheduleDetail` = workid,
 	`Day` = DAY,
@@ -23,7 +22,6 @@ BEGIN
 	`inPM` = inpm,
 	`outPM` = outpm;
 	
-	END IF;
     END$$
 
 DELIMITER ;
