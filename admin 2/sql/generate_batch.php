@@ -190,6 +190,7 @@ foreach($seldep as $value){
 }
 }
 }
+$_SESSION['currentGeneration'] = '';
 echo "Congratulations you successfully imported the selected department.";
 $con = null;
 $conn = null;

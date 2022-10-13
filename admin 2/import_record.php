@@ -143,7 +143,7 @@ $list_depid='';
                                                 <a class="nav-link" id="custom-tabs-three-messages-tab"
                                                     data-toggle="pill" href="#custom-tabs-three-remove" role="tab"
                                                     aria-controls="custom-tabs-three-messages"
-                                                    aria-selected="false">Remove Records</a>
+                                                    aria-selected="false">De-activate Users</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -178,7 +178,7 @@ $list_depid='';
                                                 aria-labelledby="custom-tabs-three-messages-tab">
                                                 <div class="col-12">
 
-                                                    <?php include('elements/remove_att_records.php');?>
+                                                    <?php include('elements/deactivate_users.php');?>
                                                 </div>
                                             </div>
 
@@ -428,41 +428,41 @@ $list_depid='';
     //GENERATE BY CATEGORY
     $("#generate_category").on("click", function() {
 
-event.preventDefault();
-var cat = $('#category').val();
-console.log(cat);
-console.log(datefr);
-console.log(dteto);
-$('.alert').attr("class", "alert alert-danger");
-$("#generate_category").prop("disabled", true);
-$("#import_status").html("The system is importing logs. Please wait...");
-$.ajax({
-    url: "sql/generate_category.php",
-    type: "POST",
-    data: {
-        category: cat,
-        datefrom: datefr,
-        dateto: dteto,
-    },
-    error: function(xhr, b, c) {
-        console.log(
-            "xhr=" +
-            xhr.responseText +
-            " b=" +
-            b.responseText +
-            " c=" +
-            c.responseText
-        );
-    },
-}).done(function(e) {
+        event.preventDefault();
+        var cat = $('#category').val();
+        console.log(cat);
+        console.log(datefr);
+        console.log(dteto);
+        $('.alert').attr("class", "alert alert-danger");
+        $("#generate_category").prop("disabled", true);
+        $("#import_status").html("The system is importing logs. Please wait...");
+        $.ajax({
+            url: "sql/generate_category.php",
+            type: "POST",
+            data: {
+                category: cat,
+                datefrom: datefr,
+                dateto: dteto,
+            },
+            error: function(xhr, b, c) {
+                console.log(
+                    "xhr=" +
+                    xhr.responseText +
+                    " b=" +
+                    b.responseText +
+                    " c=" +
+                    c.responseText
+                );
+            },
+        }).done(function(e) {
 
-    $("#generate_category").prop("disabled", false);
-    $("#import_status").html(e);
-    $('.alert').attr("class", "alert alert-success");
+            $("#generate_category").prop("disabled", false);
+            $("#import_status").html(e);
+            $('.alert').attr("class", "alert alert-success");
 
 
-});
-});
+        });
+    });
 
 
     function tConvert(time) {
@@ -523,7 +523,31 @@ $.ajax({
         });
     }
 
+    $("#btnDeactivate").on("click", function(e) {
+        e.preventDefault();
+        var getMonth = $("#clcDeactivate").val();
+        $.ajax({
+            url: "ajaxcall/get_nologsUsers.php",
+            type: "POST",
+            data: {
+                month: getMonth
+            },
+            error: function(xhr, b, c) {
+                console.log(
+                    "xhr=" +
+                    xhr.responseText +
+                    " b=" +
+                    b.responseText +
+                    " c=" +
+                    c.responseText
+                );
+            },
 
+        }).done(function(e) {
+            notification("You have successfully deactivated users.", "", "Refresh", "success",
+                "success");
+        })
+    })
 
     function deleteRow(r) {
         // DELETE SELECTED ROW
