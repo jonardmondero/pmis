@@ -1,6 +1,7 @@
 $(function() {
     $('.select2').select2();
-
+    var datefrom = '';
+    var dateto = '';
 $("#tblsearch tbody").on('click', '#select', function () {
 
     var currow = $(this).closest('tr');
@@ -9,10 +10,25 @@ $("#tblsearch tbody").on('click', '#select', function () {
     $('#leaveempno').val(col1);
     $('#fullname').html(col2);
 });
+
+
+$('input[name="datefrom"]').daterangepicker({
+    opens: "left",
+},
+function(start, end, label) {
+    datefrom = start.format("YYYY-MM-DD");
+    dateto = end.format("YYYY-MM-DD");
+    console.log(
+        "A new date selection was made: " +
+        start.format("YYYY-MM-DD") +
+        " to " +
+        end.format("YYYY-MM-DD")
+    );
+}
+);
+
 $('#addleave').click(function () {
     event.preventDefault();
-    var datefrom = $('#dtefrom').val();
-    var dateto = $('#dteto').val();
     var inclusivedate = $('#inclusivedate').val();
     var leavetype = $('#leavetype').val();
     var empno = $('#leaveempno').val();
@@ -32,36 +48,36 @@ $('#addleave').click(function () {
         cell3.innerHTML = dateto;
         cell4.innerHTML = inclusivedate;
         cell5.innerHTML =
-            '<button id="remove" class = "btn btn-circle btn-sm btn-primary" id = "remove">Remove</button>';
+            '<button id="remove" class = "btn btn-circle btn-sm btn-primary" onclick = "deleteRow(this)">Remove</button>';
     }
 });
 
-$('#specificdate').click(function () {
-    event.preventDefault();
-    var datefrom = $('#dtefrom').val();
-    var dateto = $('#dteto').val();
-    var inclusivedate = $('#inclusivedate').val();
-    var leavetype = $('#leavetype').val();
-    var empno = $('#leaveempno').val();
-    if (datefrom == '' || dateto == '' || leavetype == 'Select Leave'|| empno == '') {
-        post_notify("Please complete the information!", "danger");
-    } else {
+// $('#specificdate').click(function () {
+//     event.preventDefault();
+//     var datefrom = $('#dtefrom').val();
+//     var dateto = $('#dteto').val();
+//     var inclusivedate = $('#inclusivedate').val();
+//     var leavetype = $('#leavetype').val();
+//     var empno = $('#leaveempno').val();
+//     if (datefrom == '' || dateto == '' || leavetype == 'Select Leave'|| empno == '') {
+//         post_notify("Please complete the information!", "danger");
+//     } else {
 
-        var table = document.getElementById("leavelist");
-        var row = table.insertRow(1);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        var cell4 = row.insertCell(3);
-        var cell5 = row.insertCell(4);
-        cell1.innerHTML = leavetype;
-        cell2.innerHTML = datefrom;
-        cell3.innerHTML = datefrom;
-        cell4.innerHTML = inclusivedate;
-        cell5.innerHTML =
-            '<button id="remove" class = "btn btn-circle btn-sm btn-primary" onclick = "deleteRow(this)">Remove</button>';
-    }
-})
+//         var table = document.getElementById("leavelist");
+//         var row = table.insertRow(1);
+//         var cell1 = row.insertCell(0);
+//         var cell2 = row.insertCell(1);
+//         var cell3 = row.insertCell(2);
+//         var cell4 = row.insertCell(3);
+//         var cell5 = row.insertCell(4);
+//         cell1.innerHTML = leavetype;
+//         cell2.innerHTML = datefrom;
+//         cell3.innerHTML = datefrom;
+//         cell4.innerHTML = inclusivedate;
+//         cell5.innerHTML =
+//             '<button id="remove" class = "btn btn-circle btn-sm btn-primary" onclick = "deleteRow(this)">Remove</button>';
+//     }
+// })
 $('#save_leave').on("click", function () {
     //fetch all the data from the table and save it to the database
     var workid = $('#leaveform').serializeArray();

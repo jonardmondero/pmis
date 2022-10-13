@@ -87,7 +87,7 @@ $prep_leave_type->execute();
 
                                                 <div class="input-group date p-2">
                                                     <span class="input-group-text"> <label
-                                                            style="padding-right:10px;padding-left: 10px">From:
+                                                            style="padding-right:10px;padding-left: 10px">Date:
                                                         </label>
                                                         <div style="padding-right:10px" class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
@@ -97,74 +97,58 @@ $prep_leave_type->execute();
 
 
                                                     <input style="margin-right:10px;" type="text"
-                                                        data-provide="datepicker" class="form-control col-4 "
-                                                        style="font-size:13px" autocomplete="off" name="datefrom"
-                                                        id="dtefrom" val="<?php echo $curdate; ?> ">
-
-                                                    <span class="input-group-text">
-                                                        <label style="padding-right:10px">To:</label>
-                                                        <div style="padding-right:10px" class="input-group-addon">
-                                                            <i class="fa fa-calendar"></i>
-                                                        </div>
-                                                    </span>
-
-                                                    <input type="text" class="form-control col-4 "
-                                                        data-provide="datepicker" autocomplete="off" name="dateto"
-                                                        id="dteto" val="<?php echo $curdate; ?> ">
-
-                                                    <div style="margin-left:20px">
-                                                        <button style="margin:auto;" type="submit" name="addleave"
-                                                            id="addleave" class=" btn btn-warning"><i
-                                                                class="fa fa-plus"></i></button>
+                                                        class="form-control col-4 " style="font-size:13px"
+                                                        autocomplete="off" name="datefrom" id="dtefrom"
+                                                        val="<?php echo $curdate; ?> ">
 
 
 
-                                                        <label>Specific Date:</label>
-                                                        <button type="submit" name="specificdate" id="specificdate"
-                                                            class=" btn btn-primary"><i class="fa fa-plus"></i></button>
-                                                    </div>
+
+
                                                 </div>
-
-
-
-
-
-
                                             </div>
 
-                                            <div class="row col-12">
 
-                                                <div class="col-8">
-                                                    <div class="form-group ">
-                                                        <label>Leave Type</label>
-                                                        <select class="form-control select2 " id="leavetype"
-                                                            name="leavetype" required>
-                                                            <option selected="selected">Select Leave</option>
-                                                            <?php while ($get_result = $prep_leave_type->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                            <option value="<?php echo $get_result['Category']; ?>">
-                                                                <?php echo $get_result['LeaveTypeDescription']; ?>
-                                                            </option>
-                                                            <?php } ?>
-                                                        </select>
-                                                    </div>
+
+
+
+
+                                        </div>
+
+                                        <div class="row col-12">
+
+                                            <div class="col-8">
+                                                <div class="form-group ">
+                                                    <label>Leave Type</label>
+                                                    <select class="form-control select2 " id="leavetype"
+                                                        name="leavetype" required>
+                                                        <option selected="selected">Select Leave</option>
+                                                        <?php while ($get_result = $prep_leave_type->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                        <option value="<?php echo $get_result['Category']; ?>">
+                                                            <?php echo $get_result['LeaveTypeDescription']; ?>
+                                                        </option>
+                                                        <?php } ?>
+                                                    </select>
                                                 </div>
-                                                <div class="col-4">
-                                                    <div class="form-group">
-                                                        <label>Inclusive Date</label>
-                                                        <select class="form-control select2 " id="inclusivedate"
-                                                            style="width: 100%;" name="inclusivedate" required>
-                                                            <option selected="selected">Whole Day</option>
-                                                            <option>Morning</option>
-                                                            <option>Afternoon</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-
                                             </div>
-                                            <!--
-                                          
--->
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label>Inclusive Date</label>
+                                                    <select class="form-control select2 " id="inclusivedate"
+                                                        style="width: 100%;" name="inclusivedate" required>
+                                                        <option selected="selected">Whole Day</option>
+                                                        <option>Morning</option>
+                                                        <option>Afternoon</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                 
+                                        <div class = "row justify-content-center">
+                                            <button style="margin:auto;width:120px;" type="submit" name="addleave" id="addleave"
+                                                class=" btn btn-primary"><i class="fa fa-plus"></i></button>
                                         </div>
 
                                     </div>

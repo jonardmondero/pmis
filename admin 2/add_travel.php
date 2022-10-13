@@ -20,34 +20,7 @@ include 'dtrdesign/sidebar.php';
 
 ?>
 
-        <style>
-        .dateformat {
-            margin: auto;
 
-        }
-
-        .dateformat label {
-            padding-right: 0.5em;
-            padding-top: 0.5em;
-        }
-
-        .dateformat input {
-            border-radius: 0.5em;
-            border-left: 0.05em;
-            margin-right: 0.5em;
-        }
-
-        .dateformat i {
-
-            padding-right: 0.5em;
-
-        }
-
-        span {
-            height: 3em;
-            text-align: center;
-        }
-        </style>
 
         <div class="content-wrapper">
 
@@ -264,13 +237,12 @@ include 'dtrdesign/sidebar.php';
                             type: type,
                             details: details
                         },
-                        success: function(message) {
-                            notification(message, "", "Refresh", "success", "success");
-                        },
                         error: function(xhr, b, c) {
                             console.log("xhr=" + xhr.responseText + " b=" + b.responseText +
                                 " c=" + c.responseText);
                         }
+                    }).done(function(message){
+                        notification(message, "", "Refresh", "success", "success");
                     })
                 }
             });
