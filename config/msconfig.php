@@ -7,6 +7,6 @@ if(!file_exists($db)){
 }
 // Connection to ms access
 $conn = new PDO("odbc:Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=".$db.";Uid=; Pwd=;");
-
+// $conn =  odbc_connect("Driver={Microsoft Access Driver (*.mdb)};Dbq=$db", "", "");
 
 
