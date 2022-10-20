@@ -100,6 +100,17 @@
 
                         </p>
                     </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="appleave.php" class="nav-link">
+                        <i class="nav-icon fa fa-car"></i>
+                        <p>
+                            Application for Leave
+
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-header">TRANSACTIONS</li>
 
                 <li class="nav-item">
