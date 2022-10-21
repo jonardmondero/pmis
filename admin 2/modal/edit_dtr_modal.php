@@ -21,6 +21,7 @@
 
                                       <thead>
                                           <th>Date</th>
+                                          <th>Location</th>
                                           <th>Time</th>
                                           <th> State </th>
                                           <th> Save </th>

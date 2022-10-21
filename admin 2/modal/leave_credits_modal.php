@@ -11,18 +11,13 @@ $current_month = date("F");
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Check Biometric Record</h4>
+                <h4 class="modal-title">UPDATE EMPLOYEE LEAVE CREDITS</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <div class="row ">
-                        <div class="col-12 d-flex justify-content-center">
-                            <label style="margin:auto;font-size:30px" id="emp_name" name="emp_name"></label>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
@@ -40,7 +35,7 @@ $current_month = date("F");
                         <div class="col-6">
                             <div class="form-group">
                                 <label>Year</label>
-                                <select class="form-control">
+                                <select class="form-control" id = "year">
                                     <?php for($i = 2019; $i < 2050; $i++){?>
                                     <option <?php if($i == date("Y")){
                                                 echo 'selected';}?> value="<?php echo $i;?>">
@@ -52,15 +47,16 @@ $current_month = date("F");
                         <div class="col-6">
                             <div class="form-group">
                                 <label>VL Balance</label>
-                                <input type="number" class="form-control">
+                                <input type="number" class="form-control" id = "vlbalance">
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label>SL Balance</label>
-                                <input type="number" class="form-control">
+                                <input type="number" class="form-control" id = "slbalance">
                             </div>
                         </div>
+                        <button class = "btn btn-primary "style = "margin:auto;" id = "update_credits">UPDATE LEAVE CREDITS</button>
                     </div>
                 </div>
             </div>

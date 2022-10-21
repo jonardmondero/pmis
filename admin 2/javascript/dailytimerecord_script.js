@@ -444,7 +444,7 @@ $("#findtable tbody").on("click", ".reflectrecords", function (e) {
   }
   console.log("hello");
   var empnum = $("#hiddenempno").val();
-  var col1 = currow.find("td:eq(1)").text();
+  var col1 = currow.find("td:eq(2)").text();
   var date = currow.find("td:eq(0)").text();
   $.ajax({
     url: "ajaxcall/addlogs.php",
