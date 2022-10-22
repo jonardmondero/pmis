@@ -18,46 +18,51 @@ $current_month = date("F");
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label>Month</label>
-                                <select class="form-control" id="month" name="month">
-                                    <?php 
+                    <form action="#" method="POST" id="leave_credits_form" enctype="multipart/form-data">
+                        <div class="row">
+                            <!-- <input type="text" id="leave_creditsEmpno" name="leave_creditsEmpno" readonly hidden> -->
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>Month</label>
+                                    <select class="form-control" id="month" name="month">
+                                        <?php 
                                     foreach($month_array as $value){
                                     ?>
-                                    <option <?php if($value == $current_month){
+                                        <option <?php if($value == $current_month){
                                        echo 'selected'; }?> value="<?php echo $value?>"><?php echo $value;?></option>
-                                    <?php }?>
-                                </select>
+                                        <?php }?>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label>Year</label>
-                                <select class="form-control" id = "year">
-                                    <?php for($i = 2019; $i < 2050; $i++){?>
-                                    <option <?php if($i == date("Y")){
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>Year</label>
+                                    <select class="form-control" id="year" name="year">
+                                        <?php for($i = 2019; $i < 2050; $i++){?>
+                                        <option <?php if($i == date("Y")){
                                                 echo 'selected';}?> value="<?php echo $i;?>">
-                                        <?php echo $i?></option>
-                                    <?php }?>
-                                </select>
+                                            <?php echo $i?></option>
+                                        <?php }?>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label>VL Balance</label>
-                                <input type="number" class="form-control" id = "vlbalance">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>VL Balance</label>
+                                    <input type="number" class="form-control" id="vlbalance" name="vlbalance">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label>SL Balance</label>
-                                <input type="number" class="form-control" id = "slbalance">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>SL Balance</label>
+                                    <input type="number" class="form-control" id="slbalance" name="slbalance">
+                                </div>
                             </div>
+                            <button type="button" class="btn btn-primary " style="margin:auto;"
+                                id="update_credits">UPDATE LEAVE
+                                CREDITS</button>
                         </div>
-                        <button class = "btn btn-primary "style = "margin:auto;" id = "update_credits">UPDATE LEAVE CREDITS</button>
-                    </div>
+                    </form>
                 </div>
             </div>
 

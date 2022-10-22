@@ -199,10 +199,59 @@ $prep_leave_type->execute();
 
     <?php include('dtrdesign/footer.php') ?>
     <script type="text/javascript">
+    var employeeNo = '';
+    $("#tblsearch tbody").on('click', '#select', function() {
+
+        var currow = $(this).closest('tr');
+        var col1 = currow.find('td:eq(0)').text();
+        var col2 = currow.find('td:eq(1)').text();
+        employeeNo = col1;
+        $('#leave_creditsEmpno').val(col1);
+        $('#fullname').html(col2);
+    });
+
     $('#add_leave_credits').on("click", function(e) {
         e.preventDefault();
         $('#leave_credits').modal('show');
 
+    })
+
+    $("#leave_credits_form").click(function(e) {
+        e.preventDefault();
+        const month = $('#month').val();
+        const sl = $('#slbalance').val();
+        const vl = $('#vlbalance').val();
+        const year = $('#year').val();
+        // const fd = new FormData(this);
+        // console.log(fd);
+        $.ajax({
+            url: 'ajaxcall/insert_leavecredits.php',
+            type: 'POST',
+            dataType: "JSON",
+            data: {
+                empnum: employeeNo,
+                month: month,
+                sl: sl,
+                vl: vl,
+                year: year
+
+
+            },
+            error: function(xhr, b, c) {
+                console.log(
+                    "xhr=" +
+                    xhr.responseText +
+                    " b=" +
+                    b.responseText +
+                    " c=" +
+                    c.responseText
+                );
+            },
+        }).done(
+            function(e) {
+                console.log(e);
+
+            })
     })
     </script>
 
