@@ -2262,7 +2262,7 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 	<pageHeader>
 		<band height="35" splitType="Stretch">
 			<textField>
-				<reportElement mode="Transparent" x="28" y="19" width="200" height="15" backcolor="#FFFFFF" uuid="e284a9f0-10c6-4835-9a6c-6a4bc8844851"/>
+				<reportElement mode="Transparent" x="29" y="19" width="199" height="15" backcolor="#FFFFFF" uuid="e284a9f0-10c6-4835-9a6c-6a4bc8844851"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
 			</textField>
@@ -2512,6 +2512,27 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{supervisor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="22" y="38" width="205" height="15" backcolor="#FFFFFF" uuid="6103564f-fc93-469d-98f8-79fd2a3ffea5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="281" y="38" width="204" height="15" backcolor="#FFFFFF" uuid="32876b95-f00b-4d50-a306-e0ab0ba2bf28"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="536" y="38" width="208" height="15" backcolor="#FFFFFF" uuid="8ff15ed6-adae-4e8a-8149-88839235dd78"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnFooter>

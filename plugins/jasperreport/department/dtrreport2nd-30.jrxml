@@ -142,6 +142,27 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 					</textElement>
 					<textFieldExpression><![CDATA[$F{totallate}]]></textFieldExpression>
 				</textField>
+				<textField>
+					<reportElement mode="Transparent" x="542" y="52" width="203" height="15" backcolor="#FFFFFF" uuid="b82f21a7-1642-4cc9-867e-4c26ae8fdeb3"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Transparent" x="283" y="52" width="203" height="15" backcolor="#FFFFFF" uuid="64de1e5a-a277-4b0f-8927-f54cb7667238"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Transparent" x="25" y="52" width="200" height="15" backcolor="#FFFFFF" uuid="82512fde-0280-4233-b93c-1ab04017efbe"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
+				</textField>
 			</band>
 		</groupFooter>
 	</group>
