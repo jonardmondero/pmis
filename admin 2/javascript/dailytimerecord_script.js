@@ -2,6 +2,79 @@ var date = "";
 var datefr = "";
 var dateto = "";
 $(function () {
+ 
+$("#dtr tbody").on("keydown", "input", function (e) {
+if(e.keyCode == 112){
+  e.preventDefault();
+
+  var currow = $(this).closest("tr");
+  var getinput = $(this).closest("input").val();
+  var col1 = currow.find("td:eq(0)").text();
+  $(currow).find("td:eq(2) input[type='text']").val(getinput);
+  $(this).closest("input").val('');
+
+  const field = "inAM";
+  const empno = $("#hiddenempno").val();
+  updateDTR(empno, col1, field, getinput);
+
+}
+
+if(e.keyCode == 113){
+  e.preventDefault();
+  var currow = $(this).closest("tr");
+  var getinput = $(this).closest("input").val();
+  var col1 = currow.find("td:eq(0)").text();
+  $(currow).find("td:eq(3) input[type='text']").val(getinput);
+  const field = "outAM";
+  const empno = $("#hiddenempno").val();
+  updateDTR(empno, col1, field, getinput);
+}
+
+if(e.keyCode == 114){
+  e.preventDefault();
+  var currow = $(this).closest("tr");
+  var getinput = $(this).closest("input").val();
+  var col1 = currow.find("td:eq(0)").text();
+  $(currow).find("td:eq(4) input[type='text']").val(getinput);
+  const field = "inPM";
+  const empno = $("#hiddenempno").val();
+  updateDTR(empno, col1, field, getinput);
+
+}
+if(e.keyCode == 115){
+  e.preventDefault();
+  var currow = $(this).closest("tr");
+  var getinput = $(this).closest("input").val();
+  var col1 = currow.find("td:eq(0)").text();
+  $(currow).find("td:eq(5) input[type='text']").val(getinput);
+  const field = "outPM";
+  const empno = $("#hiddenempno").val();
+  updateDTR(empno, col1, field, getinput);
+}
+
+if(e.keyCode == 116){
+  e.preventDefault();
+  var currow = $(this).closest("tr");
+  var getinput = $(this).closest("input").val();
+  var col1 = currow.find("td:eq(0)").text();
+  $(currow).find("td:eq(6) input[type='text']").val(getinput);
+  const field = "otIn";
+  const empno = $("#hiddenempno").val();
+  updateDTR(empno, col1, field, getinput);
+}
+
+if(e.keyCode == 117){
+  e.preventDefault();
+  var currow = $(this).closest("tr");
+  var getinput = $(this).closest("input").val();
+  var col1 = currow.find("td:eq(0)").text();
+  $(currow).find("td:eq(7) input[type='text']").val(getinput);
+  const field = "otOut";
+  const empno = $("#hiddenempno").val();
+  updateDTR(empno, col1, field, getinput);
+}
+
+})
   $("#deptId").select2();
 
   var deptId = $("#deptId").val();
