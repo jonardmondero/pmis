@@ -83,8 +83,13 @@ $('#save_leave').on("click", function () {
     var workid = $('#leaveform').serializeArray();
     const success = '';
     event.preventDefault();
+    var leave_array = [];
+    var from_array = [];
+    var to_array = [];
+    var duration_array =[];
+    var empno = $('#leaveempno').val();
     $('#leavelist tr').each(function (row, tr) {
-        var empno = $('#leaveempno').val();
+        
         console.log(empno);
         var leavetype = $(tr).find('td:eq(0)').text();
         var from = $(tr).find('td:eq(1)').text();
@@ -92,15 +97,20 @@ $('#save_leave').on("click", function () {
         var duration = $(tr).find('td:eq(3)').text();
         var newfrom = formatDate(from);
         var newto = formatDate(to);
+        leave_array.push(leavetype);
+        from_array.push(newfrom);
+        to_array.push(newto);
+        duration_array.push(duration);
+    });
         $.ajax({
             url: 'ajaxcall/save_leave.php',
             type: 'POST',
             data: {
                 empno: empno,
-                leavetype: leavetype,
-                from: newfrom,
-                to: newto,
-                duration: duration
+                leavetype: leave_array,
+                from: from_array,
+                to: to_array,
+                duration: duration_array
             },
             error: function (xhr, b, c) {
                 console.log("xhr=" + xhr.responseText + " b=" + b.responseText +
@@ -115,7 +125,7 @@ $('#save_leave').on("click", function () {
             notification(message, "","Refresh","success","success");
         })
 
-    });
+
     //reset all the data inside the table;
     // post_notify(success, "success");
     // reset_form_input('travelform');

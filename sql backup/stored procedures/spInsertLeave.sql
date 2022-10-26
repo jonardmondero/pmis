@@ -16,7 +16,6 @@ SET @checkleave = (SELECT COUNT(employeeNo) FROM leaveentry WHERE
 		dateTo = dteto AND duration = dration);
 		
 IF(@checkleave = 0) THEN		
-IF(leavetype !='' && dtefrom !='' && dteto !='' && dration !='')THEN
 INSERT INTO leaveentry SET
 	`employeeNo`	=	empno,
 	`leaveType` 	=	leaveType,
@@ -24,7 +23,6 @@ INSERT INTO leaveentry SET
 	`dateTo` 	=	dteto,
 	`duration` 	=	dration;
 	
-	END IF;
 	END IF;
     END$$
 

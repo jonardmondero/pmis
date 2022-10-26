@@ -146,10 +146,7 @@ include 'dtrdesign/sidebar.php';
 
         <!-- jQuery -->
         <?php include 'dtrdesign/footer.php';?>
-        <!-- REFLECT LOGS SCRIPT -->
-        <script src="javascript/addlogs.js"></script>
         <!-- PRINT REPORTS  SCRIPT -->
-        <script src="javascript/printreport.js"></script>
 
         <script language="javascript">
         var datefrom = '';
@@ -211,17 +208,39 @@ include 'dtrdesign/sidebar.php';
             var workid = $('#worksched-form').serializeArray();
             event.preventDefault();
 
+                var empno_array =[];
+                var fname_array =[];
+                var duration_array =[];
+                var type_array =[];
+                var details_array =[];
+                var from_array =[];
+                var to_array =[];
+
+                var empno='';
+                var newfrom ='';
+                var newto = ''
+                var duration ='';
             $('#travellist tr').each(function(row, tr) {
                 // var details = $('#details').val();
-                var empno = $(tr).find('td:eq(0)').text();
+                 empno = $(tr).find('td:eq(0)').text();
                 var fname = $(tr).find('td:eq(1)').text();
                 var from = $(tr).find('td:eq(2)').text();
                 var to = $(tr).find('td:eq(3)').text();
-                var duration = $(tr).find('td:eq(4)').text();
+                 duration = $(tr).find('td:eq(4)').text();
                 var type = $(tr).find('td:eq(5)').text();
                 var details = $(tr).find('td:eq(6)').text();
-                var newfrom = formatDate(from);
-                var newto = formatDate(to);
+                 newfrom = formatDate(from);
+                 newto = formatDate(to);
+                
+                empno_array.push(empno);
+                fname_array.push(fname);
+                duration_array.push(duration);
+                type_array.push(type);
+                details_array.push(details);
+                from_array.push(newfrom);
+                to_array.push(newto);
+               
+            });
                 if (empno == '' || newfrom == '' || newto == '' || duration == '') {
                     notification('Please check the fields!', "", "Go back", "error", "error");
                 } else {
@@ -229,13 +248,13 @@ include 'dtrdesign/sidebar.php';
                         url: 'sql/save_travel.php',
                         type: 'POST',
                         data: {
-                            empno: empno,
-                            fname: fname,
-                            from: newfrom,
-                            to: newto,
-                            duration: duration,
-                            type: type,
-                            details: details
+                            empno: empno_array,
+                            fname: fname_array,
+                            from: from_array,
+                            to: to_array,
+                            duration: duration_array,
+                            type: type_array,
+                            details: details_array
                         },
                         error: function(xhr, b, c) {
                             console.log("xhr=" + xhr.responseText + " b=" + b.responseText +
@@ -245,8 +264,7 @@ include 'dtrdesign/sidebar.php';
                         notification(message, "", "Refresh", "success", "success");
                     })
                 }
-            });
-
+          
         });
         //FORMAT THE DATE
         function formatDate(date) {
