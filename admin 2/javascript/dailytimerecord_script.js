@@ -219,12 +219,6 @@ $("#dtr tbody").on("keyup", ".tr", function () {
   date = col1;
 });
 
-function updateInAm(value) {
-  const field = "inAM";
-  const empno = $("#hiddenempno").val();
-
-  updateDTR(empno, date, field, value);
-}
 
 function updateInAm(value) {
   const field = "inAM";

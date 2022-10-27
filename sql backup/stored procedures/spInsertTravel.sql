@@ -30,7 +30,7 @@ BEGIN
 	/*INSERT INTO officialbusiness (employeeNo,fullname,datefrom,dateto,duration,obtype,details,STATUS)
 	VALUES(empno,fname,ffrom,tto,duration,ttype,detail,'PENDING');*/
 	IF (@chkEmployeeTravel = 0 ) THEN
-	IF(empno != '' && fname !='' && ffrom != '' && tto !='') THEN 
+	
 	
 	INSERT INTO officialbusiness SET
 	employeeNo = empno,
@@ -44,7 +44,7 @@ BEGIN
 	
 	END IF;
 	
-	END IF;
+	
 	
     END$$
 

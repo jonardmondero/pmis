@@ -19,16 +19,18 @@ foreach($iterator as $value){
 $save_leave = "CALL spInsertLeave(:empno,:leavetype,:from,:to,:duration)";
 if($value[0]!= ''){
 $prep_leave = $con->prepare($save_leave);
-$prep_leave->execute([
+if($prep_leave->execute([
     ':empno' =>$empno,
     ':leavetype' =>$value[0],
     ':from' =>$value[1],
     ':to' =>$value[2],
     ':duration' =>$value[3]
-]);
+])){
+    echo $message;
+};
 }
 }
-echo $message;
+
 
 }
 ?>

@@ -102,6 +102,7 @@ $('#save_leave').on("click", function () {
         to_array.push(newto);
         duration_array.push(duration);
     });
+    console.log(empno);
         $.ajax({
             url: 'ajaxcall/save_leave.php',
             type: 'POST',
