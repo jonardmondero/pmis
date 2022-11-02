@@ -42,35 +42,35 @@ if(isset($_POST['employeeno'])) {
             echo"</td>";
 
             echo '<td  >';
-            echo '<input type ="text" class = "text_align " onchange="updateInAm(this.value);"  class = " border border-dark" style ="height:30px; width:100px;" value="'.$result3['inAM'].'" >';
+            echo '<input type ="text" class = "text_align " onchange="updateInAm(this.value);" onfocus="this.select();" class = " border border-dark" style ="height:30px; width:100px;" value="'.$result3['inAM'].'" >';
             echo"</td>";
 
             echo '<td >';
-            echo '<input type ="text" class = "text_align " onchange="updateOutAm(this.value)"   class = " border border-dark" style ="height:30px; width:100px;" value="'.$result3['outAM'].'" >';
+            echo '<input type ="text" class = "text_align " onchange="updateOutAm(this.value)" onfocus="this.select()"  class = " border border-dark" style ="height:30px; width:100px;" value="'.$result3['outAM'].'" >';
             echo"</td>";
 
             echo '<td >';
-            echo '<input type ="text" class = "text_align " onchange="updateInPm(this.value)"  class = "border border-dark" style ="height:30px; width:100px;" value="'.$result3['inPM'].'" >';
+            echo '<input type ="text" class = "text_align " onchange="updateInPm(this.value)" onfocus="this.select()" class = "border border-dark" style ="height:30px; width:100px;" value="'.$result3['inPM'].'" >';
             echo"</td>";
 
             echo '<td>';
-            echo '<input type ="text" class = "text_align " onchange="updateOutPm(this.value)"  class = "border border-dark" style ="height:30px; width:100px;" value="'.$result3['outPM'].'" >';
+            echo '<input type ="text" class = "text_align " onchange="updateOutPm(this.value)" onfocus="this.select()" class = "border border-dark" style ="height:30px; width:100px;" value="'.$result3['outPM'].'" >';
             echo"</td>";
 
             echo '<td >';
-            echo '<input type ="text" class = "text_align " onchange="updateOtIn(this.value)"    class = "border border-dark" style ="height:30px; width:100px;" value="'.$result3['otIn'].'" >';
+            echo '<input type ="text" class = "text_align " onchange="updateOtIn(this.value)"  onfocus="this.select()"  class = "border border-dark" style ="height:30px; width:100px;" value="'.$result3['otIn'].'" >';
             echo"</td>";
 
             echo '<td>';
-            echo '<input type ="text" class = "text_align " onchange="updateOtOut(this.value)"  class = "border border-dark" style ="height:30px; width:100px;" value="'.$result3['otOut'].'" >';
+            echo '<input type ="text" class = "text_align " onchange="updateOtOut(this.value)" onfocus="this.select()" class = "border border-dark" style ="height:30px; width:100px;" value="'.$result3['otOut'].'" >';
             echo"</td>";
 
             echo '<td>';
-            echo '<input type ="text" class = "text_align" onchange="updateLate(this.value)" class = "border border-dark" style ="height:30px; width:70px;'.$lateStyle.'"  value="'.$result3['latefinal'].'" >';
+            echo '<input type ="text" class = "text_align" onchange="updateLate(this.value)" onfocus="this.select()" class = "border border-dark" style ="height:30px; width:70px;'.$lateStyle.'"  value="'.$result3['latefinal'].'" >';
             echo"</td>";
 
             echo '<td>';
-            echo '<input type ="text" class = "text_align" onchange="updateUndertime(this.value)" class = "border border-dark" style ="height:30px; width:70px;'.$undertimeStyle.'"  value="'.$result3['undertimefinal'].'" >';
+            echo '<input type ="text" class = "text_align" onchange="updateUndertime(this.value)"  onfocus="this.select()" class = "border border-dark" style ="height:30px; width:70px;'.$undertimeStyle.'"  value="'.$result3['undertimefinal'].'" >';
             echo"</td>";
             
            include('../elements/dtr_options.php');
