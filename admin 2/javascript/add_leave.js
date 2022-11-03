@@ -35,7 +35,9 @@ $('#addleave').click(function () {
     if (datefrom == '' || dateto == '' || leavetype == 'Select Leave' || empno == '') {
         post_notify("Please complete the information!", "danger");
     } else {
-
+$.ajax({
+    
+})
         var table = document.getElementById("leavelist");
         var row = table.insertRow(1);
         var cell1 = row.insertCell(0);
