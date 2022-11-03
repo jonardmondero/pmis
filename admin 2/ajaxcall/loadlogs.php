@@ -17,11 +17,20 @@ if(isset($_POST['empno'])){
 		$dateunformatted = $result['Date'];
 }	
 	$format_current_date = date_create($date); 
-	 $date_format = 'Medium Time';
-	$st_msaccess_search = "SELECT  FORMAT([CHECKINOUT.CHECKTIME],'$date_format') as checktime,CHECKINOUT.CHECKTYPE as checktype,USERINFO.BADGENUMBER,sn from CHECKINOUT inner join USERINFO  on CHECKINOUT.USERID = USERINFO.USERID where USERINFO.BadgeNumber = '$biometric' AND CHECKINOUT.CHECKTIME like '$date%'";
+
+	 $date_format_year = date_format($format_current_date,"Y");
+	 $date_format_month = date_format($format_current_date,"m");
+	 $date_format_day = date_format($format_current_date,"d");
+	// $st_msaccess_search = "SELECT  FORMAT([CHECKINOUT.CHECKTIME],'$date_format') as checktime,CHECKINOUT.CHECKTYPE as checktype,USERINFO.BADGENUMBER,sn from CHECKINOUT inner join USERINFO  on CHECKINOUT.USERID = USERINFO.USERID where USERINFO.BadgeNumber = '$biometric' AND CHECKINOUT.CHECKTIME like '$date%'";
  // $st_msaccess_search="SELECT FORMAT([CHECKINOUT.CHECKTIME],'$date_format') AS checktime,CHECKINOUT.CHECKTYPE as checktype, USERINFO.BADGENUMBER from CHECKINOUT inner join USERINFO on CHECKINOUT.USERID = USERINFO.USERID WHERE USERINFO.BadgeNumber = '$biopin' AND CHECKINOUT.CHECKTIME like '$date%'";
+
+ $st_msaccess_search = "SELECT distinct checktype ,checktime,sn ,badgenumber from checkinout   inner join userinfo  on  checkinout.USERID = userinfo.USERID where userinfo.badgenumber = '9989' and  DATEPART(yy,checktime)= :year AND datepart(mm,checktime) = :month and datepart(dd,checktime)= :day" ;
  $pre_msaccess_stmt = $mscon->prepare($st_msaccess_search);
- $pre_msaccess_stmt->execute();
+ $pre_msaccess_stmt->execute([
+	':year'	=>	 $date_format_year,
+	':month'	=>	 $date_format_month,
+	':day'	=>	 $date_format_day,
+ ]);
  while( $timeresult = $pre_msaccess_stmt->fetch(PDO::FETCH_ASSOC)) {
  	if($timeresult == 0){
  		echo "failed";
