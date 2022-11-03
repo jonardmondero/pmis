@@ -1,6 +1,7 @@
 <?php
 include('../../config/config.php');
-include ('../../config/msconfig.php');
+include('../../config/mssql.php');
+// include ('../../config/msconfig.php');
 if(isset($_POST['empno'])){
 	$set_selected ='';
 	$biometric = '';
@@ -19,7 +20,7 @@ if(isset($_POST['empno'])){
 	 $date_format = 'Medium Time';
 	$st_msaccess_search = "SELECT  FORMAT([CHECKINOUT.CHECKTIME],'$date_format') as checktime,CHECKINOUT.CHECKTYPE as checktype,USERINFO.BADGENUMBER,sn from CHECKINOUT inner join USERINFO  on CHECKINOUT.USERID = USERINFO.USERID where USERINFO.BadgeNumber = '$biometric' AND CHECKINOUT.CHECKTIME like '$date%'";
  // $st_msaccess_search="SELECT FORMAT([CHECKINOUT.CHECKTIME],'$date_format') AS checktime,CHECKINOUT.CHECKTYPE as checktype, USERINFO.BADGENUMBER from CHECKINOUT inner join USERINFO on CHECKINOUT.USERID = USERINFO.USERID WHERE USERINFO.BadgeNumber = '$biopin' AND CHECKINOUT.CHECKTIME like '$date%'";
- $pre_msaccess_stmt = $conn->prepare($st_msaccess_search);
+ $pre_msaccess_stmt = $mscon->prepare($st_msaccess_search);
  $pre_msaccess_stmt->execute();
  while( $timeresult = $pre_msaccess_stmt->fetch(PDO::FETCH_ASSOC)) {
  	if($timeresult == 0){
