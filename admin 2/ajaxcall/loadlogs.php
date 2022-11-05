@@ -16,20 +16,26 @@ if(isset($_POST['empno'])){
 		$date = $result['dDate'];
 		$dateunformatted = $result['Date'];
 }	
-	$format_current_date = date_create($date); 
-
+	 $format_current_date = date_create($date); 
 	 $date_format_year = date_format($format_current_date,"Y");
 	 $date_format_month = date_format($format_current_date,"m");
 	 $date_format_day = date_format($format_current_date,"d");
+
+	 
 	// $st_msaccess_search = "SELECT  FORMAT([CHECKINOUT.CHECKTIME],'$date_format') as checktime,CHECKINOUT.CHECKTYPE as checktype,USERINFO.BADGENUMBER,sn from CHECKINOUT inner join USERINFO  on CHECKINOUT.USERID = USERINFO.USERID where USERINFO.BadgeNumber = '$biometric' AND CHECKINOUT.CHECKTIME like '$date%'";
  // $st_msaccess_search="SELECT FORMAT([CHECKINOUT.CHECKTIME],'$date_format') AS checktime,CHECKINOUT.CHECKTYPE as checktype, USERINFO.BADGENUMBER from CHECKINOUT inner join USERINFO on CHECKINOUT.USERID = USERINFO.USERID WHERE USERINFO.BadgeNumber = '$biopin' AND CHECKINOUT.CHECKTIME like '$date%'";
 
- $st_msaccess_search = "SELECT distinct checktype ,checktime,sn ,badgenumber from checkinout   inner join userinfo  on  checkinout.USERID = userinfo.USERID where userinfo.badgenumber = '9989' and  DATEPART(yy,checktime)= :year AND datepart(mm,checktime) = :month and datepart(dd,checktime)= :day" ;
+ $st_msaccess_search = "SELECT distinct top 20 checktype ,checktime,sn ,badgenumber from checkinout   
+ inner join userinfo  on  checkinout.USERID = userinfo.USERID 
+ where userinfo.badgenumber = :biometric and  DATEPART(yy,checktime)= :year 
+ AND datepart(mm,checktime) = :month and datepart(dd,checktime)= :day
+ ORDER BY checktime" ;
  $pre_msaccess_stmt = $mscon->prepare($st_msaccess_search);
  $pre_msaccess_stmt->execute([
+	':biometric'	=>	 $biometric,
 	':year'	=>	 $date_format_year,
 	':month'	=>	 $date_format_month,
-	':day'	=>	 $date_format_day,
+	':day'	=>	 $date_format_day
  ]);
  while( $timeresult = $pre_msaccess_stmt->fetch(PDO::FETCH_ASSOC)) {
  	if($timeresult == 0){
@@ -37,7 +43,8 @@ if(isset($_POST['empno'])){
  	}else{
 		 //DISPLAYS THE TIME INTO THE INSERT LOG TABLE
 	 $sn = $timeresult['sn'];
- 	$checktime = $timeresult['checktime'];
+		$checktime_time = date_create($timeresult['checktime']);
+	$checktime = date_format($checktime_time,"h:i A");
 	 $checktype = $timeresult['checktype'];
 	 $checkstate = 'Check In';
 	 $checkColor = 'Green';

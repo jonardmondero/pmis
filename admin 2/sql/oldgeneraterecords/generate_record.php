@@ -3,8 +3,7 @@ session_start();
 //include('update_user.php');
 //include ("../php_scripts/search_user.php");
 include('../../config/config.php');
-// include ('../../config/msconfig.php');
-include('../../config/mssql.php');
+include ('../../config/msconfig.php');
 $datefrom=$dateto=$selemployee ='';
 $db = '';
 
@@ -61,30 +60,14 @@ if($_SESSION['currentGeneration'] == '' || $_SESSION['currentGeneration'] != $se
      
       $date_format = 'hh:mm tt';
       $format_current_date = date_create($i);
-      // $date_format_2 = date_format($format_current_date,"n/j/Y");
-      $date_format_year = date_format($format_current_date,"Y");
-      $date_format_month = date_format($format_current_date,"m");
-      $date_format_day = date_format($format_current_date,"d");
+      $date_format_2 = date_format($format_current_date,"n/j/Y");
 //           $formattedweddingdate = date_format($weddingdate, 'd-m-Y');
 //        echo $date_format_2;
 //      echo $date_format_2;
       // $st_msaccess_search = "SELECT DISTINCT CHECKINOUT.CHECKTYPE as checktype ,FORMAT([CHECKINOUT.CHECKTIME],'$date_format') as checktime,USERINFO.BADGENUMBER from CHECKINOUT inner join USERINFO  on CHECKINOUT.USERID = USERINFO.USERID where USERINFO.BadgeNumber = '$bioPin' AND CHECKINOUT.CHECKTIME like '$date_format_2%' ";
-      $st_msaccess_search = "SELECT distinct top 20 checktype ,checktime,sn ,badgenumber from checkinout  
-       inner join userinfo  on  checkinout.USERID = userinfo.USERID
-        where userinfo.badgenumber = :biometric and 
-         DATEPART(yy,checktime)= :year AND 
-         datepart(mm,checktime) = :month and datepart(dd,checktime)= :day 
-         ORDER by checktime";
-
-
-
-      $pre_msaccess_stmt = $mscon->prepare($st_msaccess_search);
-      $pre_msaccess_stmt->execute([
-        ':biometric'	=>	 $bioPin,
-	':year'	=>	 $date_format_year,
-	':month'	=>	 $date_format_month,
-	':day'	=>	 $date_format_day
-]);
+      $st_msaccess_search = "SELECT DISTINCT TOP 20 CHECKINOUT.CHECKTYPE as checktype ,CHECKINOUT.CHECKTIME as checktime,USERINFO.BADGENUMBER from CHECKINOUT inner join USERINFO  on CHECKINOUT.USERID = USERINFO.USERID where USERINFO.BadgeNumber = '$bioPin' AND CHECKINOUT.CHECKTIME LIKE '$date_format_2%'";
+      $pre_msaccess_stmt = $conn->prepare($st_msaccess_search);
+      $pre_msaccess_stmt->execute();
 
       while ($time_result = $pre_msaccess_stmt->fetch(PDO::FETCH_ASSOC)) {
         $chktime =  $time_result['checktime'];
