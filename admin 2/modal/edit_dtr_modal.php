@@ -17,15 +17,14 @@
                           <div class="row">
                               <div class="col-12">
                                   <table style="margin:auto;width:100%;" id="findtable"
-                                      class="table-hover table-bordered">
+                                      class="table table-hover table-bordered">
 
                                       <thead>
                                           <th>Date</th>
                                           <th>Location</th>
                                           <th>Time</th>
                                           <th> State </th>
-                                          <th> Save </th>
-
+                                       
                                       </thead>
                                       <tbody id="findlogs">
 

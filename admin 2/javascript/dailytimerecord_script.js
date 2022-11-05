@@ -221,6 +221,7 @@ $("#dtr tbody").on("keyup", ".tr", function () {
 
 
 function updateInAm(value) {
+  console.log(value);
   const field = "inAM";
   const empno = $("#hiddenempno").val();
 
@@ -228,6 +229,7 @@ function updateInAm(value) {
 }
 
 function updateOutAm(value) {
+  console.log(value);
   const field = "outAM";
   const empno = $("#hiddenempno").val();
 
@@ -491,7 +493,7 @@ $(document).keypress(function (event) {
   }
 });
 //REFLECT THE BIOMETRIC LOGS IN THE COLUMN
-$("#findtable tbody").on("click", ".reflectrecords", function (e) {
+$("#findtable tbody").on("change", "#insert_record", function (e) {
   e.preventDefault();
   var currow = $(this).closest("tr");
   var insertstate = currow.find("select").val();

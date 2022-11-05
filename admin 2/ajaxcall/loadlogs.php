@@ -118,23 +118,25 @@ if(isset($_POST['empno'])){
  	echo "</td>";
  	echo "<td>";
 
-	 echo '<select id = "insert_record">';
+	 echo '<select class = "select2" id = "insert_record">';
+	 echo '<option  val  ="">Select</option>';
  	foreach ($options as $value){
-		if($checkstate == $value){
-			$set_selected = 'selected';
-		}else{
-			$set_selected ='';
-		}
+	// 	if($checkstate == $value){
+	// 		$set_selected = 'selected';
+	// 	}else{
+	// 		$set_selected ='';
+	// 	}
 		
- 		echo '<option '.$set_selected.' val  = <?php echo $options?>';
+ 		echo '<option  val  = <?php echo $options?>';
+
 echo $value;
 echo '</option>';
 };
 
 echo'</select>';
 echo "</td>";
-echo '<td><button class="btn btn-primary btn-md btn-circle reflectrecords" data-id='.$date.'> <i
-            class="fa fa-save"></i></button> </td>';
+// echo '<td><button class="btn btn-primary btn-md btn-circle reflectrecords" data-id='.$date.'> <i
+//             class="fa fa-save"></i></button> </td>';
 echo "</tr>";
 }
 
