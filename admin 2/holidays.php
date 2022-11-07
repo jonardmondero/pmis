@@ -30,11 +30,7 @@ $get_holidays->execute();
 $getDepartment = "SELECT * FROM department WHERE status = 'Active'";
 $getDepartmentQuery = $con->prepare($getDepartment);
 $getDepartmentQuery->execute();
-while ($result = $getDepartmentQuery->fetch(PDO::FETCH_ASSOC)) {
-    $deptId [] = $result['deptId'];
-    $deptdesc [] = $result['departmentDescription'];
 
-}
 ?>
 
 
@@ -118,12 +114,14 @@ while ($result = $getDepartmentQuery->fetch(PDO::FETCH_ASSOC)) {
                                   <div class = "form-group">
                                     <label class = "">Department:</label>
                                      <select class ="form-control col-6 select2" style = "margin-bottom:3rem;"id = "dept">
-                                     echo '<option  selected>Select Department...</option>';
-                                          <?php foreach(array_combine($deptId,$deptdesc) as $value1=>$value2){
-                                           
-                                            echo '<option value ='.$value1.'>'.$value2.'</option>';
-                                              }
-                                        ?>
+                                      <option  selected>Select Department...</option>
+                                          <?php 
+                                          while ($result = $getDepartmentQuery->fetch(PDO::FETCH_ASSOC)) {?>
+                                           <option value = '<?php echo  $result['deptId'];?>' >
+                                           <?php echo $result['departmentDescription'];?>
+                                          </option>
+                                   <?php } ?>
+                                        
                                     
                                          </select>
 
@@ -210,9 +208,9 @@ while ($result = $getDepartmentQuery->fetch(PDO::FETCH_ASSOC)) {
   //APPROVE THE HOLIDAY
   $('#users tbody').on( 'click', '#approveHoliday', function(){
     event.preventDefault();
-    var dept  =  $('#dept').val();
+    var dept  =  $('#dept').val().toString();
     var currow=  $(this).closest('tr');
-     var col1 = currow.find('td:eq(0)').text();
+    var col1 = currow.find('td:eq(0)').text();
 
      console.log(col1);
      console.log(dept);
@@ -222,10 +220,7 @@ while ($result = $getDepartmentQuery->fetch(PDO::FETCH_ASSOC)) {
   data: {
     id: col1,
     deptId:dept
-  },
-  success: function (message) {
-      notification(message, "","Refresh","success","success");
-  },
+  },  
   error: function (xhr, b, c) {
     console.log(
       "xhr=" +
@@ -237,6 +232,9 @@ while ($result = $getDepartmentQuery->fetch(PDO::FETCH_ASSOC)) {
     );
 
   },
+}).done(function(message){
+  notification(message, "","Refresh","success","success");
+  
 });
   })
 

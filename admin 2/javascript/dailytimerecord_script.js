@@ -134,6 +134,7 @@ function getEmployees(dept, status) {
 
 $("#deptId").change(function () {
   var deptId = $("#deptId").val();
+  console.log(deptId);
   var empstatus = $("#emp_status").val();
   getEmployees(deptId, empstatus);
   $("#hiddendeptid").val(deptId);
