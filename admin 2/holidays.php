@@ -115,6 +115,7 @@ $getDepartmentQuery->execute();
                                     <label class = "">Department:</label>
                                      <select class ="form-control col-6 select2" style = "margin-bottom:3rem;"id = "dept">
                                       <option  selected>Select Department...</option>
+                                      <option value = "All">All Departments</option>
                                           <?php 
                                           while ($result = $getDepartmentQuery->fetch(PDO::FETCH_ASSOC)) {?>
                                            <option value = '<?php echo  $result['deptId'];?>' >
@@ -268,6 +269,40 @@ $getDepartmentQuery->execute();
   },
 });
   })
+
+  $(document).ajaxStart(function(){
+            try
+            {
+                // showing a modal
+         
+
+                var i = 0;
+                var timeout = 750;
+
+                (function progressbar()
+                {
+                    i++;
+                    if(i < 1000)
+                    {
+                        // some code to make the progress bar move in a loop with a timeout to 
+                        // control the speed of the bar
+                        // iterateProgressBar();
+                        setTimeout(progressbar, timeout);
+                        console.log(i);
+                    }
+                }
+                )();
+            }
+            catch(err)
+            {
+                alert(err.message);
+            }
+        });
+
+        $(document).ajaxStop(function(){
+            // hide the progress bar
+            console.log(i);
+        });
     </script>
 </body>
 </html>

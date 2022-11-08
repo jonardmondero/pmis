@@ -81,9 +81,9 @@ if($_SESSION['currentGeneration'] == '' || $_SESSION['currentGeneration'] != $se
       $pre_msaccess_stmt = $mscon->prepare($st_msaccess_search);
       $pre_msaccess_stmt->execute([
         ':biometric'	=>	 $bioPin,
-	':year'	=>	 $date_format_year,
-	':month'	=>	 $date_format_month,
-	':day'	=>	 $date_format_day
+	      ':year'	=>	 $date_format_year,
+	      ':month'	=>	 $date_format_month,
+	      ':day'	=>	 $date_format_day
 ]);
 
       while ($time_result = $pre_msaccess_stmt->fetch(PDO::FETCH_ASSOC)) {
