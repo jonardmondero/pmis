@@ -55,6 +55,25 @@ $getDepartmentQuery->execute();
     <!-- /.content-header -->
 
     <!-- Main content -->
+
+    <div class="modal fade" id="loading_modal" tabindex="-1"
+     role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+      </div>
+      <div class="modal-body">
+       <h4 id = "notification_message">The System is updating the records please wait....</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" hidden id = "close_modal" class="btn btn-primary"  data-dismiss="modal" >Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
                      <section class="content">
                        <div class="container-fluid">
                          <div class="row">
@@ -234,7 +253,7 @@ $getDepartmentQuery->execute();
 
   },
 }).done(function(message){
-  notification(message, "","Refresh","success","success");
+ 
   
 });
   })
@@ -273,25 +292,30 @@ $getDepartmentQuery->execute();
   $(document).ajaxStart(function(){
             try
             {
+              $("#loading_modal").modal("show");
+              $("#close_modal").attr("hidden",true);
+              $("#notification_message").html("The System is updating the records please wait....");
                 // showing a modal
          
 
-                var i = 0;
-                var timeout = 750;
+                // var i = 0;
+                // var timeout = 750;
 
-                (function progressbar()
-                {
-                    i++;
-                    if(i < 1000)
-                    {
-                        // some code to make the progress bar move in a loop with a timeout to 
-                        // control the speed of the bar
-                        // iterateProgressBar();
-                        setTimeout(progressbar, timeout);
-                        console.log(i);
-                    }
-                }
-                )();
+                // (function progressbar()
+                // {
+                //     i++;
+                //     if(i < 1000)
+                //     {
+                //         // some code to make the progress bar move in a loop with a timeout to 
+                //         // control the speed of the bar
+                //         // iterateProgressBar();
+                //         setTimeout(progressbar, timeout);
+                //         console.log(i);
+                //     }
+                // }
+                // )();
+
+
             }
             catch(err)
             {
@@ -300,8 +324,10 @@ $getDepartmentQuery->execute();
         });
 
         $(document).ajaxStop(function(){
-            // hide the progress bar
-            console.log(i);
+          
+          $("#close_modal").attr("hidden",false);
+          $("#notification_message").html("Your holiday has been reflected.");
+          // notification("Your Holiday has been reflected.", "","Refresh","success","success");
         });
     </script>
 </body>

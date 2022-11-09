@@ -17,7 +17,7 @@
                           <div class="row">
                               <div class="col-12">
                                   <table style="margin:auto;width:100%;" id="findtable"
-                                      class="table table-hover table-bordered">
+                                      class="table-hover table-bordered">
 
                                       <thead>
                                           <th>Date</th>

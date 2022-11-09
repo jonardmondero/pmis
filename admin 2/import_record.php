@@ -361,7 +361,8 @@ $list_depid='';
             event.preventDefault();
             var loading = '';
             var arrayDept = [];
-
+            var arrayFr = [];
+            var arrayTo = [];
             $('#tblBatchImport tr').each(function(row, tr) {
 
                 $('.alert').attr("class", "alert alert-danger");
@@ -369,13 +370,15 @@ $list_depid='';
 
 
                 var dept = $(tr).find('td:eq(0)').text();
-                var datefr = $(tr).find('td:eq(2)').text();
-                var dteto = $(tr).find('td:eq(3)').text();
+                var dateFrom = $(tr).find('td:eq(2)').text();
+                var dateTo = $(tr).find('td:eq(3)').text();
                 // console.log(dept);
                 // console.log(datefr);
                 // console.log(dteto);
 
                 arrayDept.push(dept);
+                arrayFr.push(dateFrom);
+                arrayTo.push(dateTo);
 
 
 
@@ -386,8 +389,8 @@ $list_depid='';
                 type: "POST",
                 data: {
                     selectdep: arrayDept,
-                    datefrom: datefr,
-                    dateto: dteto
+                    datefrom: arrayFr,
+                    dateto: arrayTo
                 },
                 error: function(xhr, b, c) {
                     console.log(
