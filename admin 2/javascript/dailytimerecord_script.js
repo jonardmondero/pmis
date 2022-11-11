@@ -8,15 +8,16 @@ if(e.keyCode == 112){
   e.preventDefault();
 
   var currow = $(this).closest("tr");
-  var getinput = $(this).closest("input").val();
-  var col1 = currow.find("td:eq(0)").text();
-  $(currow).find("td:eq(2) input[type='text']").val(getinput);
+  var getinput = $(this).closest("input").val();// get the current field
+  var col1 = currow.find("td:eq(0)").text(); //date of the record
+  $(currow).find("td:eq(2) input[type='text']").val(getinput);// destination of the record
   $(this).closest("input").val('');
 
   const field = "inAM";
   const empno = $("#hiddenempno").val();
   updateDTR(empno, col1, field, getinput);
 
+  
 }
 
 if(e.keyCode == 113){
@@ -61,6 +62,8 @@ if(e.keyCode == 116){
   const field = "otIn";
   const empno = $("#hiddenempno").val();
   updateDTR(empno, col1, field, getinput);
+
+
 }
 
 if(e.keyCode == 117){
