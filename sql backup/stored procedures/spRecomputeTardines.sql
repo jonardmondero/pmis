@@ -50,6 +50,15 @@ SET @undertimeAfternoon = (SELECT STR_TO_DATE(@schedOutPm, '%h:%i %p')); /*CONVE
      SET timeUndertimeAfternoon= TIMEDIFF(@undertimeAfternoon,@convertedcheckOut);
     END IF;
     
+    IF(timeIn = 'ABS' AND breakOut = 'ENT') THEN
+       SET timeLateMorning = TIMEDIFF(@undertimeMorning,@lateMorning);
+    END IF;
+    
+      IF(breakIn = 'ABS' AND checkOut = 'ENT') THEN
+       SET timeUndertimeAfternoon = TIMEDIFF(@undertimeAfternoon,@lateAfternoon);
+    END IF;
+    
+    
     SET @finalLate = ADDTIME(timeLateMorning,timeLateAfternoon);
     SET @finalUndertime = ADDTIME(timeUndertimeMorning,timeUndertimeAfternoon);
     

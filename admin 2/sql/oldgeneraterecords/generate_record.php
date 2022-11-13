@@ -29,7 +29,11 @@ if($_SESSION['currentGeneration'] == '' || $_SESSION['currentGeneration'] != $se
  $dateto= strtotime($_POST['dateto']);
     $timeIn = "O";
     $brkout = "0";
-
+    $timeInPm = "1";
+    $timeOutPM = "i";
+    $array_chktime = array();
+    $array_chktype =array();
+    $array_date = array();
  //1.2 INSERT BLANK RECORD
  $stmt_insert_dtr = "CALL spInsertDTR(:empno,:i)" ;
  $pre_insert_dtr = $con->prepare($stmt_insert_dtr);
@@ -70,70 +74,79 @@ if($_SESSION['currentGeneration'] == '' || $_SESSION['currentGeneration'] != $se
       $pre_msaccess_stmt->execute();
 
       while ($time_result = $pre_msaccess_stmt->fetch(PDO::FETCH_ASSOC)) {
-        $chktime =  $time_result['checktime'];
-        $chktype = $time_result['checktype'];
+
+      array_push(date($format,$time_result['checktime']));
+      array_push($time_result['checktime']);
+       array_push($time_result['checktype']);
   
-         
-        if($chktype == $timeIn){
+      }
+      if($i == $dateto){
+        break;
+      }
+   
+    }
+    $conn = null;
+         $iterator = new MultipleIterator();
+         $iterator->attachIterator(new ArrayIterator($array_date));//0
+         $iterator->attachIterator(new ArrayIterator($array_chktime));//1
+         $iterator->attachIterator(new ArrayIterator($array_chktype));//2
+
+         foreach($iterator as $value){
+        if($value[2] == $timeIn){
          
           $insert_timeIn = "CALL spInsertTimeIn(:empno,:worksched,:i,:chktime,:bolsched)";
           $insertInAm = $con->prepare($insert_timeIn);
           $insertInAm ->execute([
               ':empno' =>$empNo,
               ':worksched'=>$workId,
-              ':i' => $i,
-              ':chktime'=> $chktime,
+              ':i' => $value[0],
+              ':chktime'=> $value[1],
               ':bolsched'=> $bolsched,
           ]);
         }
-          if($chktype == $brkout){
+          if($value[2] == $brkout){
           
           $insert_timeIn = "CALL spInsertTimeOutAM(:empno,:worksched,:i,:chktime,:bolsched)";
           $insertInAm = $con->prepare($insert_timeIn);
           $insertInAm ->execute([
                ':empno' =>$empNo,
                ':worksched'=>$workId,
-              ':i' => $i,
-              ':chktime'=> $chktime,
+              ':i' => $value[0],
+              ':chktime'=> $value[1],
               ':bolsched'=> $bolsched
           ]);
         }
-          $timeInPm = "1";
-          if($chktype == $timeInPm){
+         
+          if($value[2] == $timeInPm){
           
           $insert_timeIn = "CALL spInsertTimeInPM(:empno,:worksched,:i,:chktime,:bolsched)";
           $insertInAm = $con->prepare($insert_timeIn);
           $insertInAm ->execute([
                ':empno' =>$empNo,
                ':worksched' =>$workId,
-              ':i' => $i,
-              ':chktime'=> $chktime,
+              ':i' => $value[0],
+              ':chktime'=> $value[1],
               ':bolsched'=> $bolsched
           ]);
               
         }
-           $timeOutPM = "i";
-            if($chktype == $timeOutPM ){
+         
+            if($value[2] == $timeOutPM ){
           
           $insert_timeIn = "CALL spInsertTimeOutPM(:empno,:worksched,:i,:chktime,:bolsched)";
           $insertInAm = $con->prepare($insert_timeIn);
           $insertInAm ->execute([
                ':empno' =>$empNo,
                ':worksched' =>$workId,
-              ':i' => $i,
-              ':chktime'=> $chktime,
+              ':i' => $value[0],
+              ':chktime'=> $value[1],
               ':bolsched'=> $bolsched
           ]);
               
        
       }
-    
     }
-    if($i == $dateto){
-      break;
-    }
- 
-  }
+   
  
 
   echo "Congratulations you already imported the record!";
@@ -142,5 +155,5 @@ if($_SESSION['currentGeneration'] == '' || $_SESSION['currentGeneration'] != $se
 }
 $_SESSION['currentGeneration'] = '';
 $con = null;
-$conn = null;
+
 ?>
