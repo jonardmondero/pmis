@@ -80,6 +80,9 @@ if(isset($_POST['empno'])){
 			case "OPH6040056041500373":
 			$location = "CSWDO BTM";
 			break;
+			case "3486862430036":
+				$location = "CHO BTM";
+			break;
 		}
 
 
