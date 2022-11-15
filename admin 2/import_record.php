@@ -211,14 +211,27 @@ $list_depid='';
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <?php include('dtrdesign/footer.php'); ?> <script language="javascript">
+    <?php include('dtrdesign/footer.php'); ?> 
+    <script language="javascript">
     var datefr = "<?php echo date("m/d/Y");?>";
     var dteto = "<?php echo date("m/d/Y");?>";
 
 
-    $(document).ready(function() {
-        $('.select2').select2();
 
+//     window.onload = pageLoad;
+//     function pageLoad() {
+//     var startButton = document.getElementById("sync_records");
+
+//     startButton.onclick = syncRecords();
+// }
+    
+
+    $(document).ready(function() {
+     
+         
+  
+        $('.select2').select2();
+    
         function post_notify(message, type) {
 
             if (type == 'success') {
@@ -468,49 +481,52 @@ $list_depid='';
     });
 
     $("#sync_records").click(function(){
-        setInterval(syncRecords(),600000);
-
+        event.preventDefault();
+      
     })
 
-    function syncRecords(){
-        event.preventDefault();
-        var cat = $('#category').val();
-        var current_date_from = "<?php echo date("m/d/Y");?>";
-        var current_date_to = "<?php echo date("m/d/Y");?>";
-        console.log(cat);
-        console.log(datefr);
-        console.log(dteto);
-        $('.alert').attr("class", "alert alert-warning");
-        $("#sync_records").prop("disabled", true);
-        $("#import_status").html("The System is currently syncing records. Please wait");
-        $.ajax({
-            url: "sql/generate_category.php",
-            type: "POST",
-            data: {
-                category: cat,
-                datefrom: current_date_from,
-                dateto: current_date_to,
-            },
-            error: function(xhr, b, c) {
-                console.log(
-                    "xhr=" +
-                    xhr.responseText +
-                    " b=" +
-                    b.responseText +
-                    " c=" +
-                    c.responseText
-                );
-            },
-        }).done(function(e) {
+    // //execute sync records to current date
+    // function syncRecords(){
+        
+    //    setInterval(function(){ 
+    //     console.log("count")
+    //     var cat = $('#category').val();
+    //     var current_date_from = "<?php echo date("m/d/Y");?>";
+    //     var current_date_to = "<?php echo date("m/d/Y");?>";
+    //     console.log(cat);
+    //     console.log(datefr);
+    //     console.log(dteto);
+    //     $('.alert').attr("class", "alert alert-warning");
+    //     $("#sync_records").prop("disabled", true);
+    //     $("#import_status").html("The System is currently syncing records. Please wait");
+    //     $.ajax({
+    //         url: "sql/generate_category.php",
+    //         type: "POST",
+    //         data: {
+    //             category: cat,
+    //             datefrom: current_date_from,
+    //             dateto: current_date_to,
+    //         },
+    //         error: function(xhr, b, c) {
+    //             console.log(
+    //                 "xhr=" +
+    //                 xhr.responseText +
+    //                 " b=" +
+    //                 b.responseText +
+    //                 " c=" +
+    //                 c.responseText
+    //             );
+    //         },
+    //     }).done(function(e) {
+    //        var logtime = new Date().toLocaleTimeString(); //get the current time
+    //         $("#generate_category").prop("disabled", false);
+    //         $("#import_status").html("The biometric records was sync last "+ logtime);
+    //         $('.alert').attr("class", "alert alert-warning");
 
-            // $("#generate_category").prop("disabled", false);
-            // $("#import_status").html(e);
-            // $('.alert').attr("class", "alert alert-success");
 
-
-        });
-
-    }
+    //     });
+    // },600000);
+    // }
     function tConvert(time) {
         // Check correct time format and split into components
         time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];

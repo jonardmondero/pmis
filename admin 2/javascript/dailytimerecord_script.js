@@ -2,7 +2,7 @@ var date = "";
 var datefr = "";
 var dateto = "";
 $(function () {
- 
+ //F1 KEYPRESS
 $("#dtr tbody").on("keydown", "input", function (e) {
 if(e.keyCode == 112){
   e.preventDefault();
@@ -19,7 +19,7 @@ if(e.keyCode == 112){
 
   
 }
-
+ //F2 KEYPRESS
 if(e.keyCode == 113){
   e.preventDefault();
   var currow = $(this).closest("tr");
@@ -31,6 +31,7 @@ if(e.keyCode == 113){
   updateDTR(empno, col1, field, getinput);
 }
 
+ //F3 KEYPRESS
 if(e.keyCode == 114){
   e.preventDefault();
   var currow = $(this).closest("tr");
@@ -42,6 +43,8 @@ if(e.keyCode == 114){
   updateDTR(empno, col1, field, getinput);
 
 }
+
+ //F4 KEYPRESS
 if(e.keyCode == 115){
   e.preventDefault();
   var currow = $(this).closest("tr");
@@ -53,6 +56,7 @@ if(e.keyCode == 115){
   updateDTR(empno, col1, field, getinput);
 }
 
+ //F5 KEYPRESS
 if(e.keyCode == 116){
   e.preventDefault();
   var currow = $(this).closest("tr");
