@@ -467,7 +467,50 @@ $list_depid='';
         });
     });
 
+    $("#sync_records").click(function(){
+        setInterval(syncRecords(),600000);
 
+    })
+
+    function syncRecords(){
+        event.preventDefault();
+        var cat = $('#category').val();
+        var current_date_from = "<?php echo date("m/d/Y");?>";
+        var current_date_to = "<?php echo date("m/d/Y");?>";
+        console.log(cat);
+        console.log(datefr);
+        console.log(dteto);
+        $('.alert').attr("class", "alert alert-warning");
+        $("#sync_records").prop("disabled", true);
+        $("#import_status").html("The System is currently syncing records. Please wait");
+        $.ajax({
+            url: "sql/generate_category.php",
+            type: "POST",
+            data: {
+                category: cat,
+                datefrom: current_date_from,
+                dateto: current_date_to,
+            },
+            error: function(xhr, b, c) {
+                console.log(
+                    "xhr=" +
+                    xhr.responseText +
+                    " b=" +
+                    b.responseText +
+                    " c=" +
+                    c.responseText
+                );
+            },
+        }).done(function(e) {
+
+            // $("#generate_category").prop("disabled", false);
+            // $("#import_status").html(e);
+            // $('.alert').attr("class", "alert alert-success");
+
+
+        });
+
+    }
     function tConvert(time) {
         // Check correct time format and split into components
         time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];

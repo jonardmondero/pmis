@@ -74,6 +74,9 @@
                                 </div>
                                 <input style="margin:auto;width:100%" type="submit" class="btn btn-primary"
                                     name="generate_category" id="generate_category" value="GENERATE RECORDS">
+
+                                    <input style="margin:auto;width:100%;margin-top:10px" type="submit" class="btn btn-primary"
+                                    name="sync_records" id="sync_records" value="SYNC RECORDS">
                             </div>
                             
                         </div>
