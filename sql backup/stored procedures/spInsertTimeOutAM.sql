@@ -15,10 +15,10 @@ SET @checkoutAM = (SELECT outAM FROM dailytimerecord WHERE DATE = ddate AND empl
 	IF(@checkoutAM = '' OR @checkoutAM = 'DAY') THEN 
 	
 	UPDATE dailytimerecord SET outAM = @timeIn  /*UPDATE THE IN PM*/
-	WHERE employeeNo=empno AND DATE = ddate;
+	WHERE employeeNo=empno AND DATE = ddate LIMIT 1;
 	
 /*SET @DDate = ADDTIME(@DDate,'');*/
-IF(bolsched = 'Yes') THEN	
+	IF(bolsched = 'Yes') THEN	
 	IF(@convertedtime < @latesched) AND (@DDate != '') THEN    /*COMPARE THE TIME IN AND SCHEDULE TIME*/
 	
 	SET @timeLate = TIMEDIFF(@latesched,@convertedtime);  /*GET THE TIME DIFFERENCE*/

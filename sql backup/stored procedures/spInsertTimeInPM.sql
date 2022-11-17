@@ -15,7 +15,7 @@ SET @checkInPM = (SELECT inPM FROM dailytimerecord WHERE DATE = ddate AND employ
 	
 	IF(@checkInPM ='' OR @checkInPM = 'OFF') THEN
 	UPDATE dailytimerecord SET inPM = @timeIn  /*UPDATE THE IN PM*/
-	WHERE employeeNo=empno AND DATE = ddate;
+	WHERE employeeNo=empno AND DATE = ddate LIMIT 1;
 	
 /*SET @DDate = ADDTIME(@DDate,'');*/
 	IF(bolsched = 'Yes') THEN
@@ -26,7 +26,7 @@ SET @checkInPM = (SELECT inPM FROM dailytimerecord WHERE DATE = ddate AND employ
 	/*SET @timeLateFinal= ADDTIME(SEC_TO_TIME(SUM(TIME_TO_SEC(@timeLate ))),SEC_TO_TIME(SUM(TIME_TO_SEC( @morning))));*/
 	
 	SET @timeLateFinal = ADDTIME(@timeLate,@morning); /*ADD THE TIME MORNING AND AFTERNOON*/
-	UPDATE dailytimerecord SET late =  @timeLateFinal WHERE employeeNo = empno AND DATE = ddate; /*UPDATE THE LATE OF THE EMPLOYEE*/
+	UPDATE dailytimerecord SET late =  @timeLateFinal WHERE employeeNo = empno AND DATE = ddate LIMIT 1; /*UPDATE THE LATE OF THE EMPLOYEE*/
 	END IF;
 	END IF;
 	END IF;
