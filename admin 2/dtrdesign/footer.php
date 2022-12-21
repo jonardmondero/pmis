@@ -22,7 +22,8 @@
 <script src="../dist/js/demo.js"></script>
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.js"></script>
-<script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
+<script src="../plugins/datatables/datatables.select.min.js"></script>
+<!-- <script src="../plugins/datatables/dataTables.bootstrap4.js"></script> -->
 
 <!-- PRINT REPORTS  SCRIPT -->
 <script src="javascript/printreport.js"></script>

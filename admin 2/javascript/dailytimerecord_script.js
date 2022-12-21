@@ -111,6 +111,7 @@ if(e.keyCode == 117){
 
 function getEmployees(dept, status) {
   var dataTable = $("#employees").DataTable({
+    select: true,
     destroy: true,
     stateSave: true,
     processing: true,

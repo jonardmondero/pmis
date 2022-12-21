@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="../plugins/datepicker/datepicker3.css">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="../plugins/datatables/datatables.select.min.css">
+    <link rel="stylesheet" href="../plugins/datatables/datatables.jquery.select.min.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
