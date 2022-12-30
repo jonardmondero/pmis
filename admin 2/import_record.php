@@ -19,7 +19,10 @@ $prep_dep = $con->prepare($sel_dep);
 $prep_dep->execute();
 $list_desc = '';
 $list_depid='';
-
+$customValueCheckIn = "I";
+$customValueBreakOut = "i";
+$customValueBreakIn = "o";
+$customValueCheckOut = "O";
 ?>
 
 
@@ -421,6 +424,53 @@ $list_depid='';
                 $('.alert').attr("class", "alert alert-success");
             });
         });
+// IMPORT WITH CUSTOM CODE STATE
+        $("#importcustomcode").on("click", function() {
+
+event.preventDefault();
+var dept = $('#selectdep').val();
+var custom_checkin = $("#custom_checkin").val();
+var custom_breakout = $("#custom-breakout").val();
+var custom_breakin = $("#custom_breakin").val();
+var custom_checkout = $("#custom_checkout").val();
+console.log(custom_checkin);
+console.log(custom_breakout);
+console.log(custom_breakin);
+console.log(custom_checkout);
+$('.alert').attr("class", "alert alert-danger");
+$("#importcustomcode").prop("disabled", true);
+$("#import_status").html("The system is importing logs. Please wait...");
+$.ajax({
+    url: "sql/generate_custom_code.php",
+    type: "POST",
+    data: {
+        selectdep: dept,
+        datefrom: datefr,
+        dateto: dteto,
+        cst_chkin:custom_checkin,
+        cst_brkout:custom_breakout,
+        cst_brkin:custom_breakin,
+        cst_chkout:custom_checkout,
+    },
+    error: function(xhr, b, c) {
+        console.log(
+            "xhr=" +
+            xhr.responseText +
+            " b=" +
+            b.responseText +
+            " c=" +
+            c.responseText
+        );
+    },
+}).done(function(e) {
+
+    $("#importcustomcode").prop("disabled", false);
+    $("#import_status").html(e);
+    $('.alert').attr("class", "alert alert-success");
+
+
+});
+});
 
 
 
