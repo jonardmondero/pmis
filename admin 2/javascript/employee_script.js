@@ -163,10 +163,12 @@ $(document).ready(function () {
     // $('#emp_sched').val(cs);
     $("#department").select2({
       dropdownParent: $("#addemployee"),
+    
     });
 
     $("#emp_sched").select2({
       dropdownParent: $("#addemployee"),
+    
     });
   });
 
