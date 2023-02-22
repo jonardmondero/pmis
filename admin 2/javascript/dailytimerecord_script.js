@@ -2,20 +2,29 @@ var date = "";
 var datefr = "";
 var dateto = "";
 $(function () {
+
+
+
  //F1 KEYPRESS
 $("#dtr tbody").on("keydown", "input", function (e) {
 if(e.keyCode == 112){
   e.preventDefault();
-
   var currow = $(this).closest("tr");
   var getinput = $(this).closest("input").val();// get the current field
   var col1 = currow.find("td:eq(0)").text(); //date of the record
   $(currow).find("td:eq(2) input[type='text']").val(getinput);// destination of the record
-  $(this).closest("input").val('');
+
 
   const field = "inAM";
   const empno = $("#hiddenempno").val();
-  updateDTR(empno, col1, field, getinput);
+
+
+    console.log("changed!");
+    $(this).closest("input").val('');
+    getSelectedInput.dispatchEvent(new Event("change"));
+    updateDTR(empno, col1, field, getinput);
+
+
 
   
 }
