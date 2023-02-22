@@ -97,14 +97,15 @@ $st_msaccess_search = "SELECT checktype ,checktime,sn ,badgenumber from checkino
                     </div>
 
                     <div class="card-body">
-                        <table class="table table-hover">
+                        <table style = "font-size: 15px;
+  padding: 10px;"class="table table-hover table-bordered table-dark table-text-dark align-middle text-center">
                             <thead>
                                 <th>Date</th>
                                 <th>Time</th>
                                 <th>State</th>
                                 <th>Location</th>
                             </thead>
-                            <tbody>
+                            <tbody  >
                                 <?php 
                                  while( $timeresult = $pre_msaccess_stmt->fetch(PDO::FETCH_ASSOC)) {
                                     if($timeresult == 0){
@@ -181,10 +182,10 @@ $st_msaccess_search = "SELECT checktype ,checktime,sn ,badgenumber from checkino
                                
                                 ?>
                                 <tr style = "background-color:<?php echo $checkColor?>">
-                                    <td><?php echo date_format($checktime_time ,"Y/m/d")?></td>
-                                    <td><?php echo $checktime?></td>
-                                    <td> <?php echo $checkstate?></td>
-                                    <td> <?php echo $location?></td>
+                                    <td style = "color:black"><?php echo date_format($checktime_time ,"Y/m/d")?></td>
+                                    <td style = "color:black"><?php echo $checktime?></td>
+                                    <td style = "color:black"> <?php echo $checkstate?></td>
+                                    <td style = "color:black"> <?php echo $location?></td>
                                 </tr>
                                 <?php }?>
 </tbody>
@@ -196,6 +197,12 @@ $st_msaccess_search = "SELECT checktype ,checktime,sn ,badgenumber from checkino
             </div>
 
         </div>
+
+        <script src="../plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap 4 -->
+        <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="../dist/js/adminlte.min.js"></script>  
 </body>
 
 </html>
