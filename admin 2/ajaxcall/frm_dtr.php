@@ -42,7 +42,7 @@ if(isset($_POST['employeeno'])) {
             echo"</td>";
 
             echo '<td  >';
-            echo '<input type ="text" class = "text_align " onchange="updateInAm(this.value);" onfocus="this.select();"  class = " border border-dark" style ="height:30px; width:100px;" value="'.$result3['inAM'].'" >';
+            echo '<input type ="text" class = "text_align " onchange="updateInAm(this.value);" onfocus="this.select();" oninput = "console.log("hello")"  class = " border border-dark" style ="height:30px; width:100px;" value="'.$result3['inAM'].'" >';
             echo"</td>";
 
             echo '<td >';

@@ -9,7 +9,7 @@ if($user_type == 'User'){
 ?>
 
 <div class="wrapper">
-    <div class=" card card-primary" style="margin-top:10px;">
+    <div class=" card card-primary mt-2 h-100" >
 
         <div class="container-fluid">
             <div class="card-header">

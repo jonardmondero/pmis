@@ -19,19 +19,18 @@ include ('dtrdesign/header.php');
 <!DOCTYPE html>
 <html>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-
         <?php 
- include('dtrdesign/sidebar.php');
-
+         include('dtrdesign/navbar.php');
+        include('dtrdesign/sidebar.php');
    ?>
 
         <div class="content-wrapper">
 
             <section class="content">
                 <div class="wrapper">
-                    <div class="container-fluid" >
+                    <div class="container-fluid">
 
                         <div class="row">
                             <div class="col-4">

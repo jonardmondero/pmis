@@ -1,5 +1,9 @@
 <?php 
+session_set_cookie_params(0);
+session_start();
+$_SESSION['id'] = '';
 include ('php_scripts/log_in.php');
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,66 +22,37 @@ include ('php_scripts/log_in.php');
     <!-- icheck bootstrap -->
     <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
+    <link rel="stylesheet" href="styles/twitter.style.css">
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.css">
     <!-- Google Font: Source Sans Pro -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
 </head>
 
 <body class="hold-transition login-page">
-    <div class="login-box">
-
-
-
-        <div class="login-logo">
-
+<div class="wrapper">
+        <div class="logo">
+            <img src="icons/timeicon.png" alt="">
         </div>
-        <!-- /.login-logo -->
-        <div class="card">
-
-
-            <image src="icons/time.png" alt="San Carlos City Logo"
-                style="margin:auto;width:50%;padding-bottom:30px;padding-top:20px;">
-                <h3 style="margin:auto;">Time Attendance System</h3>
-
-                <div class="card-body login-card-body">
-
-
-                    <form action="<?php htmlspecialchars("PHP_SELF");?>" method="post">
-                        <div class="input-group mb-4">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fa fa-user"></span>
-                                </div>
-                            </div>
-                            <input type="text" class="form-control" name="username" placeholder="Username">
-
-                        </div>
-                        <div class="input-group mb-4">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fa fa-lock"></span>
-                                </div>
-                            </div>
-                            <input type="password" class="form-control" name="password" placeholder="Password">
-
-                        </div>
-                        <div class="Ashake form-group has-feedback">
-                            <?php echo $alert_msg; ?>
-                        </div>
-                        <div class="row">
-
-                            <div class="col-12">
-                                <button type="submit" name="submit" class="btn btn-primary btn-block"
-                                    style="border-radius:10px;">Sign In</button>
-                            </div>
-                            <!-- /.col -->
-                        </div>
-                    </form>
-
-
-
-                </div>
+        <div class="text-center mt-4 name">
+          DAILY TIME RECORD
         </div>
+        <form action="<?php htmlspecialchars("PHP_SELF");?>" method="post">
+
+            <div class="form-field d-flex align-items-center">
+                <span class="fa fa-user"></span>
+                <input type="text" name="username" id="userName" placeholder="Username">
+            </div>
+            <div class="form-field d-flex align-items-center">
+                <span class="fa fa-key"></span>
+                <input type="password" name="password" id="pwd" placeholder="Password">
+            </div>
+            <button type="submit"  name="submit" class="btn mt-3">Login</button>
+        </form>
+        <div class="text-center fs-6">
+            <a href="#">Forget password?</a> or <a href="#">Sign up</a>
+        </div>
+    </div>
         <!-- /.login-box -->
 
         <!-- jQuery -->
@@ -85,7 +60,8 @@ include ('php_scripts/log_in.php');
         <!-- Bootstrap 4 -->
         <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- AdminLTE App -->
-        <script src="dist/js/adminlte.min.js"></script>
+        <!-- <script src="dist/js/adminlte.min.js"></script> -->
+        <script src="plubins/bootstrap/js/bootstrap.js></script>
 
 </body>
 

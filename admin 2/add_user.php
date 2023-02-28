@@ -3,6 +3,7 @@
 
 
 <?php 
+include('session.php');
 $titlename = 'Add User';
 include('dtrdesign/header.php'); 
 ?>

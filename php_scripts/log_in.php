@@ -2,6 +2,7 @@
 include("config/config.php");
 $alert_msg='';
 if(isset($_POST['submit'])){
+
    $emptySession = '';
   $username=$_POST['username'];
   $pssword=$_POST['password'];
@@ -14,7 +15,7 @@ $user_data ->execute([
   if($user_data->rowCount() >0){
     while ($result =$user_data->fetch (PDO::FETCH_ASSOC))
     {
-        session_start();
+   
         $_SESSION['id'] = $result['userId'];
         $_SESSION['usertype'] = $result['userType'];
         $_SESSION['fname'] = $result['firstName'];

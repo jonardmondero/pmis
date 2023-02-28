@@ -45,7 +45,9 @@ FROM bioinfo e INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo GROUP
 	<field name="DAY" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="month" class="java.lang.String"/>
+	<field name="month" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<field name="late" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>

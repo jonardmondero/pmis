@@ -49,9 +49,11 @@ $st_msaccess_search = "SELECT checktype ,checktime,sn ,badgenumber from checkino
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
     <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css"> -->
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../plugins/datatables/datatables.select.min.css">
+    <link rel="stylesheet" href="../plugins/datatables/datatables.jquery.select.min.css">
     <title><?php echo $_GET['biometricpin']?></title>
 </head>
 
@@ -90,15 +92,16 @@ $st_msaccess_search = "SELECT checktype ,checktime,sn ,badgenumber from checkino
             <div class="col-8">
                 <div class="card">
                     <div class="card-header">
-                        <div class="title">
-                            BIOMETRIC TIME
+                        <div class="title text-center">
+                            <h1>BIOMETRIC MACHINE TIME</h1>
+                            <p>Note: This view logs </p>
                         </div>
 
                     </div>
 
                     <div class="card-body">
                         <table style = "font-size: 15px;
-  padding: 10px;"class="table table-hover table-bordered table-dark table-text-dark align-middle text-center">
+  padding: 10px;"class="table table-hover table-bordered align-middle text-center" id = "viewlogs">
                             <thead>
                                 <th>Date</th>
                                 <th>Time</th>
@@ -181,7 +184,7 @@ $st_msaccess_search = "SELECT checktype ,checktime,sn ,badgenumber from checkino
                                  
                                
                                 ?>
-                                <tr style = "background-color:<?php echo $checkColor?>">
+                                <tr >
                                     <td style = "color:black"><?php echo date_format($checktime_time ,"Y/m/d")?></td>
                                     <td style = "color:black"><?php echo $checktime?></td>
                                     <td style = "color:black"> <?php echo $checkstate?></td>
@@ -203,6 +206,13 @@ $st_msaccess_search = "SELECT checktype ,checktime,sn ,badgenumber from checkino
         <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- AdminLTE App -->
         <script src="../dist/js/adminlte.min.js"></script>  
+        <script src="../plugins/datatables/jquery.dataTables.js"></script>
+
+        <script>
+            $("#viewlogs").DataTable({
+              
+            });
+            </script>
 </body>
 
 </html>
