@@ -2,7 +2,7 @@
 
 $server = 'localhost';
 $user = 'root';
-$pass = 'admin';
+$pass = '';
 $db = 'pmis';
 
 // @hrm8ioMetrics -- HRM SERVER PASSWORD

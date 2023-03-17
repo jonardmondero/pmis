@@ -31,7 +31,7 @@ include ('dtrdesign/header.php');
             <section class="content">
                 <div class="wrapper">
                     <div class="container-fluid">
-
+        
                         <div class="row">
                             <div class="col-4">
 
@@ -64,7 +64,7 @@ include ('dtrdesign/header.php');
 
     <?php include('dtrdesign/footer.php');  
     ?>
-
+</div>
     <script src="javascript/dailytimerecord_script.js"></script>
 
 </body>

@@ -29,10 +29,10 @@
 
                 <li class="nav-header">ADD RECORD</li>
 
-                <li class="nav-item">
+                <li class="nav-item ">
                     <a href="import_record.php" class="nav-link">
                         <i class="nav-icon fa fa-download"></i>
-                        <p>
+                        <p class = "text-white">
                             Import Biometric Records
 
                         </p>
@@ -41,7 +41,7 @@
                 <li class="nav-item">
                     <a href="department.php" class="nav-link">
                         <i class="nav-icon fa fa-building"></i>
-                        <p>
+                        <p >
                             Department
                             <span class="badge badge-info right"></span>
                         </p>
