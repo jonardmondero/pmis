@@ -9,13 +9,15 @@ if($user_type == 'User'){
 ?>
 
 <div class="wrapper">
-    <div class=" card  mt-2 h-100" >
+    <div class=" card  mt-2 shadow-none border border-dark" >
 
-        <div class="container-fluid">
+      
             <div class="card-header bg-dark ">
-                <h3 class="card-title capitalize">Department</h3>
+                <h3 class="card-title text-center"><b>DEPARTMENT</b></h3>
             </div>
+            
             <div class="card-body">
+            <div class="container-fluid">
                 <div class="row" style="margin-bottom:20px;height:30px;">
                     <div class="col-12 ">
 

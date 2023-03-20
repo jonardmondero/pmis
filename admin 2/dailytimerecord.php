@@ -25,10 +25,10 @@ include ('dtrdesign/header.php');
          include('dtrdesign/navbar.php');
         include('dtrdesign/sidebar.php');
    ?>
-
+  <section class="content">
         <div class="content-wrapper">
 
-            <section class="content">
+          
                 <div class="wrapper">
                     <div class="container-fluid">
         
@@ -48,9 +48,9 @@ include ('dtrdesign/header.php');
                          include('modal/add_employee_modal.php');
      ?>
                     </div>
-
+                    </div>
             </section>
-        </div>
+       
     </div>
     <footer class="main-footer">
         <strong>Copyright &copy; 2014-2018 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>

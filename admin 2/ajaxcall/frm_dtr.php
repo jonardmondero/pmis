@@ -31,11 +31,11 @@ if(isset($_POST['employeeno'])) {
         $result3['undertimefinal'] != '00:00' ? $undertimeStyle = 'color:red; ' : $undertimeStyle = 'color:black;';
         $result3['latefinal'] >= '08:00' ? $lateStyle = 'color:green;font-weight:bold ' : null; 
         $result3['undertimefinal'] >= '08:00' ? $undertimeStyle = 'color:green;font-weight:bold ' :null; 
-        $latefinal = "";
-        $undertimefinal ="";
-        $result3['latefinal'] == "00:00" ? $latefinal = "" : $latefinal = $result3['latefinal'];
-        $result3['undertimefinal'] == "00:00" ? $undertimefinal = "" : $undertimefinal = $result3['undertimefinal'];
-            echo '<tr  class = "tr"> ';
+        // $latefinal = "";
+        // $undertimefinal ="";
+        // $result3['latefinal'] == "00:00" ? $latefinal = "" : $latefinal = $result3['latefinal'];
+        // $result3['undertimefinal'] == "00:00" ? $undertimefinal = "" : $undertimefinal = $result3['undertimefinal'];
+            echo '<tr > ';
             echo '<td class = "border border-dark col-1" >';
             echo $result3['Date'];
             echo"</td>";
@@ -69,11 +69,11 @@ if(isset($_POST['employeeno'])) {
             echo"</td>";
 
             echo '<td>';
-            echo '<input type ="text" class = "text_align border border-dark dtr-input-size-sm" onchange="updateLate(this.value)" onfocus="this.select()" class = "" style ="'.$lateStyle.'"  value="'. $latefinal.'" >';
+            echo '<input type ="text" class = "text_align border border-dark dtr-input-size-sm" onchange="updateLate(this.value)" onfocus="this.select()" class = "" style ="'.$lateStyle.'"  value="'. $result3['latefinal'].'" >';
             echo"</td>";
 
             echo '<td>';
-            echo '<input type ="text" class = "text_align border border-dark dtr-input-size-sm" onchange="updateUndertime(this.value)"  onfocus="this.select()" style ="'.$undertimeStyle.'"  value="'.$undertimefinal.'" >';
+            echo '<input type ="text" class = "text_align border border-dark dtr-input-size-sm" onchange="updateUndertime(this.value)"  onfocus="this.select()" style ="'.$undertimeStyle.'"  value="'.$result3['undertimefinal'].'" >';
             echo"</td>";
             
            include('../elements/dtr_options.php');

@@ -1,9 +1,9 @@
-<div id="printreport">
 
- 
         <div class="row">
+          
        <div class="col-3 m-0">
             <select id="months" class="form-control text-center">
+
                 <option val="01">January</option>
                 <option val="02">February</option>
                 <option val="03">March</option>
@@ -37,6 +37,7 @@
             </select>
             </div>
             <div class="col-4">
+            <form class="form-horizontal" method="post" action="<?php htmlspecialchars("PHP_SELF");?>" id="employee-form">
             <a style="margin:auto;" target="_blank" id="printlink" 
                 href="../plugins/jasperreport/dtrreport.php?empno=<?php echo $hiddenempno;?>&datefrom=<?php echo $dteFrom;?>&dateto=<?php echo $dteTo;?>">
                 <button type="button" class="btn bg-dark " name="print" id="print" value="Print"><b>PRINT</b></button>
@@ -47,12 +48,13 @@
                 href="../plugins/jasperreport/dtrreport.php?dept=<?php echo $hiddenempno;?>&datefrom=<?php echo $dteFrom;?>&dateto=<?php echo $dteTo;?>">
                 <button type="button" class="btn bg-warning " name="print" id="printAll" value="Print"><b>PRINT
                     ALL</b></button>
-
+                    </form>
             </a>
             </div>  
+              
             </div>
     <!-- /.modal-content -->
-</div>
+
 <!-- /.modal-dialog -->
 </div>
 <style>

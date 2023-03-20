@@ -15,12 +15,7 @@ if(e.keyCode == 112){
   const inMorningdisplay =  $(currow).find("td:eq(2) input[type='text']").val(); // get the value of the td
  
   $(currow).find("td:eq(2) input[type='text']").val(getinput);// destination of the record
-
-
-
   const empno = $("#hiddenempno").val();
-
-
 
     $(this).closest("input").val(inMorningdisplay);
     const inMorning =  $(currow).find("td:eq(2) input[type='text']").val();// get the value of the td

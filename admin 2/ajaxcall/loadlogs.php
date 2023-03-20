@@ -54,7 +54,7 @@ if(isset($_POST['empno'])){
 			$location = "CED BTM";
 			break;
 			case "3486862430001":
-			$location = "ITCSO BTM";
+			$location = "OHRM BTM";
 			break;
 			case "3486862430384":
 			$location = "CTO BTM";
@@ -78,7 +78,7 @@ if(isset($_POST['empno'])){
 			$location = "OCA BTM";
 			break;
 			case "OPH6040056041500373":
-			$location = "CSWDO BTM";
+			$location = "ANNEX BTM";
 			break;
 			case "3486862430036":
 				$location = "CHO BTM";
