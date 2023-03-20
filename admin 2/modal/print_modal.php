@@ -37,19 +37,21 @@
             </select>
             </div>
             <div class="col-4">
+                <div class="row">
             <form class="form-horizontal" method="post" action="<?php htmlspecialchars("PHP_SELF");?>" id="employee-form">
             <a style="margin:auto;" target="_blank" id="printlink" 
                 href="../plugins/jasperreport/dtrreport.php?empno=<?php echo $hiddenempno;?>&datefrom=<?php echo $dteFrom;?>&dateto=<?php echo $dteTo;?>">
-                <button type="button" class="btn bg-dark " name="print" id="print" value="Print"><b>PRINT</b></button>
+                <button type="button" class="btn-sm bg-dark " name="print" id="print" value="Print"><b>PRINT</b></button>
 
             </a>
-
+           
             <a style="margin:auto;" target="_blank" id="printlink_all"
                 href="../plugins/jasperreport/dtrreport.php?dept=<?php echo $hiddenempno;?>&datefrom=<?php echo $dteFrom;?>&dateto=<?php echo $dteTo;?>">
-                <button type="button" class="btn bg-warning " name="print" id="printAll" value="Print"><b>PRINT
+                <button type="button" class="btn-sm bg-warning " name="print" id="printAll" value="Print"><b>PRINT
                     ALL</b></button>
                     </form>
             </a>
+            </div>
             </div>  
               
             </div>
