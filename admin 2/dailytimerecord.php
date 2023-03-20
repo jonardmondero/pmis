@@ -19,39 +19,42 @@ include ('dtrdesign/header.php');
 <!DOCTYPE html>
 <html>
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed" >
     <div class="wrapper">
-        <?php 
+    <?php 
          include('dtrdesign/navbar.php');
         include('dtrdesign/sidebar.php');
    ?>
-  <section class="content">
-        <div class="content-wrapper">
 
-          
-                <div class="wrapper">
-                    <div class="container-fluid">
-        
-                        <div class="row">
-                            <div class="col-4">
 
-                                <?php include('elements/employee_table.php');?>
-                            </div>
+    <div class="content-wrapper">
+        <section class="content">
 
-                            <?php include('elements/dtr_table.php');
-   
-    ?>
+            <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-4">
+
+                            <?php include('elements/employee_table.php');?>
                         </div>
-
-                        <?php include('modal/edit_dtr_modal.php');
+                        <div class="col-8 mt-2 ">
+                            <?php include('elements/dtr_table.php');
+        
+    ?>
+                         <?php include('modal/edit_dtr_modal.php');
                          include('modal/update_supervisor_modal.php');
                          include('modal/add_employee_modal.php');
      ?>
+                        </div>
                     </div>
-                    </div>
-            </section>
-       
+
+                  
+
+                </div>
+                </section>
     </div>
+   
+
     <footer class="main-footer">
         <strong>Copyright &copy; 2014-2018 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
         All rights reserved.
@@ -60,11 +63,10 @@ include ('dtrdesign/header.php');
 
     </footer>
 
-    </div>
-
     <?php include('dtrdesign/footer.php');  
     ?>
-</div>
+    </div>
+    </div>
     <script src="javascript/dailytimerecord_script.js"></script>
 
 </body>

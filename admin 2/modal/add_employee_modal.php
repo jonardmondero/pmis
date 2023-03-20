@@ -3,9 +3,9 @@
 include('./components/textfields.php');
 ?>
 
-<div class="modal fade" id="addemployee">
-    <div class="modal-dialog">
-        <div class="modal-content">
+<div   class="modal fade " id="addemployee">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content ">
             <div class="modal-header">
                 <h4 class="modal-title">Add Employee</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">

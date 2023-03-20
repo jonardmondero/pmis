@@ -30,7 +30,7 @@ if(isset($_POST['empno'])){
  where userinfo.badgenumber = :biometric and  DATEPART(yy,checktime)= :year 
  AND datepart(mm,checktime) = :month and datepart(dd,checktime)= :day
  ORDER BY checktime" ;
- $pre_msaccess_stmt = $conn->prepare($st_msaccess_search);
+ $pre_msaccess_stmt = $mscon->prepare($st_msaccess_search);
  $pre_msaccess_stmt->execute([
 	':biometric'	=>	 $biometric,
 	':year'	=>	 $date_format_year,
