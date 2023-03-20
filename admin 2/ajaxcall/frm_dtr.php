@@ -35,7 +35,7 @@ if(isset($_POST['employeeno'])) {
         // $undertimefinal ="";
         // $result3['latefinal'] == "00:00" ? $latefinal = "" : $latefinal = $result3['latefinal'];
         // $result3['undertimefinal'] == "00:00" ? $undertimefinal = "" : $undertimefinal = $result3['undertimefinal'];
-            echo '<tr > ';
+            echo '<tr  class = "tr"> ';
             echo '<td class = "border border-dark col-1" >';
             echo $result3['Date'];
             echo"</td>";

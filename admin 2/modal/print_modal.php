@@ -1,7 +1,7 @@
 
         <div class="row">
           
-       <div class="col-3 m-0">
+       <div class="col-lg-3 col-md-3 col-sm-3 m-0">
             <select id="months" class="form-control text-center">
 
                 <option val="01">January</option>
@@ -19,7 +19,7 @@
 
             </select>
             </div>
-           <div class="col-3">
+           <div class="col-lg-3 col-md-3 col-sm-3">
             <select id="period" class="form-control text-center">
                 <option val="1">1-15</option>
                 <option val="2">16-31</option>

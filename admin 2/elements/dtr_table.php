@@ -10,7 +10,7 @@
 }
 </style>
 <div class="container-fluid">
-    <div class="col-12">
+    <div class="col-lg-12 col-md-12 col-sm-12">
     <div class="card bg-none  border border-secondary shadow-none">
 
         <div class="card-body ">
@@ -45,12 +45,12 @@
         </div>
     </div>
     </div>
-    <div class="col-12">
+    <div class="col-lg-12 col-md-12 col-sm-12">
     <div class="card full_name m-2 shadow-none  bg-dark">
         <h4 class="text-bold text-white" id="full-name"> </h4>
     </div>
     </div>
-    <div class="col-12">
+    <div class="col-lg-12 col-md-12 col-sm-12">
     <div class="card m-2 shadow-none border border-secondary bg-white">
         <div class="card-body">
 
@@ -68,7 +68,7 @@
 
                 </div>
 
-                <div class="row col-12">
+                <div class="row col-lg-12 col-md-12 col-sm-12">
 
                     <div class="m-auto">
                         <table id="dtr" class="form__table table-bordered table-hover bg-white">

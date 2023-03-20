@@ -18,10 +18,10 @@ if($user_type == 'User'){
             
             <div class="card-body">
             <div class="container-fluid">
-                <div class="row" style="margin-bottom:20px;height:30px;">
-                    <div class="col-12 ">
+                <div class="row mb-2" >
+                    <div class="col-lg-12 col-md-12 col-sm-12 ">
 
-                        <select style="height:1em;" class="select2 form-control" name="department" id="deptId">
+                        <select  class="select2 form-control" name="department" id="deptId">
                             <?php
              
                      $get_user_sql = "SELECT * FROM department WHERE status = 'Active'";

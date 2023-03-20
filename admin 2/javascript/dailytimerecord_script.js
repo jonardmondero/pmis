@@ -18,19 +18,19 @@ if(e.keyCode == 112){
   const empno = $("#hiddenempno").val();
 
     $(this).closest("input").val(inMorningdisplay);
-    const inMorning =  $(currow).find("td:eq(2) input[type='text']").val();// get the value of the td
-    const outMorning =  $(currow).find("td:eq(3) input[type='text']").val(); // get the value of the td
-    const inAfternoon =  $(currow).find("td:eq(4) input[type='text']").val(); // get the value of the td
-    const outAfternoon =  $(currow).find("td:eq(5) input[type='text']").val(); // get the value of the td
-    const inOvertime =  $(currow).find("td:eq(6) input[type='text']").val(); // get the value of the td
-    const outOvertime =  $(currow).find("td:eq(7) input[type='text']").val(); // get the value of the td
-    console.log(inMorning,outMorning,inAfternoon,outAfternoon,inOvertime,outOvertime);
-    updateInAm(inMorning);
-    updateOutAm(outMorning);
-    updateInPm(inAfternoon);
-    updateOutPm(outAfternoon);
-    updateOtIn(inOvertime);
-    updateOtOut(outOvertime);
+    // const inMorning =  $(currow).find("td:eq(2) input[type='text']").val();// get the value of the td
+    // const outMorning =  $(currow).find("td:eq(3) input[type='text']").val(); // get the value of the td
+    // const inAfternoon =  $(currow).find("td:eq(4) input[type='text']").val(); // get the value of the td
+    // const outAfternoon =  $(currow).find("td:eq(5) input[type='text']").val(); // get the value of the td
+    // const inOvertime =  $(currow).find("td:eq(6) input[type='text']").val(); // get the value of the td
+    // const outOvertime =  $(currow).find("td:eq(7) input[type='text']").val(); // get the value of the td
+    // console.log(inMorning,outMorning,inAfternoon,outAfternoon,inOvertime,outOvertime);
+    // updateInAm(inMorning);
+    // updateOutAm(outMorning);
+    // updateInPm(inAfternoon);
+    // updateOutPm(outAfternoon);
+    // updateOtIn(inOvertime);
+    // updateOtOut(outOvertime);
 
 
 
