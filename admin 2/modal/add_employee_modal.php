@@ -6,8 +6,8 @@ include('./components/textfields.php');
 <div   class="modal fade" id="addemployee">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content ">
-            <div class="modal-header">
-                <h4 class="modal-title">Add Employee</h4>
+            <div class="modal-header bg-dark ">
+                <h4 class="modal-title ">Add Employee</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -43,18 +43,18 @@ include('./components/textfields.php');
                             </select>
                         </div>
 
-                        <div class="form-group row">
-                            <label class="col-form-label col-5">Has Work Schedule? </label>
+                        <div class="input-group m-auto">
+                            <label class="col-form-label col-5">Has Work Schedule ? </label>
                             <select class="form-control col-7" name="worksched" id="worksched">
                                 <option val="Yes">Yes</option>
                                 <option val="No">No </option>
                             </select>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="input-group  mt-4 w-100">
 
-                            <label class="col-form-label col-3">Schedule: </label>
-                            <select class="form-control col-9 select2" style="width:73%" name="emp_sched"
+                            <label class="col-form-label mr-4 " >Schedule: </label>
+                            <select class="form-control w-100"  name="emp_sched"
                                 id="emp_sched">
                              
                                 <?php 

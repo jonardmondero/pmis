@@ -23,7 +23,15 @@
                with font-awesome or any other icon font library -->
 
 
+               <li class="nav-item ">
+                    <a href="dashboard.php" class="nav-link">
+                        <i class="nav-icon fa fa-download"></i>
+                        <p class = "text-white">
+                           Dashboard
 
+                        </p>
+                    </a>
+                </li>
 
 
 

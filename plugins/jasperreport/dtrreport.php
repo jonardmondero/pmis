@@ -35,4 +35,5 @@ $PHPJasperXML->transferDBtoArray($server,$user,$pass,$db);
 $PHPJasperXML->outpage("I");    //page output method I:standard output  D:Download file
 
 
+
 ?>

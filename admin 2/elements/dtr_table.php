@@ -72,7 +72,7 @@
 
                     <div class="m-auto">
                         <table id="dtr" class="form__table table-bordered table-hover bg-white">
-                            <thead class="table text_align">
+                            <thead class="text_align">
 
                                 <th class="border border-dark ">Date </th>
                                 <th class="border border-dark">Day</th>

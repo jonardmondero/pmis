@@ -50,7 +50,7 @@ $prep_leave_type->execute();
 
 
                             <div class="col-12 ">
-                                <div class="card card-info">
+                                <div class="card bg-dark">
                                     <div class="wrapper">
                                         <div class="card-header">
                                             <h3 class="card-title">Search Employee</h3>

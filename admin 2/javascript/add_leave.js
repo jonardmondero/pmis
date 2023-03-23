@@ -1,4 +1,8 @@
 $(function() {
+$(document).ready(function(){
+    $("#leavetype").select2();
+})
+
     $('.select2').select2();
     var datefrom = '';
     var dateto = '';

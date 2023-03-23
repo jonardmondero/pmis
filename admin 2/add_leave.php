@@ -50,10 +50,10 @@ $prep_leave_type->execute();
 
 
                             <div class="col-12 ">
-                                <div class="card card-info">
+                                <div class="card card-dark">
                                     <div class="wrapper">
                                         <div class="card-header">
-                                            <h3 class="card-title">Search Employee</h3>
+                                            <h3 class="card-title capitalize">Search Employee</h3>
                                         </div>
 
                                         <?php include("elements/search_employee.php");?>
@@ -67,60 +67,42 @@ $prep_leave_type->execute();
                         <div class="col-8">
 
                             <div class="col-12 no-gutters">
-                                <div class="card card-primary" style="width:100%">
+                                <div class="card card-dark text-center bg-none  border border-secondary shadow-none"
+                                    style="width:100%">
                                     <div class="card-header">
-                                        <h3 class="card-title">Details</h3>
+                                        <h3 class="card-title capitalize">Details</h3>
 
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
 
-                                            <div class="col-3"></div>
-                                            <div class="col-6" style="background-color:white-grey;">
+
+                                            <div class="col-12" style="background-color:white-grey;">
                                                 <input type="text" id="leaveempno" readonly hidden>
-                                                <div class="card full_name">
-                                                    <h4 id="fullname"> </h4>
+                                                <div class="card shadow-none bg-dark full_name">
+                                                    <h4 class="text-white text-bold" id="fullname"> </h4>
                                                 </div>
                                             </div>
-                                            <div class="col-3"></div>
-                                            <div class="row col-12">
+                                            </div>  
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <div class="input-group date p-2">
+                                                        <span class="input-group-text"> <label class="">Date:
+                                                            </label>
 
-                                                <div class="input-group date p-2">
-                                                    <span class="input-group-text"> <label
-                                                            style="padding-right:10px;padding-left: 10px">Date:
-                                                        </label>
-                                                        <div style="padding-right:10px" class="input-group-addon">
-                                                            <i class="fa fa-calendar"></i>
-                                                        </div>
-                                                    </span>
+                                                        </span>
 
+                                                        <input style="margin-right:10px;" type="text"
+                                                            class="form-control " style="font-size:13px"
+                                                            autocomplete="off" name="datefrom" id="dtefrom"
+                                                            val="<?php echo $curdate; ?> ">
 
-
-                                                    <input style="margin-right:10px;" type="text"
-                                                        class="form-control col-4 " style="font-size:13px"
-                                                        autocomplete="off" name="datefrom" id="dtefrom"
-                                                        val="<?php echo $curdate; ?> ">
-
-
-
-
-
+                                                    </div>
                                                 </div>
-                                            </div>
-
-
-
-
-
-
-                                        </div>
-
-                                        <div class="row col-12">
-
-                                            <div class="col-8">
-                                                <div class="form-group ">
-                                                    <label>Leave Type</label>
-                                                    <select class="form-control select2 " id="leavetype"
+                                                <div class="col-5">
+                                                <div class="form-group">
+                                                    <label class = "mb-0">Leave Type</label>
+                                                    <select class="form-control  " id="leavetype"
                                                         name="leavetype" required>
                                                         <option selected="selected">Select Leave</option>
                                                         <?php while ($get_result = $prep_leave_type->fetch(PDO::FETCH_ASSOC)) { ?>
@@ -130,10 +112,10 @@ $prep_leave_type->execute();
                                                         <?php } ?>
                                                     </select>
                                                 </div>
-                                            </div>
-                                            <div class="col-4">
+                                                </div>
+                                                <div class="col-3">
                                                 <div class="form-group">
-                                                    <label>Inclusive Date</label>
+                                                    <label class="mb-0">Inclusive Date</label>
                                                     <select class="form-control select2 " id="inclusivedate"
                                                         style="width: 100%;" name="inclusivedate" required>
                                                         <option selected="selected">Whole Day</option>
@@ -141,21 +123,27 @@ $prep_leave_type->execute();
                                                         <option>Afternoon</option>
                                                     </select>
                                                 </div>
+                                                </div>
                                             </div>
 
 
-                                        </div>
-                                 
-                                        <div class = "row justify-content-center">
-                                            <button style="margin:auto;width:120px;" type="submit" name="addleave" id="addleave"
-                                                class=" btn btn-primary"><i class="fa fa-plus"></i></button>
+
+
+
+
+                                      
+
+                                        <div class="row justify-content-center">
+                                            <button type="submit" name="addleave"
+                                                id="addleave" class=" btn btn-danger "><i
+                                                    class="fa fa-plus"></i></button>
                                         </div>
 
                                     </div>
                                 </div>
-                                <div class="card card-warning">
+                                <div class="card card-primary text-center bg-none  border border-secondary shadow-none">
                                     <div class="card-header">
-                                        <h3 class="card-title">Leave Details</h3>
+                                        <h3 class="card-title">LEAVE DETAILS</h3>
                                     </div>
                                     <div class="card-body">
                                         <div class="row" style="margin:auto;">

@@ -19,7 +19,6 @@
 <script src="../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.js"></script>
-<script src="../dist/js/demo.js"></script>
 <!-- DataTables -->
 <script src="../plugins/datatables/jquery.dataTables.js"></script>
 <script src="../plugins/datatables/datatables.select.min.js"></script>
@@ -38,3 +37,5 @@
 <script src="../plugins/select2/select2.min.js"></script>
 <script src="../plugins/select2/select2.full.min.js"></script>
 <script src="../plugins/select2/select2.js"></script>
+<!-- <script src="../plugins/fullcalendar/main.js"></script>
+<script src="../plugins/jquery-ui/jquery-ui.min.js"></script> -->
