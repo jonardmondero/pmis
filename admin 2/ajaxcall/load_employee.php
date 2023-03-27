@@ -30,7 +30,7 @@ while($result = $get_query->fetch(PDO::FETCH_ASSOC)){
     echo'</td>';
 
     echo '<td>';
-    echo '<button class  = "flat-btn btn-sm btn-success"  id = "select" data-id = '.$empno.'><i class = "fa fa-check"></i></button>';
+    echo '<button class  = "btn btn-sm btn-primary shadow-none"  id = "select" data-id = '.$empno.'><i class = "fa fa-arrow-right"></i></button>';
     echo'</td>';
     echo '</tr>';
 }

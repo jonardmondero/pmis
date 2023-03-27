@@ -53,7 +53,7 @@ $prep_leave_type->execute();
                                 <div class="card card-dark">
                                     <div class="wrapper">
                                         <div class="card-header">
-                                            <h3 class="card-title capitalize">Search Employee</h3>
+                                            <h3 class="card-title capitalize text-bold">Search Employee</h3>
                                         </div>
 
                                         <?php include("elements/search_employee.php");?>
@@ -70,7 +70,7 @@ $prep_leave_type->execute();
                                 <div class="card card-dark text-center bg-none  border border-secondary shadow-none"
                                     style="width:100%">
                                     <div class="card-header">
-                                        <h3 class="card-title capitalize">Details</h3>
+                                        <h3 class="card-title capitalize text-center text-bold">Details</h3>
 
                                     </div>
                                     <div class="card-body">
@@ -141,16 +141,16 @@ $prep_leave_type->execute();
 
                                     </div>
                                 </div>
-                                <div class="card card-primary text-center bg-none  border border-secondary shadow-none">
+                                <div class="card card-info text-center bg-none  border border-secondary shadow-none">
                                     <div class="card-header">
-                                        <h3 class="card-title">LEAVE DETAILS</h3>
+                                        <h3 class="card-title text-bold">LEAVE DETAILS</h3>
                                     </div>
                                     <div class="card-body">
                                         <div class="row" style="margin:auto;">
 
-                                            <table class="table table-hover table-bordered "
-                                                style="margin:auto;width:100%;margin-top:20px;" id="leavelist">
-                                                <thead style="margin:auto;width:100%;">
+                                            <table class="table table-hover table-bordered m-auto w-100 mt-2"
+                                                 id="leavelist">
+                                                <thead class = "m-auto w-100 text-center" >
                                                     <th>Leave Name</th>
                                                     <th>From</th>
                                                     <th>To</th>
@@ -166,8 +166,8 @@ $prep_leave_type->execute();
 
 
                                             <button type="submit" name="save_leave" id="save_leave"
-                                                class=" custom_button btn btn-primary"><i
-                                                    class="fa fa-save"></i></button>
+                                                class=" custom_button btn btn-info"><i
+                                                    class="fa fa-save "></i></button>
 
 
                                         </div>

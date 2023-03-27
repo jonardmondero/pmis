@@ -1,5 +1,6 @@
        
-                <div class="form-group row col-10" style = "margin-left:10px;padding-bottom:10px;">
+                <div class="container-fluid">
+                <div class="form-group row col-12" style = "margin-left:10px;padding-bottom:10px;">
                     <label style= "padding-top:20px;" for="exampleInputEmail1">Keyword</label>
                     <input type="text" class="form-control" id="search">
                   </div>
@@ -15,4 +16,5 @@
                <tbody id = "tbody">
                	</tbody>
                </table>
+</div>
 </div>

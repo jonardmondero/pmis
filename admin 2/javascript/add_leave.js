@@ -40,8 +40,24 @@ $('#addleave').click(function () {
         post_notify("Please complete the information!", "danger");
     } else {
 $.ajax({
-    
-})
+   url:'ajaxcall/check_leave.php',
+   data:{
+    employeeNo:empno,
+    leaveType:leavetype,
+    dateFrom:datefrom,
+    dateTo:dateto
+   },
+   type:"POST",
+
+}).done(function(e){
+  
+
+    if(e != ""){
+        console.log(e);
+        post_notify("This Application is already in the system!", "danger");
+    }
+    else{
+        console.log(e);
         var table = document.getElementById("leavelist");
         var row = table.insertRow(1);
         var cell1 = row.insertCell(0);
@@ -55,6 +71,11 @@ $.ajax({
         cell4.innerHTML = inclusivedate;
         cell5.innerHTML =
             '<button id="remove" class = "btn btn-circle btn-sm btn-primary" onclick = "deleteRow(this)">Remove</button>';
+    }
+
+
+})
+       
     }
 });
 
