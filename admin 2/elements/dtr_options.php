@@ -11,8 +11,10 @@
             <button class = "btn btn-danger btn-sm removelate" style = "margin-right:2px;margin-bottom:2px"><b>L</b></button> 
             <button class = "btn btn-warning btn-sm removeundertime" style = "margin-right:2px;margin-bottom:2px" ><b>UT</b></button> 
             <button class = "btn btn-success btn-sm removelateundertime" style = "margin-right:2px;margin-bottom:2px "><b>L/UT</b></button> 
-            <button class = "btn btn-success btn-sm removedayoff" style = "margin-right:2px;margin-bottom:2px "><b>D. OFF</b></button> 
-            <button class = "btn btn-info btn-sm recompute" style = "margin-right:2px;margin-bottom:2px "><b>RECMPT</b></button> 
+            <button class = "btn btn-success btn-sm removedayoff" style = "margin-right:2px;margin-bottom:2px "><b>DAY OFF</b></button> 
+            <button class = "btn btn-info btn-sm recompute" style = "margin-right:2px;margin-bottom:2px "><b>RE-COMPUTE</b></button> 
+            <button class = "btn btn-primary btn-sm reflectleave " style = "margin-right:2px;margin-bottom:2px "><b>REFLECT LEAVE</b></button> 
+            <button class = "btn btn-primary btn-sm reflectob" style = "margin-right:2px;margin-bottom:2px "><b>REFLECT OB</b></button> 
              </div>
              </div>
              </div>

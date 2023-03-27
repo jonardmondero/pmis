@@ -727,5 +727,55 @@ $.ajax({
 
 });
 })
+//REFLECT THE OB
+$("#dtr tbody").on("click", ".reflectob", function () {
+
+  var empno = $('#hiddenempno').val();
+  event.preventDefault();
+  $.ajax({
+  url:'sql/reflect_all_ob.php',
+  type:'POST',
+  data:{
+    empno:empno,
+    dtefrom:datefr,
+    dteto:dateto,
+    status:'PENDING'
+  },
+  error:function (xhr, b, c) {     
+       console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+         }
+  
+  }).done(function(e){
+
+    post_notify('Succesfully reflected!', 'success');
+    loadDtr(empno, datefr, dateto);
+  })
+  
+  })
+
+  $("#dtr tbody").on("click", ".reflectleave", function () {
+
+    var empno = $('#hiddenempno').val();
+    event.preventDefault();
+    $.ajax({
+    url:'sql/reflect_all_leave.php',
+    type:'POST',
+    data:{
+      empno:empno,
+      dtefrom:datefr,
+      dteto:dateto,
+      status:'PENDING'
+    },
+    error:function (xhr, b, c) {     
+         console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+           }
+    
+    }).done(function(e){
+  
+      post_notify('Succesfully reflected!', 'success');
+      loadDtr(empno, datefr, dateto);
+    })
+    
+    })
 
 
