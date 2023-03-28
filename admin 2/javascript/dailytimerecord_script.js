@@ -5,6 +5,7 @@ $(function () {
 
 
 
+
  //F1 KEYPRESS
 $("#dtr tbody").on("keydown", "input", function (e) {
 if(e.keyCode == 112){
@@ -13,24 +14,10 @@ if(e.keyCode == 112){
   var getinput = $(this).closest("input").val();// get the current field
   var col1 = currow.find("td:eq(0)").text(); //date of the record
   const inMorningdisplay =  $(currow).find("td:eq(2) input[type='text']").val(); // get the value of the td
- 
   $(currow).find("td:eq(2) input[type='text']").val(getinput);// destination of the record
   const empno = $("#hiddenempno").val();
-
-    $(this).closest("input").val(inMorningdisplay);
-    // const inMorning =  $(currow).find("td:eq(2) input[type='text']").val();// get the value of the td
-    // const outMorning =  $(currow).find("td:eq(3) input[type='text']").val(); // get the value of the td
-    // const inAfternoon =  $(currow).find("td:eq(4) input[type='text']").val(); // get the value of the td
-    // const outAfternoon =  $(currow).find("td:eq(5) input[type='text']").val(); // get the value of the td
-    // const inOvertime =  $(currow).find("td:eq(6) input[type='text']").val(); // get the value of the td
-    // const outOvertime =  $(currow).find("td:eq(7) input[type='text']").val(); // get the value of the td
-    // console.log(inMorning,outMorning,inAfternoon,outAfternoon,inOvertime,outOvertime);
-    // updateInAm(inMorning);
-    // updateOutAm(outMorning);
-    // updateInPm(inAfternoon);
-    // updateOutPm(outAfternoon);
-    // updateOtIn(inOvertime);
-    // updateOtOut(outOvertime);
+  const field = "outAM";
+  updateDTR(empno, col1, field, getinput);
 
 
 
@@ -771,7 +758,7 @@ $("#dtr tbody").on("click", ".reflectob", function () {
            }
     
     }).done(function(e){
-  
+      console.log(e);
       post_notify('Succesfully reflected!', 'success');
       loadDtr(empno, datefr, dateto);
     })

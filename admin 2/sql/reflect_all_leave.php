@@ -29,7 +29,7 @@ while($result = $create_stmt->fetch(PDO::FETCH_ASSOC)){
     for ($z= $datefrom;$z<=$dateto;$z+=86400){
         $format = 'Y-m-d';
         $i = date($format, $z);
-        $SQL = "CALL spUpdateDtrLeave(?,?,?,?,?)";
+        $SQL = "CALL spUpdateDtrLeave(:entryno,:empno,:date,:leavetype,:duration)";
         $PREP = $con->prepare($SQL);
         // $PREP->execute([
         //     ':entryno'  =>   $entryno,
@@ -38,14 +38,18 @@ while($result = $create_stmt->fetch(PDO::FETCH_ASSOC)){
         //     ':leavetype'  =>  $leavetype,
         //     ':duration'  =>  $duration
         //     ]);
-        $PREP->bind_param("si",$entryno,$employeeNo,$i,$leavetype,$duration);
+        $PREP->bindParam(':entryno',$entryno);
+        $PREP->bindParam(':empno',$employeeNo);
+        $PREP->bindParam(':date',$i);
+        $PREP->bindParam(':leavetype',$leavetype);
+        $PREP->bindParam(':duration',$duration);
         $PREP->execute();
         
     }
 
-   
+    echo $dtefrom;
 }
-echo $dtefrom;
+
 }
 
 
