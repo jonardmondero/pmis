@@ -16,7 +16,7 @@ if(e.keyCode == 112){
   const inMorningdisplay =  $(currow).find("td:eq(2) input[type='text']").val(); // get the value of the td
   $(currow).find("td:eq(2) input[type='text']").val(getinput);// destination of the record
   const empno = $("#hiddenempno").val();
-  const field = "outAM";
+  const field = "inAM";
   updateDTR(empno, col1, field, getinput);
 
 
@@ -347,7 +347,7 @@ $(document).ready(function () {
     //date column on dtr
     var currow = $(this).closest("tr");
     var col1 = currow.find("td:eq(0)").text();
-
+    $("#edit-dtr tr").remove();
     $("#empdate").html(col1);
     $("#findlogs").load(
       "ajaxcall/loadlogs.php",

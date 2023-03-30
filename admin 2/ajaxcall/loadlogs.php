@@ -9,13 +9,15 @@ if(isset($_POST['empno'])){
 	$location = '';
 	$get_employee  = "Select b.biometricId,DATE_FORMAT(d.Date,'%c/%e/%Y') as dDate,d.Date from bioinfo b inner join dailytimerecord d on b.employeeNo = d.employeeNo where b.employeeNo =:empno and d.Date = :id";
 	$prepare_emp = $con->prepare($get_employee);
-	$prepare_emp->execute([':empno' => $_POST['empno'],
-							':id' => $_POST['date']]);
+	$prepare_emp->bindParam(':empno' , $_POST['empno']);
+	$prepare_emp->bindParam(':id' , $_POST['date']);
+	$prepare_emp->execute();
 	while($result = $prepare_emp->fetch(PDO::FETCH_ASSOC)){
 		$biometric = $result['biometricId'];
 		$date = $result['dDate'];
 		$dateunformatted = $result['Date'];
 }	
+unset($prepare_emp);
 	 $format_current_date = date_create($date); 
 	 $date_format_year = date_format($format_current_date,"Y");
 	 $date_format_month = date_format($format_current_date,"m");
@@ -31,12 +33,18 @@ if(isset($_POST['empno'])){
  AND datepart(mm,checktime) = :month and datepart(dd,checktime)= :day
  ORDER BY checktime" ;
  $pre_msaccess_stmt = $mscon->prepare($st_msaccess_search);
- $pre_msaccess_stmt->execute([
-	':biometric'	=>	 $biometric,
-	':year'	=>	 $date_format_year,
-	':month'	=>	 $date_format_month,
-	':day'	=>	 $date_format_day
- ]);
+
+ $pre_msaccess_stmt->bindParam(':biometric',$biometric);
+ $pre_msaccess_stmt->bindParam(':year'	, $date_format_year);
+ $pre_msaccess_stmt->bindParam(':month', $date_format_month);
+ $pre_msaccess_stmt->bindParam(':day', $date_format_day);
+ $pre_msaccess_stmt->execute();
+//  $pre_msaccess_stmt->execute([
+// 	':biometric'	=>	 $biometric,
+// 	':year'	=>	 $date_format_year,
+// 	':month'	=>	 $date_format_month,
+// 	':day'	=>	 $date_format_day
+//  ]);
  while( $timeresult = $pre_msaccess_stmt->fetch(PDO::FETCH_ASSOC)) {
  	if($timeresult == 0){
  		echo "failed";
@@ -82,6 +90,9 @@ if(isset($_POST['empno'])){
 			break;
 			case "3486862430036":
 				$location = "CHO BTM";
+			break;
+			case "OGT7030057022400440":
+				$location = "CDRRMO BTM";
 			break;
 		}
 
@@ -144,7 +155,7 @@ echo "</tr>";
 }
 
 }
-
+unset($pre_msaccess_stmt);
 
 }
 ?>

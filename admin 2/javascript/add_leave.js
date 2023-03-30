@@ -28,11 +28,16 @@ function(start, end, label) {
         " to " +
         end.format("YYYY-MM-DD")
     );
+    addLeave();
 }
 );
 
 $('#addleave').click(function () {
     event.preventDefault();
+    addLeave();
+});
+
+function addLeave(){
     var inclusivedate = $('#inclusivedate').val();
     var leavetype = $('#leavetype').val();
     var empno = $('#leaveempno').val();
@@ -77,8 +82,7 @@ $.ajax({
 })
        
     }
-});
-
+}
 // $('#specificdate').click(function () {
 //     event.preventDefault();
 //     var datefrom = $('#dtefrom').val();

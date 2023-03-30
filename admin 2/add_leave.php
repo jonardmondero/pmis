@@ -85,24 +85,11 @@ $prep_leave_type->execute();
                                             </div>
                                             </div>  
                                             <div class="row">
-                                                <div class="col-4">
-                                                    <div class="input-group date p-2">
-                                                        <span class="input-group-text"> <label class="">Date:
-                                                            </label>
 
-                                                        </span>
-
-                                                        <input style="margin-right:10px;" type="text"
-                                                            class="form-control " style="font-size:13px"
-                                                            autocomplete="off" name="datefrom" id="dtefrom"
-                                                            val="<?php echo $curdate; ?> ">
-
-                                                    </div>
-                                                </div>
-                                                <div class="col-5">
+                                            <div class="col-5">
                                                 <div class="form-group">
                                                     <label class = "mb-0">Leave Type</label>
-                                                    <select class="form-control  " id="leavetype"
+                                                    <select class="form-control " id="leavetype"
                                                         name="leavetype" required>
                                                         <option selected="selected">Select Leave</option>
                                                         <?php while ($get_result = $prep_leave_type->fetch(PDO::FETCH_ASSOC)) { ?>
@@ -113,6 +100,19 @@ $prep_leave_type->execute();
                                                     </select>
                                                 </div>
                                                 </div>
+                                                <div class="col-4">
+                                                    <div class="form-group date">
+                                                         <label class="mb-0">Date
+                                                        </label>
+
+                                                        <input style="margin-right:10px;" type="text"
+                                                            class="form-control text-center" style="font-size:13px"
+                                                            autocomplete="off" name="datefrom" id="dtefrom"
+                                                            val="<?php echo $curdate; ?> ">
+
+                                                    </div>
+                                                </div>
+                                            
                                                 <div class="col-3">
                                                 <div class="form-group">
                                                     <label class="mb-0">Inclusive Date</label>
@@ -133,11 +133,11 @@ $prep_leave_type->execute();
 
                                       
 
-                                        <div class="row justify-content-center">
+                                        <!-- <div class="row justify-content-center">
                                             <button type="submit" name="addleave"
                                                 id="addleave" class=" btn btn-danger "><i
                                                     class="fa fa-plus"></i></button>
-                                        </div>
+                                        </div> -->
 
                                     </div>
                                 </div>

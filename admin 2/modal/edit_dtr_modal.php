@@ -1,13 +1,13 @@
       <div class="modal fade" id="edit-dtr">
           <div class="modal-dialog">
               <div class="modal-content">
-                  <div class="modal-header">
-                      <h4 class="modal-title">Check Biometric Record</h4>
+                  <div class="modal-header bg-primary text-center ">
+                      <h4 class="modal-title text-center text-bold">VIEW MACHINE RECORD</h4>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                       </button>
                   </div>
-                  <div class="modal-body">
+                  <div class="modal-body bg-white">
                       <div class="container-fluid">
                           <div class="row ">
                               <div class="col-12 d-flex justify-content-center">

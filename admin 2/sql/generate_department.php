@@ -203,8 +203,13 @@ $db = '';
   }
     
 }
-$con = null;
-$mscon = null;
+unset($prepare_emp);
+unset($pre_insert_dtr);
+unset($pre_insert_off);
+unset($pre_msaccess_stmt);
+
+// $con = null;
+// $mscon = null;
 $_SESSION['currentGeneration'] = '';
 echo "Congratulations you successfully imported the selected department.";
   }

@@ -147,7 +147,11 @@ $category = $_POST['category'];
  
   }
 }
-  $con = null;
-  $mscon = null;
+unset($prepare_employee);
+unset($pre_msaccess_stmt);
+unset($pre_insert_off);
+unset($pre_insert_dtr);
+  // $con = null;
+  // $mscon = null;
   echo "Congratulations you already imported the record!";
 ?>
