@@ -1,6 +1,6 @@
 <div class="row" >
 
-<table class = "table table-hover table-bordered "  id = "travellist">
+<table class = "table table-hover table-bordered text-center "  id = "travellist">
                	<thead>
                		<th>Employee No</th>
                		<th>Full Name</th>

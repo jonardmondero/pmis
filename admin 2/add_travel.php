@@ -37,8 +37,8 @@ include 'dtrdesign/sidebar.php';
                     <div class="row">
                         <div class="col-4 no-gutters" style="resize:both;overflow:auto;">
                             <div class="card card-info">
-                                <div class="card-header">
-                                    <h3 class="card-title">Search Employee</h3>
+                                <div class="card-header bg-dark">
+                                    <h3 class="card-title text-bold">SEARCH EMPLOYEE</h3>
                                 </div>
 
                                 <?php include "elements/search_employee.php";
@@ -50,17 +50,23 @@ include 'dtrdesign/sidebar.php';
                         </div>
                         <div class="col-8">
                             <form method="POST" id="travelform" action=<?php htmlspecialchars("PHP_SELF");?>>
-                                <div class="col-12 no-gutters">
-                                    <div class="card ">
-                                        <div class="row" style="margin-top:20px;">
+                                <div class="col-12 ">
+                                    <div class="card shadow-none border-secondary border">
+                                        <div class="card-header bg-dark">
+                                            <div class="card-title">
+                                                <h4 class = "text-center">DETAILS</h4>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                        <div class="row">
 
                                             <div class="col-4 dateformat">
 
 
                                                 <div class="input-group" style="margin-left:10px">
                                                     <span class="input-group-text">
-                                                        <label><b>From:</b> </label>
-                                                        <i class="fa fa-calendar"></i>
+                                                        <label class = p-1><b>Date:</b> </label>
+                                                        <i class="fa fa-calendar m-0"></i>
                                                     </span>
                                                     <input type="text" class="form-control" autocomplete="off"
                                                         name="datefrom" id="datefrom" value="<?php echo $curdate; ?> ">
@@ -76,8 +82,8 @@ include 'dtrdesign/sidebar.php';
                                                 <span class="input-group-text">
                                                     <label>Duration: </label>
                                                 </span>
-                                                <select class=" form-control " name="duration" id="duration"
-                                                    style="height:3em;width:10em;">
+                                                <select class=" form-control h-100 " name="duration" id="duration"
+                                                  >
                                                     <option val="0">Whole Day</option>
                                                     <option val="1">Morning</option>
                                                     <option val="2">Afternoon</option>
@@ -89,7 +95,7 @@ include 'dtrdesign/sidebar.php';
                                                     <label style="padding-right:10px;padding-left: 10px">Type:
                                                     </label> </span>
 
-                                                <select style="height:3em;width:10em;" class="form-control" name="type"
+                                                <select class="form-control h-100" name="type"
                                                     id="type">
                                                     <option val="FW"> Field Work</option>
                                                     <option val="TOB">Travel on Official Business</option>
@@ -100,25 +106,26 @@ include 'dtrdesign/sidebar.php';
                                             </div>
 
                                         </div>
-                                        <div class="row" style="padding-right:10px;padding-left:10px;margin-top:20px;">
-                                            <div class="form-group col-4">
-                                                <label style="padding-right:10px;padding-left: 10px">Details </label>
-                                                <textarea name="details" id="details" class="form-control"
-                                                    style="height:5rem;"></textarea>
+                                        </div>
+                                        <div class="row ml-3 pt-3 mb-4" >
+                                            <div class="form-group col-6">
+                                                <label style="padding-right:10px;padding-left: 10px">Purpose </label>
+                                                <textarea  name="details" id="details" class="form-control h-100 w-100"
+                                                   ></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- DISPLAY'S THE SECOND SECTION OF THE FORM -->
-                                    <div class="card card-primary">
-                                        <div class="card-header">
-                                            <h3 class="card-title">Employee Details</h3>
+                                    <div class="card card-white shadow-none border border-secondary">
+                                        <div class="card-header text-center">
+                                            <h3 class="card-title text-bold">EMPLOYEE LIST</h3>
                                         </div>
                                         <div class="card-body">
                                             <?php include "elements/travelorder_details.php";?>
                                         </div>
                                         <div class="row" style=" margin:auto;padding-top:30px;padding-bottom: 30px">
                                             <button type="submit" name="savetravel" id="savetravel"
-                                                class=" btn btn-primary custom_button"><i
+                                                class=" btn btn-info custom_button"><i
                                                     class="fa fa-save"></i></button>
                                         </div>
                                     </div>
