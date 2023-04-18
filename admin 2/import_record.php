@@ -1,5 +1,6 @@
 <?php
 include('../config/config.php');
+include('../config/mssql.php');
 include('reject_user_account.php');
 include('sql/sqlbackup/backup_sql.php');
 $progress = '';
@@ -7,7 +8,13 @@ $alert_msg='';
 $titlename = 'Import Record';
 // include('sql/generate_record.php');
 // include('sql/generate_department.php');
-include('dtrdesign/header.php');
+$totalRecord = 0;
+$getTotalBTMRecord = "select count(checktime) as totalrecord from dbo.CHECKINOUT";
+$getResult = $mscon->prepare($getTotalBTMRecord);
+$getResult->execute();
+while($row = $getResult->fetch(PDO::FETCH_ASSOC)){
+    $totalRecord = $row['totalrecord'];
+}
 
 $st_get_employee = "SELECT CONCAT(firstName,' ', SUBSTRING(middleName,1,1),'.',' ',lastName) as fullName,
  employeeNo as empno, biometricId as biopin from bioinfo where status = 'Active'";
@@ -30,7 +37,7 @@ $customValueCheckOut = "O";
 
 <!DOCTYPE html>
 <html>
-
+<?php include('dtrdesign/header.php'); ?>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
 
@@ -62,6 +69,20 @@ $customValueCheckOut = "O";
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
+                    <div class="row">
+                    <div class="col-2">
+                            <div class="small-box bg-danger ">
+                                <div class="inner">
+                                    <h3 class = "mb-5"><?php echo $totalRecord;?></h3>
+                                    <p>Biometric Logs counter</p>
+                                </div>
+                                <div class="icon mt-4">
+                                    <i class="fa fa-calendar" id="addemp" data-target="#addemployee"></i>
+                                </div>
+                              
+                            </div>
+                        </div>
+                    </div>
                 </div><!-- /.container-fluid -->
             </div>
             <!-- /.content-header -->

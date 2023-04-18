@@ -165,13 +165,13 @@ $(document).ready(function () {
       dropdownParent: $("#addemployee"),
     
     });
-
+    
     $("#emp_sched").select2({
       dropdownParent: $("#addemployee"),
     
     });
   });
-
+ 
   //GENERATE EMPLOYEE NO
   $("#lname").on("change", function () {
     if ($("#empnum").val() == "") {

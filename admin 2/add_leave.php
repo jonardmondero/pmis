@@ -85,7 +85,7 @@ $prep_leave_type->execute();
                                             </div>
                                             </div>  
                                             <div class="row">
-
+                    
                                             <div class="col-5">
                                                 <div class="form-group">
                                                     <label class = "mb-0">Leave Type</label>

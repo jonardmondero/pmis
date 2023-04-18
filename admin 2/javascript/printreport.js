@@ -70,6 +70,7 @@ function printIndividual(){
   if (month == "December") {
     finalmonth = "12";
   }
+
   //  console.log(getDaysInMonth(finalmonth,year));
   var param =
     "empno=" +
