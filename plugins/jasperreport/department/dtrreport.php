@@ -73,7 +73,7 @@ INNER JOIN
         FROM 
             DAILYTIMERECORD 
         WHERE 
-            DATE LIKE '".$date."' 
+            DATE LIKE '".$date."-%' 
         GROUP BY 
             employeeNo
     ) t 
@@ -81,7 +81,7 @@ ON
     e.employeeNo = t.employeeNo 
 WHERE 
     e.department = '".$dept."'  
-    AND DATE LIKE '".$date."' 
+    AND DATE LIKE '".$date."-%' 
     AND e.status = 'Active' 
     AND e.employmentStatus = '".$emp_status."' 
 GROUP BY 
