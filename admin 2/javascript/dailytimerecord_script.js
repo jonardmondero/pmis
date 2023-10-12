@@ -522,9 +522,9 @@ $("#findtable tbody").on("change", "#insert_record", function (e) {
   } else if (insertstate == "Overtime Out") {
     convert = "otOut";
   }
-  console.log("hello");
+  console.log("reflect logs");
   var empnum = $("#hiddenempno").val();
-  var col1 = currow.find("td:eq(2)").text();
+  var col1 = currow.find("td:eq(3)").text();
   var date = currow.find("td:eq(0)").text();
   $.ajax({
     url: "ajaxcall/addlogs.php",
@@ -764,5 +764,26 @@ $("#dtr tbody").on("click", ".reflectob", function () {
     })
     
     })
+
+
+    $("#dtr tbody").on("click", ".copydata", function (e) {
+      e.preventDefault();
+   
+      var currow = $(this).closest("tr");
+      var col1 = currow.find("td:eq(0)").text();
+      var col2 = $(currow).find("td:eq(2) input[type='text']").val();
+      var col3 = $(currow).find("td:eq(3) input[type='text']").val();
+      var col4 = $(currow).find("td:eq(4) input[type='text']").val();
+      var col5 = $(currow).find("td:eq(5) input[type='text']").val();
+
+      let copiedData = [col1, col2, col3, col4, col5].join('\t');
+      navigator.clipboard.writeText(copiedData).then(function() {
+        alert('Text successfully copied to clipboard');
+      }).catch(function(err) {
+        alert('Could not copy text to clipboard', err);
+      });
+
+      
+      })
 
 

@@ -393,7 +393,7 @@ $customValueCheckOut = "O";
 
 
         // GENERATE THE BATCH OF OFFICES
-        $("#import_dep_batch").on("click",async function() {
+        $("#import_dep_batch").on("click", function() {
 
             event.preventDefault();
             var loading = '';
@@ -421,7 +421,7 @@ $customValueCheckOut = "O";
 
             })
             console.log(arrayDept);
-           await $.ajax({
+            $.ajax({
                 url: "sql/generate_batch.php",
                 type: "POST",
                 data: {
@@ -513,7 +513,7 @@ $.ajax({
 
     });
     //GENERATE BY CATEGORY
-    $("#generate_category").on("click", async function() {
+    $("#generate_category").on("click", function() {
 
         event.preventDefault();
         var cat = $('#category').val();
@@ -523,7 +523,7 @@ $.ajax({
         $('.alert').attr("class", "alert alert-danger");
         $("#generate_category").prop("disabled", true);
         $("#import_status").html("The system is importing logs. Please wait...");
-       await $.ajax({
+        $.ajax({
             url: "sql/generate_category.php",
             type: "POST",
             data: {
@@ -656,10 +656,10 @@ $.ajax({
         });
     }
 
-    $("#btnDeactivate").on("click", async function(e) {
+    $("#btnDeactivate").on("click", function(e) {
         e.preventDefault();
         var getMonth = $("#clcDeactivate").val();
-      await $.ajax({
+        $.ajax({
             url: "ajaxcall/get_nologsUsers.php",
             type: "POST",
             data: {

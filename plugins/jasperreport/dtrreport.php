@@ -12,10 +12,13 @@ $days = $_GET['days'];
 
 
 $PHPJasperXML = new PHPJasperXML();
-// $PHPJasperXML->debugsql=true;
+$PHPJasperXML->debugsql=false;
 // $PHPJasperXML->arrayParameter=array("employeeNo"=>'12345678');
         $xml = $PHPJasperXML->load_xml_file("report3x3.jrxml");
-       
+        $PHPJasperXML->arrayParameter = array(
+                "empno" => $empno,
+                "date" => $date
+            );
 // $PHPJasperXML->xml_dismantle($xml);
 $PHPJasperXML->sql ="
 SELECT CONCAT(e.lastName,', ',e.firstName,', ',LEFT(e.middleName, 1),'.')  AS fullName,
@@ -30,6 +33,7 @@ FROM bioinfo e
 INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo WHERE e.employeeNo = ".$empno." 
 AND d.Date LIKE '".$date."'
 GROUP BY Date";
+
 // $PHPJasperXML->sql = "CALL spPrintDtr('12345678','2019-10-01','2019-10-31')";
 $PHPJasperXML->transferDBtoArray($server,$user,$pass,$db);
 $PHPJasperXML->outpage("I");    //page output method I:standard output  D:Download file

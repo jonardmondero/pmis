@@ -3,7 +3,7 @@
             <button class = "btn btn-warning addlogs"  > <i class = "fa fa-search"></i></button>
 
             
-              <button class="btn btn-danger" type="button" data-toggle="collapse"
+              <button class="btn btn-danger " type="button" data-toggle="collapse"
            data-target="#showOptions'.$result3['Date'].'" aria-expanded="false" ><i class = "fa fa-edit"></i></button>
             <div class="collapse multi-collapse" id="showOptions'.$result3['Date'].'">
            <div class="card shadow-none card-body"  style = "width:100px;">
@@ -15,6 +15,7 @@
             <button class = "btn btn-info btn-sm recompute" style = "margin-right:2px;margin-bottom:2px "><b>RE-COMPUTE</b></button> 
             <button class = "btn btn-primary btn-sm reflectleave " style = "margin-right:2px;margin-bottom:2px "><b>REFLECT LEAVE</b></button> 
             <button class = "btn btn-primary btn-sm reflectob" style = "margin-right:2px;margin-bottom:2px "><b>REFLECT OB</b></button> 
+            <button class = "btn btn-info btn-sm copydata" style = "margin-right:2px;margin-bottom:2px "><b>COPY LOGS</b></button> 
              </div>
              </div>
              </div>

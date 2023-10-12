@@ -1,16 +1,18 @@
 <?php
-include('../../config/config.php');
-include('../../config/mssql.php');
+include_once('../../config/config.php');
+include_once('../../config/mssql.php');
 // include ('../../config/msconfig.php');
 if(isset($_POST['empno'])){
 	$set_selected ='';
+	$empno =  $_POST['empno'];
+	$selected_date = $_POST['date'];
 	$biometric = '';
 	$date = '';
 	$location = '';
-	$get_employee  = "Select b.biometricId,DATE_FORMAT(d.Date,'%c/%e/%Y') as dDate,d.Date from bioinfo b inner join dailytimerecord d on b.employeeNo = d.employeeNo where b.employeeNo =:empno and d.Date = :id";
+	$get_employee  = "select * from getLogs where employeeNo =:empno and Date = :id LIMIT 1" ;
 	$prepare_emp = $con->prepare($get_employee);
-	$prepare_emp->bindParam(':empno' , $_POST['empno']);
-	$prepare_emp->bindParam(':id' , $_POST['date']);
+	$prepare_emp->bindParam(':empno', $empno);
+	$prepare_emp->bindParam(':id' , $selected_date);
 	$prepare_emp->execute();
 	while($result = $prepare_emp->fetch(PDO::FETCH_ASSOC)){
 		$biometric = $result['biometricId'];
@@ -27,11 +29,19 @@ unset($prepare_emp);
 	// $st_msaccess_search = "SELECT  FORMAT([CHECKINOUT.CHECKTIME],'$date_format') as checktime,CHECKINOUT.CHECKTYPE as checktype,USERINFO.BADGENUMBER,sn from CHECKINOUT inner join USERINFO  on CHECKINOUT.USERID = USERINFO.USERID where USERINFO.BadgeNumber = '$biometric' AND CHECKINOUT.CHECKTIME like '$date%'";
  // $st_msaccess_search="SELECT FORMAT([CHECKINOUT.CHECKTIME],'$date_format') AS checktime,CHECKINOUT.CHECKTYPE as checktype, USERINFO.BADGENUMBER from CHECKINOUT inner join USERINFO on CHECKINOUT.USERID = USERINFO.USERID WHERE USERINFO.BadgeNumber = '$biopin' AND CHECKINOUT.CHECKTIME like '$date%'";
 
- $st_msaccess_search = "SELECT distinct top 20 checktype ,checktime,sn ,badgenumber from checkinout   
- inner join userinfo  on  checkinout.USERID = userinfo.USERID 
- where userinfo.badgenumber = :biometric and  DATEPART(yy,checktime)= :year 
- AND datepart(mm,checktime) = :month and datepart(dd,checktime)= :day
- ORDER BY checktime" ;
+//  $st_msaccess_search = "SELECT distinct top 20 checktype ,checktime,sn ,badgenumber from checkinout   
+//  inner join userinfo  on  checkinout.USERID = userinfo.USERID 
+//  where userinfo.badgenumber = :biometric and  DATEPART(yy,checktime)= :year 
+//  AND datepart(mm,checktime) = :month and datepart(dd,checktime)= :day
+//  ORDER BY checktime" ;
+
+
+// $st_msaccess_search = "SELECT distinct top 20 checktype,checktime,badgenumber,sn from ViewLogs  where
+// badgenumber = :biometric and  DATEPART(yy,checktime)= :year 
+// AND datepart(mm,checktime) = :month and datepart(dd,checktime)= :day
+// ORDER BY checktime" ; 
+
+$st_msaccess_search = "EXEC GetLogs @PIN = :biometric , @MONTH = :month, @YEAR = :year, @DAY = :day";
  $pre_msaccess_stmt = $mscon->prepare($st_msaccess_search);
 
  $pre_msaccess_stmt->bindParam(':biometric',$biometric);
@@ -56,7 +66,8 @@ unset($prepare_emp);
 	 $checktype = $timeresult['checktype'];
 	 $checkstate = 'Check In';
 	 $checkColor = 'Green';
-
+	$location = "NO LOCATION";
+	
 		switch($sn){
 			case "3569182360161":
 			$location = "CED BTM";
@@ -94,6 +105,9 @@ unset($prepare_emp);
 			case "OGT7030057022400440":
 				$location = "CDRRMO BTM";
 			break;
+			case "CQUJ222660221":
+				$location = "AUDITORIUM BTM";
+			break;
 		}
 
 
@@ -117,13 +131,33 @@ unset($prepare_emp);
 		break;
 
 	 }
-	 
+	 $punch_state = "";
+
+	 switch($checktype){
+		case "O":
+			$punch_state = 'Check In';
+			break;
+		case "0":
+			$punch_state = 'Break Out';
+			
+			break;
+		case "1":
+			$punch_state = 'Break In';
+			break;
+		case "i":
+		$punch_state = 'Check Out';
+		break;
+
+	 }
  	$options = array('Check In','Break Out','Break In','Check Out','Overtime In','Overtime Out');
  	echo $checktime;	
  	echo "<tr style = 'background-color:".$checkColor."'>";
  	echo "<td>";
  	echo $dateunformatted;
  	echo "</td>";
+	echo "<td>";
+	echo $punch_state;
+	echo "</td>";
 	 echo "<td>";
  	echo $location;
  	echo "</td>";
