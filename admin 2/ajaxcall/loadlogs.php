@@ -5,19 +5,20 @@ include_once('../../config/mssql.php');
 if(isset($_POST['empno'])){
 	$set_selected ='';
 	$empno =  $_POST['empno'];
-	$selected_date = $_POST['date'];
+	$date_searched = $_POST['date'];
+	$selected_date = date_create($_POST['date']);
 	$biometric = '';
-	$date = '';
+	$date = date_format($selected_date,"m/d/Y");
 	$location = '';
-	$get_employee  = "select * from getLogs where employeeNo =:empno and Date = :id LIMIT 1" ;
+	$get_employee  = "select * from getLogs where employeeNo =:empno LIMIT 1" ;
 	$prepare_emp = $con->prepare($get_employee);
 	$prepare_emp->bindParam(':empno', $empno);
-	$prepare_emp->bindParam(':id' , $selected_date);
+	// $prepare_emp->bindParam(':id' , $selected_date);
 	$prepare_emp->execute();
 	while($result = $prepare_emp->fetch(PDO::FETCH_ASSOC)){
 		$biometric = $result['biometricId'];
-		$date = $result['dDate'];
-		$dateunformatted = $result['Date'];
+		// $date = $result['dDate'];
+		// $dateunformatted = $result['Date'];
 }	
 unset($prepare_emp);
 	 $format_current_date = date_create($date); 
@@ -153,7 +154,7 @@ $st_msaccess_search = "EXEC GetLogs @PIN = :biometric , @MONTH = :month, @YEAR =
  	echo $checktime;	
  	echo "<tr style = 'background-color:".$checkColor."'>";
  	echo "<td>";
- 	echo $dateunformatted;
+ 	echo $date_searched;
  	echo "</td>";
 	echo "<td>";
 	echo $punch_state;

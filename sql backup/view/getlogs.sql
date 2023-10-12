@@ -5,13 +5,16 @@ USE `pmis`$$
 DROP VIEW IF EXISTS `getlogs`$$
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `getlogs` AS 
-SELECT
+/*select
   `b`.`biometricId` AS `biometricId`,
-  DATE_FORMAT(`d`.`Date`,'%c/%e/%Y') AS `dDate`,
+  date_format(`d`.`Date`,'%c/%e/%Y') AS `dDate`,
   `d`.`Date`        AS `Date`,
   b.employeeNo
-FROM (`bioinfo` `b`
-   JOIN `dailytimerecord` `d`
-     ON (`b`.`employeeNo` = `d`.`employeeNo`))$$
+from (`bioinfo` `b`
+   join `dailytimerecord` `d`
+     on (`b`.`employeeNo` = `d`.`employeeNo`))*/
+     
+     SELECT employeeNo, biometricId FROM bioinfo;
+     $$
 
 DELIMITER ;
