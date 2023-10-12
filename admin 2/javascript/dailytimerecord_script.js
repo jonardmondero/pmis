@@ -768,7 +768,7 @@ $("#dtr tbody").on("click", ".reflectob", function () {
 
     $("#dtr tbody").on("click", ".copydata", function (e) {
       e.preventDefault();
-   
+      var empno = $('#hiddenempno').val();
       var currow = $(this).closest("tr");
       var col1 = currow.find("td:eq(0)").text();
       var col2 = $(currow).find("td:eq(2) input[type='text']").val();
@@ -778,7 +778,8 @@ $("#dtr tbody").on("click", ".reflectob", function () {
 
       let copiedData = [col1, col2, col3, col4, col5].join('\t');
       navigator.clipboard.writeText(copiedData).then(function() {
-        alert('Text successfully copied to clipboard');
+        post_notify("Data has ben copied", "success");
+        loadDtr(empno, datefr, dateto);
       }).catch(function(err) {
         alert('Could not copy text to clipboard', err);
       });
