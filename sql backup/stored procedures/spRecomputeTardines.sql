@@ -23,12 +23,12 @@ SET @convertedtimeIn = (SELECT STR_TO_DATE(timeIn, '%h:%i %p')); /*CONVERT THE T
 SET @convertedbreakOut = (SELECT STR_TO_DATE(breakOut, '%h:%i %p')); /*CONVERT THE TIME INTO 24 HOURS FORMAT */
 SET @convertedbreakIn = (SELECT STR_TO_DATE(breakIn, '%h:%i %p')); /*CONVERT THE TIME INTO 24 HOURS FORMAT */
 SET @convertedcheckOut = (SELECT STR_TO_DATE(checkOut, '%h:%i %p')); /*CONVERT THE TIME INTO 24 HOURS FORMAT */
-SET @bolsched = (SELECT SCHEDULE FROM bioinfo WHERE employeeNo = empno);
+SET @bolsched = (SELECT SCHEDULE FROM bioinfo WHERE employeeNo = empno LIMIT 1);
 SET @workId = (SELECT workScheduleId FROM bioinfo WHERE employeeNo = empno);  /*GET THE EMPLOYEE SCHEDULE THAT WILL BE USED TO FIND THE SCHEDULE DATE*/
-SET @schedInAm = (SELECT inAM FROM workscheduledetail WHERE workScheduleDetail COLLATE latin1_general_ci = @workId AND DAY = @getDay);/*SELECT THE time in on work schedule detail*/
-SET @schedOutAm = (SELECT outAM FROM workscheduledetail WHERE  workScheduleDetail COLLATE latin1_general_ci = @workId AND DAY = @getDay);/*SELECT THE time out am on work schedule detail*/
-SET @schedInPm = (SELECT inPM FROM workscheduledetail WHERE   workScheduleDetail COLLATE latin1_general_ci = @workId  AND DAY = @getDay);/*SELECT THE time in pm work schedule detail*/
-SET @schedOutPm = (SELECT outPM FROM workscheduledetail WHERE  workScheduleDetail COLLATE latin1_general_ci = @workId  AND DAY = @getDay);/*SELECT THE time out pm on work schedule detail*/
+SET @schedInAm = (SELECT inAM FROM workscheduledetail WHERE workScheduleDetail COLLATE latin1_general_ci = @workId AND DAY = @getDay LIMIT 1);/*SELECT THE time in on work schedule detail*/
+SET @schedOutAm = (SELECT outAM FROM workscheduledetail WHERE  workScheduleDetail COLLATE latin1_general_ci = @workId AND DAY = @getDay LIMIT 1);/*SELECT THE time out am on work schedule detail*/
+SET @schedInPm = (SELECT inPM FROM workscheduledetail WHERE   workScheduleDetail COLLATE latin1_general_ci = @workId  AND DAY = @getDay LIMIT 1);/*SELECT THE time in pm work schedule detail*/
+SET @schedOutPm = (SELECT outPM FROM workscheduledetail WHERE  workScheduleDetail COLLATE latin1_general_ci = @workId  AND DAY = @getDay LIMIT 1);/*SELECT THE time out pm on work schedule detail*/
 SET @lateMorning = (SELECT STR_TO_DATE(@schedInAm, '%h:%i %p')); /*CONVERT THE TIME FROM SCHEDULE INTO 24 HOURS FORMAT*/
 SET @undertimeMorning = (SELECT STR_TO_DATE(@schedOutAm, '%h:%i %p')); /*CONVERT THE TIME FROM SCHEDULE INTO 24 HOURS FORMAT*/
 SET @lateAfternoon = (SELECT STR_TO_DATE(@schedInPm, '%h:%i %p')); /*CONVERT THE TIME FROM SCHEDULE INTO 24 HOURS FORMAT*/
@@ -66,7 +66,7 @@ SET @undertimeAfternoon = (SELECT STR_TO_DATE(@schedOutPm, '%h:%i %p')); /*CONVE
     late = @finalLate,
     undertime = @finalUndertime
     WHERE employeeNo = empno
-    AND DATE = ddate; 
+    AND DATE = ddate LIMIT 1; 
     
     
     END IF;
