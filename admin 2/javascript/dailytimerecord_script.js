@@ -289,7 +289,7 @@ function updateUndertime(value) {
   updateLateUT(empno, date, field, value);
 }
 
-function updateDTR(empno, date, field, value) {
+ function updateDTR(empno, date, field, value) {
   $.ajax({
     url: "ajaxcall/update_dtr.php",
     type: "POST",
@@ -313,8 +313,8 @@ function updateDTR(empno, date, field, value) {
   });
 }
 
-function updateLateUT(empno, date, field, value) {
-  $.ajax({
+ function updateLateUT(empno, date, field, value) {
+   $.ajax({
     url: "ajaxcall/updateLateUT.php",
     type: "POST",
     data: {
@@ -400,14 +400,14 @@ $(document).ready(function () {
     });
   });
   //REMOVE THE UNDERTIME
-  $("#dtr tbody").on("click", ".removeundertime", function () {
+  $("#dtr tbody").on("click", ".removeundertime",async function () {
     var late = "removeundertime";
     event.preventDefault();
     var empnum = $("#hiddenempno").val();
     var currow = $(this).closest("tr");
     var col1 = currow.find("td:eq(0)").text();
 
-    $.ajax({
+   await $.ajax({
       url: "ajaxcall/remove_late.php",
       type: "POST",
       data: {
@@ -546,7 +546,7 @@ $("#findtable tbody").on("change", "#insert_record", function (e) {
   });
 });
 //RECOMPUTE LATE AND UNDERTIME
-$("#dtr tbody").on("click", ".recompute", function () {
+$("#dtr tbody").on("click", ".recompute", async function () {
   event.preventDefault();
   var empnum = $("#hiddenempno").val();
   var currow = $(this).closest("tr");
@@ -556,7 +556,7 @@ $("#dtr tbody").on("click", ".recompute", function () {
   var col4 = $(currow).find("td:eq(4) input[type='text']").val();
   var col5 = $(currow).find("td:eq(5) input[type='text']").val();
   console.log(col2, col3, col4, col5);
-  $.ajax({
+ await $.ajax({
     url: "ajaxcall/recompute.php",
     type: "POST",
     data: {
@@ -580,33 +580,6 @@ $("#dtr tbody").on("click", ".recompute", function () {
   }).done(function (e) {
     $("#hiddenempno").val(empnum);
     loadDtr(empnum, datefr, dateto);
-  });
-});
-//UPDATE THE SUPERVISOR
-$("#btn_update_supervisor").click(function () {
-  const department = $("#update_supervisor_department").val();
-  const supervisor_name = $("#supervisor_name").val();
-  console.log(department, supervisor_name);
-  $.ajax({
-    type: "POST",
-    url: "ajaxcall/update_supervisor.php",
-    data: {
-      dept: department,
-      supervisor: supervisor_name,
-    },
-    success: function (message) {
-      notification(message, "", "Refresh", "success", "success");
-    },
-    error: function (xhr, b, c) {
-      console.log(
-        "xhr=" +
-          xhr.responseText +
-          " b=" +
-          b.responseText +
-          " c=" +
-          c.responseText
-      );
-    },
   });
 });
 
@@ -786,5 +759,18 @@ $("#dtr tbody").on("click", ".reflectob", function () {
 
       
       })
+
+
+      function allowDrop(event) {
+        event.preventDefault(); // Prevent default to allow drop
+    }
+    
+    function drop(event) {
+        event.preventDefault();
+        var data = event.dataTransfer.getData('text/plain');
+        event.target.value = data;
+        console.log(data);
+        updateOutPm(data); // Call your function after the drop
+    }
 
 

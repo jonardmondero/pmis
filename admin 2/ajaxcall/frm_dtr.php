@@ -50,7 +50,7 @@ if(isset($_POST['employeeno'])) {
             echo"</td>";
 
             echo '<td  >';
-            echo '<input type ="text" class = "text_align border border-dark dtr-input-size" '.$cellStyle1.'"  onchange="updateInAm(this.value);" onfocus="this.select();"   value="'.$result3['inAM'].'" >';
+            echo '<input type ="text" class = "text_align border border-dark dtr-input-size" '.$cellStyle1.'" ondrop="drop(event)" ondragover="allowDrop(event)" onchange="updateInAm(this.value);" onfocus="this.select();"   value="'.$result3['inAM'].'" >';
             echo"</td>";
 
             echo '<td >';

@@ -29,7 +29,7 @@ AND d.Date BETWEEN '".$datefrom."' AND '".$dateto."')as total
 FROM bioinfo e 
 INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo WHERE e.employeeNo = ".$empno." 
 AND d.Date BETWEEN '".$datefrom."' AND '".$dateto."'
-GROUP BY Date";
+GROUP BY Date LIMIT 16";
 // $PHPJasperXML->sql = "CALL spPrintDtr('12345678','2019-10-01','2019-10-31')";
 $PHPJasperXML->transferDBtoArray($server,$user,$pass,$db);
 

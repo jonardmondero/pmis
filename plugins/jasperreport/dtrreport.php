@@ -15,10 +15,10 @@ $PHPJasperXML = new PHPJasperXML();
 $PHPJasperXML->debugsql=false;
 // $PHPJasperXML->arrayParameter=array("employeeNo"=>'12345678');
         $xml = $PHPJasperXML->load_xml_file("report3x3.jrxml");
-        $PHPJasperXML->arrayParameter = array(
-                "empno" => $empno,
-                "date" => $date
-            );
+        // $PHPJasperXML->arrayParameter = array(
+        //         "empno" => $empno,
+        //         "date" => $date
+        //     );
 // $PHPJasperXML->xml_dismantle($xml);
 $PHPJasperXML->sql ="
 SELECT CONCAT(e.lastName,', ',e.firstName,', ',LEFT(e.middleName, 1),'.')  AS fullName,
@@ -28,11 +28,24 @@ TIME_FORMAT(ADDTIME(late,undertime),'%H:%i') as late,
 TIME_FORMAT(d.undertime,'%H:%i') as undertime,
 (SELECT TIME_FORMAT(ADDTIME(SEC_TO_TIME(SUM(TIME_TO_SEC(late))),SEC_TO_TIME(SUM(TIME_TO_SEC(undertime)))),'%H:%i')  FROM bioinfo e 
 INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo WHERE e.employeeNo = ".$empno." 
-AND d.Date LIKE '".$date."')as total 
+AND d.Date LIKE '".$date."' LIMIT 31)as total 
 FROM bioinfo e 
 INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo WHERE e.employeeNo = ".$empno." 
 AND d.Date LIKE '".$date."'
-GROUP BY Date";
+GROUP BY Date LIMIT 31";
+
+// $PHPJasperXML->sql ="
+// SELECT CONCAT(e.lastName,', ',e.firstName,', ',LEFT(e.middleName, 1),'.')  AS fullName,
+// d.inAM,d.outAM,d.inPM,d.outPM,d.otIn,d.otOut,e.supervisor,DATE_FORMAT(d.Date,'%d')as day,
+// DATE_FORMAT(d.Date,'%M,%Y')AS month,
+// TIME_FORMAT(ADDTIME(late,undertime),'%H:%i') as late,
+// TIME_FORMAT(d.undertime,'%H:%i') as undertime,
+// TIME_FORMAT(ADDTIME(SEC_TO_TIME(SUM(TIME_TO_SEC(late))),SEC_TO_TIME(SUM(TIME_TO_SEC(undertime)))),'%H:%i') as total 
+// FROM bioinfo e 
+// INNER JOIN dailytimerecord d ON e.employeeNo = d.employeeNo WHERE e.employeeNo = ".$empno." 
+// AND d.Date LIKE '".$date."'
+// GROUP BY Date LIMIT 31";
+
 
 // $PHPJasperXML->sql = "CALL spPrintDtr('12345678','2019-10-01','2019-10-31')";
 $PHPJasperXML->transferDBtoArray($server,$user,$pass,$db);

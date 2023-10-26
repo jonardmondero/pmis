@@ -135,222 +135,233 @@ $workid='';
     <?php include('dtrdesign/footer.php');?>
 
     <script>
-    $(document).ready(function() {
-        $('#tablesched').DataTable({
-            'paging': true,
-            stateSave: "true",
-            'lengthChange': true,
-            'searching': true,
-            'ordering': true,
-            'info': true,
-            'autoWidth': true,
-            'autoHeight': true
-        });
-    });
-
-    function is_valid(element) {
-        // callback function
-        // returns every value
-        return element.value;
-    }
-
-
-    //SAVE THE WORK SCHEDULE
-    $('#insert').click(function(event) {
-        event.preventDefault();
-        var workId = $('#workcode').val();
-        var status = $('#workstatus').val();
-        var workid = $('#worksched-form').serializeArray();
-        console.log(workid);
-
-
-        var dataObj = {};
-        $(workid).each(function(i, field) {
-            dataObj[field.name] = field.value;
+        $(document).ready(function () {
+            $('#tablesched').DataTable({
+                'paging': true,
+                stateSave: "true",
+                'lengthChange': true,
+                'searching': true,
+                'ordering': true,
+                'info': true,
+                'autoWidth': true,
+                'autoHeight': true
+            });
         });
 
-        workid.push({
-            name: 'status',
-            value: status
-        });
+        function is_valid(element) {
+            // callback function
+            // returns every value
+            return element.value;
+        }
 
-        $.ajax({
 
-            url: 'ajaxcall/insert_workschedule.php',
-            method: 'POST',
-            data: $.param(workid),
-            dataType: 'json'
-        })
+        //SAVE THE WORK SCHEDULE
+        $('#insert').click(function (event) {
+            event.preventDefault();
+            var workId = $('#workcode').val();
+            var status = $('#workstatus').val();
+            var workid = $('#worksched-form').serializeArray();
+            console.log(workid);
 
-        $('#input-sched tr').each(function(row, tr) {
 
-            
-            // var col1 = $(tr).find('td:eq(0)').text();
-            // var col2 = $(tr).find('td:eq(1)').text();
-            // var col3 = $(tr).find('td:eq(2)').text();
-            // var col4 = $(tr).find('td:eq(3)').text();
-            // var col5 = $(tr).find('td:eq(4)').text();
-            // console.log(col1, col2, col3, col4, col5);
-            // // TableData = $.toJSON(storeTblValues());
-            // console.log(col1);
-            // $.ajax({
+            var dataObj = {};
+            $(workid).each(function (i, field) {
+                dataObj[field.name] = field.value;
+            });
 
-            //     url: 'ajaxcall/insert_workscheduledetail.php',
-            //     method: 'POST',
-            //     data: {
-            //         workId: workId,
-            //         Day: col1,
-            //         CheckIn: col2,
-            //         BreakOut: col3,
-            //         BreakIn: col4,
-            //         CheckOut: col5
-            //     },
-            //     dataType: 'json',
-            //     success: function(e) {
-            //         console.log(e);
-            //         notification("Congratulations", "", "Refresh", "success",
-            // "success");
-            //     },
-            //     error: function(xhr, b, c) {
-            //         console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" +
-            //             c.responseText);
-            //     }
-            // })
-            var currow=  $('#show_sched').closest('tr');
-            var col1 = $(tr).find('td:eq(0)').text();
-            var col2 = $(tr).find('td:eq(1)').text();
-            var col3 = $(tr).find('td:eq(2)').text();
-            var col4 = $(tr).find('td:eq(3)').text();
-            var col5 = $(tr).find('td:eq(4)').text();
-            console.log(col1, col2, col3, col4, col5);
-            console.log(workId);
+            workid.push({
+                name: 'status',
+                value: status
+            });
+
             $.ajax({
-                url: 'ajaxcall/insert_workscheduledetail.php',
-                type: 'POST',
-                data: {
-                    workId: workId,
-                    day: col1,
-                    CheckIn: col2,
-                    BreakOut: col3,
-                    BreakIn: col4,
-                    CheckOut: col5
-                },
-                success: function(e) {
-                    notification("Congratulations", "", "Refresh", "success",
-                        "success");
-                   console.log(e);
-                },
-                error: function(xhr, b, c) {
-                    console.log("xhr=" + xhr.responseText + " b=" + b.responseText +
-                        " c=" +
-                        c.responseText);
+
+                url: 'ajaxcall/insert_workschedule.php',
+                method: 'POST',
+                data: $.param(workid),
+                dataType: 'json'
+            })
+
+            $('#input-sched tr').each(function (row, tr) {
 
 
-                }
+                // var col1 = $(tr).find('td:eq(0)').text();
+                // var col2 = $(tr).find('td:eq(1)').text();
+                // var col3 = $(tr).find('td:eq(2)').text();
+                // var col4 = $(tr).find('td:eq(3)').text();
+                // var col5 = $(tr).find('td:eq(4)').text();
+                // console.log(col1, col2, col3, col4, col5);
+                // // TableData = $.toJSON(storeTblValues());
+                // console.log(col1);
+                // $.ajax({
+
+                //     url: 'ajaxcall/insert_workscheduledetail.php',
+                //     method: 'POST',
+                //     data: {
+                //         workId: workId,
+                //         Day: col1,
+                //         CheckIn: col2,
+                //         BreakOut: col3,
+                //         BreakIn: col4,
+                //         CheckOut: col5
+                //     },
+                //     dataType: 'json',
+                //     success: function(e) {
+                //         console.log(e);
+                //         notification("Congratulations", "", "Refresh", "success",
+                // "success");
+                //     },
+                //     error: function(xhr, b, c) {
+                //         console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" +
+                //             c.responseText);
+                //     }
+                // })
+                var currow = $('#show_sched').closest('tr');
+                var col1 = $(tr).find('td:eq(0)').text();
+                var col2 = $(tr).find('td:eq(1)').text();
+                var col3 = $(tr).find('td:eq(2)').text();
+                var col4 = $(tr).find('td:eq(3)').text();
+                var col5 = $(tr).find('td:eq(4)').text();
+                console.log(col1, col2, col3, col4, col5);
+                console.log(workId);
+                $.ajax({
+                    url: 'ajaxcall/insert_workscheduledetail.php',
+                    type: 'POST',
+                    data: {
+                        workId: workId,
+                        day: col1,
+                        CheckIn: col2,
+                        BreakOut: col3,
+                        BreakIn: col4,
+                        CheckOut: col5
+                    },
+                    success: function (e) {
+                        notification("Congratulations", "", "Refresh", "success",
+                            "success");
+                        console.log(e);
+                    },
+                    error: function (xhr, b, c) {
+                        console.log("xhr=" + xhr.responseText + " b=" + b.responseText +
+                            " c=" +
+                            c.responseText);
+
+
+                    }
+
+                })
 
             })
-           
-        })
 
 
 
 
-    });
-    //CHECK IF THE WORK CODE IS AVAILABLE
-    $('#workcode').keyup(function() {
-        // console.log("hello");s
-        var workcode = $('#workcode').val();
-        $.ajax({
-            url: 'ajaxcall/get_workcode.php',
-            type: "POST",
-            data: {
-                workcode: workcode
-            },
-            success: function(msg) {
-                console.log(msg);
-                if (msg) {
-                    $('#checkworkcode').html(msg);
-                    $('#insert').prop('disabled', true);
-
-                } else if ($('#workcode').val() == '') {
-                    $('#checkworkcode').html('');
-                    $('#insert').prop('disabled', true);
-                } else {
-                    $('#checkworkcode').html('This work code is available');
-                    $('#insert').prop('disabled', false);
-                }
-            },
-            error: function(xhr, b, c) {
-                console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c
-                    .responseText);
-            }
-
-
-        })
-
-    })
-    //EDIT THE WORK SCHEDULE
-    $('#tablesched tbody').on('click', '#edit', function() {
-        event.preventDefault();
-
-
-        const days = [
-            "Sunday",
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday"
-        ];
-
-        $('#editworksched').modal('show');
-
-        var currow = $(this).closest('tr');
-        var col1 = currow.find('td:eq(0)').text();
-        var table = document.getElementById("editsched");
-
-        var tableHeaderRowCount = 1;
-        var rowCount = table.rows.length;
-        for (var i = tableHeaderRowCount; i < rowCount; i++) {
-            table.deleteRow(tableHeaderRowCount);
-        }
-        $.ajax({
-            url: 'ajaxcall/getworkscheduleinfo.php',
-            type: "POST",
-            data: {
-                workschedid: col1
-            },
-            success: function(response) {
-                var result = jQuery.parseJSON(response);
-                $('#editworkcode').val(result.workschedid);
-                $('#editworkdesc').val(result.workdesc);
-                $('#editremarks').val(result.remarks);
-                $('#editworkdesc').val(result.workdesc);
-            },
-            error: function(xhr, b, c) {
-                console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c
-                    .responseText);
-            }
         });
-        days.forEach(function(item) {
-            $.ajax({
-                url: 'ajaxcall/getworkschedule.php',
+        //CHECK IF THE WORK CODE IS AVAILABLE
+        $('#workcode').keyup(async function () {
+            // console.log("hello");s
+            var workcode = $('#workcode').val();
+            await $.ajax({
+                url: 'ajaxcall/get_workcode.php',
                 type: "POST",
                 data: {
-                    workschedid: col1,
-                    Day: item
+                    workcode: workcode
                 },
-                success: function(response) {
-                    var result = jQuery.parseJSON(response);
+                success: function (msg) {
+                    console.log(msg);
+                    if (msg) {
+                        $('#checkworkcode').html(msg);
+                        $('#insert').prop('disabled', true);
 
+                    } else if ($('#workcode').val() == '') {
+                        $('#checkworkcode').html('');
+                        $('#insert').prop('disabled', true);
+                    } else {
+                        $('#checkworkcode').html('This work code is available');
+                        $('#insert').prop('disabled', false);
+                    }
+                },
+                error: function (xhr, b, c) {
+                    console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c
+                        .responseText);
+                }
+
+
+            })
+
+        })
+        //EDIT THE WORK SCHEDULE
+        $('#tablesched tbody').on('click', '#edit', async function () {
+            event.preventDefault();
+
+
+            const days = [
+                "Sunday",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday"
+            ];
+
+            $('#editworksched').modal('show');
+
+            var currow = $(this).closest('tr');
+            var col1 = currow.find('td:eq(0)').text();
+            var table = document.getElementById("editsched");
+
+            var tableHeaderRowCount = 1;
+            var rowCount = table.rows.length;
+            for (var i = tableHeaderRowCount; i < rowCount; i++) {
+                table.deleteRow(tableHeaderRowCount);
+            }
+            await $.ajax({
+                url: 'ajaxcall/getworkscheduleinfo.php',
+                type: "POST",
+                data: {
+                    workschedid: col1
+                },
+                success: function (response) {
+                    var result = jQuery.parseJSON(response);
+                    $('#editworkcode').val(result.workschedid);
+                    $('#editworkdesc').val(result.workdesc);
+                    $('#editremarks').val(result.remarks);
+                    $('#editworkdesc').val(result.workdesc);
+                },
+                error: function (xhr, b, c) {
+                    console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c
+                        .responseText);
+                }
+            });
+            days.forEach(async function (item) {
+                await $.ajax({
+                    url: 'ajaxcall/getworkschedule.php',
+                    type: "POST",
+                    data: {
+                        workschedid: col1,
+                        Day: item
+                    },
+                    success: function (response) {
+
+                    },
+
+                    error: function (xhr, b, c) {
+                        console.log("xhr=" + xhr.responseText + " b=" + b
+                            .responseText +
+                            " c=" +
+                            c.responseText);
+
+
+
+                    },
+                }).done(function (response) {
+                    var result = jQuery.parseJSON(response);
                     var row = table.insertRow(1);
                     var cell1 = row.insertCell(0);
                     var cell2 = row.insertCell(1);
                     var cell3 = row.insertCell(2);
                     var cell4 = row.insertCell(3);
                     var cell5 = row.insertCell(4);
-
                     cell1.innerHTML = item;
                     cell2.innerHTML = result.inAM;
                     cell3.innerHTML = result.outAM;
@@ -359,135 +370,125 @@ $workid='';
                     $('#editsched td').attr('contenteditable', true);
 
                     $('#editsched tr').find('td:eq(0)').attr('contenteditable', false);
-                },
-
-                error: function(xhr, b, c) {
-                    console.log("xhr=" + xhr.responseText + " b=" + b.responseText +
-                        " c=" +
-                        c.responseText);
-
-
-
-                },
-            })
-        });
-
-    });
-    //UPDATE THE WORK SCHEDULE
-    $('#update').click(function() {
-        event.preventDefault();
-        var worksched = $('#editworkcode').val();
-        var workDesc = $('#editworkdesc').val();
-        var remarks = $('#editremarks').val();
-        var status = $('#editworkstatus').val();
-
-        $.ajax({
-            url: 'ajaxcall/updateWorkSchedule.php',
-            type: 'POST',
-            dataType: "JSON",
-            data: {
-                worksched: worksched,
-                workdesc: workDesc,
-                remarks: remarks,
-                status: status
-            },
-            success: function() {
-
-
-
-            },
-            error: function(xhr, b, c) {
-                console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c
-                    .responseText);
-
-
-            }
-        })
-
-
-
-        $('#editsched tr').each(function(row, tr) {
-
-
-            var col1 = $(tr).find('td:eq(0)').text();
-            var col2 = $(tr).find('td:eq(1)').text();
-            var col3 = $(tr).find('td:eq(2)').text();
-            var col4 = $(tr).find('td:eq(3)').text();
-            var col5 = $(tr).find('td:eq(4)').text();
-            console.log(col1, col2, col3, col4, col5);
-            console.log(worksched);
-            $.ajax({
-                url: 'ajaxcall/workScheduleUpdate.php',
-                type: 'POST',
-
-                data: {
-                    worksched: worksched,
-                    day: col1,
-                    timeIn: col2,
-                    breakOut: col3,
-                    breakIn: col4,
-                    timeOut: col5
-                },
-                success: function() {
-                    notification("Congratulations", "", "Refresh", "success",
-                        "success");
-
-                },
-                error: function(xhr, b, c) {
-                    console.log("xhr=" + xhr.responseText + " b=" + b.responseText +
-                        " c=" +
-                        c.responseText);
-
-
-                }
-
-            })
-
-        })
-        // window.location.reload();
-    });
-
-    function notification(title, message, text, value, status) {
-        swal(title, message, status, {
-                buttons: {
-                    catch: {
-                        text: text,
-                        value: value,
-                    }
-
-                },
-            })
-            .then((value) => {
-                switch (value) {
-
-                    case "success":
-                        window.location.reload(true);
-                        break;
-                    case "error":
-
-                        break;
-
-                }
+                })
             });
 
-    }
-
-    $(document).ready(function() {
-        $('#editsched tbody').on('click', '#edittime', function() {
-
+        });
+        //UPDATE THE WORK SCHEDULE
+        $('#update').click(function () {
             event.preventDefault();
+            var worksched = $('#editworkcode').val();
+            var workDesc = $('#editworkdesc').val();
+            var remarks = $('#editremarks').val();
+            var status = $('#editworkstatus').val();
 
-        });
-    });
+            $.ajax({
+                url: 'ajaxcall/updateWorkSchedule.php',
+                type: 'POST',
+                dataType: "JSON",
+                data: {
+                    worksched: worksched,
+                    workdesc: workDesc,
+                    remarks: remarks,
+                    status: status
+                },
+                success: function () {
 
-    function reset_form_input(form_id) {
-        $('#' + form_id).each(function() {
-            this.reset();
+
+
+                },
+                error: function (xhr, b, c) {
+                    console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c
+                        .responseText);
+
+
+                }
+            })
+
+
+
+            $('#editsched tr').each(function (row, tr) {
+
+
+                var col1 = $(tr).find('td:eq(0)').text();
+                var col2 = $(tr).find('td:eq(1)').text();
+                var col3 = $(tr).find('td:eq(2)').text();
+                var col4 = $(tr).find('td:eq(3)').text();
+                var col5 = $(tr).find('td:eq(4)').text();
+                console.log(col1, col2, col3, col4, col5);
+                console.log(worksched);
+                $.ajax({
+                    url: 'ajaxcall/workScheduleUpdate.php',
+                    type: 'POST',
+
+                    data: {
+                        worksched: worksched,
+                        day: col1,
+                        timeIn: col2,
+                        breakOut: col3,
+                        breakIn: col4,
+                        timeOut: col5
+                    },
+                    success: function () {
+                        notification("Congratulations", "", "Refresh", "success",
+                            "success");
+
+                    },
+                    error: function (xhr, b, c) {
+                        console.log("xhr=" + xhr.responseText + " b=" + b.responseText +
+                            " c=" +
+                            c.responseText);
+
+
+                    }
+
+                })
+
+            })
+            // window.location.reload();
         });
-    }
-    //  TableData.shift();  // first row will be empty - so remove
-    // return TableData;
-    //  console.log(TableData); 
+
+        function notification(title, message, text, value, status) {
+            swal(title, message, status, {
+                    buttons: {
+                        catch: {
+                            text: text,
+                            value: value,
+                        }
+
+                    },
+                })
+                .then((value) => {
+                    switch (value) {
+
+                        case "success":
+                            window.location.reload(true);
+                            break;
+                        case "error":
+
+                            break;
+
+                    }
+                });
+
+        }
+
+        $(document).ready(function () {
+            $('#editsched tbody').on('click', '#edittime', function () {
+
+                event.preventDefault();
+
+            });
+        });
+
+        function reset_form_input(form_id) {
+            $('#' + form_id).each(function () {
+                this.reset();
+            });
+        }
+        //  TableData.shift();  // first row will be empty - so remove
+        // return TableData;
+        //  console.log(TableData); 
     </script>
 </body>
 
