@@ -54,64 +54,84 @@ include 'dtrdesign/sidebar.php';
                                     <div class="card shadow-none border-secondary border">
                                         <div class="card-header bg-dark">
                                             <div class="card-title">
-                                                <h4 class = "text-center">DETAILS</h4>
+                                                <h4 class="text-center">DETAILS</h4>
                                             </div>
                                         </div>
                                         <div class="card-body">
-                                        <div class="row">
+                                            <div class="row">
 
-                                            <div class="col-4 dateformat">
+                                                <div class="col-5 dateformat">
 
 
-                                                <div class="input-group" style="margin-left:10px">
+                                                    <div class="input-group" style="margin-left:10px">
+                                                        <span class="input-group-text">
+                                                            <label class=p-1><b>Date Range:</b> </label>
+                                                            <i class="fa fa-calendar m-0"></i>
+                                                        </span>
+                                                        <input type="text" class="form-control" autocomplete="off"
+                                                            name="datefrom" id="datefrom"
+                                                            value="<?php echo $curdate; ?> ">
+                                                    </div>
+
+                                                </div>
+
+
+
+
+
+
+
+                                                <div class="input-group col-3">
                                                     <span class="input-group-text">
-                                                        <label class = p-1><b>Date:</b> </label>
-                                                        <i class="fa fa-calendar m-0"></i>
+                                                        <label>Duration: </label>
                                                     </span>
-                                                    <input type="text" class="form-control" autocomplete="off"
-                                                        name="datefrom" id="datefrom" value="<?php echo $curdate; ?> ">
+                                                    <select class=" form-control h-100 " name="duration" id="duration">
+                                                        <option val="0">Whole Day</option>
+                                                        <option val="1">Morning</option>
+                                                        <option val="2">Afternoon</option>
+                                                        <option val="3">Break Out / Break In</option>
+                                                    </select>
+                                                </div>
+                                                <div class="input-group col-4">
+                                                    <span class="input-group-text">
+                                                        <label style="padding-right:10px;padding-left: 10px">Type:
+                                                        </label> </span>
+
+                                                    <select class="form-control h-100" name="type" id="type">
+                                                        <option val="FW"> Field Work</option>
+                                                        <option val="TOB">Travel on Official Business</option>
+                                                        <option val="OT"> On Official Time</option>
+                                                        <option val="TOT"> Travel on Official Time</option>
+                                                    </select>
+
                                                 </div>
 
                                             </div>
+                                            <div class="row">
+                                                <div class="col-5 dateformat">
 
 
+                                                    <div class=" input-group" style="margin-left:10px">
+                                                    <span class="input-group-text">
+                                                            <label class=p-1><b>Specific Date:</b> </label>
+                                                            <i class="fa fa-calendar m-0"></i>
+                                                        </span>
+                                                      
+                                                            <input type="text" class="form-control"
+                                                                data-provide="datepicker" autocomplete="off" name="date"
+                                                                id="date" val="<?php echo $curdate; ?> ">
+                                                      
 
+                                                    </div>
 
-
-                                            <div class="input-group col-4">
-                                                <span class="input-group-text">
-                                                    <label>Duration: </label>
-                                                </span>
-                                                <select class=" form-control h-100 " name="duration" id="duration"
-                                                  >
-                                                    <option val="0">Whole Day</option>
-                                                    <option val="1">Morning</option>
-                                                    <option val="2">Afternoon</option>
-                                                    <option val="3">Break Out / Break In</option>
-                                                </select>
+                                                </div>
                                             </div>
-                                            <div class="input-group col-4">
-                                                <span class="input-group-text">
-                                                    <label style="padding-right:10px;padding-left: 10px">Type:
-                                                    </label> </span>
-
-                                                <select class="form-control h-100" name="type"
-                                                    id="type">
-                                                    <option val="FW"> Field Work</option>
-                                                    <option val="TOB">Travel on Official Business</option>
-                                                    <option val="OT"> On Official Time</option>
-                                                    <option val="TOT"> Travel on Official Time</option>
-                                                </select>
-
-                                            </div>
-
                                         </div>
-                                        </div>
-                                        <div class="row ml-3 pt-3 mb-4" >
+                                        <div class="row ml-3 pt-3 mb-4">
                                             <div class="form-group col-6">
                                                 <label style="padding-right:10px;padding-left: 10px">Purpose </label>
-                                                <textarea  name="details" id="details" class="form-control h-100 w-100"
-                                                   ></textarea>
+                                                <textarea name="details" id="details"
+                                                    class="form-control h-100 w-100"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -125,8 +145,7 @@ include 'dtrdesign/sidebar.php';
                                         </div>
                                         <div class="row" style=" margin:auto;padding-top:30px;padding-bottom: 30px">
                                             <button type="submit" name="savetravel" id="savetravel"
-                                                class=" btn btn-info custom_button"><i
-                                                    class="fa fa-save"></i></button>
+                                                class=" btn btn-info custom_button"><i class="fa fa-save"></i></button>
                                         </div>
                                     </div>
 
@@ -156,98 +175,102 @@ include 'dtrdesign/sidebar.php';
         <!-- PRINT REPORTS  SCRIPT -->
 
         <script language="javascript">
-        var datefrom = '';
-        var dateto = '';
+            var datefrom = '';
+            var dateto = '';
 
-        //ADD TRAVEL TO THE TABLE
-        $("#tblsearch tbody").on('click', '#select', function() {
+            //ADD TRAVEL TO THE TABLE
+            $("#tblsearch tbody").on('click', '#select', function () {
 
-            var currow = $(this).closest('tr');
-            // var datefrom = $('#dtefrom').val();
-            // var dateto = $('#dteto').val();
-            var duration = $('#duration').val();
-            var type = $('#type').val();
-            var details = $('#details').val();
-            if (datefrom == '' || dateto == '' || details == '') {
-                post_notify("Please complete the information!", "danger");
-            } else {
-                var col1 = currow.find('td:eq(0)').text();
-                var col2 = currow.find('td:eq(1)').text();
-                var table = document.getElementById("travellist");
-                var row = table.insertRow(1);
-                var cell1 = row.insertCell(0);
-                var cell2 = row.insertCell(1);
-                var cell3 = row.insertCell(2);
-                var cell4 = row.insertCell(3);
-                var cell5 = row.insertCell(4);
-                var cell6 = row.insertCell(5);
-                var cell7 = row.insertCell(6);
-                var cell8 = row.insertCell(7);
-                cell1.innerHTML = col1;
-                cell2.innerHTML = col2;
-                cell3.innerHTML = datefrom;
-                cell4.innerHTML = dateto;
-                cell5.innerHTML = duration;
-                cell6.innerHTML = type;
-                cell7.innerHTML = details;
-                cell8.innerHTML =
-                    '<button id="remove" class = "btn btn-circle btn-sm btn-primary" onclick = "deleteRow(this)">Remove</button>';
-            }
-        });
-
-        $('input[name="datefrom"]').daterangepicker({
-                opens: "left",
-            },
-            function(start, end, label) {
-                datefrom = start.format("YYYY-MM-DD");
-                dateto = end.format("YYYY-MM-DD");
-                console.log(
-                    "A new date selection was made: " +
-                    start.format("YYYY-MM-DD") +
-                    " to " +
-                    end.format("YYYY-MM-DD")
-                );
-            }
-        );
-
-        $('#savetravel').click(function() {
-            //fetch all the data from the table and save it to the database
-            var workid = $('#worksched-form').serializeArray();
-            event.preventDefault();
-
-                var empno_array =[];
-                var fname_array =[];
-                var duration_array =[];
-                var type_array =[];
-                var details_array =[];
-                var from_array =[];
-                var to_array =[];
-
-                var empno='';
-                var newfrom ='';
-                var newto = ''
-                var duration ='';
-            $('#travellist tr').each(function(row, tr) {
-                // var details = $('#details').val();
-                 empno = $(tr).find('td:eq(0)').text();
-                var fname = $(tr).find('td:eq(1)').text();
-                var from = $(tr).find('td:eq(2)').text();
-                var to = $(tr).find('td:eq(3)').text();
-                 duration = $(tr).find('td:eq(4)').text();
-                var type = $(tr).find('td:eq(5)').text();
-                var details = $(tr).find('td:eq(6)').text();
-                 newfrom = formatDate(from);
-                 newto = formatDate(to);
-                
-                empno_array.push(empno);
-                fname_array.push(fname);
-                duration_array.push(duration);
-                type_array.push(type);
-                details_array.push(details);
-                from_array.push(newfrom);
-                to_array.push(newto);
-               
+                var currow = $(this).closest('tr');
+                // var datefrom = $('#dtefrom').val();
+                // var dateto = $('#dteto').val();
+                var duration = $('#duration').val();
+                var type = $('#type').val();
+                var details = $('#details').val();
+                if (datefrom == '' || dateto == '' || details == '') {
+                    post_notify("Please complete the information!", "danger");
+                } else {
+                    var col1 = currow.find('td:eq(0)').text();
+                    var col2 = currow.find('td:eq(1)').text();
+                    var table = document.getElementById("travellist");
+                    var row = table.insertRow(1);
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
+                    var cell4 = row.insertCell(3);
+                    var cell5 = row.insertCell(4);
+                    var cell6 = row.insertCell(5);
+                    var cell7 = row.insertCell(6);
+                    var cell8 = row.insertCell(7);
+                    cell1.innerHTML = col1;
+                    cell2.innerHTML = col2;
+                    cell3.innerHTML = datefrom;
+                    cell4.innerHTML = dateto;
+                    cell5.innerHTML = duration;
+                    cell6.innerHTML = type;
+                    cell7.innerHTML = details;
+                    cell8.innerHTML =
+                        '<button id="remove" class = "btn btn-circle btn-sm btn-primary" onclick = "deleteRow(this)">Remove</button>';
+                }
             });
+
+
+            $('input[name="datefrom"]').daterangepicker({
+                    opens: "left",
+                },
+                function (start, end, label) {
+                    datefrom = start.format("YYYY-MM-DD");
+                    dateto = end.format("YYYY-MM-DD");
+                    console.log(
+                        "A new date selection was made: " +
+                        start.format("YYYY-MM-DD") +
+                        " to " +
+                        end.format("YYYY-MM-DD")
+                    );
+                }
+            );
+            $('#reservationdate').datetimepicker({
+                format: 'L'
+            });
+
+            $('#savetravel').click(function () {
+                //fetch all the data from the table and save it to the database
+                var workid = $('#worksched-form').serializeArray();
+                event.preventDefault();
+
+                var empno_array = [];
+                var fname_array = [];
+                var duration_array = [];
+                var type_array = [];
+                var details_array = [];
+                var from_array = [];
+                var to_array = [];
+
+                var empno = '';
+                var newfrom = '';
+                var newto = ''
+                var duration = '';
+                $('#travellist tr').each(function (row, tr) {
+                    // var details = $('#details').val();
+                    empno = $(tr).find('td:eq(0)').text();
+                    var fname = $(tr).find('td:eq(1)').text();
+                    var from = $(tr).find('td:eq(2)').text();
+                    var to = $(tr).find('td:eq(3)').text();
+                    duration = $(tr).find('td:eq(4)').text();
+                    var type = $(tr).find('td:eq(5)').text();
+                    var details = $(tr).find('td:eq(6)').text();
+                    newfrom = formatDate(from);
+                    newto = formatDate(to);
+
+                    empno_array.push(empno);
+                    fname_array.push(fname);
+                    duration_array.push(duration);
+                    type_array.push(type);
+                    details_array.push(details);
+                    from_array.push(newfrom);
+                    to_array.push(newto);
+
+                });
                 if (empno == '' || newfrom == '' || newto == '' || duration == '') {
                     notification('Please check the fields!', "", "Go back", "error", "error");
                 } else {
@@ -263,69 +286,69 @@ include 'dtrdesign/sidebar.php';
                             type: type_array,
                             details: details_array
                         },
-                        error: function(xhr, b, c) {
+                        error: function (xhr, b, c) {
                             console.log("xhr=" + xhr.responseText + " b=" + b.responseText +
                                 " c=" + c.responseText);
                         }
-                    }).done(function(message){
+                    }).done(function (message) {
                         notification(message, "", "Refresh", "success", "success");
                     })
                 }
-          
-        });
-        //FORMAT THE DATE
-        function formatDate(date) {
-            var d = new Date(date),
-                month = '' + (d.getMonth() + 1),
-                day = '' + d.getDate(),
-                year = d.getFullYear();
 
-            if (month.length < 2)
-                month = '0' + month;
-            if (day.length < 2)
-                day = '0' + day;
+            });
+            //FORMAT THE DATE
+            function formatDate(date) {
+                var d = new Date(date),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
 
-            return [year, month, day].join('-');
-        }
-        //display notification
-        function post_notify(message, type) {
+                if (month.length < 2)
+                    month = '0' + month;
+                if (day.length < 2)
+                    day = '0' + day;
 
-            if (type == 'success') {
+                return [year, month, day].join('-');
+            }
+            //display notification
+            function post_notify(message, type) {
 
-                $.notify({
-                    message: message
-                }, {
-                    type: 'success',
-                    delay: 2000
-                });
+                if (type == 'success') {
 
-            } else {
+                    $.notify({
+                        message: message
+                    }, {
+                        type: 'success',
+                        delay: 2000
+                    });
 
-                $.notify({
-                    message: message
-                }, {
-                    type: 'danger',
-                    delay: 2000
-                });
+                } else {
+
+                    $.notify({
+                        message: message
+                    }, {
+                        type: 'danger',
+                        delay: 2000
+                    });
+
+                }
 
             }
 
-        }
 
 
+            //reset the all the data inside the form
+            function reset_form_input(form_id) {
+                $('#' + form_id).each(function () {
+                    this.reset();
+                });
+            }
 
-        //reset the all the data inside the form
-        function reset_form_input(form_id) {
-            $('#' + form_id).each(function() {
-                this.reset();
-            });
-        }
-
-        function deleteRow(r) {
-            // DELETE SELECTED ROW
-            var i = r.parentNode.parentNode.rowIndex;
-            document.getElementById("travellist").deleteRow(i);
-        }
+            function deleteRow(r) {
+                // DELETE SELECTED ROW
+                var i = r.parentNode.parentNode.rowIndex;
+                document.getElementById("travellist").deleteRow(i);
+            }
         </script>
 
 </body>

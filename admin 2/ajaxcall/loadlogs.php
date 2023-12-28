@@ -37,12 +37,12 @@ unset($prepare_emp);
 //  ORDER BY checktime" ;
 
 
-// $st_msaccess_search = "SELECT distinct top 20 checktype,checktime,badgenumber,sn from ViewLogs  where
-// badgenumber = :biometric and  DATEPART(yy,checktime)= :year 
-// AND datepart(mm,checktime) = :month and datepart(dd,checktime)= :day
-// ORDER BY checktime" ; 
+$st_msaccess_search = "SELECT distinct top 20 checktype,checktime,badgenumber,sn from ViewLogs  where
+badgenumber = :biometric and  DATEPART(yy,checktime)= :year 
+AND datepart(mm,checktime) = :month and datepart(dd,checktime)= :day
+ORDER BY checktime" ; 
 
-$st_msaccess_search = "EXEC GetLogs @PIN = :biometric , @MONTH = :month, @YEAR = :year, @DAY = :day";
+// $st_msaccess_search = "EXEC GetLogs @PIN = :biometric , @MONTH = :month, @YEAR = :year, @DAY = :day";
  $pre_msaccess_stmt = $mscon->prepare($st_msaccess_search);
 
  $pre_msaccess_stmt->bindParam(':biometric',$biometric);
@@ -70,7 +70,7 @@ $st_msaccess_search = "EXEC GetLogs @PIN = :biometric , @MONTH = :month, @YEAR =
 	$location = "NO LOCATION";
 	
 		switch($sn){
-			case "3569182360161":
+			case "3569182360034":
 			$location = "CED BTM";
 			break;
 			case "3486862430001":
@@ -79,8 +79,8 @@ $st_msaccess_search = "EXEC GetLogs @PIN = :biometric , @MONTH = :month, @YEAR =
 			case "3486862430384":
 			$location = "CTO BTM";
 			break;
-			case "3569182360034":
-			$location = "CMO BTM";
+			case "3569182360161":
+			$location = "CMO BTM";//
 			break;
 			case "3486862430380":
 			$location = "PMSD BTM";

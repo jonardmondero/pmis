@@ -56,8 +56,8 @@ $prep_leave_type->execute();
                                             <h3 class="card-title capitalize text-bold">Search Employee</h3>
                                         </div>
 
-                                        <?php include("elements/search_employee.php");?>
-
+                                        <!-- <?php include("elements/search_employee.php");?> -->
+                                    
 
                                     </div>
                                 </div>
