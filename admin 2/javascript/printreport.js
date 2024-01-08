@@ -25,7 +25,6 @@ $(document).ready(function () {
 
 
 function printIndividual(){
-  console.log("test");
   var hiddenempno = $("#hiddenempno").val();
   // var datefrom = $('#dtefrom').datepicker({dateFormat: 'yy-mm-dd'}).val();
   // var dateto = $('#dteto').val();

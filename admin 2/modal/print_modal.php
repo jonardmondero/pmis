@@ -41,7 +41,7 @@
             <form class="form-horizontal" method="post" action="<?php htmlspecialchars("PHP_SELF");?>" id="employee-form">
             <a style="margin:auto;" target="blank" id="printlink" 
                 href="../plugins/jasperreport/dtrreport.php?empno=<?php echo $hiddenempno;?>&datefrom=<?php echo $dteFrom;?>&dateto=<?php echo $dteTo;?>">
-                <button type="button" class="btn-sm bg-dark " name="print" id="print" value="Print"><b>PRINT</b></button>
+                <button type="button" class="btn-sm bg-dark " name="print" id="print"  value="Print"><b>PRINT</b></button>
 
             </a>
            
