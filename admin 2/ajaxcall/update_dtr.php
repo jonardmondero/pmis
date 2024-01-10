@@ -42,7 +42,7 @@ if(isset($_POST['empno'])){
 	// 				Date = :date  and employeeNo = :empno";
 
 $updatequery = "UPDATE dailytimerecord SET ".$field." = :value
-WHERE employeeNo =:empno AND DATE = :date";
+WHERE employeeNo =:empno AND DATE = :date LIMIT 1";
 $prepare_query =$con->prepare($updatequery);
 $prepare_query->bindParam(':empno' , $empno);
 $prepare_query->bindParam(':date',	$date);

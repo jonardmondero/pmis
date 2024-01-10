@@ -57,14 +57,14 @@
                                     <div id="loadPrinters">
                                         
                                      
-                                        <a onclick="javascript:jsWebClientPrint.getPrinters();" class="btn btn-success">Load installed printers...</a>
+                                        <a onclick="javascript:jsWebClientPrint.getPrinters();" class="btn btn-success text-white text-bold  ">Load installed printers...</a>
                                         
                                     </div>  
                                     <div id="installedPrinters" style="visibility: hidden">
                                         
                                         <select name="installedPrinterName" id="installedPrinterName" class="form-control"></select>
                                     </div>
-                                    <a class="btn btn-primary btn-sm text-bold text-white" onclick="directPrint();">DIRECT PRINT</a>
+                                    <a class="btn btn-info btn-sm text-bold ml-3 text-white items-center border  border-3 border-dark " onclick="directPrint();">QUICK PRINT</a>
                                     <div id="fileToPrint" hidden>
                                         <label for="ddlFileType">Select a sample File to print:</label>
                                         <select id="ddlFileType" class="form-control">
@@ -87,7 +87,10 @@
     </div>
     <div class="col-lg-12 col-md-12 col-sm-12">
     <div class="card full_name m-2 shadow-none  bg-dark">
-        <h4 class="text-bold text-white" id="full-name"> </h4>
+       <div class="d-flex justify-content-center align-items-center">
+        <h4 value = "" class="text-bold text-white" id="full-name"> </h4> <button class="bg-dark btn-sm ml-3 border-0" onclick="copyName();"><i class = "fa fa-copy"></i></button>
+        </div>
+      
     </div>
     </div>
     <div class="col-lg-12 col-md-12 col-sm-12">
@@ -211,7 +214,7 @@
     // }).change();
 
     function directPrint(){
-        console.log(printLink());
+
         jsWebClientPrint.print('useDefaultPrinter=' + $('#useDefaultPrinter').attr('checked') + '&printerName=' + encodeURIComponent($('#installedPrinterName').val()) + '&filetype=PDF' + printLink()  );
     }
 

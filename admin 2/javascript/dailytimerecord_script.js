@@ -774,3 +774,13 @@ $("#dtr tbody").on("click", ".reflectob", function () {
     }
 
 
+    function copyName(){
+      var fullname = $("#full-name").text();
+      navigator.clipboard.writeText(fullname).then(function() {
+        post_notify("Full name has been copied", "success");
+      }).catch(function(err) {
+        alert('Could not copy text to clipboard', err);
+      });
+    }
+
+
