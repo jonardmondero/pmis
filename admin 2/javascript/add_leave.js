@@ -1,8 +1,16 @@
 $(function() {
 $(document).ready(function(){
-    $("#leavetype").select2();
-})
 
+    $("#leavetype").select2();
+
+ 
+});
+$('input[name="pickdate"]').datepicker({
+    multidate: true,
+      format: 'yyyy-mm-dd'
+  });
+
+  
     $('.select2').select2();
     var datefrom = '';
     var dateto = '';
@@ -28,16 +36,39 @@ function(start, end, label) {
         " to " +
         end.format("YYYY-MM-DD")
     );
-    addLeave();
+    addLeave(datefrom,dateto);
 }
 );
 
-$('#addleave').click(function () {
-    event.preventDefault();
-    addLeave();
+
+$("#datepick").on("click", function () {
+var leavetype = $('#leavetype').val();
+var inclusivedate = $('#inclusivedate').val();
+let date = $('#pickdate').val();
+let datearray = date.split(',');
+
+    for(let i = 0; i <datearray.length; i++){
+       
+       var table = document.getElementById("leavelist");
+        var row = table.insertRow(1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        cell1.innerHTML = leavetype;
+        cell2.innerHTML = datearray[i];
+        cell3.innerHTML = datearray[i];
+        cell4.innerHTML = inclusivedate;
+        cell5.innerHTML =
+            '<button id="remove" class = "btn btn-circle btn-sm btn-primary" onclick = "deleteRow(this)">Remove</button>';
+    }
+
+    $('#pickdate').datepicker('setDate', null);
 });
 
-function addLeave(){
+
+ function  addLeave(from,to){
     var inclusivedate = $('#inclusivedate').val();
     var leavetype = $('#leavetype').val();
     var empno = $('#leaveempno').val();
@@ -49,8 +80,8 @@ $.ajax({
    data:{
     employeeNo:empno,
     leaveType:leavetype,
-    dateFrom:datefrom,
-    dateTo:dateto
+    dateFrom:from,
+    dateTo:to
    },
    type:"POST",
 
@@ -59,7 +90,10 @@ $.ajax({
 
     if(e != ""){
         console.log(e);
-        post_notify("This Application is already in the system!", "danger");
+     
+         post_notify("This Application is already in the system!", "danger");
+       
+       
     }
     else{
         console.log(e);
@@ -121,7 +155,7 @@ $('#save_leave').on("click", function () {
     var empno = $('#leaveempno').val();
     $('#leavelist tr').each(function (row, tr) {
         
-        console.log(empno);
+     
         var leavetype = $(tr).find('td:eq(0)').text();
         var from = $(tr).find('td:eq(1)').text();
         var to = $(tr).find('td:eq(2)').text();
@@ -133,7 +167,6 @@ $('#save_leave').on("click", function () {
         to_array.push(newto);
         duration_array.push(duration);
     });
-    console.log(empno);
         $.ajax({
             url: 'ajaxcall/save_leave.php',
             type: 'POST',
@@ -153,8 +186,19 @@ $('#save_leave').on("click", function () {
                 // post_notify(xhr.responseText,'success');
 
             }
-        }).done(function(message){
-            notification(message, "","Refresh","success","success");
+        }).done(function(response){
+            var res = JSON.parse(response);
+            if(res.status == 'success'){
+            notification(res.message, "","Refresh","success","success");
+        }else{
+            swal({
+                title: "Error!",
+                text: res.message,
+                icon: "error",
+                button: "Ok"
+            
+            })
+        }
         })
 
 

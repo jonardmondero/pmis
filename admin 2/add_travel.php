@@ -63,15 +63,29 @@ include 'dtrdesign/sidebar.php';
                                                 <div class="col-5 dateformat">
 
 
-                                                    <div class="input-group" style="margin-left:10px">
+                                                    <!-- <div class="input-group" style="margin-left:10px">
                                                         <span class="input-group-text">
                                                             <label class=p-1><b>Date Range:</b> </label>
                                                             <i class="fa fa-calendar m-0"></i>
                                                         </span>
                                                         <input type="text" class="form-control" autocomplete="off"
-                                                            name="datefrom" id="datefrom"
-                                                            value="<?php echo $curdate; ?> ">
+                                                            name="datefrom" id="datefrom" value = ""
+                                                            >
+                                                    </div> -->
+
+                                                    
+                                                    <div class=" input-group" style="margin-left:10px">
+                                                    <span class="input-group-text">
+                                                            <label class=p-1><b>Multiple Dates:</b> </label>
+                                                            <i class="fa fa-calendar m-0"></i>
+                                                        </span>
+                                                      
+                                                <input type="text" class="form-control" autocomplete="off" name = "pickdate" id="pickdate" data-provide="datepicker" placeholder="Pick the multiple dates">
+                                                           
+                                                      
+
                                                     </div>
+
 
                                                 </div>
 
@@ -107,24 +121,13 @@ include 'dtrdesign/sidebar.php';
                                                 </div>
 
                                             </div>
-                                            <div class="row">
+                                            <div class="row mt-3 align-items-center" >
                                                 <div class="col-5 dateformat">
 
 
-                                                    <div class=" input-group" style="margin-left:10px">
-                                                    <span class="input-group-text">
-                                                            <label class=p-1><b>Specific Date:</b> </label>
-                                                            <i class="fa fa-calendar m-0"></i>
-                                                        </span>
-                                                      
-                                                            <input type="text" class="form-control"
-                                                                data-provide="datepicker" autocomplete="off" name="date"
-                                                                id="date" val="<?php echo $curdate; ?> ">
-                                                      
-
-                                                    </div>
 
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                         <div class="row ml-3 pt-3 mb-4">
@@ -178,6 +181,11 @@ include 'dtrdesign/sidebar.php';
             var datefrom = '';
             var dateto = '';
 
+            $('input[name="pickdate"]').datepicker({
+    multidate: true,
+      format: 'yyyy-mm-dd'
+  });
+
             //ADD TRAVEL TO THE TABLE
             $("#tblsearch tbody").on('click', '#select', function () {
 
@@ -187,6 +195,12 @@ include 'dtrdesign/sidebar.php';
                 var duration = $('#duration').val();
                 var type = $('#type').val();
                 var details = $('#details').val();
+                let date = $('#pickdate').val();
+                let datearray = date.split(',');
+                for(let i = 0; i <datearray.length; i++){
+                  datefrom =  datearray[i] ;
+                  dateto =  datearray[i] ;
+               
                 if (datefrom == '' || dateto == '' || details == '') {
                     post_notify("Please complete the information!", "danger");
                 } else {
@@ -212,6 +226,7 @@ include 'dtrdesign/sidebar.php';
                     cell8.innerHTML =
                         '<button id="remove" class = "btn btn-circle btn-sm btn-primary" onclick = "deleteRow(this)">Remove</button>';
                 }
+            }
             });
 
 
@@ -229,10 +244,11 @@ include 'dtrdesign/sidebar.php';
                     );
                 }
             );
-            $('#reservationdate').datetimepicker({
-                format: 'L'
-            });
+    
+            $("#pickdates").on("click",function(){
 
+                
+            })
             $('#savetravel').click(function () {
                 //fetch all the data from the table and save it to the database
                 var workid = $('#worksched-form').serializeArray();

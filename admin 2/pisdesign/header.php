@@ -26,6 +26,9 @@
   <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker-bs3.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="../plugins/bootstrap/bootstrap.css">
+  <link rel="stylesheet" href="../plugins/bootstrap-popup/lib/bootstrap-3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../plugins/bootstrap-popup/lib/prettify.css">
   <!-- Google Font: Source Sans Pro -->
 <!--  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">-->
     

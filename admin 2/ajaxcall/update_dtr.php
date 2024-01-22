@@ -1,5 +1,5 @@
 <?php
-include ('../../config/config.php');
+include_once ('../../config/config.php');
 if(isset($_POST['empno'])){
 	// echo "<pre>";
 	// print_r("jonard");

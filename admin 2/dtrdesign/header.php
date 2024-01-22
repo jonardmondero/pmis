@@ -24,11 +24,15 @@
     <link rel="stylesheet" href="../plugins/datatables/datatables.jquery.select.min.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
     <!-- <link rel="stylesheet" href="../plugins/fullcalendar/main.css"> -->
     <link rel="stylesheet" href="../plugins/select2/select2.css">
     <link rel="stylesheet" href="../plugins/select2/select2.min.css">
     <link rel="stylesheet" href="./css/custom_style.css">
+    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.css">
+
+
+  <!-- <link rel="stylesheet" href="../plugins/bootstrap-popup/lib/bootstrap-3.3.5/css/bootstrap.min.css"> -->
+
     
     
 </head>

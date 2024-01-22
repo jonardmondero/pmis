@@ -120,14 +120,17 @@ $customValueCheckOut = "O";
                                             </div>
 
                                             <div class="alert alert-info ">
-
+                                                
                                                 <h5><i class="icon fa fa-info"></i> Notification
                                                 </h5>
                                                 <label id="import_status">Your importation status will be showed
                                                     here.</label>
+                                                  
                                             </div>
-
-
+                                           
+                                            <div id="progress" class="progress" style="display: none;">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
+</div>
 
 
 
@@ -314,6 +317,28 @@ $customValueCheckOut = "O";
                     sel_employee: empno,
                     datefrom: datefr,
                     dateto: dteto,
+                },
+                xhr: function() {
+        var xhr = new window.XMLHttpRequest();
+        xhr.addEventListener("progress", function(evt) {
+            if (evt.lengthComputable) {
+                var percentComplete = evt.loaded / evt.total;
+                percentComplete = parseInt(percentComplete * 100);
+                $(".progress-bar").width(percentComplete + '%');
+                if (percentComplete === 100) {
+                    $(".progress-bar").html('Complete');
+                }
+            }
+        }, false);
+        return xhr;
+    },
+                beforeSend: function() {
+                    $("#progress").show();
+        $(".progress-bar").css("width", "0%");
+                },
+                complete: function() {
+                    $("#progress").hide();
+     
                 },
                 error: function(xhr, b, c) {
                     console.log(

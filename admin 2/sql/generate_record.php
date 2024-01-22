@@ -1,10 +1,11 @@
 <?php
+
 session_start();
 //include('update_user.php');
 //include ("../php_scripts/search_user.php");
-include('../../config/config.php');
+include_once('../../config/config.php');
 // include ('../../config/msconfig.php');
-include('../../config/mssql.php');
+include_once('../../config/mssql.php');
 $datefrom=$dateto=$selemployee ='';
 $db = '';
 
@@ -91,10 +92,7 @@ if($_SESSION['currentGeneration'] == '' || $_SESSION['currentGeneration'] != $se
         $chktime =  $time_result['checktime'];
         $chktype = $time_result['checktype'];
   
-         
-        if($chktype == $timeIn){
-         
-          $insert_timeIn = "CALL spInsertTimeIn(:empno,:worksched,:i,:chktime,:bolsched)";
+             $insert_timeIn = "CALL spInsertLogs(:empno,:worksched,:i,:chktime,:bolsched,:state)";
           $insertInAm = $con->prepare($insert_timeIn);
           $insertInAm ->execute([
               ':empno' =>$empNo,
@@ -102,49 +100,64 @@ if($_SESSION['currentGeneration'] == '' || $_SESSION['currentGeneration'] != $se
               ':i' => $i,
               ':chktime'=> $chktime,
               ':bolsched'=> $bolsched,
+              ':state' => $chktype
           ]);
-        }
-          if($chktype == $brkout){
+
+
+
+        // if($chktype == $timeIn){
+         
+        //   $insert_timeIn = "CALL spInsertTimeIn(:empno,:worksched,:i,:chktime,:bolsched)";
+        //   $insertInAm = $con->prepare($insert_timeIn);
+        //   $insertInAm ->execute([
+        //       ':empno' =>$empNo,
+        //       ':worksched'=>$workId,
+        //       ':i' => $i,
+        //       ':chktime'=> $chktime,
+        //       ':bolsched'=> $bolsched,
+        //   ]);
+        // }
+        //   if($chktype == $brkout){
           
-          $insert_timeIn = "CALL spInsertTimeOutAM(:empno,:worksched,:i,:chktime,:bolsched)";
-          $insertInAm = $con->prepare($insert_timeIn);
-          $insertInAm ->execute([
-               ':empno' =>$empNo,
-               ':worksched'=>$workId,
-              ':i' => $i,
-              ':chktime'=> $chktime,
-              ':bolsched'=> $bolsched
-          ]);
-        }
-          $timeInPm = "1";
-          if($chktype == $timeInPm){
+        //   $insert_timeIn = "CALL spInsertTimeOutAM(:empno,:worksched,:i,:chktime,:bolsched)";
+        //   $insertInAm = $con->prepare($insert_timeIn);
+        //   $insertInAm ->execute([
+        //        ':empno' =>$empNo,
+        //        ':worksched'=>$workId,
+        //       ':i' => $i,
+        //       ':chktime'=> $chktime,
+        //       ':bolsched'=> $bolsched
+        //   ]);
+        // }
+        //   $timeInPm = "1";
+        //   if($chktype == $timeInPm){
           
-          $insert_timeIn = "CALL spInsertTimeInPM(:empno,:worksched,:i,:chktime,:bolsched)";
-          $insertInAm = $con->prepare($insert_timeIn);
-          $insertInAm ->execute([
-               ':empno' =>$empNo,
-               ':worksched' =>$workId,
-              ':i' => $i,
-              ':chktime'=> $chktime,
-              ':bolsched'=> $bolsched
-          ]);
+        //   $insert_timeIn = "CALL spInsertTimeInPM(:empno,:worksched,:i,:chktime,:bolsched)";
+        //   $insertInAm = $con->prepare($insert_timeIn);
+        //   $insertInAm ->execute([
+        //        ':empno' =>$empNo,
+        //        ':worksched' =>$workId,
+        //       ':i' => $i,
+        //       ':chktime'=> $chktime,
+        //       ':bolsched'=> $bolsched
+        //   ]);
               
-        }
-           $timeOutPM = "i";
-            if($chktype == $timeOutPM ){
+        // }
+      //      $timeOutPM = "i";
+      //       if($chktype == $timeOutPM ){
           
-          $insert_timeIn = "CALL spInsertTimeOutPM(:empno,:worksched,:i,:chktime,:bolsched)";
-          $insertInAm = $con->prepare($insert_timeIn);
-          $insertInAm ->execute([
-               ':empno' =>$empNo,
-               ':worksched' =>$workId,
-              ':i' => $i,
-              ':chktime'=> $chktime,
-              ':bolsched'=> $bolsched
-          ]);
+      //     $insert_timeIn = "CALL spInsertTimeOutPM(:empno,:worksched,:i,:chktime,:bolsched)";
+      //     $insertInAm = $con->prepare($insert_timeIn);
+      //     $insertInAm ->execute([
+      //          ':empno' =>$empNo,
+      //          ':worksched' =>$workId,
+      //         ':i' => $i,
+      //         ':chktime'=> $chktime,
+      //         ':bolsched'=> $bolsched
+      //     ]);
               
        
-      }
+      // }
     
     }
     if($i == $dateto){

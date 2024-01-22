@@ -1,8 +1,8 @@
 
-        <div class="row">
+        <div class="d-flex">
           
-       <div class="col-lg-3 col-md-3 col-sm-3 m-0">
-            <select id="months" class="form-control text-center">
+       <div class=" m-0">
+            <select id="months" class="form-control text-center ">
 
                 <option val="01">January</option>
                 <option val="02">February</option>
@@ -19,7 +19,7 @@
 
             </select>
             </div>
-           <div class="col-lg-3 col-md-3 col-sm-3">
+           <div class="m-0">
             <select id="period" class="form-control text-center">
                 <option val="1">1-15</option>
                 <option val="2">16-31</option>
@@ -27,7 +27,7 @@
 
             </select>
             </div>
-            <div class="col-2">
+            <div class="m-0">
             <select class="form-control text-center" id="year">
                 <?php for($x = 2018; $x < 2050; $x++) { ?>
                 <option <?php if($x == date("Y")){
@@ -36,18 +36,18 @@
                 <?php }?>
             </select>
             </div>
-            <div class="col-4">
+            <div class="ml-5">
                 <div class="row">
             <form class="form-horizontal" method="post" action="<?php htmlspecialchars("PHP_SELF");?>" id="employee-form">
             <a style="margin:auto;" target="blank" id="printlink" 
                 href="../plugins/jasperreport/dtrreport.php?empno=<?php echo $hiddenempno;?>&datefrom=<?php echo $dteFrom;?>&dateto=<?php echo $dteTo;?>">
-                <button type="button" class="btn-sm bg-dark " name="print" id="print"  value="Print"><b>PRINT</b></button>
+                <button type="button" class="btn-sm bg-dark "  name="print" id="print"  value="Print"><b>PRINT</b></button>
 
             </a>
            
             <a style="margin:auto;" target="blank" id="printlink_all"
                 href="../plugins/jasperreport/dtrreport.php?dept=<?php echo $hiddenempno;?>&datefrom=<?php echo $dteFrom;?>&dateto=<?php echo $dteTo;?>">
-                <button type="button" class="btn-sm bg-warning " name="print" id="printAll" value="Print"><b>PRINT
+                <button type="button" class="btn-sm bg-warning "  name="print" id="printAll" value="Print"><b>PRINT
                     ALL</b></button>
                     </form>
             </a>

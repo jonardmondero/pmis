@@ -1,10 +1,16 @@
 <?php 
 
 include('./components/textfields.php');
+include('../config/config.php');
+$get_user_sql = "SELECT * FROM department WHERE status = 'Active'";
+$user_data = $con->prepare($get_user_sql);  
+$user_data->execute();
+$get_schedule = $con->prepare("SELECT * FROM workschedule WHERE Status ='Active'");
+$get_schedule->execute();
 ?>
 
-<div   class="modal fade" id="addemployee">
-    <div class="modal-dialog modal-dialog-centered">
+<div   class="modal fade " id="addemployee">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content ">
             <div class="modal-header bg-dark ">
                 <h4 class="modal-title ">Add Employee</h4>
@@ -16,24 +22,45 @@ include('./components/textfields.php');
             <div class="modal-body">
                 <form class="form-horizontal" method="post" id = "addEmployeeForm" action="<?php htmlspecialchars("PHP_SELF");?>"
                     id="employee-form">
+                    <div class="row">
+                    <div class="col-6 p-1">
+                        <div class="card">
+                            <div class="card">
+                                <div class="card-header bg-warning text-center">
+                                <h5 class="card-title text-bold font-weight-bold">BASIC INFORMATION</h5>
+                                </div>
+                              
+                            </div>
+                            
+                            <div class="card-body">
+                                
+                       
+                    <?php textField('Employee No','checkempid','empnum');
+                      textField('Last Name','lname','lname');  
+                      textField('First Name','fname','fname');
+                      textField('Middle Name','mname','mname');   
+                      textField('Biometric I.D.','checkbioid','bioid'); ?>
+                    </div>
+                    </div>
+                        </div>
+                    <div class="col-6 p-1 ">
+                        <div class="card">
+                            <div class="card-header bg-primary text-center">
+                                <div class="card-title">
+                                    <h5>OTHER INFORMATION</h5>
+                                </div>
+                            </div>
+                            <div class="card-body">
 
-                    <div class="col-12">
-                        <?php textField('Emp No:','checkempid','empnum');
-                      textField('Last Name:','lname','lname');  
-                      textField('First Name:','fname','fname');
-                      textField('Mdle Name:','mname','mname');   
-                      textField('Bio I.D.:','checkbioid','bioid'); ?>
-
-                        <div class="form-group row">
-                            <label class="col-form-label" style="margin-right:70px;margin-left:5px;"> Dept: </label>
-                            <select class="form-control select2 col-5" style="width:75%;height:50px;" name="department"
+                         
+                        <div class="form-group ">
+                            <label class="col-form-label "  > Department </label>
+                            <select class="form-control select2 h-25"  style = "width:100%;font-size:8px"name="department"
                                 id="department">
                                 <option value="Select Department" selected> Select Department... </option>
                                 <?php
-                     include('../config/config.php');
-                     $get_user_sql = "SELECT * FROM department WHERE status = 'Active'";
-                     $user_data = $con->prepare($get_user_sql);  
-                     $user_data->execute();
+           
+                   
                         while ($result2 = $user_data->fetch(PDO::FETCH_ASSOC)) {
                         $deptId = $result2['deptId'];
                         $deptdesc = $result2['departmentDescription'];
@@ -43,60 +70,53 @@ include('./components/textfields.php');
                             </select>
                         </div>
 
-                        <div class="input-group m-auto">
-                            <label class="col-form-label col-5">Has Work Schedule ? </label>
-                            <select class="form-control col-7" name="worksched" id="worksched">
+                        <div class="form-group ">
+                            <label class="col-form-label ">Has Work Schedule ? </label>
+                            <select class="form-control" name="worksched" id="worksched">
                                 <option val="Yes">Yes</option>
                                 <option val="No">No </option>
                             </select>
                         </div>
+                        <div class="form-group ">
+                        <label class="col-form-label" >Schedule </label>
+                        <select class="form-control select2  " style="width:100%;font-size:8px" name="emp_sched"
+                            id="emp_sched">
+                            <?php 
+                           
+                        while($get_sched_result = $get_schedule->fetch(PDO::FETCH_ASSOC)){
+                        ?>
+                            <option
 
-                        <div class="input-group  mt-4 w-100">
+                            <?php if ($get_sched_result['workScheduleId'] == 'CS'){
+                                echo "selected";
+                            } ?>
 
-                            <label class="col-form-label mr-4 " >Schedule: </label>
-                            <select class="form-control w-100"  name="emp_sched"
-                                id="emp_sched">
-                             
-                                <?php 
-                            $get_schedule = $con->prepare("SELECT * FROM workschedule WHERE Status ='Active'");
-                            $get_schedule->execute();
-                            while($get_sched_result = $get_schedule->fetch(PDO::FETCH_ASSOC)){
-                            ?>
-                                <option
+                            value="<?php echo $get_sched_result['workScheduleId'];?>">
+                                <?php echo $get_sched_result['workScheduleDescription'];?></option>
+                            <?php }?>
+                        </select>
 
-                                <?php if ($get_sched_result['workScheduleId'] == 'CS'){
-                                    echo "selected";
-                                } ?>
-
-                                value="<?php echo $get_sched_result['workScheduleId'];?>">
-                                    <?php echo $get_sched_result['workScheduleDescription'];?></option>
-                                <?php }?>
-                            </select>
                         </div>
-
-
-                        <div class="form-group row">
-                            <label class="col-form-label col-5"> Employment Status: </label>
-                            <select class="form-control col-7" name="estatus" id="estatus">
+                        <div class="form-group ">
+                            <label class="col-form-label "> Employment Status </label>
+                            <select class="form-control " name="estatus" id="estatus">
                                 <option val="Regular">Regular</option>
                                 <option val="Job Order">Job Order </option>
                             </select>
                         </div>
-                        <?php textField(' Supervisor:','supervisor','supervisor');?>
+                        <?php textField(' Supervisor','supervisor','supervisor');?>
 
 
-                        <div class="form-group row">
-                            <label class="col-form-label col-5">Status: </label>
-                            <select class="form-control col-7" name="status" id="status">
+                        <div class="form-group ">
+                            <label class="col-form-label ">Status </label>
+                            <select class="form-control " name="status" id="status">
                                 <option val="Active">Active</option>
                                 <option val="Not Active">Not Active </option>
                             </select>
                         </div>
-
-
-
-
-
+                        </div>
+                        </div>
+                        </div>
                     </div>
                     <div class="modal-footer float-right">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -114,5 +134,9 @@ include('./components/textfields.php');
 <style>
 .label {
     margin-right: 10px;
+}
+.form-group-margin{
+    margin-bottom: 0px;
+    margin-top:0px;
 }
 </style>

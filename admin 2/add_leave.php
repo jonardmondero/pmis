@@ -56,7 +56,7 @@ $prep_leave_type->execute();
                                             <h3 class="card-title capitalize text-bold">Search Employee</h3>
                                         </div>
 
-                                        <!-- <?php include("elements/search_employee.php");?> -->
+                                    <?php include("elements/search_employee.php");?> 
                                     
 
                                     </div>
@@ -102,10 +102,10 @@ $prep_leave_type->execute();
                                                 </div>
                                                 <div class="col-4">
                                                     <div class="form-group date">
-                                                         <label class="mb-0">Date
+                                                         <label class="mb-0">Date Range
                                                         </label>
 
-                                                        <input style="margin-right:10px;" type="text"
+                                                        <input style="margin-right:10px;" type="text" 
                                                             class="form-control text-center" style="font-size:13px"
                                                             autocomplete="off" name="datefrom" id="dtefrom"
                                                             val="<?php echo $curdate; ?> ">
@@ -123,7 +123,23 @@ $prep_leave_type->execute();
                                                         <option>Afternoon</option>
                                                     </select>
                                                 </div>
+                                                
                                                 </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="offset-5 col-4">
+                                                  
+                                                    <div class="form-group">
+                                                    <label class="">Multiple Dates</label>
+                                                <input type="text" class="form-control" autocomplete="off" name = "pickdate" id="pickdate" data-provide="datepicker" placeholder="Pick the multiple dates">
+                                                
+                                               
+                                                </div>
+                                                <button class="btn btn-sm btn-primary text-bold" id="datepick">ADD DATES</button>
+                                            
+                                            
+                                             
+                                            </div>
                                             </div>
 
 

@@ -29,7 +29,8 @@ $requestData= $_REQUEST;
     3 => 'biometricid',
     4 => 'employmentstatus',
     5 => 'workScheduleId',
-	6 => 'supervisor'
+	6 => 'workScheduleId',
+	7 => 'supervisor'
   
 
 );
@@ -44,6 +45,7 @@ $sql = "SELECT CONCAT(b.firstName,' ',LEFT(b.middleName, 1),'. ',b.lastName) as 
         d.departmentDescription,
         b.workScheduleId,
         b.employmentStatus,
+		b.status,
         b.supervisor  
         FROM bioinfo b 
         INNER JOIN department d on b.department = d.deptId ";
@@ -69,11 +71,12 @@ d.departmentDescription,
 b.workScheduleId,
 b.supervisor,
 b.biometricId,
-b.employmentStatus   
+b.employmentStatus,
+b.status   
 FROM bioinfo b 
 INNER JOIN department d on b.department = d.deptId ";
 if( !empty($requestData['search']['value']) ) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
-	$sql.="  and (b.employeeNo LIKE '".$requestData['search']['value']."%' ";    
+	$sql.=" AND (b.employeeNo LIKE '".$requestData['search']['value']."%' ";    
 	$sql.=" OR b.firstName LIKE '".$requestData['search']['value']."%' ";
 	$sql.=" OR b.middleName LIKE '".$requestData['search']['value']."%' ";
 	$sql.=" OR b.lastName LIKE '".$requestData['search']['value']."%' ";
@@ -127,6 +130,7 @@ $data = array();
 	$nestedData[] = $row["employmentStatus"];
     $nestedData[] = $row["workScheduleId"];
     $nestedData[] = $row["supervisor"];
+	$nestedData[] = $row["status"];
 	$data[] = $nestedData;
 }
 

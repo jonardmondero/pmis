@@ -5,7 +5,8 @@
 <script src="../plugins/moments/moments.js"> </script>
 <!-- Bootstrap 4 -->
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+<script src="../plugins/bootstrap/js/bootstrap.js"></script>
+<script src="../plugins/bootstrap-popup/src/bootstrap-modal-popover.js"></script>
 <script src="../plugins/sparkline/jquery.sparkline.min.js"></script>
 <!-- jvectormap -->
 <script src="../plugins/daterangepicker/daterangepicker.js"></script>
@@ -37,5 +38,12 @@
 <script src="../plugins/select2/select2.min.js"></script>
 <script src="../plugins/select2/select2.full.min.js"></script>
 <script src="../plugins/select2/select2.js"></script>
+<script src="../plugins/bootstrap-hover/bootstrap-hover-dropdown.js"></script>
+
+<script src="../plugins/bootstrap-popup/lib/prettify.js"></script>
+<script src="../plugins/bootstrap/js/bootstrap.js"></script>
+
+
+
 <!-- <script src="../plugins/fullcalendar/main.js"></script>
 <script src="../plugins/jquery-ui/jquery-ui.min.js"></script> -->

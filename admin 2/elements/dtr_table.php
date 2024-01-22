@@ -8,6 +8,40 @@
     height: 30px;
     width: 60px;
 }
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 8px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
 </style>
 <?php 
   ob_start();
@@ -29,7 +63,7 @@
                         <label>DATE FILTER: </label>
 
                     </span>
-                    <input style="margin-right:10px;" type="text" class="form-control text-sm text-center"
+                    <input style="margin-right:10px;font-size:14px" type="text" class="form-control text-sm text-center"
                         autocomplete="off" name="daterange" id="dtefrom" value="<?php echo $dteFrom;?>">
 
 
@@ -39,7 +73,7 @@
                             class="fa fa-print"></i>
                     </button> -->
 
-                    <button class="btn bg-dark float-right" style="margin-left:10px;" type="button"
+                    <button class="btn bg-dark float-right" style="margin-left:5px" type="button"
                         id="editEmployee" aria-expanded="false"><i class="fa fa-edit"></i>
                     </button>
 
@@ -136,7 +170,9 @@
 
 
                     </div>
+                    
                 </div>
+                
             </form>
                                  
                        

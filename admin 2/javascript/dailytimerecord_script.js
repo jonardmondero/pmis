@@ -1,7 +1,18 @@
 var date = "";
 var datefr = "";
 var dateto = "";
+
+
+  $(document).ready(function() {
+    $('.js-activated').dropdownHover().dropdown();
+  });
+
 $(function () {
+
+  $('.helloWorld').click(function () {
+    alert('hello world');
+});
+prettyPrint();
 
 
 
@@ -17,9 +28,10 @@ if(e.keyCode == 112){
   $(currow).find("td:eq(2) input[type='text']").val(getinput);// destination of the record
   const empno = $("#hiddenempno").val();
   const field = "inAM";
+  $(this).val("");
+  // $(currow).find("td:eq(2) input[type='text']").change();
   updateDTR(empno, col1, field, getinput);
-
-
+  $(this).change();
 
   
 }
@@ -32,7 +44,12 @@ if(e.keyCode == 113){
   $(currow).find("td:eq(3) input[type='text']").val(getinput);
   const field = "outAM";
   const empno = $("#hiddenempno").val();
+  $(this).val("");
+  var focusedInput = $('input:focus');
+  // console.log(focusedInput.val());
+  // focusedInput.change();
   updateDTR(empno, col1, field, getinput);
+  $(this).change();
 }
 
  //F3 KEYPRESS
@@ -44,7 +61,9 @@ if(e.keyCode == 114){
   $(currow).find("td:eq(4) input[type='text']").val(getinput);
   const field = "inPM";
   const empno = $("#hiddenempno").val();
+  $(this).val("");
   updateDTR(empno, col1, field, getinput);
+  $(this).change();
 
 }
 
@@ -57,7 +76,9 @@ if(e.keyCode == 115){
   $(currow).find("td:eq(5) input[type='text']").val(getinput);
   const field = "outPM";
   const empno = $("#hiddenempno").val();
+  $(this).val("");
   updateDTR(empno, col1, field, getinput);
+  $(this).change();
 }
 
  //F5 KEYPRESS
@@ -69,7 +90,10 @@ if(e.keyCode == 116){
   $(currow).find("td:eq(6) input[type='text']").val(getinput);
   const field = "otIn";
   const empno = $("#hiddenempno").val();
+  $(this).val("");
   updateDTR(empno, col1, field, getinput);
+
+  $(this).change();
 
 
 }
@@ -82,7 +106,10 @@ if(e.keyCode == 117){
   $(currow).find("td:eq(7) input[type='text']").val(getinput);
   const field = "otOut";
   const empno = $("#hiddenempno").val();
-  updateDTR(empno, col1, field, getinput);
+  $(this).val("");
+  // updateDTR(empno, col1, field, getinput);
+
+  $(this).change();
 }
 
 })
@@ -232,7 +259,6 @@ $("#dtr tbody").on("keyup", ".tr", function () {
 
 
 function updateInAm(value) {
-  console.log(value);
   const field = "inAM";
   const empno = $("#hiddenempno").val();
 
@@ -240,7 +266,6 @@ function updateInAm(value) {
 }
 
 function updateOutAm(value) {
-  console.log(value);
   const field = "outAM";
   const empno = $("#hiddenempno").val();
 
@@ -289,8 +314,8 @@ function updateUndertime(value) {
   updateLateUT(empno, date, field, value);
 }
 
- function updateDTR(empno, date, field, value) {
-  $.ajax({
+ async function updateDTR(empno, date, field, value) {
+  await $.ajax({
     url: "ajaxcall/update_dtr.php",
     type: "POST",
     data: {

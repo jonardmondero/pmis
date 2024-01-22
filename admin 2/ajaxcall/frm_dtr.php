@@ -1,4 +1,4 @@
-<?php include ('../../config/config.php');
+<?php include_once('../../config/config.php');
 
 if(isset($_POST['employeeno'])) {
     $empno=$_POST['employeeno'];
@@ -32,7 +32,7 @@ if(isset($_POST['employeeno'])) {
         $result3['latefinal'] >= '08:00' ? $lateStyle = 'color:green;font-weight:bold ' : null; 
         $result3['undertimefinal'] >= '08:00' ? $undertimeStyle = 'color:green;font-weight:bold ' :null; 
 
-        $result3['inAM'] == ""  ||  $result3['outAM'] == "" || $result3['inPM'] == "" ||  $result3['outPM'] == "" ? $cellStyle1 = 'style="background-color:#ffcccc;"' : $cellStyle1 = 'style="background-color:#ffffff;"';
+        $result3['inAM'] == ""  ||  $result3['outAM'] == "" || $result3['inPM'] == "" ||  $result3['outPM'] == "" ? $cellStyle1 = 'style="background-color:#66cdaa;"' : $cellStyle1 = 'style="background-color:#ffffff;"';
         // $result3['outAM'] == "" ? $cellStyle2 = 'style="background-color:#ffcccc;"' : $cellStyle2 = 'style="background-color:#ffffff;"';
         // $result3['inPM'] == "" ? $cellStyle3 = 'style="background-color:#ffcccc;"' : $cellStyle3 = 'style="background-color:#ffffff;"';
         // $result3['outPM'] == "" ? $cellStyle4 = 'style="background-color:#ffcccc;"' : $cellStyle4 = 'style="background-color:#ffffff;"';
@@ -41,11 +41,13 @@ if(isset($_POST['employeeno'])) {
         // $result3['latefinal'] == "00:00" ? $latefinal = "" : $latefinal = $result3['latefinal'];
         // $result3['undertimefinal'] == "00:00" ? $undertimefinal = "" : $undertimefinal = $result3['undertimefinal'];
             echo '<tr  class = "tr"> ';
-            echo '<td class = "border border-dark col-1" >';
+            echo '<td class = "border border-dark  m-auto p-1" >';
+          
             echo $result3['Date'];
+           
             echo"</td>";
 
-            echo '<td '.$daystyle.' class = "border border-dark col-1">';
+            echo '<td '.$daystyle.' class = "border border-dark m-auto p-1">';
             echo $result3['DAY'];
             echo"</td>";
 
