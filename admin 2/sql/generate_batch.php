@@ -65,6 +65,19 @@ foreach($iterator as $value){
  // for($i=$datefrom;$i<=$dateto;$i+=86400){
   $stepVal = '+1 day';
   $format = 'Y-m-d';
+
+  $st_msaccess_search = "SELECT distinct top 20 checktype ,checktime,sn ,badgenumber from checkinout  
+  inner join userinfo  on  checkinout.USERID = userinfo.USERID
+   where userinfo.badgenumber = :biometric and 
+    DATEPART(yy,checktime)= :year AND 
+    datepart(mm,checktime) = :month and datepart(dd,checktime)= :day 
+    ORDER by checktime";
+
+  $pre_msaccess_stmt = $mscon->prepare($st_msaccess_search);
+
+  $insert_timeIn = "CALL spInsertLogs(:empno,:worksched,:i,:chktime,:bolsched,:state)";
+  $insertInAm = $con->prepare($insert_timeIn);
+
   for($z=$datefrom;$z<=$dateto;$z+=86400){
   $i = date($format, $z);
 
@@ -100,15 +113,7 @@ foreach($iterator as $value){
 
       // $st_msaccess_search = "SELECT DISTINCT TOP 20 CHECKINOUT.CHECKTYPE as checktype ,FORMAT([CHECKINOUT.CHECKTIME],'$date_format') as checktime, USERINFO.BADGENUMBER from CHECKINOUT inner join USERINFO  on CHECKINOUT.USERID = USERINFO.USERID where USERINFO.BadgeNumber = '$bioPin' AND CHECKINOUT.CHECKTIME like '$date_format_2%'";
      
-      $st_msaccess_search = "SELECT distinct top 20 checktype ,checktime,sn ,badgenumber from checkinout  
-      inner join userinfo  on  checkinout.USERID = userinfo.USERID
-       where userinfo.badgenumber = :biometric and 
-        DATEPART(yy,checktime)= :year AND 
-        datepart(mm,checktime) = :month and datepart(dd,checktime)= :day 
-        ORDER by checktime";
-     
-     
-      $pre_msaccess_stmt = $mscon->prepare($st_msaccess_search);
+
       $pre_msaccess_stmt->execute([
         ':biometric'	=>	 $bioPin,
 	':year'	=>	 $date_format_year,
@@ -125,8 +130,7 @@ foreach($iterator as $value){
 //       echo $chktime;
 //        echo $chktype;
 
-$insert_timeIn = "CALL spInsertLogs(:empno,:worksched,:i,:chktime,:bolsched,:state)";
-$insertInAm = $con->prepare($insert_timeIn);
+
 $insertInAm ->execute([
     ':empno' =>$empNo,
     ':worksched'=>$workId,
