@@ -436,6 +436,29 @@ error:function (xhr, b, c) {
   })
 
 });
+$('#tbl__ob tbody').on( 'click', '.ob_delete', function(){
+  const empno = $('#hiddenempno').val();
+  const currow=  $(this).closest('tr');
+  const entryno = currow.find('td:eq(0)').text();
+
+  $.ajax({
+    url:"sql/delete_ob.php",
+    type:"POST",
+    data:{
+      empno:empno,
+      entryno:entryno
+    },
+    success: function(){
+  notification("DELETED !", "This record has been deleted.","Refresh","success","success");
+},
+error:function (xhr, b, c) {
+     console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+       }
+
+
+  });
+});
+
 
 $('#tbl_leave tbody').on( 'click', '.btn__leave', function(){
 console.log('test');
@@ -471,10 +494,32 @@ error:function (xhr, b, c) {
        }
   })
 
-
-
-
 })
+
+$('#tbl_leave tbody').on( 'click', '.btn_delete', function(){
+  const empno = $('#hiddenempno').val();
+  const currow=  $(this).closest('tr');
+  const entryno = currow.find('td:eq(0)').text();
+
+  $.ajax({
+    url:"sql/delete_leave.php",
+    type:"POST",
+    data:{
+      empno:empno,
+      entryno:entryno
+    },
+    success: function(){
+  notification("DELETED !", "This leave has been deleted.","Refresh","success","success");
+},
+error:function (xhr, b, c) {
+     console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+       }
+
+
+  });
+
+
+});
 function notification(title, message,text,value,status) {
   const empno = $('#hiddenempno').val();
   const datefr = $('#dtefrom').val();

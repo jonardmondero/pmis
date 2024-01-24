@@ -129,7 +129,7 @@ $customValueCheckOut = "O";
                                             </div>
                                            
                                             <div id="progress" class="progress" style="display: none;">
-    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
 </div>
 
 
@@ -337,7 +337,7 @@ $customValueCheckOut = "O";
         $(".progress-bar").css("width", "0%");
                 },
                 complete: function() {
-                    $("#progress").hide();
+                    // $("#progress").hide();
      
                 },
                 error: function(xhr, b, c) {

@@ -38,7 +38,10 @@ while( $ledgerresult = $prep_select->fetch(PDO::FETCH_ASSOC)) {
         echo '<td>';
         echo $ledgerresult['status'];
         echo '</td>'; 
-        echo '<td><button class = "btn btn-primary btn-md btn-circle ob__button" id = "btn-ob" data-id='.$ledgerresult['employeeNo'].' > <i class = "fa fa-upload"></i></button> </td>';   
+        echo '<td>';
+        echo '<button class = "btn btn-primary btn-md btn-circle ob__button" id = "btn-ob" data-id='.$ledgerresult['employeeNo'].' > <i class = "fa fa-upload"></i></button> ';  
+        echo '<button class = "btn btn-danger btn-md btn-circle ob_delete" id = "btn-ob_delete" data-id='.$ledgerresult['employeeNo'].' > <i class = "fa fa-trash"></i></button> ';   
+        echo '</td>';
         echo '</tr>';
         echo "<p>";
         echo print_r($ledgerresult['entryId']);

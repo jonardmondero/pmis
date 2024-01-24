@@ -10,6 +10,7 @@ $datefrom=$dateto=$selemployee ='';
 $db = '';
 
  //1.1 end
+ 
   $empNo = '';
   $bioPin = '';
   $workId = '';
@@ -169,7 +170,7 @@ $insert_timeIn = "CALL spInsertLogs(:empno,:worksched,:i,:chktime,:bolsched,:sta
     if($i == $dateto){
       break;
     }
- 
+
   }
  
 unset($pre_insert_dtr);
