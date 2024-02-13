@@ -1,4 +1,41 @@
-<?php include_once('../../config/config.php');
+<?php 
+include_once('../../config/config.php');
+ function colorStyle($value){
+    $style ;
+    switch ($value) {
+            case 'SL':
+            $style = 'color:red;font-weight:bold';
+            break;
+            case 'VL':
+            $style = 'color:blue;font-weight:bold';
+            break;
+            case 'SLP':
+            $style= 'color:orange;font-weight:bold';
+            break;
+            case 'FW':
+            $style= 'color:#9b870c;font-weight:bold';
+            break;
+            case 'TOB':
+            $style= 'color:green;font-weight:bold';
+            break;
+            case 'OT':
+            $style= 'color:#ff6347;font-weight:bold';
+            break;
+            case 'ABS':
+            $style= 'color:red;font-weight:bold';
+            break;
+            case 'ENT':
+            $style= 'color:red;font-weight:bold';
+            break;
+            case 'SPL':
+            $style= 'color:orange;font-weight:bold';
+            break;
+        default:
+        $style= 'color:black';
+            break;
+    }
+    return $style;
+}
 
 if(isset($_POST['employeeno'])) {
     $empno=$_POST['employeeno'];
@@ -25,6 +62,7 @@ if(isset($_POST['employeeno'])) {
        
         $daystyle;
         $lateStyle;
+        $textStyle;
         $undertimeStyle;
         $result3['DAY'] =='Saturday' ||     $result3['DAY'] =='Sunday' ?  $daystyle = 'style="color:red;"' :  $daystyle = 'style="color:black;"';
         $result3['latefinal'] != '00:00' ? $lateStyle = 'color:red; background-color:#ffcccc; ' : $lateStyle = 'color:black; background-color:#ffffff;'; 
@@ -32,7 +70,7 @@ if(isset($_POST['employeeno'])) {
         $result3['latefinal'] >= '08:00' ? $lateStyle = 'color:green;font-weight:bold ' : null; 
         $result3['undertimefinal'] >= '08:00' ? $undertimeStyle = 'color:green;font-weight:bold ' :null; 
 
-        $result3['inAM'] == ""  ||  $result3['outAM'] == "" || $result3['inPM'] == "" ||  $result3['outPM'] == "" ? $cellStyle1 = 'style="background-color:#66cdaa;"' : $cellStyle1 = 'style="background-color:#ffffff;"';
+        $result3['inAM'] == ""  ||  $result3['outAM'] == "" || $result3['inPM'] == "" ||  $result3['outPM'] == "" ? $cellStyle1 = 'background-color:#66cdaa;' : $cellStyle1 = 'background-color:#ffffff;';
         // $result3['outAM'] == "" ? $cellStyle2 = 'style="background-color:#ffcccc;"' : $cellStyle2 = 'style="background-color:#ffffff;"';
         // $result3['inPM'] == "" ? $cellStyle3 = 'style="background-color:#ffcccc;"' : $cellStyle3 = 'style="background-color:#ffffff;"';
         // $result3['outPM'] == "" ? $cellStyle4 = 'style="background-color:#ffcccc;"' : $cellStyle4 = 'style="background-color:#ffffff;"';
@@ -52,19 +90,22 @@ if(isset($_POST['employeeno'])) {
             echo"</td>";
 
             echo '<td  >';
-            echo '<input type ="text" class = "text_align border border-dark dtr-input-size" '.$cellStyle1.'" ondrop="drop(event)" ondragover="allowDrop(event)" onchange="updateInAm(this.value);" onfocus="this.select();"   value="'.$result3['inAM'].'" >';
+            echo '<input type ="text" 
+            class = "text_align border border-dark dtr-input-size" style="'.$cellStyle1.colorStyle($result3['inAM']).'" ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)" onchange="updateInAm(this.value);"
+            onfocus="this.select()"
+            value="'.$result3['inAM'].'" >';
             echo"</td>";
 
             echo '<td >';
-            echo '<input type ="text" class = "text_align border border-dark dtr-input-size " '.$cellStyle1.'" onchange="updateOutAm(this.value)" onfocus="this.select()"  value="'.$result3['outAM'].'" >';
+            echo '<input type ="text" class = "text_align border border-dark dtr-input-size " style="'.$cellStyle1.colorStyle($result3['outAM']).'" onchange="updateOutAm(this.value)" onfocus="this.select()"  value="'.$result3['outAM'].'" >';
             echo"</td>";
 
             echo '<td >';
-            echo '<input type ="text" class = "text_align border border-dark dtr-input-size" '.$cellStyle1.'" onchange="updateInPm(this.value)" onfocus="this.select()"  value="'.$result3['inPM'].'" >';
+            echo '<input type ="text" class = "text_align border border-dark dtr-input-size" style="'.$cellStyle1.colorStyle($result3['inPM']).'" onchange="updateInPm(this.value)" onfocus="this.select()"  value="'.$result3['inPM'].'" >';
             echo"</td>";
 
             echo '<td>';
-            echo '<input type ="text" class = "text_align border border-dark dtr-input-size" '.$cellStyle1.'" onchange="updateOutPm(this.value)" onfocus="this.select()"  value="'.$result3['outPM'].'" >';
+            echo '<input type ="text" class = "text_align border border-dark dtr-input-size" style="'.$cellStyle1.colorStyle($result3['outPM']).'" onchange="updateOutPm(this.value)" onfocus="this.select()"  value="'.$result3['outPM'].'" >';
             echo"</td>";
 
             echo '<td >';
@@ -92,5 +133,6 @@ if(isset($_POST['employeeno'])) {
       
     }
 }
+    
 
 ?>

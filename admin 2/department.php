@@ -35,7 +35,7 @@ $alert_msg = '';
               
           </div>--> 
           <div class ="col-2">
-            <button class = "btn btn-primary" 
+            <button class = "btn bg-dark" 
             id = "adddept" data-toggle="modal" 
             data-target="#add_department">
             Add Department 
@@ -58,8 +58,8 @@ $alert_msg = '';
        <div class="col-12">
         <div class = "row">
           <div style="height: 500px;"class ="col-12" >
-          <div class="card card-primary">
-               <div class="card-header">
+          <div class="card ">
+               <div class="card-header bg-dark">
                 <h3 
                 class="card-title">Departments
                 </h3>

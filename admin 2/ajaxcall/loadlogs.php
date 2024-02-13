@@ -73,22 +73,22 @@ ORDER BY checktime" ;
 			case "3569182360034":
 			$location = "CED BTM";
 			break;
-			case "3486862430001":
+			case "3486862430243":
 			$location = "OHRM BTM";
 			break;
-			case "3486862430384":
+			case "3569182360161":
 			$location = "CTO BTM";
 			break;
-			case "3569182360161":
-			$location = "CMO BTM";//
-			break;
+			// case "3569182360161":
+			// $location = "CMO BTM";//
+			// break;
 			case "3486862430380":
 			$location = "PMSD BTM";
 			break;
 			case "3486862430309":
 			$location = "CWD BTM";
 			break;
-			case "3486862430243":
+			case "3486862430001":
 			$location = "SP BTM";
 			break;
 			case "3486862430322":

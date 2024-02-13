@@ -28,10 +28,12 @@ if(e.keyCode == 112){
   $(currow).find("td:eq(2) input[type='text']").val(getinput);// destination of the record
   const empno = $("#hiddenempno").val();
   const field = "inAM";
-  $(this).val("");
+  // $(this).val("");
+  // let inputDate = [col1,getinput];
   // $(currow).find("td:eq(2) input[type='text']").change();
-  updateDTR(empno, col1, field, getinput);
+  // updateDTR(empno, col1, field, getinput);
   $(this).change();
+  console.log(inputDate[0]);
 
   
 }

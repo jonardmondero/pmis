@@ -12,24 +12,37 @@
                     <form method="POST" action="<?php htmlspecialchars("PHP_SELF")?>">
                         <div class="row ">
                             <div class="form-group col-12">
-                                <label class="col-6">Department Id</label>
+                                <label class="">Department Id</label>
                                 <input type="text" class="form-control " readonly id="edit-deptId" name="deptId">
                             </div>
                             <div class="form-group col-12">
-                                <label class="col-6">Department Name</label>
+                                <label class="">Department Name</label>
                                 <input type="text" class="form-control " id="edit-deptname" name="deptname">
                             </div>
                             <div class="form-group col-12">
-                                <label class="col-6">Location</label>
-                                <select class="form-control" id="location" name = "location">
+                                <label class="">Connection</label>
+                                <select class="form-control" id="connection" name = "connection">
                                     <option value="CONNECTED">CONNECTED</option>
                                     <option value="DISCONNECTED">DISCONNECTED</option>
                                 </select>
                             </div>
                             <div class="form-group col-12">
+                            <label class="">Status</label>
                                 <select class="form-control" name="edit-status" id="edit-status">
                                     <option val="Active">Active</option>
                                     <option val="In Active">In Active</option>
+                                </select>
+                            </div>
+                            
+                                <div class="form-group col-12">
+                                <label class="">Location</label>
+                                <select class="form-control" id="location" name="location">
+                                    <option value="AGRI">AGRI</option>
+                                    <option value="PMSD">PMSD</option>
+                                    <option value="PPMO">PPMO</option>
+                                    <option value="MOTORPOOL">MOTORPOOL</option>
+                                    <option value="PTTD">PTTD</option>
+                                    <option value="OCCR">OCCR</option>
                                 </select>
                             </div>
                         </div>

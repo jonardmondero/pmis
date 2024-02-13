@@ -24,7 +24,7 @@
                     <td><?php echo $result['departmentDescription']?> </td>
                     <td><?php echo $result['connection']?> </td>
                     <td><?php echo $result['status']?> </td>
-                    <td><button class = "btn btn-danger  btn-sm btn-circle" id = "edit" ><i class = "fa fa-edit"></button</td>
+                    <td><button class = "btn btn-primary   btn-md btn-circle" id = "edit" ><i class = "fa fa-edit"></button</td>
                   </tr>
              <?php }?>
            </tbody>

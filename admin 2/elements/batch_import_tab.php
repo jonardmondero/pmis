@@ -20,6 +20,18 @@
           ?>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="Location">Location</label>
+                        <select name="location" id="location" class="form-control">
+                            <option value="" selected>Select..</option>
+                            <option value="AGRI">AGRI</option>
+                            <option value="PMSD">PMSD</option>
+                            <option value="PPMO">PPMO</option>
+                            <option value="MOTORPOOL">MOTORPOOL</option>
+                            <option value="PTTD">PTTD</option>
+                            <option value="OCCR">OCCR</option>
+                        </select>
+                    </div>
                     <table class="table table-hover" style="width: 100%" id="tblBatchImport">
                         <thead>
                             <th>Office Code</th>
@@ -67,18 +79,18 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Category:</label>
-                                    <select class = "form-control" id = "category" name = "category">
-                                        <option value = "CONNECTED"> CONNECTED MACHINES</option>
-                                        <option value = "DISCONNECTED"> DISCONNECTED MACHINES</option>
+                                    <select class="form-control" id="category" name="category">
+                                        <option value="CONNECTED"> CONNECTED MACHINES</option>
+                                        <option value="DISCONNECTED"> DISCONNECTED MACHINES</option>
                                     </select>
                                 </div>
                                 <input style="margin:auto;width:100%" type="submit" class="btn btn-primary"
                                     name="generate_category" id="generate_category" value="GENERATE RECORDS">
 
-                                    <input style="margin:auto;width:100%;margin-top:10px" type="submit" class="btn btn-primary"
-                                    name="sync_records" id="sync_records" value="SYNC RECORDS">
+                                <input style="margin:auto;width:100%;margin-top:10px" type="submit"
+                                    class="btn btn-primary" name="sync_records" id="sync_records" value="SYNC RECORDS">
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>

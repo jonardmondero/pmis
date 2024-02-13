@@ -419,7 +419,8 @@ $customValueCheckOut = "O";
 
         // GENERATE THE BATCH OF OFFICES
         $("#import_dep_batch").on("click",async function() {
-
+            $('.alert').attr("class", "alert alert-danger");
+            $("#import_status").html("The system is importing logs. Please wait...");
             event.preventDefault();
             var loading = '';
             var arrayDept = [];
@@ -427,7 +428,7 @@ $customValueCheckOut = "O";
             var arrayTo = [];
             $('#tblBatchImport tr').each(function(row, tr) {
 
-                $('.alert').attr("class", "alert alert-danger");
+              
                 $("#import_dep_batch").prop("disabled", true);
 
 
@@ -712,6 +713,50 @@ $.ajax({
         var i = r.parentNode.parentNode.rowIndex;
         document.getElementById("tblBatchImport").deleteRow(i);
     }
+
+    $("#location").change(function(e){
+        const location = $("#location").val();
+        console.log(location);
+        $.ajax({
+            url:"ajaxcall/get_department_location.php",
+            type:"POST",
+            data:{location:location},
+            error: function (xhr, b, c) {
+      console.log(
+        "xhr=" +
+          xhr.responseText +
+          " b=" +
+          b.responseText +
+          " c=" +
+          c.responseText
+      );
+    },
+        }).done(function(response){
+            var table = document.getElementById("tblBatchImport");
+            var res = JSON.parse(response);
+          
+              res.map(function(item){
+              item.forEach(function(index){
+                console.log(index.deptId);
+              
+            var row = table.insertRow(1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            cell1.innerHTML = index.deptId;
+            cell2.innerHTML = index.departmentDescription;
+            cell3.innerHTML = datefr;
+            cell4.innerHTML = dteto;
+            cell5.innerHTML =
+                '<button id="remove" class="btn btn-circle btn-sm btn-primary" onclick="deleteRow(this)">Remove</button>';
+
+              })
+              })
+         
+        })
+    })
     </script>
 
 
