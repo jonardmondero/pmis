@@ -9,7 +9,7 @@ if($user_type == 'User'){
 ?>
 
 <div class="wrapper">
-    <div class=" card  mt-2 shadow-none border border-dark" >
+    <div class=" card  mt-2 shadow-none border border-dark " >
 
       
             <div class="card-header bg-dark ">
@@ -43,7 +43,7 @@ if($user_type == 'User'){
                     </select>
                 </div>
                 <div class="row" id="slim">
-                    <div class="col-12">
+                    <div class="col-12  ">
                         <table id="employees" class="table table-bordered table-reponsive table-hover dataTable text_align"
                             role="grid">
                             <thead>

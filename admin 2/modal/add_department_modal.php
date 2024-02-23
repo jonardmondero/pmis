@@ -33,12 +33,14 @@
                             <div class="form-group col-12">
                                 <label class="">Location</label>
                                 <select class="form-control" id="location" name="location">
+                                <option  selected value="">Select...</option>
                                     <option value="AGRI">AGRI</option>
                                     <option value="PMSD">PMSD</option>
                                     <option value="PPMO">PPMO</option>
                                     <option value="MOTORPOOL">MOTORPOOL</option>
                                     <option value="PTTD">PTTD</option>
                                     <option value="OCCR">OCCR</option>
+                                    <option value="CHO">CHO</option>
                                 </select>
                             </div>
 

@@ -12,6 +12,11 @@ $totalRecord = 0;
 $getTotalBTMRecord = "select count(checktime) as totalrecord from dbo.CHECKINOUT";
 $getResult = $mscon->prepare($getTotalBTMRecord);
 $getResult->execute();
+$getRecordSQL = "SELECT count(recordId) as empno from dailytimerecord";
+$getSQLResult = $con->prepare($getRecordSQL);
+$getSQLResult->execute();
+$resultSQL = $getSQLResult->fetch(PDO::FETCH_ASSOC);
+
 while($row = $getResult->fetch(PDO::FETCH_ASSOC)){
     $totalRecord = $row['totalrecord'];
 }
@@ -74,7 +79,19 @@ $customValueCheckOut = "O";
                             <div class="small-box bg-danger ">
                                 <div class="inner">
                                     <h3 class = "mb-5"><?php echo $totalRecord;?></h3>
-                                    <p>Biometric Logs counter</p>
+                                    <p>MS SQL Biometric Logs</p>
+                                </div>
+                                <div class="icon mt-4">
+                                    <i class="fa fa-calendar" id="addemp" data-target="#addemployee"></i>
+                                </div>
+                              
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="small-box bg-success ">
+                                <div class="inner">
+                                    <h3 class = "mb-5"><?php echo $resultSQL['empno'];?></h3>
+                                    <p>My SQL Biometric Logs </p>
                                 </div>
                                 <div class="icon mt-4">
                                     <i class="fa fa-calendar" id="addemp" data-target="#addemployee"></i>

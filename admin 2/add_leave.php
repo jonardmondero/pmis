@@ -86,59 +86,62 @@ $prep_leave_type->execute();
                                             </div>  
                                             <div class="row">
                     
-                                            <div class="col-5">
-                                                <div class="form-group">
-                                                    <label class = "mb-0">Leave Type</label>
-                                                    <select class="form-control " id="leavetype"
-                                                        name="leavetype" required>
-                                                        <option selected="selected">Select Leave</option>
-                                                        <?php while ($get_result = $prep_leave_type->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                        <option value="<?php echo $get_result['Category']; ?>">
-                                                            <?php echo $get_result['LeaveTypeDescription']; ?>
-                                                        </option>
-                                                        <?php } ?>
-                                                    </select>
-                                                </div>
+                                            <div class="col-8">
+                                                
+                                                <table class="table  w-100 text-center table-bordered" id = "leavetype_table">
+                                                    <thead>
+                                                        <th>Leave Code</th>
+                                                        <th>Leave Description</th>
+                                                        </thead>
+                                                       <tbody>
+                                                       <?php while($get_leave = $prep_leave_type->fetch(PDO::FETCH_ASSOC)) {?>
+                                                        <tr>
+                                                      
+                                                         
+                                                        <td>
+                                                         <?php echo $get_leave['Category'];?>       
+                                                        </td>  
+                                                        <td>
+                                                            <?php echo $get_leave['LeaveTypeDescription'];?>
+                                                        </td>
+                                                        </tr>
+                                                        <?php }?>  
+                                                       
+                                                        </tbody>
+                                                   
+                                                </table>
                                                 </div>
                                                 <div class="col-4">
-                                                    <div class="form-group date">
-                                                         <label class="mb-0">Date Range
-                                                        </label>
+                                                <div class="form-group date">
+                                                     <label class="mb-0">Date Range
+                                                    </label>
 
-                                                        <input style="margin-right:10px;" type="text" 
-                                                            class="form-control text-center" style="font-size:13px"
-                                                            autocomplete="off" name="datefrom" id="dtefrom"
-                                                            val="<?php echo $curdate; ?> ">
+                                                    <input type="text" 
+                                                        class="form-control text-center" 
+                                                        autocomplete="off" name="datefrom" id="dtefrom"
+                                                        val="<?php echo $curdate; ?> ">
 
-                                                    </div>
                                                 </div>
-                                            
-                                                <div class="col-3">
                                                 <div class="form-group">
                                                     <label class="mb-0">Inclusive Date</label>
                                                     <select class="form-control select2 " id="inclusivedate"
-                                                        style="width: 100%;" name="inclusivedate" required>
+                                                         name="inclusivedate" required>
                                                         <option selected="selected">Whole Day</option>
                                                         <option>Morning</option>
                                                         <option>Afternoon</option>
                                                     </select>
                                                 </div>
-                                                
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="offset-5 col-4">
-                                                  
-                                                    <div class="form-group">
+                                                <div class="form-group">
                                                     <label class="">Multiple Dates</label>
                                                 <input type="text" class="form-control" autocomplete="off" name = "pickdate" id="pickdate" data-provide="datepicker" placeholder="Pick the multiple dates">
                                                 
                                                
                                                 </div>
                                                 <button class="btn btn-sm btn-primary text-bold" id="datepick">ADD DATES</button>
-                                            
-                                            
-                                             
+                                           
+                                           
+                                                
+                                          
                                             </div>
                                             </div>
 

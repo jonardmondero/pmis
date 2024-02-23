@@ -95,7 +95,7 @@ ORDER BY checktime" ;
 			$location = "COA BTM";
 			break;
 			case "OGT7030057022400300":
-			$location = "OCA BTM";
+			$location = "CSWDO BTM";
 			break;
 			case "OPH6040056041500373":
 			$location = "ANNEX BTM";

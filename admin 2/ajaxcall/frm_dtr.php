@@ -9,11 +9,14 @@ include_once('../../config/config.php');
             case 'VL':
             $style = 'color:blue;font-weight:bold';
             break;
+            case 'FL':
+                $style = 'color:blue;font-weight:bold';
+                break;
             case 'SLP':
-            $style= 'color:orange;font-weight:bold';
+            $style= 'color:#06968B;font-weight:bold';
             break;
             case 'FW':
-            $style= 'color:#9b870c;font-weight:bold';
+            $style= 'color:#E2880E;font-weight:bold';
             break;
             case 'TOB':
             $style= 'color:green;font-weight:bold';
@@ -30,6 +33,18 @@ include_once('../../config/config.php');
             case 'SPL':
             $style= 'color:orange;font-weight:bold';
             break;
+            case 'HOLI':
+                $style= 'font-weight:bold';
+             break;
+             case 'DAY':
+                $style= 'font-weight:bold';
+             break;
+             case 'OFF':
+                $style= 'font-weight:bold';
+             break;
+             case 'FTL':
+                $style= 'color:red;font-weight:bold';
+                break;
         default:
         $style= 'color:black';
             break;

@@ -1,10 +1,43 @@
 $(function() {
+
+    let selectedLeave;
+    $("#leavetype_table").DataTable({
+        "paging": true,
+        "searching": true,
+        "stateSave": true,
+        "select":true
+        
+    });
+
+
+//     var table = document.getElementsByTagName("table")[0];
+// var tbody = table.getElementsByTagName("tbody")[0];
+var table = document.getElementById("leavetype_table");
+table.onclick = function (e) {
+    e = e || window.event;
+    var leavecode = [];
+    var target = e.srcElement || e.target;
+    while (target && target.nodeName !== "TR") {
+      target = target.parentNode;
+    }
+    if (target) {
+      var cells = target.getElementsByTagName("td");
+  
+      leavecode.push(cells[0].innerHTML);
+
+      selectedLeave = leavecode.toString();
+    
+      console.log(selectedLeave);
+    
+    }
+  };  
 $(document).ready(function(){
 
     $("#leavetype").select2();
 
  
 });
+
 $('input[name="pickdate"]').datepicker({
     multidate: true,
       format: 'yyyy-mm-dd'
@@ -42,7 +75,7 @@ function(start, end, label) {
 
 
 $("#datepick").on("click", function () {
-var leavetype = $('#leavetype').val();
+var leavetype = selectedLeave;
 var inclusivedate = $('#inclusivedate').val();
 let date = $('#pickdate').val();
 let datearray = date.split(',');

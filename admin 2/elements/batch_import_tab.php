@@ -30,6 +30,8 @@
                             <option value="MOTORPOOL">MOTORPOOL</option>
                             <option value="PTTD">PTTD</option>
                             <option value="OCCR">OCCR</option>
+                            <option value="CHO">CHO</option>
+
                         </select>
                     </div>
                     <table class="table table-hover" style="width: 100%" id="tblBatchImport">

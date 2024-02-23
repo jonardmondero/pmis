@@ -28,13 +28,15 @@ if(e.keyCode == 112){
   $(currow).find("td:eq(2) input[type='text']").val(getinput);// destination of the record
   const empno = $("#hiddenempno").val();
   const field = "inAM";
-  // $(this).val("");
+  var cellIndex = $(this).closest("td")[0].cellIndex;
+  console.log(cellIndex);
+  $(this).val("");
   // let inputDate = [col1,getinput];
   // $(currow).find("td:eq(2) input[type='text']").change();
   // updateDTR(empno, col1, field, getinput);
-  $(this).change();
-  console.log(inputDate[0]);
-
+  // $(this).change();
+  // console.log(inputDate[0]);
+  modifyDTR(col1,empno,cellIndex,getinput,"inAM");
   
 }
  //F2 KEYPRESS
@@ -44,14 +46,17 @@ if(e.keyCode == 113){
   var getinput = $(this).closest("input").val();
   var col1 = currow.find("td:eq(0)").text();
   $(currow).find("td:eq(3) input[type='text']").val(getinput);
+  var cellIndex = $(this).closest("td")[0].cellIndex; // Get cell index
+  console.log(cellIndex);
   const field = "outAM";
   const empno = $("#hiddenempno").val();
   $(this).val("");
-  var focusedInput = $('input:focus');
+  // var focusedInput = $('input:focus');
   // console.log(focusedInput.val());
   // focusedInput.change();
-  updateDTR(empno, col1, field, getinput);
-  $(this).change();
+  // updateDTR(empno, col1, field, getinput);
+  // $(this).change();
+  modifyDTR(col1,empno,cellIndex,getinput,"outAM");
 }
 
  //F3 KEYPRESS
@@ -61,11 +66,14 @@ if(e.keyCode == 114){
   var getinput = $(this).closest("input").val();
   var col1 = currow.find("td:eq(0)").text();
   $(currow).find("td:eq(4) input[type='text']").val(getinput);
+  var cellIndex = $(this).closest("td")[0].cellIndex; // Get cell index
+  console.log(cellIndex);
   const field = "inPM";
   const empno = $("#hiddenempno").val();
   $(this).val("");
-  updateDTR(empno, col1, field, getinput);
-  $(this).change();
+  // updateDTR(empno, col1, field, getinput);
+  // $(this).change();
+  modifyDTR(col1,empno,cellIndex,getinput,"inPM");
 
 }
 
@@ -76,11 +84,14 @@ if(e.keyCode == 115){
   var getinput = $(this).closest("input").val();
   var col1 = currow.find("td:eq(0)").text();
   $(currow).find("td:eq(5) input[type='text']").val(getinput);
+  var cellIndex = $(this).closest("td")[0].cellIndex; // Get cell index
+  console.log(cellIndex);
   const field = "outPM";
   const empno = $("#hiddenempno").val();
   $(this).val("");
-  updateDTR(empno, col1, field, getinput);
-  $(this).change();
+  // updateDTR(empno, col1, field, getinput);
+  // $(this).change();
+  modifyDTR(col1,empno,cellIndex,getinput,"outPM");
 }
 
  //F5 KEYPRESS
@@ -90,12 +101,15 @@ if(e.keyCode == 116){
   var getinput = $(this).closest("input").val();
   var col1 = currow.find("td:eq(0)").text();
   $(currow).find("td:eq(6) input[type='text']").val(getinput);
+  var cellIndex = $(this).closest("td")[0].cellIndex; // Get cell index
+  console.log(cellIndex);
   const field = "otIn";
   const empno = $("#hiddenempno").val();
   $(this).val("");
-  updateDTR(empno, col1, field, getinput);
+  // updateDTR(empno, col1, field, getinput);
+  modifyDTR(col1,empno,cellIndex,getinput,"otIn");
+  // $(this).change();
 
-  $(this).change();
 
 
 }
@@ -106,12 +120,14 @@ if(e.keyCode == 117){
   var getinput = $(this).closest("input").val();
   var col1 = currow.find("td:eq(0)").text();
   $(currow).find("td:eq(7) input[type='text']").val(getinput);
+  var cellIndex = $(this).closest("td")[0].cellIndex; // Get cell index
+  console.log(cellIndex);
   const field = "otOut";
   const empno = $("#hiddenempno").val();
   $(this).val("");
   // updateDTR(empno, col1, field, getinput);
-
-  $(this).change();
+  modifyDTR(col1,empno,cellIndex,getinput,"otOut");
+  // $(this).change();
 }
 
 })
@@ -810,4 +826,46 @@ $("#dtr tbody").on("click", ".reflectob", function () {
       });
     }
 
+    function modifyDTR(date,empno,index,second_value,destination){ 
+     let origin  = "";
+     switch(index) {
+      case 2:
+         origin = "inAM";
+          break;
+      case 3:
+        origin = "outAM";
+          break;
+      case 4:
+        origin = "inPM";
+            break;
+      case 5:
+        origin = "outPM";
+              break;
+      case 6:
+        origin= "otIn";
+                break;
+        case 7:
+        origin = "otOut";
+                  break;
+      default:
+          console.log('Default case', second_value);
+  }
+  $.ajax({
+    url:"ajaxcall/modify_dtr.php",
+    type:"POST",
+    data:{
+      empno:empno,
+      date:date,
+      origin:origin,
+      second_value:second_value,
+      destination:destination
+    },
+    error:function (xhr, b, c) {     
+         console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+           }
+  }).done(function(e){
+    // post_notify('Succesfully updated!', 'success');
+  })
+      // console.log(origin,second_value,destination);
+    }
 
