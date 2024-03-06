@@ -130,6 +130,14 @@ if(e.keyCode == 117){
   // $(this).change();
 }
 
+if(e.keyCode == 119){
+  e.preventDefault();
+
+  const empno = $("#hiddenempno").val();
+
+  loadDtr(empno, datefr, dateto);
+}
+
 })
   $("#deptId").select2();
 

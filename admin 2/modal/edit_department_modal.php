@@ -21,7 +21,7 @@
                             </div>
                             <div class="form-group col-12">
                                 <label class="">Connection</label>
-                                <select class="form-control" id="connection" name = "connection">
+                                <select class="form-control" id="edit-connection" name = "connection">
                                     <option value="CONNECTED">CONNECTED</option>
                                     <option value="DISCONNECTED">DISCONNECTED</option>
                                 </select>
@@ -36,7 +36,7 @@
                             
                                 <div class="form-group col-12">
                                 <label class="">Location</label>
-                                <select class="form-control" id="location" name="location">
+                                <select class="form-control" id="edit-location" name="location">
                                     <option value="" selected >Select..</option>
                                     <option value="AGRI">AGRI</option>
                                     <option value="PMSD">PMSD</option>

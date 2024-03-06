@@ -144,11 +144,8 @@ while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
                         <div class="row">
                             <div class="col-12 ">
                                 <div class="card card-dark m-1">
-                                    <div class="card-header">
-                                        <div class="row">
-                                        <h3 class="card-title text-bold">EMPLOYEE'S TABLE</h3>
-                                       
-                              </div>
+                                    <div class="card-header text-center">
+                                        <h2 class="card-title  text-bold ">EMPLOYEE'S TABLE</h2>
                                     </div>
                                     <div class="card-body">
 

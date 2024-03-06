@@ -75,9 +75,9 @@ include 'dtrdesign/sidebar.php';
 
                                                     
                                                     <div class=" input-group" style="margin-left:10px">
-                                                    <span class="input-group-text">
-                                                            <label class=p-1><b>Multiple Dates:</b> </label>
-                                                            <i class="fa fa-calendar m-0"></i>
+                                                    <span class="input-group-text bg-secondary">
+                                                            <label class=p-1>Multiple Dates: </label>
+                                                          
                                                         </span>
                                                       
                                                 <input type="text" class="form-control" autocomplete="off" name = "pickdate" id="pickdate" data-provide="datepicker" placeholder="Pick the multiple dates">
@@ -96,7 +96,7 @@ include 'dtrdesign/sidebar.php';
 
 
                                                 <div class="input-group col-3">
-                                                    <span class="input-group-text">
+                                                    <span class="input-group-text bg-secondary">
                                                         <label>Duration: </label>
                                                     </span>
                                                     <select class=" form-control h-100 " name="duration" id="duration">
@@ -107,7 +107,7 @@ include 'dtrdesign/sidebar.php';
                                                     </select>
                                                 </div>
                                                 <div class="input-group col-4">
-                                                    <span class="input-group-text">
+                                                    <span class="input-group-text bg-secondary">
                                                         <label style="padding-right:10px;padding-left: 10px">Type:
                                                         </label> </span>
 
@@ -129,18 +129,25 @@ include 'dtrdesign/sidebar.php';
                                                 </div>
                                                 
                                             </div>
+                                            <div class="row ml-3">
+                                                <button type="button" id="clear_dates" class="btn bg-dark btn-flat btn-sm" ><b>CLEAR DATES</b></button>
+                                            </div>
                                         </div>
                                         <div class="row ml-3 pt-3 mb-4">
                                             <div class="form-group col-6">
                                                 <label style="padding-right:10px;padding-left: 10px">Purpose </label>
+                                                <button type="button" id="clear_purpose" class="btn bg-dark btn-flat btn-sm float-right"><b>CLEAR PURPOSE</b></button>
                                                 <textarea name="details" id="details"
                                                     class="form-control h-100 w-100"></textarea>
+                                            </div>
+                                            <div class="col-3 mt-5">
+                                            
                                             </div>
                                         </div>
                                     </div>
                                     <!-- DISPLAY'S THE SECOND SECTION OF THE FORM -->
                                     <div class="card card-white shadow-none border border-secondary">
-                                        <div class="card-header text-center">
+                                        <div class="card-header text-center bg-dark">
                                             <h3 class="card-title text-bold">EMPLOYEE LIST</h3>
                                         </div>
                                         <div class="card-body">
@@ -148,7 +155,7 @@ include 'dtrdesign/sidebar.php';
                                         </div>
                                         <div class="row" style=" margin:auto;padding-top:30px;padding-bottom: 30px">
                                             <button type="submit" name="savetravel" id="savetravel"
-                                                class=" btn btn-info custom_button"><i class="fa fa-save"></i></button>
+                                                class=" btn bg-dark rounded-pill"><b>SAVE</b></button>
                                         </div>
                                     </div>
 
@@ -224,7 +231,7 @@ include 'dtrdesign/sidebar.php';
                     cell6.innerHTML = type;
                     cell7.innerHTML = details;
                     cell8.innerHTML =
-                        '<button id="remove" class = "btn btn-circle btn-sm btn-primary" onclick = "deleteRow(this)">Remove</button>';
+                        '<button id="remove" class = "btn btn-circle btn-sm btn-danger" onclick = "deleteRow(this)">Remove</button>';
                 }
             }
             });
@@ -365,6 +372,12 @@ include 'dtrdesign/sidebar.php';
                 var i = r.parentNode.parentNode.rowIndex;
                 document.getElementById("travellist").deleteRow(i);
             }
+            $('#clear_dates').click(function () {
+                $('#pickdate').datepicker('setDate', null);
+            });
+            $("#clear_purpose").click(function () {
+                $('#details').val('');
+            });
         </script>
 
 </body>

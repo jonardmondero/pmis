@@ -118,6 +118,7 @@ $prep_leave_type->execute();
 
                                                     <input type="text" 
                                                         class="form-control text-center" 
+                                                        id="leavetype"
                                                         autocomplete="off" name="datefrom" id="dtefrom"
                                                         val="<?php echo $curdate; ?> ">
 

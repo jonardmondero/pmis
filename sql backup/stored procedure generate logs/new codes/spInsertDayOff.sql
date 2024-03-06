@@ -15,7 +15,7 @@ SET @DDate =( SELECT COUNT(outAM) AS countOff FROM workscheduledetail WHERE DAY 
 	
 	IF(bolsched = 'Yes' && @DDate = 0  && outmorning = '' && inafternoon = '') THEN
 	
-	UPDATE dailytimerecord SET outAM = 'DAY', inPM = 'OFF' WHERE employeeNo = empno AND DATE = ddate LIMIT 1;
+	UPDATE dailytimerecord SET outAM = 'DAY', inPM = 'OFF' WHERE employeeNo = empno AND DATE = ddate;
 	END IF;
 	
 	END$$

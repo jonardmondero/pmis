@@ -1,7 +1,7 @@
 
 <!-- TABLE USED IN EMPLOYEE FORM -->
-<table class = "table table-hover  m-auto w-100 p-1 " style="font-size:15px" id = "table_employee">
-               	<thead>
+<table class = "m-2 table table-hover table-bordered m-auto w-100 p-1 text-center " style="font-size:15px" id = "table_employee"  >
+               	<thead class="bg-gray align-middle">
                		<th>Employee No</th>
                		<th>Full Name</th>
                		<th>Department</th>

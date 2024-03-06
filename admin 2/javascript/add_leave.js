@@ -1,6 +1,6 @@
 $(function() {
 
-    let selectedLeave;
+    let selectedLeave = "";
     $("#leavetype_table").DataTable({
         "paging": true,
         "searching": true,
@@ -25,7 +25,7 @@ table.onclick = function (e) {
   
       leavecode.push(cells[0].innerHTML);
 
-      selectedLeave = leavecode.toString();
+      selectedLeave = leavecode[0];
     
       console.log(selectedLeave);
     
@@ -33,7 +33,7 @@ table.onclick = function (e) {
   };  
 $(document).ready(function(){
 
-    $("#leavetype").select2();
+    // $("#leavetype").select2();
 
  
 });
@@ -103,7 +103,8 @@ let datearray = date.split(',');
 
  function  addLeave(from,to){
     var inclusivedate = $('#inclusivedate').val();
-    var leavetype = $('#leavetype').val();
+    // var checkLeaveType = $('#leavetype').val();
+    var leavetype = selectedLeave;
     var empno = $('#leaveempno').val();
     if (datefrom == '' || dateto == '' || leavetype == 'Select Leave' || empno == '') {
         post_notify("Please complete the information!", "danger");
@@ -189,23 +190,25 @@ $('#save_leave').on("click", function () {
     $('#leavelist tr').each(function (row, tr) {
         
      
-        var leavetype = $(tr).find('td:eq(0)').text();
+        const leave_list = $(tr).find('td:eq(0)').text().trim();
+
         var from = $(tr).find('td:eq(1)').text();
         var to = $(tr).find('td:eq(2)').text();
         var duration = $(tr).find('td:eq(3)').text();
         var newfrom = formatDate(from);
         var newto = formatDate(to);
-        leave_array.push(leavetype);
+        leave_array.push(leave_list);
         from_array.push(newfrom);
         to_array.push(newto);
         duration_array.push(duration);
+       
     });
         $.ajax({
             url: 'ajaxcall/save_leave.php',
             type: 'POST',
             data: {
                 empno: empno,
-                leavetype: leave_array,
+                leave_list: leave_array,
                 from: from_array,
                 to: to_array,
                 duration: duration_array

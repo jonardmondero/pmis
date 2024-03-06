@@ -134,8 +134,19 @@ $alert_msg = '';
     var currow=  $(this).closest('tr');
     var col1 = currow.find('td:eq(0)').text();
     var col2 = currow.find('td:eq(1)').text();
+    var col3 = currow.find('td:eq(2)').text();
+    var col4 = currow.find('td:eq(3)').text();
+    var col5 = currow.find('td:eq(4)').text();
     $('#edit-deptId').val(col1);
     $('#edit-deptname').val(col2);
+    $("#edit-connection").val(col3);
+    // $(`#edit-connection option[value='${col3}']`).prop(
+    //       "selected",
+    //       true
+    //     );
+    $("#location").val(col4);
+    $("#edit-status").val(col5);
+    console.log(col3);
 
   })
   });

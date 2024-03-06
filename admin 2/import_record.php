@@ -8,18 +8,18 @@ $alert_msg='';
 $titlename = 'Import Record';
 // include('sql/generate_record.php');
 // include('sql/generate_department.php');
-$totalRecord = 0;
-$getTotalBTMRecord = "select count(checktime) as totalrecord from dbo.CHECKINOUT";
-$getResult = $mscon->prepare($getTotalBTMRecord);
-$getResult->execute();
-$getRecordSQL = "SELECT count(recordId) as empno from dailytimerecord";
-$getSQLResult = $con->prepare($getRecordSQL);
-$getSQLResult->execute();
-$resultSQL = $getSQLResult->fetch(PDO::FETCH_ASSOC);
+// $totalRecord = 0;
+// $getTotalBTMRecord = "select count(checktime) as totalrecord from dbo.CHECKINOUT";
+// $getResult = $mscon->prepare($getTotalBTMRecord);
+// $getResult->execute();
+// $getRecordSQL = "SELECT count(recordId) as empno from dailytimerecord";
+// $getSQLResult = $con->prepare($getRecordSQL);
+// $getSQLResult->execute();
+// $resultSQL = $getSQLResult->fetch(PDO::FETCH_ASSOC);
 
-while($row = $getResult->fetch(PDO::FETCH_ASSOC)){
-    $totalRecord = $row['totalrecord'];
-}
+// while($row = $getResult->fetch(PDO::FETCH_ASSOC)){
+//     $totalRecord = $row['totalrecord'];
+// }
 
 $st_get_employee = "SELECT CONCAT(firstName,' ', SUBSTRING(middleName,1,1),'.',' ',lastName) as fullName,
  employeeNo as empno, biometricId as biopin from bioinfo where status = 'Active'";
@@ -78,7 +78,7 @@ $customValueCheckOut = "O";
                     <div class="col-2">
                             <div class="small-box bg-danger ">
                                 <div class="inner">
-                                    <h3 class = "mb-5"><?php echo $totalRecord;?></h3>
+                                    <h3 class = "mb-5" id="mssql_count"></h3>
                                     <p>MS SQL Biometric Logs</p>
                                 </div>
                                 <div class="icon mt-4">
@@ -90,7 +90,7 @@ $customValueCheckOut = "O";
                         <div class="col-2">
                             <div class="small-box bg-success ">
                                 <div class="inner">
-                                    <h3 class = "mb-5"><?php echo $resultSQL['empno'];?></h3>
+                                    <h3 class = "mb-5" id = "emp_count_id"></h3>
                                     <p>My SQL Biometric Logs </p>
                                 </div>
                                 <div class="icon mt-4">
@@ -269,7 +269,23 @@ $customValueCheckOut = "O";
 //     startButton.onclick = syncRecords();
 // }
     
+$(function(){
 
+    function getEmpCount(){
+        $.ajax({
+            url:"ajaxcall/get_emp_count.php",
+            type:"GET",
+            success:function(response){
+               var res = JSON.parse(response);
+               console.log(res);
+               $("#emp_count_id").html(res.mysql);
+               $("#mssql_count").html(res.mssql);
+            }
+        })
+    
+    }
+    getEmpCount();
+})
     $(document).ready(function() {
      
          

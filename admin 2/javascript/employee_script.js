@@ -9,6 +9,7 @@ $(document).ready(function () {
     processing: true,
     serverSide: true,
     deferRender: true,
+    sorting:true,
     ajax: {
       url: "ajaxcall/search_employee.php", // json datasource
       type: "post", // method  , by default get
@@ -29,9 +30,26 @@ $(document).ready(function () {
         targets: -1,
         data: null,
         defaultContent:
-          '<button class="btn btn-danger btn-sm btn-circle add_worksched">  <i class="fa fa-calendar"></i></button><button class="btn btn-warning btn-sm btn-circle edit_employee">  <i class="fa fa-edit"></i></button>',
+          '<button class="btn  btn-danger btn-circle add_worksched mr-1">  <i class="fa fa-calendar"></i></button><button class="btn btn-warning  btn-circle edit_employee">  <i class="fa fa-edit"></i></button>',
       },
     ],
+    createdRow: function (row, data, dataIndex) {
+      // Add class to the second column (index 1)
+      var cellValue = $('td:eq(7)', row).text();
+      var emp_status = $('td:eq(4)', row).text();
+     if(cellValue == "Active"){
+      $('td:eq(7)', row).addClass('text-success  text-sm font-weight-bold text-center');
+    }else if(cellValue == "Not Active"){
+      $('td:eq(7)', row).addClass('text-danger text-sm font-weight-bold text-center');
+    }
+    if(emp_status == "Regular"){
+      $('td:eq(4)', row).addClass('text-info  text-sm font-weight-bold text-center');
+    }else if(emp_status == "Job Order"){
+      $('td:eq(4)', row).addClass('text-black text-sm font-weight-bold text-center');
+    }
+  
+  }
+  
   });
 
   sel_worksched();

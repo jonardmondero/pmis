@@ -2,7 +2,7 @@
 include ('../../config/config.php');
 if(isset($_POST['empno'])){
 $empno = $_POST['empno'];
-$leavetype = $_POST['leavetype'];
+$leavetype = $_POST['leave_list'];
 $from = $_POST['from'];
 $to = $_POST['to'];
 $duration = $_POST['duration'];
@@ -34,7 +34,7 @@ if($check){
     break;
 }    
 $save_leave = "CALL spInsertLeave(:empno,:leavetype,:from,:to,:duration)";
-if($value[0]!= ''){
+if($value[0]!== ""){
 $prep_leave = $con->prepare($save_leave);
 $prep_leave->execute([
     ':empno' =>$empno,
@@ -47,8 +47,8 @@ $prep_leave->execute([
 
 }
 }
-echo json_encode(['status' => $status, 'message' => $message]);
 
+echo json_encode(['status' => $status, 'message' => $message]);
 
 }
 ?>

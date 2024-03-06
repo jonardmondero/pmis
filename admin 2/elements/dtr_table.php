@@ -128,7 +128,7 @@
     </div>
     </div>
     <div class="col-lg-12 col-md-12 col-sm-12">
-    <div class="card m-2 shadow-none border border-secondary bg-white">
+    <div class="card m-2 shadow-none border border-secondary bg-white " >
         <div class="card-body">
 
             <form role="form" method="POST" action="<?php htmlspecialchars("PHP_SELF");?>">
@@ -147,7 +147,7 @@
 
                 <div class="row col-lg-12 col-md-12 col-sm-12">
 
-                    <div class="m-auto">
+                    <div class="m-auto  ">
                         <table id="dtr" class="form__table table-bordered table-hover bg-white">
                             <thead class="text_align">
 

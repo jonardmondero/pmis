@@ -13,6 +13,7 @@
             <th> Dept. ID </th>
              <th> Department Name </th>
              <th> Connection </th>
+             <th> Location </th>
              <th> Status </th>
              <th> Options </th>
                       </thead>              
@@ -23,6 +24,7 @@
                     <td><?php echo $result['deptId']?> </td>
                     <td><?php echo $result['departmentDescription']?> </td>
                     <td><?php echo $result['connection']?> </td>
+                    <td><?php echo $result['location']?> </td>
                     <td><?php echo $result['status']?> </td>
                     <td><button class = "btn btn-primary   btn-md btn-circle" id = "edit" ><i class = "fa fa-edit"></button</td>
                   </tr>
