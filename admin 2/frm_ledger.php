@@ -215,15 +215,18 @@ $titlename = 'Employees Ledger';
     <script language="javascript">
 
 
-  $('.select2').select2();
+  $('.select2').select2({
+    theme: 'bootstrap4'
+  });
   $(document).ready(function(){
      var deptId = $('#deptId').val();
+     var employee_field = $('#employee_field').val();
      var empstatus = $('#emp_status').val();
- getEmployees(deptId,empstatus);
+ getEmployees(employee_field,deptId,empstatus);
      
 
      
-  function getEmployees(dept,status){
+  function getEmployees(name,dept,status){
 var dataTable = $('#employees').DataTable({
 
 paging: true,
@@ -237,6 +240,7 @@ ajax: {
   url: "ajaxcall/get_employee_department.php",
   type: "POST",
   data:function (d){
+    d.name = name,
     d.department = dept,
     d.empstatus = status
   },
@@ -255,20 +259,30 @@ ajax: {
 
 
      }
+
  $('#deptId').change(function(){
   var deptId = $('#deptId').val();
+  var employee_field = $("#employee_field").val();
   var empstatus = $('#emp_status').val();
   // $('#body').load("get_employee_department.php",{
   //   dept:deptId,
   //   empstatus:empstatus
   // })
-  getEmployees(deptId,empstatus)
+  getEmployees(employee_field,deptId,empstatus)
  });
 
+$("#employee_field").keyup(function () {
+  var deptId = $("#deptId").val();
+  var employee_field = $("#employee_field").val();
+  var empstatus = $("#emp_status").val();
+  
+  getEmployees(employee_field, deptId, empstatus);
+});
  $('#emp_status').change(function(){
+  var employee_field = $("#employee_field").val();
   var deptId = $('#deptId').val();
   var empstatus = $('#emp_status').val();
-  getEmployees(deptId,empstatus);
+  getEmployees(employee_field,deptId,empstatus);
 
  });
  });

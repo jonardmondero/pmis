@@ -9,6 +9,7 @@ $columns= array(
         3 => 'status',
     
     );
+    $name = $_POST['name'];
     $dept = $_POST['department'];
 	$status = $_POST['empstatus'];
 
@@ -75,6 +76,38 @@ CONCAT(lastName,', ',firstName,', ',LEFT(middleName,1),'.') as fullName
             ':dept' =>$dept,
             ':status'	=>$status
         ]) or die("get_employee_department.php");
+        $getrecord1 = $getrecordstmt->fetch(PDO::FETCH_ASSOC);
+        $totalData = $getrecord1['id'];
+        $totalFiltered = $totalData;
+     }
+     if(!empty($name)){
+        $getAllIndividual = "SELECT employeeNo,
+CONCAT(lastName,', ',firstName,', ',LEFT(middleName,1),'.') as fullName
+ FROM bioinfo where  status = 'Active' AND ";
+        $getAllIndividual.=" (firstName LIKE '%".$name."%'";
+        $getAllIndividual.=" OR middleName LIKE '%".$name."%' ";
+        $getAllIndividual.=" OR lastName LIKE '%".$name."%' ";
+        $getAllIndividual.=" OR CONCAT(firstName,' ',middleName,' ',lastName) LIKE '%" . $name. "%' ";
+        $getAllIndividual.=" OR biometricId LIKE '%".$name."%') ";
+        $getAllIndividual.=" order by lastName ";
+        $getIndividualData = $con->prepare($getAllIndividual);
+        $getIndividualData->execute([
+
+            ':dept' =>$dept,
+            ':status'	=>$status
+        ]); 
+
+     $countfilter = "SELECT COUNT(employeeNo) as id from bioinfo 
+     where  status = 'Active' AND ";
+      $countfilter.=" (firstName LIKE '%".$name."%'";
+      $countfilter.=" OR middleName LIKE '%".$name."%' ";
+      $countfilter.=" OR lastName LIKE '%".$name."%' ";
+      $countfilter.=" OR CONCAT(firstName,' ',middleName,' ',lastName) LIKE '%" . $name. "%' ";
+      $countfilter.=" OR biometricId LIKE '%".$name."%') ";
+    
+
+        $getrecordstmt = $con->prepare($countfilter);
+        $getrecordstmt->execute() or die("get_employee_department.php");
         $getrecord1 = $getrecordstmt->fetch(PDO::FETCH_ASSOC);
         $totalData = $getrecord1['id'];
         $totalFiltered = $totalData;

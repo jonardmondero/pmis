@@ -15,7 +15,7 @@
 // @hrm8ioMetrics -- HRM SERVER PASSWORD
     try{
         // $mscon = sqlsrv_connect($serverName, $connectionOptions);;
-        // $mscon = new PDO("sqlsrv:server=DESKTOP-MA6ABEO\SQLEXPRESS;Database=zktime;ConnectionPooling=1;MultipleActiveResultSets=true", "", "");
+        // $mscon = new PDO("sqlsrv:server=WIN-RBCLMB4CHHM\SQLEXPRESS;Database=zktime;ConnectionPooling=1;MultipleActiveResultSets=true", "", "");
         
         $mscon = new PDO("sqlsrv:server=DESKTOP-I3UJM8B\SQLEXPRESS;Database=zktime;ConnectionPooling=1;MultipleActiveResultSets=true", "", "");
         //display the enye letter

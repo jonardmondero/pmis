@@ -24,7 +24,7 @@ include 'dtrdesign/sidebar.php';
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Compensatory Off</h1>
+                            <h1 class="m-0 text-dark">Compensatory Day Off Record</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -42,13 +42,11 @@ include 'dtrdesign/sidebar.php';
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-4">
-                            <div class="card card-primary">
-                                <div class="card-header">
-                                    <h3 class="card-title">Employees Table</h3>
+                            <div class="card ">
+                                <div class="card-header bg-dark text-center">
+                                    <h3 class="card-title font-weight-bold m-auto">Employees Table</h3>
                                 </div>
-                                <div class="card-body">
-                                    <?php include "elements/search_employee.php";?>
-                                </div>
+                                <?php include "elements/search_employee.php";?>
                             </div>
                         </div>
 
@@ -56,26 +54,26 @@ include 'dtrdesign/sidebar.php';
                         <div class="col-8 ">
                             <div class="card">
 
-                                <div class="card-header">
-                                    <h3 class="card-title capitalize"><b>Search Logs</b></h3>
+                                <div class="card-header bg-dark text-center">
+                                    <h3 class="card-title capitalize m-auto"><b>EMPLOYEE DETAILS</b></h3>
                                 </div>
                                 <div class="card-body">
                                     <form role="form" method="get" action="<?php htmlspecialchars("PHP_SELF");?>">
                                         <div class="box-body">
                                             <div class="row" style="margin-top:5px;">
-                                                <div class="col-3"></div>
-                                                <div class="col-6" style="background-color:white-grey;">
+                                                
+                                                <div class="col-12" style="background-color:white-grey;">
 
-                                                    <div class="card full_name">
-                                                        <h4 id="full-name"> </h4>
+                                                    <div class="card full_name bg-dark">
+                                                        <h4 class="text-white font-weight-7" id="full-name"> </h4>
                                                     </div>
                                                     <input type="hidden" readonly id="hiddenempno" name="hiddenempno"
                                                         value="<?php echo $hidden; ?>">
 
                                                 </div>
-                                                <div class="col-3"></div>
+                                              
                                             </div>
-                                            <div class="row">
+                                            <!-- <div class="row">
                                                 <div class="col-4">
                                                     <div class="input-group date ">
                                                         <label> Date: </label>
@@ -106,18 +104,18 @@ include 'dtrdesign/sidebar.php';
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                 </div>
                                 <!-- /.box-body -->
                                 </form>
                             </div>
                             <div class="card">
-                                <div class="card-header">
-                                    <h3 class="card-title capitalize"><b>ADD COMPENSATORY OFF</b></h3>
+                                <div class="card-header text-center">
+                                    <h3 class="card-title m-auto font-weight-bold">COMPENSATORY DAY OFF</h3>
                                 </div>
                                 <div class="card-body">
-                                    <div class="row">
+                                    <!-- <div class="row">
                                         <div class="col-3">
                                             <div class="input-group date ">
                                                 <label> Date: </label>
@@ -160,23 +158,41 @@ include 'dtrdesign/sidebar.php';
                                         <div class = "col-1">
                                             <button class = "btn btn-primary pull-left" onClick = "saveCompensatory();"> <i class ="fa fa-save"></i></button>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <br>
-                                    <div class ="row">
-                                    <table class="table table-hover table-bordered" id="tbl_compensatory">
-                                                        <thead style="margin:auto;width:100%;">
-                                                            <th>Entry No</th>
-                                                            <th>Date Rendered</th>
-                                                            <th>Time</th>
-                                                            <th>Type</th>
-                                                            <th>Status</th>
-                                                            <th>Claimed Date</th>
-                                                            <th>Option</th>
-                                                        </thead>
-                                                        <tbody id="compen_body">
 
-                                                        </tbody>
-                                                    </table>
+                                    <div class="row ">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="status">Status:
+                                                    <select class="form-control" id="status">
+                                                        <option value="Pending">PENDING</option>
+                                                        <option value="Approved">APPROVED</option>
+
+                                                    </select>
+                                            </div>
+
+                                        </div>
+                                        <table
+                                            class="table table-hover table-bordered table-striped table-responsive-sm text-sm text-center"
+                                            id="tbl_compensatory">
+                                            <thead>
+                                                <th>Entry No</th>
+                                                <th>Date Rendered</th>
+                                                <th>Check In</th>
+                                                <th>Break Out</th>
+                                                <th>Break In</th>
+                                                <th>Check Out</th>
+                                                <th>OT In</th>
+                                                <th>OT Out</th>
+                                                <th>Status</th>
+                                                <th>Claimed Date</th>
+                                                <th>Actions</th>
+                                            </thead>
+                                            <tbody id="compen_body">
+
+                                            </tbody>
+                                        </table>
 
                                     </div>
                                 </div>
@@ -197,22 +213,23 @@ include 'dtrdesign/sidebar.php';
             </div>
         </footer>
 
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
+
     </div>
 
     <?php include 'dtrdesign/footer.php';?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script language="javascript">
+   
         $("#tblsearch tbody").on('click', '#select', function () {
+            console.log("test");
+            var compen_status = $("#status").val();
             var currow = $(this).closest('tr');
             var col1 = currow.find('td:eq(0)').text();
             var col2 = currow.find('td:eq(1)').text();
             $('#full-name').html(col2);
             $('#hiddenempno').val(col1);
-            getCoffRecord(col1);
+            getCoffRecord(col1, compen_status);
         })
 
         function checkCOff() {
@@ -236,12 +253,13 @@ include 'dtrdesign/sidebar.php';
 
         }
 
-        function getCoffRecord(empno){
-
+        function getCoffRecord(empno, status) {
+            console.log(`empno: ${empno} status: ${status}`);
 
             $("#compen_body").load("ajaxcall/load_compensatory.php", {
-                    empno: empno
-                
+                    empno: empno,
+                    status: status
+
                 },
                 function (response, status, xhr) {
                     if (status == "error") {
@@ -253,38 +271,83 @@ include 'dtrdesign/sidebar.php';
             );
         }
 
-        function saveCompensatory(){
+        function saveCompensatory() {
 
-            const empno =  $('#hiddenempno').val();
+            const empno = $('#hiddenempno').val();
             const compen_date = $('#compen_date').val();
             const time = $('#time').val();
             const type = $('#type').val();
-            console.log(empno,compen_date,time,type);
+            console.log(empno, compen_date, time, type);
             $.ajax({
-                url:'ajaxcall/save_compensatory.php',
+                url: 'ajaxcall/save_compensatory.php',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    empno: empno,
+                    compen: compen_date,
+                    time: time,
+                    type: type
+                },
+                success: function (e) {},
+                error: function (xhr, b, c) {
+
+                    console.log(
+                        "xhr=" +
+                        xhr.responseText +
+                        " b=" +
+                        b.responseText +
+                        " c=" +
+                        c.responseText
+                    );
+
+                }
+            })
+
+        }
+        $("#tbl_compensatory tbody").on('click', '#upload_compen', function () {
+            var currow = $(this).closest("tr");
+            const empno = $('#hiddenempno').val();
+            var col1 = currow.find("td:eq(0)").text().trim();
+            var col2 = currow.find("td:eq(1)").text().trim();
+
+            var date_claim = $(currow).find("td:eq(9) input[type='date']").val();
+            //    console.log(date_claim);
+            Swal.fire({
+                title: "Do you want to reflect this to CDO?",
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: "Save",
+                denyButtonText: `Don't save`
+            }).then((result) => {
+              
+                if (result.isConfirmed) {
+                    console.log()
+                    $.ajax({
+                url:'ajaxcall/reflect_to_cdo.php',
                 type:'POST',
                 dataType:'json',
-                data:{empno:empno,
-                    compen:compen_date,
-                    time:time,
-                    type:type},
-                success: function(e){
-                },  
-                error: function (xhr, b, c) {
+                data:{
+                    empno:empno,
+                    entryno:col1,
+                    date_rendered:col2,
+                    date_claim:date_claim
+                },
+                success:function(e){
+                    var col1 = $("#hiddenempno").val();
+                    var compen_status = $("#status").val();
+                    Swal.fire("CDO has been reflected.", "", "success");
                   
-             console.log(
-      "xhr=" +
-        xhr.responseText +
-        " b=" +
-        b.responseText +
-        " c=" +
-        c.responseText
-    );
+                    getCoffRecord(col1, compen_status);
+                },
+               });
 
-  }})
-            
-        }
+                } else if (result.isDenied) {
+                    Swal.fire("Changes are not saved", "", "info");
+                }
+            });
 
+
+        });
     </script>
 </body>
 

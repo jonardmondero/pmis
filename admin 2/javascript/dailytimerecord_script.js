@@ -139,14 +139,17 @@ if(e.keyCode == 119){
 }
 
 })
-  $("#deptId").select2();
+  $("#deptId").select2({
+    theme:'bootstrap4'
+  });
 
+  var employee_field = $("#employee_field").val();
   var deptId = $("#deptId").val();
   var empstatus = $("#emp_status").val();
   // $('#body').load("get_employee_department.php",{
   //   dept:deptId,
   //   empstatus:empstatus
-  getEmployees(deptId, empstatus);
+  getEmployees(employee_field,deptId, empstatus);
 
   // DATE RANGE PICKER
   $('input[name="daterange"]').daterangepicker(
@@ -166,7 +169,8 @@ if(e.keyCode == 119){
   );
 });
 
-function getEmployees(dept, status) {
+function getEmployees(name, dept, status) {
+  console.log(`name : ${name}, dept : ${dept}, status : ${status}`)
   var dataTable = $("#employees").DataTable({
     select: true,
     destroy: true,
@@ -179,7 +183,9 @@ function getEmployees(dept, status) {
       url: "ajaxcall/get_employee_department.php",
       type: "POST",
       data: function (d) {
-        (d.department = dept), (d.empstatus = status);
+        (d.department = dept),
+        (d.name = name), 
+        (d.empstatus = status)
       },
       error: function (xhr, b, c) {
         console.log(
@@ -197,16 +203,26 @@ function getEmployees(dept, status) {
 
 $("#deptId").change(function () {
   var deptId = $("#deptId").val();
-  console.log(deptId);
+  var employee_field = $("#employee_field").val();
   var empstatus = $("#emp_status").val();
-  getEmployees(deptId, empstatus);
+  
   $("#hiddendeptid").val(deptId);
+  getEmployees(employee_field, deptId, empstatus);
+});
+$("#employee_field").keyup(function () {
+  var deptId = $("#deptId").val();
+  var employee_field = $("#employee_field").val();
+  var empstatus = $("#emp_status").val();
+  
+  getEmployees(employee_field, deptId, empstatus);
 });
 
 $("#emp_status").change(function () {
   var deptId = $("#deptId").val();
+  var employee_field = $("#employee_field").val();
+
   var empstatus = $("#emp_status").val();
-  getEmployees(deptId, empstatus);
+  getEmployees(employee_field, deptId, empstatus);
 });
 
 function loadDtr(empnum, datefr, dateto) {
@@ -673,9 +689,12 @@ $("#editEmployee").on("click",function() {
       );
 
       $("#emp_sched").select2({
+        theme:'bootstrap4',
         dropdownParent: $("#addemployee"),
       });
       $("#department").select2({
+        theme:'bootstrap4',
+
         dropdownParent: $("#addemployee"),
       });
       console.log(result.department);
@@ -731,10 +750,11 @@ $.ajax({
 }).done(function (e) {
   console.log(e);
   $("#addemployee").modal("hide");
+  var employee_field = $("#employee_field").val();
   var deptId = $("#deptId").val();
   var empstatus = $("#emp_status").val();
   post_notify("Employee information is updated", "success");
-  getEmployees(deptId, empstatus);
+  getEmployees(employee_field,deptId, empstatus);
 
 });
 })
@@ -877,3 +897,72 @@ $("#dtr tbody").on("click", ".reflectob", function () {
       // console.log(origin,second_value,destination);
     }
 
+    $("#dtr tbody").on("click", ".addco", function (e) {
+      
+      e.preventDefault();
+    
+    var empno = $('#hiddenempno').val();
+    var currow = $(this).closest("tr");
+    var col1 = currow.find("td:eq(0)").text();
+    var col2 = $(currow).find("td:eq(2) input[type='text']").val();
+      var col3 = $(currow).find("td:eq(3) input[type='text']").val();
+      var col4 = $(currow).find("td:eq(4) input[type='text']").val();
+      var col5 = $(currow).find("td:eq(5) input[type='text']").val();
+      var col6 = $(currow).find("td:eq(6) input[type='text']").val();
+      var col7 = $(currow).find("td:eq(7) input[type='text']").val();
+
+
+    let data = [
+      {
+       empno:empno,
+       date:col1,
+       inAM:col2,
+       outAM:col3,
+       inPM:col4,
+       outPM:col5,
+       otIn:col6,
+        otOut:col7
+ 
+      }
+    
+     ];
+
+//add sweet alert with confirmation
+Swal.fire({
+  title: "Do you want to add this to CDO?",
+  showDenyButton: true,
+  showCancelButton: true,
+  confirmButtonText: "Save",
+  denyButtonText: `Don't save`
+}).then((result) => {
+  /* Read more about isConfirmed, isDenied below */
+  if (result.isConfirmed) {
+    // Swal.fire("Saved!", "", "success");
+    
+    saveCompensatory(data);
+  } else if (result.isDenied) {
+    Swal.fire("Changes are not saved", "", "info");
+  }
+});
+    
+   
+    });
+
+    function saveCompensatory(data){
+     $.ajax({
+      url:"ajaxcall/save_compensatory.php",
+      data:{data:JSON.stringify(data)},
+      type:"POST",
+      error:function (xhr, b, c) {     
+           console.log("xhr=" + xhr.responseText + " b=" + b.responseText + " c=" + c.responseText);
+             }
+
+     }).done(function(e){
+      if(e === "exist"){
+        post_notify('This Compensatory is already exist.', 'danger');
+        return;
+      }
+      post_notify('You have successfully added new compensatory day off.', 'success');
+      
+     });
+    }

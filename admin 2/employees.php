@@ -65,7 +65,7 @@ while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
                             <div class="small-box bg-primary ">
                                 <div class="inner">
                                     <h3><?php echo $getNoEmployees?></h3>
-                                    <p>Employees</p>
+                                    <p class="font-weight-bold">Employees</p>
                                 </div>
                                 <div class="icon mt-4">
                                     <i class="fa fa-plus" id="addemp"  data-toggle="modal"  data-target="#addemployee"></i>
@@ -77,7 +77,7 @@ while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
                             <div class="small-box bg-warning ">
                                 <div class="inner">
                                     <h3><?php echo $getActive?></h3>
-                                    <p>Active Employees</p>
+                                    <p class="font-weight-bold">Active</p>
                                 </div>
                                 <div class="icon mt-4">
                                     <i class="fa fa-user" ></i>
@@ -89,7 +89,7 @@ while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
                             <div class="small-box bg-danger ">
                                 <div class="inner">
                                     <h3><?php echo $getInActive?></h3>
-                                    <p>In-Active Employees</p>
+                                    <p class="font-weight-bold">Not Active</p>
                                 </div>
                                 <div class="icon mt-4">
                                     <i class="fa fa-user" ></i>
@@ -101,7 +101,7 @@ while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
                             <div class="small-box bg-info ">
                                 <div class="inner">
                                     <h3><?php echo $regulars?></h3>
-                                    <p>Regular Employees</p>
+                                    <p class="font-weight-bold">Regular</p>
                                 </div>
                                 <div class="icon mt-4">
                                     <i class="fa fa-user" ></i>
@@ -113,7 +113,7 @@ while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
                             <div class="small-box bg-info ">
                                 <div class="inner">
                                     <h3><?php echo $jobORders?></h3>
-                                    <p>Job Order Employees</p>
+                                    <p class="font-weight-bold">Job Order</p>
                                 </div>
                                 <div class="icon mt-4">
                                     <i class="fa fa-user" ></i>

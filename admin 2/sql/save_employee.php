@@ -176,7 +176,7 @@ if(isset($_POST['updateemp'])){
 
 if(isset($_POST['delete'])){
 	$employeenum = $_POST['empnum'];
-	$insert_stmt = "DELETE FROM bioinfo where employeeNo = :id";
+	$insert_stmt = "UPDATE bioinfo SET status = 'Deleted' where employeeNo = :id";
 	$set_stmt = $con->prepare($insert_stmt);
 
 	$set_stmt->execute([':id'=>$employeenum]);

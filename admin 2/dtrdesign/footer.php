@@ -35,9 +35,9 @@
 <script src="javascript/employee_search.js"></script>
 <script src="javascript/show_update_sup.js"></script>
 <!-- SELECT 2 PLUGINS -->
-<script src="../plugins/select2/select2.min.js"></script>
-<script src="../plugins/select2/select2.full.min.js"></script>
-<script src="../plugins/select2/select2.js"></script>
+<!-- <script src="../plugins/select2/select2.min.js"></script> -->
+<script src="../plugins/select2/js/select2.full.min.js"></script>
+<!-- <script src="../plugins/select2-bootstrap4-theme/select2.js"></script> -->
 <script src="../plugins/bootstrap-hover/bootstrap-hover-dropdown.js"></script>
 
 <script src="../plugins/bootstrap-popup/lib/prettify.js"></script>

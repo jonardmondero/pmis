@@ -38,7 +38,7 @@ $alert_msg = '';
             <button class = "btn bg-dark" 
             id = "adddept" data-toggle="modal" 
             data-target="#add_department">
-            Add Department 
+            Add Department
             </button>
           </div>
            <div class="form-group has-feedback col-8">

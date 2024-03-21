@@ -180,11 +180,13 @@ $(document).ready(function () {
     // $(`#emp_sched option[value='${cs}']`).prop("selected", "true");
     // $('#emp_sched').val(cs);
     $("#department").select2({
+      theme:'bootstrap4',
       dropdownParent: $("#addemployee"),
     
     });
     
     $("#emp_sched").select2({
+      theme:'bootstrap4',
       dropdownParent: $("#addemployee"),
     
     });
@@ -221,10 +223,12 @@ $(document).ready(function () {
     $("#empno").val(col1);
 
     $("#sel_worksched").select2({
+      theme:'bootstrap4',
       dropdownParent: $("#addemployeesched"),
     });
 
     $("#emp_sched").select2({
+      theme:'bootstrap4',
       dropdownParent: $("#addemployee"),
     });
 
@@ -293,9 +297,11 @@ $(document).ready(function () {
         );
 
         $("#emp_sched").select2({
+          theme:'bootstrap4',
           dropdownParent: $("#addemployee"),
         });
         $("#department").select2({
+          theme:'bootstrap4',
           dropdownParent: $("#addemployee"),
         });
         console.log(result.department);
@@ -313,4 +319,5 @@ $(document).ready(function () {
       },
     });
   });
+ 
 });

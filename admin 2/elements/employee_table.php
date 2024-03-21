@@ -36,14 +36,13 @@ if($user_type == 'User'){
                     </div>
 
                 </div>
-                <div class="row" style="margin:auto;margin-bottom:20px;margin-top:30px;">
-                    <select class="form-control" id="emp_status" <?php echo $setreadonly;?>>
-                        <option <?php echo $setSelected;?> val="Regular">Regular</option>
-                        <option <?php echo $setSelected;?> val="Job Order">Job Order</option>
-                    </select>
-                </div>
+                <input type="text" class="form-control mb-2" id = "employee_field" placeholder="Type employee name here..">
+                <select class="form-control mb-3" id="emp_status" <?php echo $setreadonly;?>>
+                    <option <?php echo $setSelected;?> val="Regular">Regular</option>
+                    <option <?php echo $setSelected;?> val="Job Order">Job Order</option>
+                </select>
                 <div class="row" id="slim">
-                    <div class="col-12  ">
+                    <div class="col-12 ">
                         <table id="employees" class="table table-bordered table-reponsive table-hover dataTable text_align"
                             role="grid">
                             <thead>

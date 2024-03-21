@@ -16,6 +16,7 @@
           <li> <button class = "btn btn-primary btn-sm reflectleave " style = "margin-right:2px;margin-bottom:2px "><b>REFLECT LEAVE</b></button> </li>
           <li>  <button class = "btn btn-primary btn-sm reflectob" style = "margin-right:2px;margin-bottom:2px "><b>REFLECT TRAVEL</b></button> </li>
           <li> <button class = "btn btn-warning btn-sm copydata" style = "margin-right:2px;margin-bottom:2px "><b>COPY LOGS</b></button> </li>
+          <li> <button class = "btn btn-warning btn-sm addco" style = "margin-right:2px;margin-bottom:2px "><b>ADD COMPENSATORY</b></button> </li>
           </ul>
            
            

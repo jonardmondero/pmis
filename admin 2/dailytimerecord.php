@@ -69,6 +69,7 @@ include ('dtrdesign/header.php');
     ?>
     </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="javascript/dailytimerecord_script.js"></script>
 
 </body>
